@@ -12,131 +12,184 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
   <style>
-    .hero-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 60px 0;
-      margin-bottom: 40px;
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    /* Header */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* Main Section */
+    .main-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
     }
 
     .contact-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      margin-bottom: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .contact-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
     .contact-method {
       display: flex;
       align-items: center;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
       transition: all 0.3s ease;
       border: 2px solid transparent;
+      background-color: var(--light-bg);
     }
 
     .contact-method:hover {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-      border-color: rgba(102, 126, 234, 0.3);
+      background-color: rgba(0, 102, 204, 0.05);
+      border-color: rgba(0, 102, 204, 0.2);
       transform: translateX(5px);
     }
 
     .contact-icon {
       font-size: 2.5rem;
-      margin-right: 20px;
-      color: #667eea;
+      margin-right: 1.5rem;
+      color: var(--primary-color);
       min-width: 60px;
-    }
-
-    .faq-card {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 20px;
-      border: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
 
     .support-feature {
       text-align: center;
-      padding: 30px 20px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-      margin-bottom: 20px;
+      padding: 1.5rem;
+      border-radius: 10px;
+      background-color: var(--light-bg);
+      margin-bottom: 1rem;
       transition: transform 0.3s ease;
+      border: 1px solid var(--border-color);
     }
 
     .support-feature:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .support-feature i {
-      font-size: 3rem;
-      color: #667eea;
-      margin-bottom: 15px;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .quick-help-card {
+      background-color: var(--light-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
     }
 
     .footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      background-color: var(--dark-bg);
       color: white;
-      padding: 40px 0 20px;
-      margin-top: 60px;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
     }
 
-    .btn-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
+    .footer h5 {
       color: white;
-      padding: 12px 30px;
-      border-radius: 25px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      margin-bottom: 1rem;
     }
 
-    .btn-gradient:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-      color: white;
+    .footer p {
+      color: #adb5bd;
     }
 
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .hero-section {
-        padding: 40px 0;
+      .main-section {
+        padding: 1rem 0;
       }
 
       .contact-card {
-        padding: 25px;
+        padding: 1.5rem;
       }
 
       .contact-method {
         flex-direction: column;
         text-align: center;
-        padding: 15px;
+        padding: 1rem;
       }
 
       .contact-icon {
         margin-right: 0;
-        margin-bottom: 10px;
+        margin-bottom: 1rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="/">
+      <a class="navbar-brand" href="/">
         <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
       </a>
       <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
@@ -148,7 +201,7 @@
             <a class="nav-link fw-semibold" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" aria-current="page" href="/mirror">Webcam Mirror</a>
+            <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
@@ -159,265 +212,293 @@
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
           </li>
-                    <li class="nav-item">
-            <a class="nav-link fw-semibold" aria-current="page" href="/show-webcam">Show My Webcam</a>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fw-semibold" href="/contact">Contact</a>
+            <a class="nav-link active fw-semibold" aria-current="page" href="/contact">Contact</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="hero-section">
-    <div class="container text-center">
-      <h1 class="display-4 fw-bold mb-4">
-        <i class="bi bi-envelope-fill me-3"></i>Contact Us
-      </h1>
-      <p class="lead mb-0">Have questions or feedback about WebcamTest? We'd love to hear from you!</p>
-    </div>
-  </div>
+  <!-- Main Section -->
+  <section class="main-section">
+    <div class="container">
+      <!-- Page Title -->
+      <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-dark mb-3">
+          <i class="bi bi-envelope text-primary me-3"></i>Contact Us
+        </h1>
+        <p class="lead text-muted">Have questions or feedback about WebcamTest? We'd love to hear from you!</p>
+      </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="contact-card">
-          <h2 class="mb-4"><i class="bi bi-headset text-primary me-2"></i>Get in Touch</h2>
-          <p class="lead mb-4">
-            Whether you're experiencing technical issues, have suggestions for improvements, or just want to share your feedback,
-            we're here to help. Our support team is dedicated to ensuring you have the best webcam testing experience possible.
-          </p>
+      <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+          <div class="contact-card">
+            <h2 class="section-header">
+              <i class="bi bi-headset"></i>Get in Touch
+            </h2>
+            <p class="lead mb-4">
+              Whether you're experiencing technical issues, have suggestions for improvements, or just want to share your feedback,
+              we're here to help. Our support team is dedicated to ensuring you have the best webcam testing experience possible.
+            </p>
 
-          <div class="contact-method">
-            <i class="bi bi-envelope-fill contact-icon"></i>
-            <div>
-              <h4 class="mb-2">Email Support</h4>
-              <p class="mb-1">For technical support, feature requests, or general inquiries</p>
-              <p class="mb-0"><strong><a href="mailto:vinithablog@gmail.com" class="text-decoration-none">vinithablog@gmail.com</a></strong></p>
+            <div class="contact-method">
+              <i class="bi bi-envelope-fill contact-icon"></i>
+              <div>
+                <h4 class="mb-2">Email Support</h4>
+                <p class="mb-1">For technical support, feature requests, or general inquiries</p>
+                <p class="mb-0"><strong><a href="mailto:vinithablog@gmail.com" class="text-decoration-none text-primary">vinithablog@gmail.com</a></strong></p>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <i class="bi bi-clock-fill contact-icon"></i>
+              <div>
+                <h4 class="mb-2">Response Time</h4>
+                <p class="mb-1">We typically respond to all inquiries within 24–48 hours during business days</p>
+                <p class="mb-0"><strong>Monday - Friday: 9:00 AM - 6:00 PM (GMT)</strong></p>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <i class="bi bi-globe contact-icon"></i>
+              <div>
+                <h4 class="mb-2">Global Support</h4>
+                <p class="mb-1">We provide support for users worldwide in multiple languages</p>
+                <p class="mb-0"><strong>English, Spanish, French, German, and more</strong></p>
+              </div>
             </div>
           </div>
 
-          <div class="contact-method">
-            <i class="bi bi-clock-fill contact-icon"></i>
-            <div>
-              <h4 class="mb-2">Response Time</h4>
-              <p class="mb-1">We typically respond to all inquiries within 24–48 hours during business days</p>
-              <p class="mb-0"><strong>Monday - Friday: 9:00 AM - 6:00 PM (GMT)</strong></p>
+          <div class="contact-card">
+            <h3 class="section-header">
+              <i class="bi bi-chat-dots-fill"></i>What Can We Help You With?
+            </h3>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="support-feature">
+                  <i class="bi bi-tools"></i>
+                  <h5>Technical Issues</h5>
+                  <p class="mb-0">Camera not detected, permission problems, browser compatibility issues</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="support-feature">
+                  <i class="bi bi-question-circle"></i>
+                  <h5>How-to Questions</h5>
+                  <p class="mb-0">Usage instructions, feature explanations, troubleshooting guides</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="support-feature">
+                  <i class="bi bi-lightbulb"></i>
+                  <h5>Feature Requests</h5>
+                  <p class="mb-0">Suggestions for new features, improvements, or enhancements</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="support-feature">
+                  <i class="bi bi-star"></i>
+                  <h5>Feedback</h5>
+                  <p class="mb-0">User experience feedback, testimonials, general comments</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="contact-method">
-            <i class="bi bi-globe contact-icon"></i>
-            <div>
-              <h4 class="mb-2">Global Support</h4>
-              <p class="mb-1">We provide support for users worldwide in multiple languages</p>
-              <p class="mb-0"><strong>English, Spanish, French, German, and more</strong></p>
+          <div class="contact-card">
+            <h3 class="section-header">
+              <i class="bi bi-shield-check-fill"></i>Privacy & Security
+            </h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="text-primary mb-3">
+                  <i class="bi bi-lock-fill me-2"></i>Data Protection
+                </h5>
+                <p>Your privacy is our priority. We never store or transmit your video data. All webcam testing happens locally in your browser.</p>
+              </div>
+              <div class="col-md-6">
+                <h5 class="text-primary mb-3">
+                  <i class="bi bi-envelope-check-fill me-2"></i>Secure Communication
+                </h5>
+                <p>All email communications are encrypted and secure. We don't share your information with third parties.</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="contact-card">
-          <h3 class="mb-4"><i class="bi bi-chat-dots-fill text-primary me-2"></i>What Can We Help You With?</h3>
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="quick-help-card">
+            <h4 class="section-header">
+              <i class="bi bi-question-circle-fill"></i>Quick Help
+            </h4>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="support-feature">
-                <i class="bi bi-tools"></i>
-                <h5>Technical Issues</h5>
-                <p>Camera not detected, permission problems, browser compatibility issues</p>
+            <div class="accordion" id="quickHelpAccordion">
+              <div class="accordion-item border-0 mb-2">
+                <h6 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#help1" data-bs-toggle="collapse" type="button">
+                    Camera not working?
+                  </button>
+                </h6>
+                <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help1">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li>• Check camera connections</li>
+                      <li>• Allow browser permissions</li>
+                      <li>• Close other camera apps</li>
+                      <li>• Try refreshing the page</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="support-feature">
-                <i class="bi bi-question-circle"></i>
-                <h5>How-to Questions</h5>
-                <p>Usage instructions, feature explanations, troubleshooting guides</p>
+
+              <div class="accordion-item border-0 mb-2">
+                <h6 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#help2" data-bs-toggle="collapse" type="button">
+                    Permission denied error?
+                  </button>
+                </h6>
+                <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help2">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li>• Click the camera icon in address bar</li>
+                      <li>• Select "Allow" for camera access</li>
+                      <li>• Check browser settings</li>
+                      <li>• Restart your browser</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="support-feature">
-                <i class="bi bi-lightbulb"></i>
-                <h5>Feature Requests</h5>
-                <p>Suggestions for new features, improvements, or enhancements</p>
+
+              <div class="accordion-item border-0 mb-2">
+                <h6 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#help3" data-bs-toggle="collapse" type="button">
+                    Poor video quality?
+                  </button>
+                </h6>
+                <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help3">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li>• Check lighting conditions</li>
+                      <li>• Clean camera lens</li>
+                      <li>• Update camera drivers</li>
+                      <li>• Try different resolution settings</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="support-feature">
-                <i class="bi bi-star"></i>
-                <h5>Feedback</h5>
-                <p>User experience feedback, testimonials, general comments</p>
+
+              <div class="accordion-item border-0">
+                <h6 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#help4" data-bs-toggle="collapse" type="button">
+                    Mobile issues?
+                  </button>
+                </h6>
+                <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help4">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li>• Use landscape orientation</li>
+                      <li>• Close background apps</li>
+                      <li>• Check mobile data/WiFi</li>
+                      <li>• Update your browser</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="contact-card">
-          <h3 class="mb-4"><i class="bi bi-shield-check-fill text-primary me-2"></i>Privacy & Security</h3>
-          <div class="row">
-            <div class="col-md-6">
-              <h5><i class="bi bi-lock-fill text-success me-2"></i>Data Protection</h5>
-              <p>Your privacy is our priority. We never store or transmit your video data. All webcam testing happens locally in your browser.</p>
-            </div>
-            <div class="col-md-6">
-              <h5><i class="bi bi-envelope-check-fill text-success me-2"></i>Secure Communication</h5>
-              <p>All email communications are encrypted and secure. We don't share your information with third parties.</p>
-            </div>
+          <div class="quick-help-card text-center">
+            <h4 class="section-header">
+              <i class="bi bi-stopwatch-fill"></i>Need Immediate Help?
+            </h4>
+            <p class="mb-3">Can't find the answer you're looking for? Get in touch with our support team.</p>
+            <a href="mailto:vinithablog@gmail.com" class="btn btn-primary-custom btn-lg">
+              <i class="bi bi-envelope-fill me-2"></i>Email Support
+            </a>
+          </div>
+
+          <div class="quick-help-card">
+            <h4 class="section-header">
+              <i class="bi bi-graph-up-arrow"></i>Help Us Improve
+            </h4>
+            <p class="mb-3">Your feedback helps us make WebcamTest better for everyone. Share your thoughts and suggestions with us.</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Report bugs and issues</li>
+              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Suggest new features</li>
+              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Share user experience feedback</li>
+              <li class="mb-0"><i class="bi bi-check text-success me-2"></i>Rate our service</li>
+            </ul>
+          </div>
+
+          <div class="quick-help-card text-center">
+            <h4 class="section-header">
+              <i class="bi bi-camera-video-fill"></i>Ready to Test?
+            </h4>
+            <p class="mb-3">Start testing your webcam now and experience our platform.</p>
+            <a href="/" class="btn btn-primary-custom">
+              <i class="bi bi-camera-video-fill me-2"></i>Test My Webcam
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-4">
-        <div class="faq-card">
-          <h4 class="mb-3"><i class="bi bi-question-circle-fill text-primary me-2"></i>Quick Help</h4>
-
-          <div class="accordion" id="quickHelpAccordion">
-            <div class="accordion-item border-0 mb-2">
-              <h6 class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-target="#help1" data-bs-toggle="collapse" type="button">
-                  Camera not working?
-                </button>
-              </h6>
-              <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help1">
-                <div class="accordion-body">
-                  <ul class="list-unstyled">
-                    <li>• Check camera connections</li>
-                    <li>• Allow browser permissions</li>
-                    <li>• Close other camera apps</li>
-                    <li>• Try refreshing the page</li>
-                  </ul>
+      <!-- Community Section -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="contact-card text-center">
+            <h3 class="section-header">
+              <i class="bi bi-people-fill"></i>Join Our Community
+            </h3>
+            <p class="lead mb-4">
+              Connect with other users, share tips, and stay updated with the latest webcam testing techniques and technologies.
+            </p>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="support-feature">
+                  <i class="bi bi-chat-square-text"></i>
+                  <h5>User Forums</h5>
+                  <p class="mb-0">Share experiences and get help from the community</p>
                 </div>
               </div>
-            </div>
-
-            <div class="accordion-item border-0 mb-2">
-              <h6 class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-target="#help2" data-bs-toggle="collapse" type="button">
-                  Permission denied error?
-                </button>
-              </h6>
-              <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help2">
-                <div class="accordion-body">
-                  <ul class="list-unstyled">
-                    <li>• Click the camera icon in address bar</li>
-                    <li>• Select "Allow" for camera access</li>
-                    <li>• Check browser settings</li>
-                    <li>• Restart your browser</li>
-                  </ul>
+              <div class="col-md-4 mb-3">
+                <div class="support-feature">
+                  <i class="bi bi-newspaper"></i>
+                  <h5>Tech Updates</h5>
+                  <p class="mb-0">Stay informed about new features and improvements</p>
                 </div>
               </div>
-            </div>
-
-            <div class="accordion-item border-0 mb-2">
-              <h6 class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-target="#help3" data-bs-toggle="collapse" type="button">
-                  Poor video quality?
-                </button>
-              </h6>
-              <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help3">
-                <div class="accordion-body">
-                  <ul class="list-unstyled">
-                    <li>• Check lighting conditions</li>
-                    <li>• Clean camera lens</li>
-                    <li>• Update camera drivers</li>
-                    <li>• Try different resolution settings</li>
-                  </ul>
+              <div class="col-md-4 mb-3">
+                <div class="support-feature">
+                  <i class="bi bi-award"></i>
+                  <h5>Expert Tips</h5>
+                  <p class="mb-0">Learn best practices for webcam setup and optimization</p>
                 </div>
-              </div>
-            </div>
-
-            <div class="accordion-item border-0">
-              <h6 class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-target="#help4" data-bs-toggle="collapse" type="button">
-                  Mobile issues?
-                </button>
-              </h6>
-              <div class="accordion-collapse collapse" data-bs-parent="#quickHelpAccordion" id="help4">
-                <div class="accordion-body">
-                  <ul class="list-unstyled">
-                    <li>• Use landscape orientation</li>
-                    <li>• Close background apps</li>
-                    <li>• Check mobile data/WiFi</li>
-                    <li>• Update your browser</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-card text-center">
-          <h4 class="mb-3"><i class="bi bi-stopwatch-fill text-primary me-2"></i>Need Immediate Help?</h4>
-          <p>Can't find the answer you're looking for? Get in touch with our support team.</p>
-          <a href="mailto:vinithablog@gmail.com" class="btn btn-gradient btn-lg">
-            <i class="bi bi-envelope-fill me-2"></i>Email Support
-          </a>
-        </div>
-
-        <div class="faq-card">
-          <h4 class="mb-3"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Help Us Improve</h4>
-          <p>Your feedback helps us make WebcamTest better for everyone. Share your thoughts and suggestions with us.</p>
-          <ul class="list-unstyled mt-3">
-            <li><i class="bi bi-check text-success me-2"></i>Report bugs and issues</li>
-            <li><i class="bi bi-check text-success me-2"></i>Suggest new features</li>
-            <li><i class="bi bi-check text-success me-2"></i>Share user experience feedback</li>
-            <li><i class="bi bi-check text-success me-2"></i>Rate our service</li>
-          </ul>
-        </div>
-
-        <div class="faq-card text-center">
-          <h4 class="mb-3"><i class="bi bi-camera-video-fill text-primary me-2"></i>Ready to Test?</h4>
-          <p>Start testing your webcam now and experience our platform.</p>
-          <a href="/" class="btn btn-gradient">
-            <i class="bi bi-camera-video-fill me-2"></i>Test My Webcam
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="contact-card text-center">
-          <h3 class="mb-4"><i class="bi bi-people-fill text-primary me-2"></i>Join Our Community</h3>
-          <p class="lead mb-4">
-            Connect with other users, share tips, and stay updated with the latest webcam testing techniques and technologies.
-          </p>
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <div class="support-feature">
-                <i class="bi bi-chat-square-text"></i>
-                <h5>User Forums</h5>
-                <p>Share experiences and get help from the community</p>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="support-feature">
-                <i class="bi bi-newspaper"></i>
-                <h5>Tech Updates</h5>
-                <p>Stay informed about new features and improvements</p>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="support-feature">
-                <i class="bi bi-award"></i>
-                <h5>Expert Tips</h5>
-                <p>Learn best practices for webcam setup and optimization</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container text-center">
       <div class="row">
         <div class="col-md-12">
-          <h5 class="mb-3"><i class="bi bi-camera-video-fill me-2"></i>WebcamTest</h5>
+          <h5 class="mb-3">
+            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+          </h5>
           <p class="mb-2">Advanced online webcam testing platform for all devices</p>
           <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
           <div class="mt-3">
