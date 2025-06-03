@@ -8,94 +8,177 @@
         name="description">
   <meta content="webcam test, camera test, webcam tester, test webcam, web cam test, camera tester, test my webcam, test camera, live camera test, cam test" name="keywords">
 
-  <link href="https://webcamtest.com/" rel="canonical">
+  <link href="https://webcam-test.github.io/" rel="canonical">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <script async crossorigin="anonymous"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785"></script>
 
   <style>
-    .webcam-container {
-      position: relative;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    /* Header */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* Main Camera Section */
+    .camera-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .camera-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
       border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
     #video-preview {
       width: 100%;
-      max-width: 640px;
+      max-width: 800px;
       height: auto;
+      min-height: 400px;
       border-radius: 10px;
-      border: 3px solid #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      background-color: #1a1a1a;
+      border: 3px solid var(--border-color);
+      background-color: #000000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
 
     .camera-controls {
+      margin-top: 1.5rem;
       display: flex;
-      gap: 10px;
+      gap: 1rem;
       justify-content: center;
-      margin-top: 15px;
+      align-items: center;
       flex-wrap: wrap;
-    }
-
-    .info-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .info-label {
-      font-weight: 600;
-      color: #495057;
-    }
-
-    .info-value {
-      color: #0d6efd;
-      font-weight: 500;
     }
 
     .status-indicator {
       display: inline-flex;
       align-items: center;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
       font-weight: 500;
-      margin-bottom: 15px;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
     }
 
-    .status-recording {
-      background: rgba(220, 53, 69, 0.1);
-      color: #dc3545;
-      border: 1px solid rgba(220, 53, 69, 0.2);
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
     }
 
     .status-ready {
-      background: rgba(25, 135, 84, 0.1);
-      color: #198754;
-      border: 1px solid rgba(25, 135, 84, 0.2);
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-recording {
+      background-color: #f8d7da;
+      color: var(--danger-color);
+      border-color: #f5c6cb;
     }
 
     .status-testing {
-      background: rgba(255, 193, 7, 0.1);
-      color: #ffc107;
-      border: 1px solid rgba(255, 193, 7, 0.2);
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
+    }
+
+    .btn-outline-primary-custom {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      background-color: transparent;
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary-custom:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Info Panel */
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f1f3f4;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .info-value {
+      color: var(--primary-color);
+      font-weight: 500;
+      text-align: right;
     }
 
     .recording-pulse {
@@ -103,7 +186,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #dc3545;
+      background: var(--danger-color);
       margin-right: 8px;
       animation: pulse 1.5s infinite;
     }
@@ -123,99 +206,163 @@
       }
     }
 
-    .quality-excellent { color: #198754; }
-    .quality-verygood { color: #0d6efd; }
+    .quality-excellent { color: var(--success-color); }
+    .quality-verygood { color: var(--primary-color); }
     .quality-good { color: #6f42c1; }
     .quality-fair { color: #fd7e14; }
-    .quality-poor { color: #dc3545; }
-    .quality-unknown { color: #6c757d; }
+    .quality-poor { color: var(--danger-color); }
+    .quality-unknown { color: var(--text-muted); }
 
     .feature-card {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 20px;
-      border: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
-
-    .hero-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 60px 0;
-      margin-bottom: 40px;
-      border-radius: 0 0 25px 25px;
-    }
-
-    .btn-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      color: white;
-      padding: 12px 30px;
-      border-radius: 25px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-gradient:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-      color: white;
-    }
-
-    .nav-pills .nav-link {
-      border-radius: 20px;
-      font-weight: 500;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
     .resolution-badge {
       display: inline-block;
-      padding: 4px 12px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 0.25rem 0.75rem;
+      background-color: var(--primary-color);
       color: white;
-      border-radius: 15px;
-      font-size: 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
       font-weight: 600;
-      margin-left: 8px;
+      margin-left: 0.5rem;
     }
 
     .footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      background-color: var(--dark-bg);
       color: white;
-      padding: 40px 0 20px;
-      margin-top: 60px;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
     }
 
+    .footer h5 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #adb5bd;
+    }
+
+    .footer .text-white {
+      color: #adb5bd !important;
+    }
+
+    .footer .text-white:hover {
+      color: white !important;
+    }
+
+    /* Advertisement Cards */
+    .ad-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .ad-card .card-header {
+      background-color: var(--light-bg);
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .hero-section {
-        padding: 40px 0;
+      .camera-section {
+        padding: 1rem 0;
+        min-height: auto;
+      }
+
+      .camera-container {
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+
+      #video-preview {
+        min-height: 250px;
       }
 
       .camera-controls {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
       }
 
-      .camera-controls .btn {
+      .camera-controls .btn,
+      .camera-controls .form-select {
         width: 100%;
-        max-width: 250px;
+        margin-bottom: 0.5rem;
       }
+
+      .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+
+      .info-value {
+        text-align: left;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Alert styling */
+    .alert-info {
+      background-color: #e7f3ff;
+      border-color: #b8daff;
+      color: #0c5460;
+    }
+
+    /* Form controls */
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
+    }
+
+    /* Section headers */
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
     }
   </style>
   <meta content="ca-pub-5426315045205785" name="google-adsense-account">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="/">
+      <a class="navbar-brand" href="/">
         <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
       </a>
       <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
@@ -227,7 +374,7 @@
             <a class="nav-link active fw-semibold" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  fw-semibold" aria-current="page" href="/mirror">Webcam Mirror</a>
+            <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
@@ -238,8 +385,8 @@
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
           </li>
-                    <li class="nav-item">
-            <a class="nav-link fw-semibold" aria-current="page" href="/show-webcam">Show My Webcam</a>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="/about">About</a>
@@ -252,228 +399,297 @@
     </div>
   </nav>
 
-  <div class="hero-section">
-    <div class="container text-center">
-      <h1 class="display-4 fw-bold mb-4">
-        <i class="bi bi-camera-video-fill me-3"></i>Advanced Online Webcam Test
-      </h1>
-      <p class="lead mb-4">Test your camera quality instantly with our comprehensive browser-based testing tool. Compatible with all devices - desktop computers, laptops, smartphones, tablets, and external webcams. No downloads required.</p>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="alert alert-info mb-4" id="browser-alert">
-      <div id="browser-message">
-        <i class="bi bi-info-circle-fill me-2"></i>
-        Press "Test my webcam" to check the functionality and supported properties of your camera.
+  <!-- Main Camera Section -->
+  <section class="camera-section">
+    <div class="container">
+      <!-- Page Title -->
+      <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold text-dark mb-3">
+          <i class="bi bi-camera-video-fill text-primary me-3"></i>Advanced Online Webcam Test
+        </h1>
+        <p class="lead text-muted">Test your camera quality instantly with our comprehensive browser-based testing tool. Compatible with all devices - no downloads required.</p>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="webcam-container text-center">
-          <div class="status-indicator" id="status-indicator">
-            <i class="bi bi-camera-video-off me-2"></i>
-            <span>Press "Test my webcam" to begin testing your camera</span>
+      <!-- Browser Alert -->
+      <div class="alert alert-info mb-4" id="browser-alert">
+        <div id="browser-message">
+          <i class="bi bi-info-circle-fill me-2"></i>
+          Press "Test my webcam" to check the functionality and supported properties of your camera.
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Main Camera Container -->
+        <div class="col-lg-8">
+          <div class="camera-container">
+            <div class="status-indicator status-inactive" id="status-indicator">
+              <i class="bi bi-camera-video-off me-2"></i>
+              <span>Press "Test my webcam" to begin testing your camera</span>
+            </div>
+
+            <video id="video-preview" autoplay muted playsinline></video>
+
+            <div class="camera-controls">
+              <select class="form-select" style="max-width: 300px;" disabled id="camera-select">
+                <option value="">Click "Test my webcam" to detect cameras</option>
+              </select>
+              <button class="btn btn-primary-custom btn-lg" id="test-button">
+                <i class="bi bi-camera-video-fill me-2"></i>Test my webcam
+              </button>
+            </div>
+
+            <div class="mt-3 d-none" id="camera-controls">
+              <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <button class="btn btn-outline-primary-custom" id="snapshot-button">
+                  <i class="bi bi-camera me-1"></i>Take Snapshot
+                </button>
+                <button class="btn btn-outline-primary-custom" id="record-button">
+                  <i class="bi bi-record-circle me-1"></i>Record Video
+                </button>
+                <button class="btn btn-outline-primary-custom d-none" id="stop-record-button">
+                  <i class="bi bi-stop-circle me-1"></i>Stop Recording
+                </button>
+                <button class="btn btn-outline-primary-custom d-none" id="download-button">
+                  <i class="bi bi-download me-1"></i>Download
+                </button>
+              </div>
+            </div>
           </div>
 
-          <video id="video-preview" autoplay muted playsinline></video>
-
-          <div class="camera-controls">
-            <select class="form-select me-2" style="max-width: 300px;" disabled id="camera-select">
-              <option value="">Click "Test my webcam" to detect cameras</option>
-            </select>
-            <button class="btn btn-gradient btn-lg" id="test-button">
-              <i class="bi bi-camera-video-fill me-2"></i>Test my webcam
-            </button>
-          </div>
-
-          <div class="mt-3 d-none" id="camera-controls">
-            <div class="btn-toolbar justify-content-center gap-2">
-              <button class="btn btn-outline-light" id="snapshot-button">
-                <i class="bi bi-camera me-1"></i>Take Snapshot
-              </button>
-              <button class="btn btn-outline-light" id="record-button">
-                <i class="bi bi-record-circle me-1"></i>Record Video
-              </button>
-              <button class="btn btn-outline-light d-none" id="stop-record-button">
-                <i class="bi bi-stop-circle me-1"></i>Stop Recording
-              </button>
-              <button class="btn btn-outline-light d-none" id="download-button">
-                <i class="bi bi-download me-1"></i>Download
-              </button>
+          <!-- Advertisement Section -->
+          <div class="ad-card">
+            <div class="card-header">
+              <i class="bi bi-star-fill me-2"></i>Advertisements:
+            </div>
+            <div class="card-body text-center">
+              <ins class="adsbygoogle"
+                   data-ad-client="ca-pub-5426315045205785"
+                   data-ad-format="auto"
+                   data-ad-slot="7669795756"
+                   data-full-width-responsive="true"
+                   style="display:block"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
             </div>
           </div>
         </div>
 
-        <!-- Advertisement Section -->
-        <div class="card mb-4">
-          <div class="card-header bg-light">
-            <i class="bi bi-star-fill me-2"></i>Advertisements:
-          </div>
-          <div class="card-body text-center">
-            <!-- webcam test - 2 -->
-            <ins class="adsbygoogle"
-                 data-ad-client="ca-pub-5426315045205785"
-                 data-ad-format="auto"
-                 data-ad-slot="7669795756"
-                 data-full-width-responsive="true"
-                 style="display:block"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <h3 class="mb-4"><i class="bi bi-check-circle-fill text-success me-2"></i>Why Test Your Webcam?</h3>
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="list-unstyled">
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Verify new webcam purchases and installations work correctly</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Check if built-in laptop camera is properly enabled and configured</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Ensure computer webcam provides clear video during calls</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Test external USB webcams and their video quality</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Confirm other applications can properly detect your cameras</li>
-              </ul>
+        <!-- Sidebar Info Panel -->
+        <div class="col-lg-4">
+          <!-- Advertisement Section -->
+          <div class="ad-card">
+            <div class="card-header">
+              <i class="bi bi-star-fill me-2"></i>Advertisements:
             </div>
-            <div class="col-md-6">
-              <ul class="list-unstyled">
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Troubleshoot video issues before important meetings</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Optimize camera settings for streaming and content creation</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Test mobile device cameras and tablets</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Measure webcam quality and technical specifications</li>
-                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Educational purposes and video engineering learning</li>
-              </ul>
+            <div class="card-body text-center">
+              <ins class="adsbygoogle"
+                   style="display:block; min-height:360px;"
+                   data-ad-client="ca-pub-5426315045205785"
+                   data-ad-slot="6193062550"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+              <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-lg-4">
-        <!-- Advertisement Section -->
-        <div class="card">
-          <div class="card-header text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <i class="bi bi-star-fill me-2"></i>Advertisements:
+          <!-- Webcam Information Panel -->
+          <div class="info-panel">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-info-circle-fill text-primary me-2"></i>
+              <h5 class="mb-0 fw-bold">Webcam Information</h5>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Quality Rating:</span>
+              <span class="info-value quality-unknown" id="quality-rating">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Camera Name:</span>
+              <span class="info-value" id="camera-name">Not selected</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Video Resolution:</span>
+              <span class="info-value" id="video-resolution">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Frame Rate:</span>
+              <span class="info-value" id="frame-rate">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Aspect Ratio:</span>
+              <span class="info-value" id="aspect-ratio">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Auto Focus:</span>
+              <span class="info-value" id="auto-focus">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Facing Mode:</span>
+              <span class="info-value" id="facing-mode">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Device ID:</span>
+              <span class="info-value" id="device-id">—</span>
+            </div>
           </div>
-          <div class="card-body text-center">
-            <!-- Webcam Test - 1 -->
-            <ins class="adsbygoogle"
-                 style="display:block; min-height:360px;"
-                 data-ad-client="ca-pub-5426315045205785"
-                 data-ad-slot="6193062550"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-        </div>
 
-        <div class="info-card mt-4">
-          <div class="card-header text-white mb-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: -20px -20px 20px -20px; border-radius: 15px 15px 0 0;">
-            <i class="bi bi-info-circle-fill me-2"></i>Webcam Information
-          </div>
-          <div class="info-row">
-            <span class="info-label">Quality Rating:</span>
-            <span class="info-value quality-unknown" id="quality-rating">—</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Camera Name:</span>
-            <span class="info-value" id="camera-name">Not selected</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Video Resolution:</span>
-            <span class="info-value" id="video-resolution">—</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Frame Rate:</span>
-            <span class="info-value" id="frame-rate">—</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Aspect Ratio:</span>
-            <span class="info-value" id="aspect-ratio">—</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Auto Focus:</span>
-            <span class="info-value" id="auto-focus">—</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Facing Mode:</span>
-            <span class="info-value" id="facing-mode">—</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Device ID:</span>
-            <span class="info-value" id="device-id">—</span>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="card-header text-white mb-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: -20px -20px 20px -20px; border-radius: 15px 15px 0 0;">
-            <i class="bi bi-chat-quote-fill me-2"></i>User Testimonials
-          </div>
-          <div class="testimonial mb-3">
-            <p class="mb-1">"Excellent webcam testing tool!"</p>
-            <small class="text-muted">— Sarah Johnson</small>
-          </div>
-          <div class="testimonial mb-3">
-            <p class="mb-1">"Very helpful for checking camera quality"</p>
-            <small class="text-muted">— Mike Chen</small>
-          </div>
-          <div class="testimonial mb-3">
-            <p class="mb-1">"Works perfectly on my tablet"</p>
-            <small class="text-muted">— Emily Davis</small>
-          </div>
-          <div class="testimonial">
-            <p class="mb-1">"Great for testing before video calls"</p>
-            <small class="text-muted">— Alex Thompson</small>
+          <!-- User Testimonials -->
+          <div class="info-panel">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-chat-quote-fill text-primary me-2"></i>
+              <h5 class="mb-0 fw-bold">User Testimonials</h5>
+            </div>
+            <div class="testimonial mb-3">
+              <p class="mb-1 fst-italic">"Excellent webcam testing tool!"</p>
+              <small class="text-muted">— Sarah Johnson</small>
+            </div>
+            <div class="testimonial mb-3">
+              <p class="mb-1 fst-italic">"Very helpful for checking camera quality"</p>
+              <small class="text-muted">— Mike Chen</small>
+            </div>
+            <div class="testimonial mb-3">
+              <p class="mb-1 fst-italic">"Works perfectly on my tablet"</p>
+              <small class="text-muted">— Emily Davis</small>
+            </div>
+            <div class="testimonial">
+              <p class="mb-1 fst-italic">"Great for testing before video calls"</p>
+              <small class="text-muted">— Alex Thompson</small>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Device Compatibility Section -->
-    <section class="my-5">
-      <h2 class="text-center mb-5"><i class="bi bi-devices me-2"></i>Webcam Testing Across All Devices</h2>
+  <!-- Why Test Your Webcam Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-check-circle-fill"></i>Why Test Your Webcam?
+        </h2>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Verify new webcam purchases and installations work correctly</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Check if built-in laptop camera is properly enabled and configured</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Ensure computer webcam provides clear video during calls</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Test external USB webcams and their video quality</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Confirm other applications can properly detect your cameras</span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Troubleshoot video issues before important meetings</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Optimize camera settings for streaming and content creation</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Test mobile device cameras and tablets</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Measure webcam quality and technical specifications</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+                <span>Educational purposes and video engineering learning</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Device Compatibility Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-devices"></i>Webcam Testing Across All Devices
+      </h2>
 
       <div class="row g-4">
         <div class="col-lg-6">
           <div class="feature-card h-100">
-            <h4><i class="bi bi-laptop me-2 text-primary"></i>Desktop & Laptop Testing</h4>
+            <h4 class="text-primary mb-3">
+              <i class="bi bi-laptop me-2"></i>Desktop & Laptop Testing
+            </h4>
             <p><strong>Built-in Webcams:</strong> Modern laptops feature integrated cameras with HD resolution and advanced image processing. Test functionality, check for hardware conflicts, and verify video driver compatibility.</p>
             <p><strong>External USB Webcams:</strong> High-quality USB cameras, 4K webcams, and professional streaming setups. Our tool measures resolution up to 4K, frame rates to 60fps, and latency performance for real-time monitoring.</p>
             <ul class="list-unstyled mt-3">
-              <li><i class="bi bi-check text-success me-2"></i>Windows camera driver compatibility</li>
-              <li><i class="bi bi-check text-success me-2"></i>macOS camera permissions and settings</li>
-              <li><i class="bi bi-check text-success me-2"></i>Linux V4L2 driver support testing</li>
-              <li><i class="bi bi-check text-success me-2"></i>Multiple camera interface management</li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Windows camera driver compatibility
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>macOS camera permissions and settings
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Linux V4L2 driver support testing
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Multiple camera interface management
+              </li>
             </ul>
           </div>
         </div>
 
         <div class="col-lg-6">
           <div class="feature-card h-100">
-            <h4><i class="bi bi-phone me-2 text-primary"></i>Mobile Device Testing</h4>
+            <h4 class="text-primary mb-3">
+              <i class="bi bi-phone me-2"></i>Mobile Device Testing
+            </h4>
             <p><strong>Smartphone Cameras:</strong> Modern smartphones feature multiple cameras with advanced computational photography. Test front-facing selfie cameras, rear cameras, and ultra-wide lenses.</p>
             <p><strong>Tablet Camera Systems:</strong> iPad and Android tablet cameras with advanced video recording capabilities. Verify landscape and portrait mode camera switching and video stabilization.</p>
             <ul class="list-unstyled mt-3">
-              <li><i class="bi bi-check text-success me-2"></i>iOS Safari camera access and permissions</li>
-              <li><i class="bi bi-check text-success me-2"></i>Android Chrome camera compatibility</li>
-              <li><i class="bi bi-check text-success me-2"></i>Mobile camera resolution testing</li>
-              <li><i class="bi bi-check text-success me-2"></i>Touch-to-focus and zoom functionality</li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>iOS Safari camera access and permissions
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Android Chrome camera compatibility
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Mobile camera resolution testing
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Touch-to-focus and zoom functionality
+              </li>
             </ul>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Advertisement Section -->
-    <div class="card my-5">
-      <div class="card-header bg-light">
+  <!-- Advertisement Section -->
+  <div class="container my-5">
+    <div class="ad-card">
+      <div class="card-header">
           <i class="bi bi-star-fill me-2"></i>Advertisements:
       </div>
       <div class="card-body text-center">
-          <!-- webcam test 3 -->
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-5426315045205785"
@@ -485,49 +701,73 @@
           </script>
       </div>
     </div>
+  </div>
 
-    <!-- Technical Specifications Section -->
-    <section class="my-5">
-      <h2 class="text-center mb-5"><i class="bi bi-gear-fill me-2"></i>Advanced Webcam Analysis & Diagnostics</h2>
+  <!-- Technical Specifications Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-gear-fill"></i>Advanced Webcam Analysis & Diagnostics
+      </h2>
 
       <div class="feature-card">
-        <h3 class="mb-4">Real-Time Video Analysis</h3>
+        <h3 class="mb-4 text-primary">Real-Time Video Analysis</h3>
         <p>Our webcam testing platform provides comprehensive real-time analysis of your video input using advanced WebRTC technologies:</p>
 
         <div class="row mt-4">
           <div class="col-md-6">
-            <h5><i class="bi bi-display me-2"></i>Resolution Testing</h5>
+            <h5 class="text-primary mb-3">
+              <i class="bi bi-display me-2"></i>Resolution Testing
+            </h5>
             <p>Test your webcam's maximum resolution capabilities from 480p to 4K. Identify optimal resolution settings for different use cases like video calls, streaming, or content creation.</p>
 
-            <h5><i class="bi bi-speedometer2 me-2"></i>Frame Rate Analysis</h5>
+            <h5 class="text-primary mb-3">
+              <i class="bi bi-speedometer2 me-2"></i>Frame Rate Analysis
+            </h5>
             <p>Measure your camera's frame rate performance at different resolutions. Test 60fps, 30fps, and 24fps capabilities for smooth video playback and recording.</p>
           </div>
           <div class="col-md-6">
-            <h5><i class="bi bi-camera-reels me-2"></i>Video Quality Assessment</h5>
+            <h5 class="text-primary mb-3">
+              <i class="bi bi-camera-reels me-2"></i>Video Quality Assessment
+            </h5>
             <p>Evaluate color accuracy, brightness levels, contrast ratios, and overall image quality. Essential for determining camera suitability for professional use.</p>
 
-            <h5><i class="bi bi-shield-check me-2"></i>Compatibility Testing</h5>
+            <h5 class="text-primary mb-3">
+              <i class="bi bi-shield-check me-2"></i>Compatibility Testing
+            </h5>
             <p>Test browser compatibility, driver functionality, and cross-platform support across Windows, macOS, Linux, iOS, and Android operating systems.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Use Cases Section -->
-    <section class="my-5">
-      <h2 class="text-center mb-5"><i class="bi bi-people-fill me-2"></i>Essential Use Cases for Webcam Testing</h2>
+  <!-- Use Cases Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-people-fill"></i>Essential Use Cases for Webcam Testing
+      </h2>
 
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="feature-card h-100 text-center">
             <i class="bi bi-camera-video display-4 text-primary mb-3"></i>
-            <h4>Remote Work & Video Conferencing</h4>
+            <h4 class="text-primary">Remote Work & Video Conferencing</h4>
             <p>Essential for remote workers and business users. Test camera quality before important meetings, verify video clarity, and ensure professional appearance.</p>
-            <ul class="list-unstyled">
-              <li>Pre-meeting camera verification</li>
-              <li>Video quality assessment</li>
-              <li>Lighting condition testing</li>
-              <li>Multiple platform compatibility</li>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Pre-meeting camera verification
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Video quality assessment
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Lighting condition testing
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Multiple platform compatibility
+              </li>
             </ul>
           </div>
         </div>
@@ -535,13 +775,21 @@
         <div class="col-lg-4">
           <div class="feature-card h-100 text-center">
             <i class="bi bi-broadcast display-4 text-primary mb-3"></i>
-            <h4>Content Creation & Streaming</h4>
+            <h4 class="text-primary">Content Creation & Streaming</h4>
             <p>Critical for YouTubers, streamers, and content creators. Verify video quality, test different camera angles, and optimize settings for audience engagement.</p>
-            <ul class="list-unstyled">
-              <li>Streaming quality verification</li>
-              <li>Camera setup optimization</li>
-              <li>YouTube content testing</li>
-              <li>Live broadcast preparation</li>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Streaming quality verification
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Camera setup optimization
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>YouTube content testing
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Live broadcast preparation
+              </li>
             </ul>
           </div>
         </div>
@@ -549,27 +797,49 @@
         <div class="col-lg-4">
           <div class="feature-card h-100 text-center">
             <i class="bi bi-mortarboard display-4 text-primary mb-3"></i>
-            <h4>Online Education & Training</h4>
+            <h4 class="text-primary">Online Education & Training</h4>
             <p>Educators and trainers require clear video for effective knowledge transfer. Test cameras for online courses, webinars, and virtual classroom environments.</p>
-            <ul class="list-unstyled">
-              <li>Online teaching preparation</li>
-              <li>Webinar video quality check</li>
-              <li>Student interaction clarity</li>
-              <li>Recording lecture video</li>
+            <ul class="list-unstyled text-start">
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Online teaching preparation
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Webinar video quality check
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Student interaction clarity
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-success me-2"></i>Recording lecture video
+              </li>
             </ul>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container text-center">
       <div class="row">
         <div class="col-md-12">
-          <h5 class="mb-3"><i class="bi bi-camera-video-fill me-2"></i>WebcamTest</h5>
+          <h5 class="mb-3">
+            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+          </h5>
           <p class="mb-2">Advanced online webcam testing platform for all devices</p>
           <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
+          <div class="mt-3">
+            <a href="mailto:vinithablog@gmail.com" class="text-white text-decoration-none me-3">
+              <i class="bi bi-envelope-fill me-1"></i>Contact
+            </a>
+            <a href="/about" class="text-white text-decoration-none me-3">
+              <i class="bi bi-info-circle-fill me-1"></i>About
+            </a>
+            <a href="/" class="text-white text-decoration-none">
+              <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -708,7 +978,7 @@
         }
 
         videoPreview.srcObject = null;
-        updateStatus('ready', 'Press "Test my webcam" to begin testing your camera');
+        updateStatus('inactive', 'Press "Test my webcam" to begin testing your camera');
         testButton.innerHTML = '<i class="bi bi-camera-video-fill me-2"></i>Test my webcam';
         cameraControls.classList.add('d-none');
 
