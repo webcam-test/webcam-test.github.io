@@ -12,30 +12,63 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    .hero-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 60px 0;
-      margin-bottom: 40px;
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    /* Header */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* Main Mirror Section */
+    .mirror-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
     }
 
     .mirror-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
       position: relative;
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      border-radius: 25px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     }
 
     #mirror-video {
       width: 100%;
       max-width: 800px;
       height: auto;
-      border-radius: 20px;
-      border: 5px solid #fff;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      background-color: #1a1a1a;
+      min-height: 400px;
+      border-radius: 15px;
+      border: 4px solid #ffd700;
+      background-color: #000000;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
       transform: scaleX(-1); /* Mirror effect */
     }
 
@@ -47,21 +80,22 @@
     .mirror-frame::before {
       content: '';
       position: absolute;
-      top: -15px;
-      left: -15px;
-      right: -15px;
-      bottom: -15px;
-      background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700, #ffed4e);
-      border-radius: 25px;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: #ffd700;
+      border-radius: 20px;
       z-index: -1;
-      opacity: 0.8;
+      opacity: 0.3;
     }
 
     .mirror-controls {
+      margin-top: 1.5rem;
       display: flex;
-      gap: 15px;
+      gap: 1rem;
       justify-content: center;
-      margin-top: 25px;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -69,7 +103,7 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0,0,0,0.8);
       color: white;
       padding: 10px 15px;
       border-radius: 20px;
@@ -77,143 +111,226 @@
       display: none;
     }
 
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
     .filter-buttons {
       display: flex;
-      gap: 10px;
+      gap: 0.5rem;
       justify-content: center;
-      margin-top: 20px;
       flex-wrap: wrap;
+      margin-top: 1rem;
     }
 
     .filter-btn {
-      padding: 8px 16px;
-      border: 2px solid #667eea;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--primary-color);
       background: transparent;
-      color: #667eea;
+      color: var(--primary-color);
       border-radius: 20px;
-      font-weight: 600;
+      font-weight: 500;
       transition: all 0.3s ease;
       cursor: pointer;
+      font-size: 0.875rem;
     }
 
-    .filter-btn:hover, .filter-btn.active {
-      background: #667eea;
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary-color);
       color: white;
       transform: translateY(-2px);
     }
 
+    /* Zoom Controls */
     .zoom-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 1rem;
       justify-content: center;
-      margin-top: 15px;
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: var(--light-bg);
+      border-radius: 10px;
     }
 
     .zoom-slider {
       width: 200px;
     }
 
+    .zoom-value {
+      font-weight: 600;
+      color: var(--primary-color);
+      min-width: 50px;
+    }
+
+    /* Info Panel */
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
     .feature-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .btn-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 25px;
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    /* Advertisement Cards */
+    .ad-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .ad-card .card-header {
+      background-color: var(--light-bg);
+      border-bottom: 1px solid var(--border-color);
       font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-gradient:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-      color: white;
-    }
-
-    .status-indicator {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .status-inactive {
-      background: rgba(108, 117, 125, 0.1);
-      color: #6c757d;
-      border: 2px solid rgba(108, 117, 125, 0.2);
-    }
-
-    .status-active {
-      background: rgba(25, 135, 84, 0.1);
-      color: #198754;
-      border: 2px solid rgba(25, 135, 84, 0.2);
+      color: var(--text-dark);
     }
 
     .footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      background-color: var(--dark-bg);
       color: white;
-      padding: 40px 0 20px;
-      margin-top: 60px;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #adb5bd;
+    }
+
+    .footer .text-white {
+      color: #adb5bd !important;
+    }
+
+    .footer .text-white:hover {
+      color: white !important;
     }
 
     /* Filter effects */
-    .filter-none {
-      filter: none;
+    .filter-none { filter: none; }
+    .filter-sepia { filter: sepia(100%); }
+    .filter-grayscale { filter: grayscale(100%); }
+    .filter-invert { filter: invert(100%); }
+    .filter-vintage { filter: sepia(50%) contrast(1.2) brightness(0.9); }
+    .filter-vivid { filter: contrast(1.4) saturate(1.5); }
+    .filter-warm { filter: sepia(30%) saturate(1.2) hue-rotate(15deg); }
+    .filter-cool { filter: saturate(1.1) hue-rotate(180deg); }
+
+    /* Form controls */
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
     }
 
-    .filter-sepia {
-      filter: sepia(100%);
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
     }
 
-    .filter-grayscale {
-      filter: grayscale(100%);
-    }
-
-    .filter-invert {
-      filter: invert(100%);
-    }
-
-    .filter-vintage {
-      filter: sepia(50%) contrast(1.2) brightness(0.9);
-    }
-
-    .filter-vivid {
-      filter: contrast(1.4) saturate(1.5);
-    }
-
-    .filter-warm {
-      filter: sepia(30%) saturate(1.2) hue-rotate(15deg);
-    }
-
-    .filter-cool {
-      filter: saturate(1.1) hue-rotate(180deg);
-    }
-
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .hero-section {
-        padding: 40px 0;
+      .mirror-section {
+        padding: 1rem 0;
+        min-height: auto;
       }
 
       .mirror-container {
-        padding: 20px;
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+
+      #mirror-video {
+        min-height: 250px;
       }
 
       .mirror-controls {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+      }
+
+      .mirror-controls .btn,
+      .mirror-controls .form-select {
+        width: 100%;
+        margin-bottom: 0.5rem;
       }
 
       .filter-buttons {
@@ -222,424 +339,512 @@
 
       .zoom-controls {
         flex-direction: column;
+        gap: 0.5rem;
       }
 
       .zoom-slider {
         width: 150px;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="/">
-      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-    </a>
-    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a aria-current="page" class="nav-link active fw-semibold" href="/mirror">Webcam Mirror</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
-        </li>
-        <li class="nav-item">
-          <a aria-current="page" class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="hero-section">
-  <div class="container text-center">
-    <h1 class="display-4 fw-bold mb-4">
-      <i class="bi bi-mirror me-3"></i>Webcam Mirror
-    </h1>
-    <p class="lead mb-0">Use your webcam as an online mirror. See and admire yourself as a real mirror, except it works online and displays the "reflection" on your device screen.</p>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-10">
-      <div class="mirror-container text-center">
-        <div class="status-indicator status-inactive" id="mirror-status">
-          <i class="bi bi-mirror me-2"></i>
-          <span>Click "Start Mirror" to begin using your webcam as a mirror</span>
-        </div>
-
-        <div class="mirror-frame">
-          <video autoplay id="mirror-video" muted playsinline></video>
-          <div class="mirror-overlay" id="mirror-overlay">
-            <i class="bi bi-eye me-1"></i>Looking good!
-          </div>
-        </div>
-
-        <div class="mirror-controls">
-          <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
-            <option value="">Select camera for mirror</option>
-          </select>
-          <button class="btn btn-gradient btn-lg" id="mirror-button">
-            <i class="bi bi-mirror me-2"></i>Start Mirror
-          </button>
-        </div>
-
-        <div class="zoom-controls d-none" id="zoom-controls">
-          <label class="form-label fw-semibold" for="zoom-slider">Zoom Level:</label>
-          <input class="form-range zoom-slider" id="zoom-slider" max="300" min="100" type="range" value="100">
-          <span class="fw-semibold" id="zoom-value">100%</span>
-        </div>
-
-        <div class="filter-buttons d-none" id="filter-controls">
-          <button class="filter-btn active" data-filter="none">Natural</button>
-          <button class="filter-btn" data-filter="vintage">Vintage</button>
-          <button class="filter-btn" data-filter="vivid">Vivid</button>
-          <button class="filter-btn" data-filter="sepia">Sepia</button>
-          <button class="filter-btn" data-filter="grayscale">B&W</button>
-          <button class="filter-btn" data-filter="warm">Warm</button>
-          <button class="filter-btn" data-filter="cool">Cool</button>
-          <button class="filter-btn" data-filter="invert">Invert</button>
-        </div>
-      </div>
-
-      <!-- Advertisement Section -->
-      <div class="card mb-4">
-        <div class="card-header bg-light">
-          <i class="bi bi-star-fill me-2"></i>Advertisements:
-        </div>
-        <div class="card-body text-center">
-          <ins class="adsbygoogle"
-               data-ad-client="ca-pub-5426315045205785"
-               data-ad-format="auto"
-               data-ad-slot="7669795756"
-               data-full-width-responsive="true"
-               style="display:block"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+      </a>
+      <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" aria-current="page" href="/mirror">Webcam Mirror</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/contact">Contact</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="feature-card">
-        <h3 class="mb-4"><i class="bi bi-magic text-primary me-2"></i>How to Use the Webcam Mirror</h3>
-        <div class="row">
-          <div class="col-md-6">
-            <h5><i class="bi bi-1-circle text-success me-2"></i>Start the Mirror</h5>
-            <p>Click the "Start Mirror" button and allow camera access when prompted by your browser.</p>
+  <!-- Main Mirror Section -->
+  <section class="mirror-section">
+    <div class="container">
+      <!-- Page Title -->
+      <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold text-dark mb-3">
+          <i class="bi bi-mirror text-primary me-3"></i>Webcam Mirror
+        </h1>
+        <p class="lead text-muted">Use your webcam as an online mirror. See and admire yourself as a real mirror, except it works online and displays the "reflection" on your device screen.</p>
+      </div>
 
-            <h5><i class="bi bi-2-circle text-success me-2"></i>Choose Your Camera</h5>
-            <p>If you have multiple cameras, select the one you want to use from the dropdown menu.</p>
+      <div class="row">
+        <!-- Main Mirror Container -->
+        <div class="col-lg-8">
+          <div class="mirror-container">
+            <div class="status-indicator status-inactive" id="mirror-status">
+              <i class="bi bi-mirror me-2"></i>
+              <span>Click "Start Mirror" to begin using your webcam as a mirror</span>
+            </div>
+
+            <div class="mirror-frame">
+              <video autoplay id="mirror-video" muted playsinline></video>
+              <div class="mirror-overlay" id="mirror-overlay">
+                <i class="bi bi-eye me-1"></i>Looking good!
+              </div>
+            </div>
+
+            <div class="mirror-controls">
+              <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+                <option value="">Select camera for mirror</option>
+              </select>
+              <button class="btn btn-primary-custom btn-lg" id="mirror-button">
+                <i class="bi bi-mirror me-2"></i>Start Mirror
+              </button>
+            </div>
+
+            <!-- Zoom Controls -->
+            <div class="zoom-controls d-none" id="zoom-controls">
+              <label class="form-label fw-semibold" for="zoom-slider">Zoom Level:</label>
+              <input class="form-range zoom-slider" id="zoom-slider" max="300" min="100" type="range" value="100">
+              <span class="zoom-value fw-semibold" id="zoom-value">100%</span>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls d-none" id="filter-controls">
+              <h6 class="fw-bold mb-3">Mirror Effects:</h6>
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="none">Natural</button>
+                <button class="filter-btn" data-filter="vintage">Vintage</button>
+                <button class="filter-btn" data-filter="vivid">Vivid</button>
+                <button class="filter-btn" data-filter="sepia">Sepia</button>
+                <button class="filter-btn" data-filter="grayscale">B&W</button>
+                <button class="filter-btn" data-filter="warm">Warm</button>
+                <button class="filter-btn" data-filter="cool">Cool</button>
+                <button class="filter-btn" data-filter="invert">Invert</button>
+              </div>
+            </div>
           </div>
-          <div class="col-md-6">
-            <h5><i class="bi bi-3-circle text-success me-2"></i>Adjust Settings</h5>
-            <p>Use the zoom slider to get the perfect view and try different filters for fun effects.</p>
 
-            <h5><i class="bi bi-4-circle text-success me-2"></i>Enjoy Your Reflection</h5>
-            <p>Your webcam now works as a mirror - perfect for checking your appearance!</p>
+          <!-- Advertisement Section -->
+          <div class="ad-card">
+            <div class="card-header">
+              <i class="bi bi-star-fill me-2"></i>Advertisements:
+            </div>
+            <div class="card-body text-center">
+              <ins class="adsbygoogle"
+                   data-ad-client="ca-pub-5426315045205785"
+                   data-ad-format="auto"
+                   data-ad-slot="7669795756"
+                   data-full-width-responsive="true"
+                   style="display:block"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Info Panel -->
+        <div class="col-lg-4">
+          <!-- How to Use Panel -->
+          <div class="info-panel">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-magic text-primary me-2"></i>
+              <h5 class="mb-0 fw-bold">How to Use the Webcam Mirror</h5>
+            </div>
+            <div class="step mb-3">
+              <h6 class="fw-semibold">
+                <i class="bi bi-1-circle text-success me-2"></i>Start the Mirror
+              </h6>
+              <p class="mb-0 small">Click the "Start Mirror" button and allow camera access when prompted by your browser.</p>
+            </div>
+            <div class="step mb-3">
+              <h6 class="fw-semibold">
+                <i class="bi bi-2-circle text-success me-2"></i>Choose Your Camera
+              </h6>
+              <p class="mb-0 small">If you have multiple cameras, select the one you want to use from the dropdown menu.</p>
+            </div>
+            <div class="step mb-3">
+              <h6 class="fw-semibold">
+                <i class="bi bi-3-circle text-success me-2"></i>Adjust Settings
+              </h6>
+              <p class="mb-0 small">Use the zoom slider to get the perfect view and try different filters for fun effects.</p>
+            </div>
+            <div class="step">
+              <h6 class="fw-semibold">
+                <i class="bi bi-4-circle text-success me-2"></i>Enjoy Your Reflection
+              </h6>
+              <p class="mb-0 small">Your webcam now works as a mirror - perfect for checking your appearance!</p>
+            </div>
+          </div>
+
+          <!-- Privacy Panel -->
+          <div class="info-panel">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-shield-check text-primary me-2"></i>
+              <h5 class="mb-0 fw-bold">Privacy Protected</h5>
+            </div>
+            <p class="mb-3">Your mirror reflection never leaves your device. Everything happens locally in your browser for complete privacy.</p>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="bi bi-lock text-success me-2"></i>No video recording
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-lock text-success me-2"></i>No data transmission
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-lock text-success me-2"></i>Local processing only
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-lock text-success me-2"></i>Secure HTTPS connection
+              </li>
+            </ul>
+          </div>
+
+          <!-- Compatibility Panel -->
+          <div class="info-panel">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-devices text-primary me-2"></i>
+              <h5 class="mb-0 fw-bold">Works Everywhere</h5>
+            </div>
+            <p class="mb-3">Use the webcam mirror on any device with a camera:</p>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="bi bi-laptop text-primary me-2"></i>Laptops & Desktops
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-phone text-primary me-2"></i>Smartphones
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-tablet text-primary me-2"></i>Tablets
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-camera text-primary me-2"></i>External Webcams
+              </li>
+            </ul>
+          </div>
+
+          <!-- Other Tools Panel -->
+          <div class="info-panel">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-tools text-primary me-2"></i>
+              <h5 class="mb-0 fw-bold">More Tools</h5>
+            </div>
+            <p class="mb-3">Explore our other webcam testing tools:</p>
+            <div class="d-grid gap-2">
+              <a class="btn btn-outline-primary" href="/">
+                <i class="bi bi-camera-video me-1"></i>Webcam Test
+              </a>
+              <a class="btn btn-outline-primary" href="/fps-checker">
+                <i class="bi bi-speedometer2 me-1"></i>FPS Checker
+              </a>
+              <a class="btn btn-outline-primary" href="/take-photo">
+                <i class="bi bi-camera me-1"></i>Take Photo
+              </a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Perfect Uses Section -->
+  <section class="py-5">
+    <div class="container">
       <div class="feature-card">
-        <h3 class="mb-4"><i class="bi bi-lightbulb text-primary me-2"></i>Perfect Uses for Webcam Mirror</h3>
+        <h2 class="section-header">
+          <i class="bi bi-lightbulb"></i>Perfect Uses for Webcam Mirror
+        </h2>
         <div class="row">
           <div class="col-md-6">
             <ul class="list-unstyled">
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Check your appearance before video calls</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Practice presentations and speeches</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Try on makeup or hairstyles</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Adjust lighting for photography</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Check if something is stuck in your teeth</li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Check your appearance before video calls</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Practice presentations and speeches</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Try on makeup or hairstyles</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Adjust lighting for photography</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Check if something is stuck in your teeth</span>
+              </li>
             </ul>
           </div>
           <div class="col-md-6">
             <ul class="list-unstyled">
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Practice dance moves or exercises</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Check your outfit and appearance</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Test different camera angles</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Verify webcam functionality</li>
-              <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Have fun with creative filters</li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Practice dance moves or exercises</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Check your outfit and appearance</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Test different camera angles</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Verify webcam functionality</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="bi bi-check text-success me-3 mt-1"></i>
+                <span>Have fun with creative filters</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="col-lg-4">
-      <div class="feature-card text-center">
-        <h4 class="mb-3"><i class="bi bi-shield-check text-primary me-2"></i>Privacy Protected</h4>
-        <p>Your mirror reflection never leaves your device. Everything happens locally in your browser for complete privacy.</p>
-        <ul class="list-unstyled text-start">
-          <li><i class="bi bi-lock text-success me-2"></i>No video recording</li>
-          <li><i class="bi bi-lock text-success me-2"></i>No data transmission</li>
-          <li><i class="bi bi-lock text-success me-2"></i>Local processing only</li>
-          <li><i class="bi bi-lock text-success me-2"></i>Secure HTTPS connection</li>
-        </ul>
-      </div>
-
-      <div class="feature-card text-center">
-        <h4 class="mb-3"><i class="bi bi-devices text-primary me-2"></i>Works Everywhere</h4>
-        <p>Use the webcam mirror on any device with a camera:</p>
-        <ul class="list-unstyled">
-          <li><i class="bi bi-laptop text-primary me-2"></i>Laptops & Desktops</li>
-          <li><i class="bi bi-phone text-primary me-2"></i>Smartphones</li>
-          <li><i class="bi bi-tablet text-primary me-2"></i>Tablets</li>
-          <li><i class="bi bi-camera text-primary me-2"></i>External Webcams</li>
-        </ul>
-      </div>
-
-      <div class="feature-card text-center">
-        <h4 class="mb-3"><i class="bi bi-palette text-primary me-2"></i>Creative Filters</h4>
-        <p>Add some fun to your mirror experience with our collection of real-time filters:</p>
-        <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
-          <span class="badge bg-secondary">Natural</span>
-          <span class="badge bg-warning">Vintage</span>
-          <span class="badge bg-info">Vivid</span>
-          <span class="badge bg-primary">Sepia</span>
-          <span class="badge bg-dark">B&W</span>
-          <span class="badge bg-danger">Warm</span>
-          <span class="badge bg-success">Cool</span>
-        </div>
-      </div>
-
-      <div class="feature-card text-center">
-        <h4 class="mb-3"><i class="bi bi-tools text-primary me-2"></i>More Tools</h4>
-        <p>Explore our other webcam testing tools:</p>
-        <div class="d-grid gap-2">
-          <a class="btn btn-outline-primary" href="/">
-            <i class="bi bi-camera-video me-1"></i>Webcam Test
-          </a>
-          <a class="btn btn-outline-primary" href="/fps-checker">
-            <i class="bi bi-speedometer2 me-1"></i>FPS Checker
-          </a>
-          <a class="btn btn-outline-primary" href="/take-photo">
-            <i class="bi bi-camera me-1"></i>Take Photo
-          </a>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="mb-3">
+            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+          </h5>
+          <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+          <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
+          <div class="mt-3">
+            <a href="mailto:vinithablog@gmail.com" class="text-white text-decoration-none me-3">
+              <i class="bi bi-envelope-fill me-1"></i>Contact
+            </a>
+            <a href="/about" class="text-white text-decoration-none me-3">
+              <i class="bi bi-info-circle-fill me-1"></i>About
+            </a>
+            <a href="/" class="text-white text-decoration-none">
+              <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-<footer class="footer">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-md-12">
-        <h5 class="mb-3"><i class="bi bi-camera-video-fill me-2"></i>WebcamTest</h5>
-        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
-        <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
-      </div>
-    </div>
-  </div>
-</footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const mirrorVideo = document.getElementById('mirror-video');
+      const cameraSelect = document.getElementById('camera-select');
+      const mirrorButton = document.getElementById('mirror-button');
+      const mirrorStatus = document.getElementById('mirror-status');
+      const mirrorOverlay = document.getElementById('mirror-overlay');
+      const zoomControls = document.getElementById('zoom-controls');
+      const filterControls = document.getElementById('filter-controls');
+      const zoomSlider = document.getElementById('zoom-slider');
+      const zoomValue = document.getElementById('zoom-value');
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mirrorVideo = document.getElementById('mirror-video');
-    const cameraSelect = document.getElementById('camera-select');
-    const mirrorButton = document.getElementById('mirror-button');
-    const mirrorStatus = document.getElementById('mirror-status');
-    const mirrorOverlay = document.getElementById('mirror-overlay');
-    const zoomControls = document.getElementById('zoom-controls');
-    const filterControls = document.getElementById('filter-controls');
-    const zoomSlider = document.getElementById('zoom-slider');
-    const zoomValue = document.getElementById('zoom-value');
+      let currentStream = null;
+      let devices = [];
 
-    let currentStream = null;
-    let devices = [];
-
-    function updateStatus(type, message) {
-      const iconClasses = {
-        'inactive': 'bi-mirror',
-        'active': 'bi-eye-fill text-success'
-      };
-
-      mirrorStatus.className = `status-indicator status-${type}`;
-      mirrorStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
-    }
-
-    async function enumerateDevices() {
-      try {
-        devices = await navigator.mediaDevices.enumerateDevices();
-        const videoDevices = devices.filter(device => device.kind === 'videoinput');
-
-        if (videoDevices.length === 0) {
-          updateStatus('inactive', 'No cameras detected. Please connect a camera and try again.');
-          return false;
-        }
-
-        populateCameraSelect(videoDevices);
-        return true;
-      } catch (error) {
-        console.error('Error enumerating devices:', error);
-        updateStatus('inactive', 'Error accessing camera devices');
-        return false;
-      }
-    }
-
-    function populateCameraSelect(videoDevices) {
-      cameraSelect.innerHTML = '';
-      videoDevices.forEach((device, index) => {
-        const option = document.createElement('option');
-        option.value = device.deviceId;
-        option.text = device.label || `Camera ${index + 1}`;
-        cameraSelect.appendChild(option);
-      });
-      cameraSelect.disabled = false;
-    }
-
-    async function startMirror() {
-      try {
-        updateStatus('active', 'Starting webcam mirror...');
-
-        const constraints = {
-          video: {
-            width: {ideal: 1280},
-            height: {ideal: 720},
-            frameRate: {ideal: 30}
-          }
+      function updateStatus(type, message) {
+        const iconClasses = {
+          'inactive': 'bi-mirror',
+          'active': 'bi-eye-fill text-success'
         };
 
-        if (cameraSelect.value) {
-          constraints.video.deviceId = {exact: cameraSelect.value};
+        mirrorStatus.className = `status-indicator status-${type}`;
+        mirrorStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
+      }
+
+      async function enumerateDevices() {
+        try {
+          devices = await navigator.mediaDevices.enumerateDevices();
+          const videoDevices = devices.filter(device => device.kind === 'videoinput');
+
+          if (videoDevices.length === 0) {
+            updateStatus('inactive', 'No cameras detected. Please connect a camera and try again.');
+            return false;
+          }
+
+          populateCameraSelect(videoDevices);
+          return true;
+        } catch (error) {
+          console.error('Error enumerating devices:', error);
+          updateStatus('inactive', 'Error accessing camera devices');
+          return false;
         }
+      }
 
-        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+      function populateCameraSelect(videoDevices) {
+        cameraSelect.innerHTML = '';
+        videoDevices.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          option.text = device.label || `Camera ${index + 1}`;
+          cameraSelect.appendChild(option);
+        });
+        cameraSelect.disabled = false;
+      }
 
-        if (!devices.length) {
-          await enumerateDevices();
-        }
+      async function startMirror() {
+        try {
+          updateStatus('active', 'Starting webcam mirror...');
 
-        mirrorVideo.srcObject = currentStream;
+          const constraints = {
+            video: {
+              width: {ideal: 1280},
+              height: {ideal: 720},
+              frameRate: {ideal: 30}
+            }
+          };
 
-        updateStatus('active', 'Mirror is active - You look great!');
-        mirrorButton.innerHTML = '<i class="bi bi-stop-circle me-2"></i>Stop Mirror';
+          if (cameraSelect.value) {
+            constraints.video.deviceId = {exact: cameraSelect.value};
+          }
 
-        // Show controls
-        zoomControls.classList.remove('d-none');
-        filterControls.classList.remove('d-none');
+          currentStream = await navigator.mediaDevices.getUserMedia(constraints);
 
-        // Show overlay message
-        setTimeout(() => {
-          mirrorOverlay.style.display = 'block';
+          if (!devices.length) {
+            await enumerateDevices();
+          }
+
+          mirrorVideo.srcObject = currentStream;
+
+          updateStatus('active', 'Mirror is active - You look great!');
+          mirrorButton.innerHTML = '<i class="bi bi-stop-circle me-2"></i>Stop Mirror';
+
+          // Show controls
+          zoomControls.classList.remove('d-none');
+          filterControls.classList.remove('d-none');
+
+          // Show overlay message
           setTimeout(() => {
-            mirrorOverlay.style.display = 'none';
-          }, 3000);
-        }, 1000);
+            mirrorOverlay.style.display = 'block';
+            setTimeout(() => {
+              mirrorOverlay.style.display = 'none';
+            }, 3000);
+          }, 1000);
 
-      } catch (error) {
-        console.error('Error starting mirror:', error);
-        if (error.name === 'NotAllowedError') {
-          updateStatus('inactive', 'Camera access denied. Please allow camera access and try again.');
-        } else {
-          updateStatus('inactive', 'Error accessing camera. Please check your camera and try again.');
+        } catch (error) {
+          console.error('Error starting mirror:', error);
+          if (error.name === 'NotAllowedError') {
+            updateStatus('inactive', 'Camera access denied. Please allow camera access and try again.');
+          } else {
+            updateStatus('inactive', 'Error accessing camera. Please check your camera and try again.');
+          }
         }
       }
-    }
 
-    function stopMirror() {
-      if (currentStream) {
-        currentStream.getTracks().forEach(track => track.stop());
-        currentStream = null;
-      }
+      function stopMirror() {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+          currentStream = null;
+        }
 
-      mirrorVideo.srcObject = null;
-      updateStatus('inactive', 'Click "Start Mirror" to begin using your webcam as a mirror');
-      mirrorButton.innerHTML = '<i class="bi bi-mirror me-2"></i>Start Mirror';
+        mirrorVideo.srcObject = null;
+        updateStatus('inactive', 'Click "Start Mirror" to begin using your webcam as a mirror');
+        mirrorButton.innerHTML = '<i class="bi bi-mirror me-2"></i>Start Mirror';
 
-      // Hide controls
-      zoomControls.classList.add('d-none');
-      filterControls.classList.add('d-none');
+        // Hide controls
+        zoomControls.classList.add('d-none');
+        filterControls.classList.add('d-none');
 
-      // Reset zoom and filter
-      zoomSlider.value = 100;
-      zoomValue.textContent = '100%';
-      mirrorVideo.style.transform = 'scaleX(-1)';
-      mirrorVideo.className = '';
+        // Reset zoom and filter
+        zoomSlider.value = 100;
+        zoomValue.textContent = '100%';
+        mirrorVideo.style.transform = 'scaleX(-1)';
+        mirrorVideo.className = '';
 
-      // Reset filter buttons
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector('[data-filter="none"]').classList.add('active');
-    }
-
-    // Event listeners
-    mirrorButton.addEventListener('click', () => {
-      if (currentStream) {
-        stopMirror();
-      } else {
-        startMirror();
-      }
-    });
-
-    cameraSelect.addEventListener('change', () => {
-      if (currentStream) {
-        stopMirror();
-        setTimeout(startMirror, 100);
-      }
-    });
-
-    // Zoom control
-    zoomSlider.addEventListener('input', (e) => {
-      const zoomLevel = e.target.value;
-      zoomValue.textContent = zoomLevel + '%';
-      mirrorVideo.style.transform = `scaleX(-1) scale(${zoomLevel / 100})`;
-    });
-
-    // Filter controls
-    filterControls.addEventListener('click', (e) => {
-      if (e.target.classList.contains('filter-btn')) {
-        // Remove active class from all buttons
+        // Reset filter buttons
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('[data-filter="none"]').classList.add('active');
+      }
 
-        // Add active class to clicked button
-        e.target.classList.add('active');
+      // Event listeners
+      mirrorButton.addEventListener('click', () => {
+        if (currentStream) {
+          stopMirror();
+        } else {
+          startMirror();
+        }
+      });
 
-        // Apply filter
-        const filterType = e.target.dataset.filter;
-        mirrorVideo.className = `filter-${filterType}`;
+      cameraSelect.addEventListener('change', () => {
+        if (currentStream) {
+          stopMirror();
+          setTimeout(startMirror, 100);
+        }
+      });
+
+      // Zoom control
+      zoomSlider.addEventListener('input', (e) => {
+        const zoomLevel = e.target.value;
+        zoomValue.textContent = zoomLevel + '%';
+        mirrorVideo.style.transform = `scaleX(-1) scale(${zoomLevel / 100})`;
+      });
+
+      // Filter controls
+      filterControls.addEventListener('click', (e) => {
+        if (e.target.classList.contains('filter-btn')) {
+          // Remove active class from all buttons
+          document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+
+          // Add active class to clicked button
+          e.target.classList.add('active');
+
+          // Apply filter
+          const filterType = e.target.dataset.filter;
+          mirrorVideo.className = `filter-${filterType}`;
+        }
+      });
+
+      // Handle page unload
+      window.addEventListener('beforeunload', () => {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+        }
+      });
+
+      // Check browser support
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+        mirrorButton.disabled = true;
       }
     });
+  </script>
 
-    // Handle page unload
-    window.addEventListener('beforeunload', () => {
-      if (currentStream) {
-        currentStream.getTracks().forEach(track => track.stop());
-      }
-    });
-
-    // Check browser support
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
-      mirrorButton.disabled = true;
-    }
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
