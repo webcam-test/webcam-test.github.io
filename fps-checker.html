@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>Webcam FPS Checker - Frame Rate Test | WebcamTest</title>
-  <meta name="description" content="Test your webcam's frame rate (FPS) with our free FPS checker. Find out the frame frequency of your camera and optimize it for streaming, gaming, and video calls.">
-  <meta name="keywords" content="webcam fps, fps checker, frame rate test, webcam frame rate, camera fps test, fps tester, webcam fps checker">
+  <meta content="Test your webcam's frame rate (FPS) with our free FPS checker. Find out the frame frequency of your camera and optimize it for streaming, gaming, and video calls." name="description">
+  <meta content="webcam fps, fps checker, frame rate test, webcam frame rate, camera fps test, fps tester, webcam fps checker" name="keywords">
 
-  <link rel="canonical" href="https://webcam-test.github.io/fps-checker">
+  <link href="https://webcam-test.github.io/fps-checker" rel="canonical">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
     :root {
@@ -33,7 +33,7 @@
     /* Header */
     .navbar {
       background-color: var(--primary-color) !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .navbar-brand {
@@ -55,7 +55,7 @@
       border: 2px solid var(--border-color);
       border-radius: 15px;
       padding: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
       position: relative;
     }
@@ -68,14 +68,14 @@
       border-radius: 10px;
       border: 3px solid var(--border-color);
       background-color: #000000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     .fps-display {
       position: absolute;
       top: 20px;
       left: 20px;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0, 0, 0, 0.9);
       color: #00ff00;
       padding: 15px 20px;
       border-radius: 15px;
@@ -83,7 +83,7 @@
       font-size: 24px;
       font-weight: bold;
       border: 2px solid #00ff00;
-      box-shadow: 0 0 20px rgba(0,255,0,0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
     }
 
     .fps-metrics {
@@ -182,7 +182,7 @@
       background-color: #0056b3;
       border-color: #0056b3;
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
     }
 
     .fps-rating {
@@ -194,10 +194,25 @@
       font-size: 0.875rem;
     }
 
-    .fps-excellent { background: var(--success-color); color: white; }
-    .fps-good { background: var(--primary-color); color: white; }
-    .fps-average { background: var(--warning-color); color: black; }
-    .fps-poor { background: var(--danger-color); color: white; }
+    .fps-excellent {
+      background: var(--success-color);
+      color: white;
+    }
+
+    .fps-good {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .fps-average {
+      background: var(--warning-color);
+      color: black;
+    }
+
+    .fps-poor {
+      background: var(--danger-color);
+      color: white;
+    }
 
     /* Info Panel */
     .info-panel {
@@ -206,7 +221,7 @@
       border-radius: 10px;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .feature-card {
@@ -215,13 +230,13 @@
       border-radius: 10px;
       padding: 2rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .feature-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
     .section-header {
@@ -243,7 +258,7 @@
       border-radius: 10px;
       overflow: hidden;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .ad-card .card-header {
@@ -287,7 +302,7 @@
 
     .form-select:focus {
       border-color: var(--primary-color);
-      box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
     }
 
     /* Responsive Design */
@@ -334,676 +349,677 @@
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-      </a>
-      <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fw-semibold" aria-current="page" href="/fps-checker">FPS Checker</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/contact">Contact</a>
-          </li>
-        </ul>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main FPS Section -->
+<section class="fps-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">
+        <i class="bi bi-speedometer2 text-primary me-3"></i>Webcam FPS Checker
+      </h1>
+      <p class="lead text-muted">The Webcam FPS Checker is a free test that allows you to find out the frame rate (also known as "frame frequency") of your camera.</p>
+    </div>
+
+    <div class="row">
+      <!-- Main FPS Container -->
+      <div class="col-lg-8">
+        <div class="fps-container">
+          <div class="status-indicator status-inactive" id="fps-status">
+            <i class="bi bi-speedometer2 me-2"></i>
+            <span>Click "Start FPS Test" to begin measuring your webcam's frame rate</span>
+          </div>
+
+          <div class="position-relative d-inline-block">
+            <video autoplay id="fps-video" muted playsinline></video>
+            <div class="fps-display" id="fps-display" style="display: none;">
+              <div>FPS: <span id="current-fps">0</span></div>
+            </div>
+          </div>
+
+          <div class="fps-controls">
+            <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+              <option value="">Select camera for FPS test</option>
+            </select>
+            <button class="btn btn-primary-custom btn-lg" id="fps-button">
+              <i class="bi bi-play me-2"></i>Start FPS Test
+            </button>
+          </div>
+
+          <!-- FPS Metrics -->
+          <div class="fps-metrics d-none" id="fps-metrics">
+            <div class="metric-card">
+              <div class="metric-value" id="avg-fps">0</div>
+              <div class="metric-label">Average FPS</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="max-fps">0</div>
+              <div class="metric-label">Maximum FPS</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="min-fps">0</div>
+              <div class="metric-label">Minimum FPS</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="stability">0%</div>
+              <div class="metric-label">Stability</div>
+            </div>
+          </div>
+
+          <!-- FPS Chart -->
+          <div class="fps-chart d-none" id="fps-chart">
+            <canvas class="chart-canvas" id="chart-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Advertisement Section -->
+        <div class="ad-card">
+        </div>
+
+      </div>
+
+      <!-- Sidebar Info Panel -->
+      <div class="col-lg-4">
+        <!-- FPS Performance Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-trophy text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">FPS Performance Levels</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2 d-flex align-items-center">
+              <span class="fps-rating fps-excellent">60+ FPS</span>
+              <span class="ms-2">Excellent - Perfect for streaming</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="fps-rating fps-good">30-59 FPS</span>
+              <span class="ms-2">Good - Great for video calls</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="fps-rating fps-average">15-29 FPS</span>
+              <span class="ms-2">Average - Basic functionality</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="fps-rating fps-poor">&lt;15 FPS</span>
+              <span class="ms-2">Poor - May need adjustment</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Factors Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-gear text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Factors Affecting FPS</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Camera hardware quality
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Video resolution settings
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Available system resources
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>USB connection speed
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Browser performance
+            </li>
+          </ul>
+        </div>
+
+        <!-- Applications Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-target text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">FPS Applications</h5>
+          </div>
+          <p class="mb-3">Different applications require different FPS levels:</p>
+          <div class="mb-3">
+            <h6 class="fw-semibold">
+              <i class="bi bi-broadcast text-danger me-2"></i>Live Streaming
+            </h6>
+            <p class="small mb-2">Recommended: 60 FPS for smooth action, 30 FPS minimum</p>
+          </div>
+          <div class="mb-3">
+            <h6 class="fw-semibold">
+              <i class="bi bi-camera-video text-primary me-2"></i>Video Calls
+            </h6>
+            <p class="small mb-2">Recommended: 30 FPS for clear communication</p>
+          </div>
+          <div class="mb-3">
+            <h6 class="fw-semibold">
+              <i class="bi bi-record-circle text-warning me-2"></i>Recording
+            </h6>
+            <p class="small mb-2">Recommended: 24-60 FPS depending on content type</p>
+          </div>
+          <div>
+            <h6 class="fw-semibold">
+              <i class="bi bi-controller text-success me-2"></i>Gaming
+            </h6>
+            <p class="small mb-0">Recommended: 60+ FPS for competitive gaming</p>
+          </div>
+        </div>
+
+        <!-- Other Tools Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-tools text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Other Tools</h5>
+          </div>
+          <p class="mb-3">Explore more webcam testing features:</p>
+          <div class="d-grid gap-2">
+            <a class="btn btn-outline-primary" href="/">
+              <i class="bi bi-camera-video me-1"></i>Webcam Test
+            </a>
+            <a class="btn btn-outline-primary" href="/mirror">
+              <i class="bi bi-mirror me-1"></i>Webcam Mirror
+            </a>
+            <a class="btn btn-outline-primary" href="/resolution-tester">
+              <i class="bi bi-aspect-ratio me-1"></i>Resolution Test
+            </a>
+            <a class="btn btn-outline-primary" href="/take-photo">
+              <i class="bi bi-camera me-1"></i>Take Photo
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- Main FPS Section -->
-  <section class="fps-section">
-    <div class="container">
-      <!-- Page Title -->
-      <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-dark mb-3">
-          <i class="bi bi-speedometer2 text-primary me-3"></i>Webcam FPS Checker
-        </h1>
-        <p class="lead text-muted">The Webcam FPS Checker is a free test that allows you to find out the frame rate (also known as "frame frequency") of your camera.</p>
-      </div>
+<!-- Understanding FPS Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="feature-card">
+      <h2 class="section-header">
+        <i class="bi bi-info-circle"></i>Understanding FPS (Frames Per Second)
+      </h2>
+      <p class="lead text-center mb-4">Frame rate, or FPS, measures how many individual frames your webcam captures and displays each second. Higher FPS means smoother video quality.</p>
 
       <div class="row">
-        <!-- Main FPS Container -->
-        <div class="col-lg-8">
-          <div class="fps-container">
-            <div class="status-indicator status-inactive" id="fps-status">
-              <i class="bi bi-speedometer2 me-2"></i>
-              <span>Click "Start FPS Test" to begin measuring your webcam's frame rate</span>
-            </div>
-
-            <div class="position-relative d-inline-block">
-              <video id="fps-video" autoplay muted playsinline></video>
-              <div class="fps-display" id="fps-display" style="display: none;">
-                <div>FPS: <span id="current-fps">0</span></div>
-              </div>
-            </div>
-
-            <div class="fps-controls">
-              <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
-                <option value="">Select camera for FPS test</option>
-              </select>
-              <button class="btn btn-primary-custom btn-lg" id="fps-button">
-                <i class="bi bi-play me-2"></i>Start FPS Test
-              </button>
-            </div>
-
-            <!-- FPS Metrics -->
-            <div class="fps-metrics d-none" id="fps-metrics">
-              <div class="metric-card">
-                <div class="metric-value" id="avg-fps">0</div>
-                <div class="metric-label">Average FPS</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-value" id="max-fps">0</div>
-                <div class="metric-label">Maximum FPS</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-value" id="min-fps">0</div>
-                <div class="metric-label">Minimum FPS</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-value" id="stability">0%</div>
-                <div class="metric-label">Stability</div>
-              </div>
-            </div>
-
-            <!-- FPS Chart -->
-            <div class="fps-chart d-none" id="fps-chart">
-              <canvas class="chart-canvas" id="chart-canvas"></canvas>
-            </div>
-          </div>
-
-          <!-- Advertisement Section -->
-          <div class="ad-card">
-
-        </div>
-
-        <!-- Sidebar Info Panel -->
-        <div class="col-lg-4">
-          <!-- FPS Performance Panel -->
-          <div class="info-panel">
-            <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-trophy text-primary me-2"></i>
-              <h5 class="mb-0 fw-bold">FPS Performance Levels</h5>
-            </div>
-            <ul class="list-unstyled">
-              <li class="mb-2 d-flex align-items-center">
-                <span class="fps-rating fps-excellent">60+ FPS</span>
-                <span class="ms-2">Excellent - Perfect for streaming</span>
-              </li>
-              <li class="mb-2 d-flex align-items-center">
-                <span class="fps-rating fps-good">30-59 FPS</span>
-                <span class="ms-2">Good - Great for video calls</span>
-              </li>
-              <li class="mb-2 d-flex align-items-center">
-                <span class="fps-rating fps-average">15-29 FPS</span>
-                <span class="ms-2">Average - Basic functionality</span>
-              </li>
-              <li class="mb-2 d-flex align-items-center">
-                <span class="fps-rating fps-poor">&lt;15 FPS</span>
-                <span class="ms-2">Poor - May need adjustment</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Factors Panel -->
-          <div class="info-panel">
-            <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-gear text-primary me-2"></i>
-              <h5 class="mb-0 fw-bold">Factors Affecting FPS</h5>
-            </div>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Camera hardware quality
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Video resolution settings
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Available system resources
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-arrow-right text-primary me-2"></i>USB connection speed
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Browser performance
-              </li>
-            </ul>
-          </div>
-
-          <!-- Applications Panel -->
-          <div class="info-panel">
-            <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-target text-primary me-2"></i>
-              <h5 class="mb-0 fw-bold">FPS Applications</h5>
-            </div>
-            <p class="mb-3">Different applications require different FPS levels:</p>
-            <div class="mb-3">
-              <h6 class="fw-semibold">
-                <i class="bi bi-broadcast text-danger me-2"></i>Live Streaming
-              </h6>
-              <p class="small mb-2">Recommended: 60 FPS for smooth action, 30 FPS minimum</p>
-            </div>
-            <div class="mb-3">
-              <h6 class="fw-semibold">
-                <i class="bi bi-camera-video text-primary me-2"></i>Video Calls
-              </h6>
-              <p class="small mb-2">Recommended: 30 FPS for clear communication</p>
-            </div>
-            <div class="mb-3">
-              <h6 class="fw-semibold">
-                <i class="bi bi-record-circle text-warning me-2"></i>Recording
-              </h6>
-              <p class="small mb-2">Recommended: 24-60 FPS depending on content type</p>
-            </div>
-            <div>
-              <h6 class="fw-semibold">
-                <i class="bi bi-controller text-success me-2"></i>Gaming
-              </h6>
-              <p class="small mb-0">Recommended: 60+ FPS for competitive gaming</p>
-            </div>
-          </div>
-
-          <!-- Other Tools Panel -->
-          <div class="info-panel">
-            <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-tools text-primary me-2"></i>
-              <h5 class="mb-0 fw-bold">Other Tools</h5>
-            </div>
-            <p class="mb-3">Explore more webcam testing features:</p>
-            <div class="d-grid gap-2">
-              <a href="/" class="btn btn-outline-primary">
-                <i class="bi bi-camera-video me-1"></i>Webcam Test
-              </a>
-              <a href="/mirror" class="btn btn-outline-primary">
-                <i class="bi bi-mirror me-1"></i>Webcam Mirror
-              </a>
-              <a href="/resolution-tester" class="btn btn-outline-primary">
-                <i class="bi bi-aspect-ratio me-1"></i>Resolution Test
-              </a>
-              <a href="/take-photo" class="btn btn-outline-primary">
-                <i class="bi bi-camera me-1"></i>Take Photo
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Understanding FPS Section -->
-  <section class="py-5">
-    <div class="container">
-      <div class="feature-card">
-        <h2 class="section-header">
-          <i class="bi bi-info-circle"></i>Understanding FPS (Frames Per Second)
-        </h2>
-        <p class="lead text-center mb-4">Frame rate, or FPS, measures how many individual frames your webcam captures and displays each second. Higher FPS means smoother video quality.</p>
-
-        <div class="row">
-          <div class="col-md-6">
-            <h5 class="text-primary mb-3">
-              <i class="bi bi-trophy me-2"></i>FPS Performance Levels
-            </h5>
-            <ul class="list-unstyled">
-              <li class="mb-3 d-flex align-items-start">
-                <span class="fps-rating fps-excellent me-3">60+ FPS</span>
-                <span>Excellent - Perfect for streaming</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <span class="fps-rating fps-good me-3">30-59 FPS</span>
-                <span>Good - Great for video calls</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <span class="fps-rating fps-average me-3">15-29 FPS</span>
-                <span>Average - Basic functionality</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <span class="fps-rating fps-poor me-3">&lt;15 FPS</span>
-                <span>Poor - May need adjustment</span>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <h5 class="text-primary mb-3">
-              <i class="bi bi-gear me-2"></i>Factors Affecting FPS
-            </h5>
-            <ul class="list-unstyled">
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Camera hardware quality</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Video resolution settings</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Available system resources</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>USB connection speed</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Browser performance</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How to Improve Section -->
-  <section class="py-5 bg-white">
-    <div class="container">
-      <div class="feature-card">
-        <h2 class="section-header">
-          <i class="bi bi-lightbulb"></i>How to Improve Your Webcam FPS
-        </h2>
-        <div class="row">
-          <div class="col-md-6">
-            <h5 class="text-primary mb-3">Hardware Optimization</h5>
-            <ul class="list-unstyled">
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Use a USB 3.0 or higher port</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Close unnecessary applications</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Update webcam drivers</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Improve lighting conditions</span>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <h5 class="text-primary mb-3">Software Settings</h5>
-            <ul class="list-unstyled">
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Lower video resolution if needed</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Disable video enhancements</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Use a modern browser</span>
-              </li>
-              <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-check text-success me-3 mt-1"></i>
-                <span>Enable hardware acceleration</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-md-12">
-          <h5 class="mb-3">
-            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        <div class="col-md-6">
+          <h5 class="text-primary mb-3">
+            <i class="bi bi-trophy me-2"></i>FPS Performance Levels
           </h5>
-          <p class="mb-2">Advanced online webcam testing platform for all devices</p>
-          <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
-          <div class="mt-3">
-            <a href="mailto:vinithablog@gmail.com" class="text-white text-decoration-none me-3">
-              <i class="bi bi-envelope-fill me-1"></i>Contact
-            </a>
-            <a href="/about" class="text-white text-decoration-none me-3">
-              <i class="bi bi-info-circle-fill me-1"></i>About
-            </a>
-            <a href="/" class="text-white text-decoration-none">
-              <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
-            </a>
-          </div>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <span class="fps-rating fps-excellent me-3">60+ FPS</span>
+              <span>Excellent - Perfect for streaming</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <span class="fps-rating fps-good me-3">30-59 FPS</span>
+              <span>Good - Great for video calls</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <span class="fps-rating fps-average me-3">15-29 FPS</span>
+              <span>Average - Basic functionality</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <span class="fps-rating fps-poor me-3">&lt;15 FPS</span>
+              <span>Poor - May need adjustment</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5 class="text-primary mb-3">
+            <i class="bi bi-gear me-2"></i>Factors Affecting FPS
+          </h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+              <span>Camera hardware quality</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+              <span>Video resolution settings</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+              <span>Available system resources</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+              <span>USB connection speed</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
+              <span>Browser performance</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const fpsVideo = document.getElementById('fps-video');
-      const cameraSelect = document.getElementById('camera-select');
-      const fpsButton = document.getElementById('fps-button');
-      const fpsStatus = document.getElementById('fps-status');
-      const fpsDisplay = document.getElementById('fps-display');
-      const fpsMetrics = document.getElementById('fps-metrics');
-      const fpsChart = document.getElementById('fps-chart');
-      const chartCanvas = document.getElementById('chart-canvas');
+<!-- How to Improve Section -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="feature-card">
+      <h2 class="section-header">
+        <i class="bi bi-lightbulb"></i>How to Improve Your Webcam FPS
+      </h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="text-primary mb-3">Hardware Optimization</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Use a USB 3.0 or higher port</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Close unnecessary applications</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Update webcam drivers</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Improve lighting conditions</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5 class="text-primary mb-3">Software Settings</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Lower video resolution if needed</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Disable video enhancements</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Use a modern browser</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check text-success me-3 mt-1"></i>
+              <span>Enable hardware acceleration</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      // FPS tracking variables
-      let currentStream = null;
-      let fpsData = [];
-      let frameCount = 0;
-      let lastTime = 0;
-      let fpsInterval;
-      let testStartTime = 0;
-      let isTestingFPS = false;
+<!-- Footer -->
+<footer class="footer">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="mb-3">
+          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        </h5>
+        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+        <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
+        <div class="mt-3">
+          <a class="text-white text-decoration-none me-3" href="mailto:vinithablog@gmail.com">
+            <i class="bi bi-envelope-fill me-1"></i>Contact
+          </a>
+          <a class="text-white text-decoration-none me-3" href="/about">
+            <i class="bi bi-info-circle-fill me-1"></i>About
+          </a>
+          <a class="text-white text-decoration-none" href="/">
+            <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
-      // Chart variables
-      let chart;
-      let chartCtx;
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const fpsVideo = document.getElementById('fps-video');
+    const cameraSelect = document.getElementById('camera-select');
+    const fpsButton = document.getElementById('fps-button');
+    const fpsStatus = document.getElementById('fps-status');
+    const fpsDisplay = document.getElementById('fps-display');
+    const fpsMetrics = document.getElementById('fps-metrics');
+    const fpsChart = document.getElementById('fps-chart');
+    const chartCanvas = document.getElementById('chart-canvas');
 
-      function updateStatus(type, message) {
-        const iconClasses = {
-          'inactive': 'bi-speedometer2',
-          'testing': 'bi-hourglass-split',
-          'active': 'bi-check-circle-fill'
-        };
+    // FPS tracking variables
+    let currentStream = null;
+    let fpsData = [];
+    let frameCount = 0;
+    let lastTime = 0;
+    let fpsInterval;
+    let testStartTime = 0;
+    let isTestingFPS = false;
 
-        fpsStatus.className = `status-indicator status-${type}`;
-        fpsStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
-      }
+    // Chart variables
+    let chart;
+    let chartCtx;
 
-      async function enumerateDevices() {
-        try {
-          const devices = await navigator.mediaDevices.enumerateDevices();
-          const videoDevices = devices.filter(device => device.kind === 'videoinput');
+    function updateStatus(type, message) {
+      const iconClasses = {
+        'inactive': 'bi-speedometer2',
+        'testing': 'bi-hourglass-split',
+        'active': 'bi-check-circle-fill'
+      };
 
-          if (videoDevices.length === 0) {
-            updateStatus('inactive', 'No cameras detected. Please connect a camera and try again.');
-            return false;
-          }
+      fpsStatus.className = `status-indicator status-${type}`;
+      fpsStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
+    }
 
-          populateCameraSelect(videoDevices);
-          return true;
-        } catch (error) {
-          console.error('Error enumerating devices:', error);
-          updateStatus('inactive', 'Error accessing camera devices');
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(device => device.kind === 'videoinput');
+
+        if (videoDevices.length === 0) {
+          updateStatus('inactive', 'No cameras detected. Please connect a camera and try again.');
           return false;
         }
+
+        populateCameraSelect(videoDevices);
+        return true;
+      } catch (error) {
+        console.error('Error enumerating devices:', error);
+        updateStatus('inactive', 'Error accessing camera devices');
+        return false;
+      }
+    }
+
+    function populateCameraSelect(videoDevices) {
+      cameraSelect.innerHTML = '';
+      videoDevices.forEach((device, index) => {
+        const option = document.createElement('option');
+        option.value = device.deviceId;
+        option.text = device.label || `Camera ${index + 1}`;
+        cameraSelect.appendChild(option);
+      });
+      cameraSelect.disabled = false;
+    }
+
+    async function startFPSTest() {
+      try {
+        updateStatus('testing', 'Starting FPS test...');
+
+        const constraints = {
+          video: {
+            width: {ideal: 640},
+            height: {ideal: 480},
+            frameRate: {ideal: 60}
+          }
+        };
+
+        if (cameraSelect.value) {
+          constraints.video.deviceId = {exact: cameraSelect.value};
+        }
+
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+
+        if (!cameraSelect.options.length) {
+          await enumerateDevices();
+        }
+
+        fpsVideo.srcObject = currentStream;
+
+        // Initialize FPS tracking
+        initializeFPSTracking();
+
+        updateStatus('active', 'FPS test is running - Move around to see frame rate changes');
+        fpsButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop FPS Test';
+
+        // Show FPS display and metrics
+        fpsDisplay.style.display = 'block';
+        fpsMetrics.classList.remove('d-none');
+        fpsChart.classList.remove('d-none');
+
+        // Initialize chart
+        initializeChart();
+
+      } catch (error) {
+        console.error('Error starting FPS test:', error);
+        updateStatus('inactive', 'Error accessing camera. Please check permissions and try again.');
+      }
+    }
+
+    function stopFPSTest() {
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+        currentStream = null;
       }
 
-      function populateCameraSelect(videoDevices) {
-        cameraSelect.innerHTML = '';
-        videoDevices.forEach((device, index) => {
-          const option = document.createElement('option');
-          option.value = device.deviceId;
-          option.text = device.label || `Camera ${index + 1}`;
-          cameraSelect.appendChild(option);
+      if (fpsInterval) {
+        clearInterval(fpsInterval);
+        fpsInterval = null;
+      }
+
+      isTestingFPS = false;
+      fpsVideo.srcObject = null;
+      updateStatus('inactive', 'Click "Start FPS Test" to begin measuring your webcam\'s frame rate');
+      fpsButton.innerHTML = '<i class="bi bi-play me-2"></i>Start FPS Test';
+
+      // Hide displays
+      fpsDisplay.style.display = 'none';
+      fpsMetrics.classList.add('d-none');
+      fpsChart.classList.add('d-none');
+
+      // Reset data
+      fpsData = [];
+      frameCount = 0;
+      lastTime = 0;
+    }
+
+    function initializeFPSTracking() {
+      fpsData = [];
+      frameCount = 0;
+      lastTime = performance.now();
+      testStartTime = lastTime;
+      isTestingFPS = true;
+
+      // Start FPS calculation
+      fpsInterval = setInterval(calculateFPS, 100); // Update every 100ms
+    }
+
+    function calculateFPS() {
+      if (!isTestingFPS) return;
+
+      const currentTime = performance.now();
+      const deltaTime = currentTime - lastTime;
+
+      if (deltaTime >= 1000) { // Calculate FPS every second
+        const fps = Math.round((frameCount * 1000) / deltaTime);
+        fpsData.push(fps);
+
+        // Update current FPS display
+        document.getElementById('current-fps').textContent = fps;
+
+        // Update metrics
+        updateMetrics();
+
+        // Update chart
+        updateChart();
+
+        // Reset for next calculation
+        frameCount = 0;
+        lastTime = currentTime;
+      }
+
+      frameCount++;
+    }
+
+    function updateMetrics() {
+      if (fpsData.length === 0) return;
+
+      const avgFps = Math.round(fpsData.reduce((a, b) => a + b, 0) / fpsData.length);
+      const maxFps = Math.max(...fpsData);
+      const minFps = Math.min(...fpsData);
+
+      // Calculate stability (how consistent the FPS is)
+      const variance = fpsData.reduce((acc, fps) => acc + Math.pow(fps - avgFps, 2), 0) / fpsData.length;
+      const stability = Math.max(0, Math.round(100 - (Math.sqrt(variance) / avgFps) * 100));
+
+      document.getElementById('avg-fps').textContent = avgFps;
+      document.getElementById('max-fps').textContent = maxFps;
+      document.getElementById('min-fps').textContent = minFps;
+      document.getElementById('stability').textContent = stability + '%';
+
+      // Add rating badge to current FPS
+      const currentFpsEl = document.getElementById('current-fps');
+      const currentFps = parseInt(currentFpsEl.textContent);
+      const rating = getFPSRating(currentFps);
+      currentFpsEl.className = `fps-rating fps-${rating}`;
+    }
+
+    function getFPSRating(fps) {
+      if (fps >= 60) return 'excellent';
+      if (fps >= 30) return 'good';
+      if (fps >= 15) return 'average';
+      return 'poor';
+    }
+
+    function initializeChart() {
+      chartCtx = chartCanvas.getContext('2d');
+      chartCanvas.width = chartCanvas.offsetWidth;
+      chartCanvas.height = chartCanvas.offsetHeight;
+    }
+
+    function updateChart() {
+      if (!chartCtx || fpsData.length === 0) return;
+
+      const width = chartCanvas.width;
+      const height = chartCanvas.height;
+      const maxDataPoints = 60; // Show last 60 seconds
+
+      // Clear canvas
+      chartCtx.clearRect(0, 0, width, height);
+
+      // Get recent data
+      const recentData = fpsData.slice(-maxDataPoints);
+      const maxFps = Math.max(60, ...recentData); // Minimum scale of 60
+
+      // Draw grid
+      chartCtx.strokeStyle = '#e0e0e0';
+      chartCtx.lineWidth = 1;
+
+      // Horizontal lines
+      for (let i = 0; i <= 6; i++) {
+        const y = (height / 6) * i;
+        chartCtx.beginPath();
+        chartCtx.moveTo(0, y);
+        chartCtx.lineTo(width, y);
+        chartCtx.stroke();
+      }
+
+      // Vertical lines
+      for (let i = 0; i <= 10; i++) {
+        const x = (width / 10) * i;
+        chartCtx.beginPath();
+        chartCtx.moveTo(x, 0);
+        chartCtx.lineTo(x, height);
+        chartCtx.stroke();
+      }
+
+      // Draw FPS line
+      if (recentData.length > 1) {
+        chartCtx.strokeStyle = '#00ff00';
+        chartCtx.lineWidth = 3;
+        chartCtx.beginPath();
+
+        recentData.forEach((fps, index) => {
+          const x = (width / (maxDataPoints - 1)) * index;
+          const y = height - (fps / maxFps) * height;
+
+          if (index === 0) {
+            chartCtx.moveTo(x, y);
+          } else {
+            chartCtx.lineTo(x, y);
+          }
         });
-        cameraSelect.disabled = false;
+
+        chartCtx.stroke();
       }
 
-      async function startFPSTest() {
-        try {
-          updateStatus('testing', 'Starting FPS test...');
+      // Draw labels
+      chartCtx.fillStyle = '#333';
+      chartCtx.font = '12px Arial';
+      chartCtx.fillText('0', 5, height - 5);
+      chartCtx.fillText(maxFps + ' FPS', 5, 15);
+    }
 
-          const constraints = {
-            video: {
-              width: { ideal: 640 },
-              height: { ideal: 480 },
-              frameRate: { ideal: 60 }
-            }
-          };
-
-          if (cameraSelect.value) {
-            constraints.video.deviceId = { exact: cameraSelect.value };
-          }
-
-          currentStream = await navigator.mediaDevices.getUserMedia(constraints);
-
-          if (!cameraSelect.options.length) {
-            await enumerateDevices();
-          }
-
-          fpsVideo.srcObject = currentStream;
-
-          // Initialize FPS tracking
-          initializeFPSTracking();
-
-          updateStatus('active', 'FPS test is running - Move around to see frame rate changes');
-          fpsButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop FPS Test';
-
-          // Show FPS display and metrics
-          fpsDisplay.style.display = 'block';
-          fpsMetrics.classList.remove('d-none');
-          fpsChart.classList.remove('d-none');
-
-          // Initialize chart
-          initializeChart();
-
-        } catch (error) {
-          console.error('Error starting FPS test:', error);
-          updateStatus('inactive', 'Error accessing camera. Please check permissions and try again.');
-        }
-      }
-
-      function stopFPSTest() {
-        if (currentStream) {
-          currentStream.getTracks().forEach(track => track.stop());
-          currentStream = null;
-        }
-
-        if (fpsInterval) {
-          clearInterval(fpsInterval);
-          fpsInterval = null;
-        }
-
-        isTestingFPS = false;
-        fpsVideo.srcObject = null;
-        updateStatus('inactive', 'Click "Start FPS Test" to begin measuring your webcam\'s frame rate');
-        fpsButton.innerHTML = '<i class="bi bi-play me-2"></i>Start FPS Test';
-
-        // Hide displays
-        fpsDisplay.style.display = 'none';
-        fpsMetrics.classList.add('d-none');
-        fpsChart.classList.add('d-none');
-
-        // Reset data
-        fpsData = [];
-        frameCount = 0;
-        lastTime = 0;
-      }
-
-      function initializeFPSTracking() {
-        fpsData = [];
-        frameCount = 0;
-        lastTime = performance.now();
-        testStartTime = lastTime;
-        isTestingFPS = true;
-
-        // Start FPS calculation
-        fpsInterval = setInterval(calculateFPS, 100); // Update every 100ms
-      }
-
-      function calculateFPS() {
-        if (!isTestingFPS) return;
-
-        const currentTime = performance.now();
-        const deltaTime = currentTime - lastTime;
-
-        if (deltaTime >= 1000) { // Calculate FPS every second
-          const fps = Math.round((frameCount * 1000) / deltaTime);
-          fpsData.push(fps);
-
-          // Update current FPS display
-          document.getElementById('current-fps').textContent = fps;
-
-          // Update metrics
-          updateMetrics();
-
-          // Update chart
-          updateChart();
-
-          // Reset for next calculation
-          frameCount = 0;
-          lastTime = currentTime;
-        }
-
-        frameCount++;
-      }
-
-      function updateMetrics() {
-        if (fpsData.length === 0) return;
-
-        const avgFps = Math.round(fpsData.reduce((a, b) => a + b, 0) / fpsData.length);
-        const maxFps = Math.max(...fpsData);
-        const minFps = Math.min(...fpsData);
-
-        // Calculate stability (how consistent the FPS is)
-        const variance = fpsData.reduce((acc, fps) => acc + Math.pow(fps - avgFps, 2), 0) / fpsData.length;
-        const stability = Math.max(0, Math.round(100 - (Math.sqrt(variance) / avgFps) * 100));
-
-        document.getElementById('avg-fps').textContent = avgFps;
-        document.getElementById('max-fps').textContent = maxFps;
-        document.getElementById('min-fps').textContent = minFps;
-        document.getElementById('stability').textContent = stability + '%';
-
-        // Add rating badge to current FPS
-        const currentFpsEl = document.getElementById('current-fps');
-        const currentFps = parseInt(currentFpsEl.textContent);
-        const rating = getFPSRating(currentFps);
-        currentFpsEl.className = `fps-rating fps-${rating}`;
-      }
-
-      function getFPSRating(fps) {
-        if (fps >= 60) return 'excellent';
-        if (fps >= 30) return 'good';
-        if (fps >= 15) return 'average';
-        return 'poor';
-      }
-
-      function initializeChart() {
-        chartCtx = chartCanvas.getContext('2d');
-        chartCanvas.width = chartCanvas.offsetWidth;
-        chartCanvas.height = chartCanvas.offsetHeight;
-      }
-
-      function updateChart() {
-        if (!chartCtx || fpsData.length === 0) return;
-
-        const width = chartCanvas.width;
-        const height = chartCanvas.height;
-        const maxDataPoints = 60; // Show last 60 seconds
-
-        // Clear canvas
-        chartCtx.clearRect(0, 0, width, height);
-
-        // Get recent data
-        const recentData = fpsData.slice(-maxDataPoints);
-        const maxFps = Math.max(60, ...recentData); // Minimum scale of 60
-
-        // Draw grid
-        chartCtx.strokeStyle = '#e0e0e0';
-        chartCtx.lineWidth = 1;
-
-        // Horizontal lines
-        for (let i = 0; i <= 6; i++) {
-          const y = (height / 6) * i;
-          chartCtx.beginPath();
-          chartCtx.moveTo(0, y);
-          chartCtx.lineTo(width, y);
-          chartCtx.stroke();
-        }
-
-        // Vertical lines
-        for (let i = 0; i <= 10; i++) {
-          const x = (width / 10) * i;
-          chartCtx.beginPath();
-          chartCtx.moveTo(x, 0);
-          chartCtx.lineTo(x, height);
-          chartCtx.stroke();
-        }
-
-        // Draw FPS line
-        if (recentData.length > 1) {
-          chartCtx.strokeStyle = '#00ff00';
-          chartCtx.lineWidth = 3;
-          chartCtx.beginPath();
-
-          recentData.forEach((fps, index) => {
-            const x = (width / (maxDataPoints - 1)) * index;
-            const y = height - (fps / maxFps) * height;
-
-            if (index === 0) {
-              chartCtx.moveTo(x, y);
-            } else {
-              chartCtx.lineTo(x, y);
-            }
-          });
-
-          chartCtx.stroke();
-        }
-
-        // Draw labels
-        chartCtx.fillStyle = '#333';
-        chartCtx.font = '12px Arial';
-        chartCtx.fillText('0', 5, height - 5);
-        chartCtx.fillText(maxFps + ' FPS', 5, 15);
-      }
-
-      // Event listeners
-      fpsButton.addEventListener('click', () => {
-        if (currentStream) {
-          stopFPSTest();
-        } else {
-          startFPSTest();
-        }
-      });
-
-      cameraSelect.addEventListener('change', () => {
-        if (currentStream) {
-          stopFPSTest();
-          setTimeout(startFPSTest, 100);
-        }
-      });
-
-      // Handle page unload
-      window.addEventListener('beforeunload', () => {
-        if (currentStream) {
-          currentStream.getTracks().forEach(track => track.stop());
-        }
-      });
-
-      // Check browser support
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
-        fpsButton.disabled = true;
+    // Event listeners
+    fpsButton.addEventListener('click', () => {
+      if (currentStream) {
+        stopFPSTest();
+      } else {
+        startFPSTest();
       }
     });
-  </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    cameraSelect.addEventListener('change', () => {
+      if (currentStream) {
+        stopFPSTest();
+        setTimeout(startFPSTest, 100);
+      }
+    });
+
+    // Handle page unload
+    window.addEventListener('beforeunload', () => {
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+      }
+    });
+
+    // Check browser support
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      fpsButton.disabled = true;
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
