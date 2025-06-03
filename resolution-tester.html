@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Resolution Tester - Test Camera Resolution | WebcamTest</title>
+  <meta name="description" content="Test your webcam resolution online. Find out the maximum resolution of your camera with our free webcam resolution tester. Check 4K, HD, Full HD support.">
+  <meta name="keywords" content="webcam resolution test, camera resolution, webcam resolution tester, test webcam resolution, camera resolution checker, webcam resolution checker">
+
+  <link rel="canonical" href="https://webcamtest.com/resolution-tester">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 40px;
+    }
+
+    .resolution-container {
+      position: relative;
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      border-radius: 25px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    #resolution-video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      border: 3px solid #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      background-color: #1a1a1a;
+    }
+
+    .resolution-info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      color: #00ff00;
+      padding: 15px 20px;
+      border-radius: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 20px rgba(0,255,0,0.3);
+    }
+
+    .resolution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .resolution-card {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .resolution-card:hover {
+
+    .resolution-card.supported {
+      border-color: #00ff00;
+      background: rgba(0,255,0,0.1);
+    }
+
+    .resolution-card.unsupported {
+      border-color: #ff4444;
+      background: rgba(255,68,68,0.1);
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .resolution-card.testing {
+      border-color: #ffa500;
+      background: rgba(255,165,0,0.1);
+      animation: pulse 1.5s infinite;
+    }
+
+    .resolution-card.active {
+      border-color: #00ff00;
+      background: rgba(0,255,0,0.2);
+      box-shadow: 0 0 20px rgba(0,255,0,0.4);
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    .resolution-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .resolution-dimensions {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+
+    .resolution-aspect {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .resolution-status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #666;
+    }
+
+    .resolution-status.supported {
+      background: #00ff00;
+      box-shadow: 0 0 10px rgba(0,255,0,0.5);
+    }
+
+    .resolution-status.unsupported {
+      background: #ff4444;
+    }
+
+    .resolution-status.testing {
+      background: #ffa500;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0.3; }
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+      color: white;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .status-inactive {
+      background: rgba(108, 117, 125, 0.1);
+      color: #6c757d;
+      border: 2px solid rgba(108, 117, 125, 0.2);
+    }
+
+    .status-testing {
+      background: rgba(255, 193, 7, 0.1);
+      color: #ffc107;
+      border: 2px solid rgba(255, 193, 7, 0.2);
+    }
+
+    .status-active {
+      background: rgba(25, 135, 84, 0.1);
+      color: #198754;
+      border: 2px solid rgba(25, 135, 84, 0.2);
+    }
+
+    .controls-section {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .current-resolution {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      margin-top: 15px;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 40px 0;
+      }
+
+      .resolution-container {
+        padding: 20px;
+      }
+
+      .resolution-info {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
+
+      .resolution-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+      }
+
+      .controls-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+      </a>
+      <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" aria-current="page" href="/resolution-tester">Resolution Tester</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+          </li>
+                            <li class="nav-item">
+          <a aria-current="page" class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-4">
+        <i class="bi bi-aspect-ratio me-3"></i>Webcam Resolution Tester
+      </h1>
+      <p class="lead mb-0">The Webcam Resolution Test is a simple and free method to check online, what is the resolution of your webcam.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="resolution-container text-center">
+          <div class="status-indicator status-inactive" id="resolution-status">
+            <i class="bi bi-aspect-ratio me-2"></i>
+            <span>Click "Start Resolution Test" to discover your webcam's supported resolutions</span>
+          </div>
+
+          <div class="position-relative d-inline-block">
+            <video id="resolution-video" autoplay muted playsinline></video>
+            <div class="resolution-info" id="resolution-info" style="display: none;">
+              <div>Current: <span id="current-resolution">0×0</span></div>
+              <div>Aspect: <span id="current-aspect">0:0</span></div>
+            </div>
+          </div>
+
+          <div class="controls-section">
+            <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
+              <option value="">Select camera for resolution test</option>
+            </select>
+            <button class="btn btn-gradient btn-lg" id="resolution-button">
+              <i class="bi bi-play me-2"></i>Start Resolution Test
+            </button>
+            <button class="btn btn-outline-light" id="test-all-button" style="display: none;">
+              <i class="bi bi-lightning me-2"></i>Test All Resolutions
+            </button>
+          </div>
+
+          <div class="current-resolution d-none" id="current-resolution-display">
+            Currently testing: <span id="current-test-resolution">—</span>
+          </div>
+
+          <div class="resolution-grid d-none" id="resolution-grid">
+            <!-- 4K Resolutions -->
+            <div class="resolution-card" data-width="4096" data-height="2160" data-name="4K Cinema">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">4K Cinema</div>
+              <div class="resolution-dimensions">4096×2160</div>
+              <div class="resolution-aspect">1.9:1</div>
+            </div>
+            <div class="resolution-card" data-width="3840" data-height="2160" data-name="4K UHD">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">4K UHD</div>
+              <div class="resolution-dimensions">3840×2160</div>
+              <div class="resolution-aspect">16:9</div>
+            </div>
+
+            <!-- 2K Resolutions -->
+            <div class="resolution-card" data-width="2560" data-height="1440" data-name="2K QHD">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">2K QHD</div>
+              <div class="resolution-dimensions">2560×1440</div>
+              <div class="resolution-aspect">16:9</div>
+            </div>
+            <div class="resolution-card" data-width="2048" data-height="1080" data-name="2K Cinema">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">2K Cinema</div>
+              <div class="resolution-dimensions">2048×1080</div>
+              <div class="resolution-aspect">1.9:1</div>
+            </div>
+
+            <!-- Full HD -->
+            <div class="resolution-card" data-width="1920" data-height="1080" data-name="Full HD">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">Full HD</div>
+              <div class="resolution-dimensions">1920×1080</div>
+              <div class="resolution-aspect">16:9</div>
+            </div>
+            <div class="resolution-card" data-width="1600" data-height="1200" data-name="UXGA">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">UXGA</div>
+              <div class="resolution-dimensions">1600×1200</div>
+              <div class="resolution-aspect">4:3</div>
+            </div>
+
+            <!-- HD -->
+            <div class="resolution-card" data-width="1280" data-height="720" data-name="HD">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">HD</div>
+              <div class="resolution-dimensions">1280×720</div>
+              <div class="resolution-aspect">16:9</div>
+            </div>
+            <div class="resolution-card" data-width="1024" data-height="768" data-name="XGA">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">XGA</div>
+              <div class="resolution-dimensions">1024×768</div>
+              <div class="resolution-aspect">4:3</div>
+            </div>
+
+            <!-- Standard -->
+            <div class="resolution-card" data-width="800" data-height="600" data-name="SVGA">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">SVGA</div>
+              <div class="resolution-dimensions">800×600</div>
+              <div class="resolution-aspect">4:3</div>
+            </div>
+            <div class="resolution-card" data-width="640" data-height="480" data-name="VGA">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">VGA</div>
+              <div class="resolution-dimensions">640×480</div>
+              <div class="resolution-aspect">4:3</div>
+            </div>
+
+            <!-- Mobile -->
+            <div class="resolution-card" data-width="480" data-height="360" data-name="360p">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">360p</div>
+              <div class="resolution-dimensions">480×360</div>
+              <div class="resolution-aspect">4:3</div>
+            </div>
+            <div class="resolution-card" data-width="320" data-height="240" data-name="QVGA">
+              <div class="resolution-status"></div>
+              <div class="resolution-title">QVGA</div>
+              <div class="resolution-dimensions">320×240</div>
+              <div class="resolution-aspect">4:3</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advertisement Section -->
+        <div class="card mb-4">
+          <div class="card-header bg-light">
+            <i class="bi bi-star-fill me-2"></i>Advertisements:
+          </div>
+          <div class="card-body text-center">
+            <ins class="adsbygoogle"
+                 data-ad-client="ca-pub-5426315045205785"
+                 data-ad-format="auto"
+                 data-ad-slot="7669795756"
+                 data-full-width-responsive="true"
+                 style="display:block"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="feature-card">
+          <h3 class="mb-4"><i class="bi bi-info-circle text-primary me-2"></i>Understanding Webcam Resolution</h3>
+          <p class="lead">Resolution determines the clarity and detail of your webcam's video output. Higher resolutions provide sharper images but require more processing power and bandwidth.</p>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <h5><i class="bi bi-award text-warning me-2"></i>Resolution Categories</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2"><span class="badge bg-success">4K (2160p)</span> Ultra High Definition</li>
+                <li class="mb-2"><span class="badge bg-primary">2K (1440p)</span> Quad High Definition</li>
+                <li class="mb-2"><span class="badge bg-info">Full HD (1080p)</span> High Definition</li>
+                <li class="mb-2"><span class="badge bg-warning">HD (720p)</span> Standard High Definition</li>
+                <li class="mb-2"><span class="badge bg-secondary">VGA (480p)</span> Standard Definition</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h5><i class="bi bi-gear text-primary me-2"></i>Factors Affecting Resolution</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Camera sensor quality</li>
+                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>USB connection type</li>
+                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Available system memory</li>
+                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Browser capabilities</li>
+                <li class="mb-2"><i class="bi bi-arrow-right text-primary me-2"></i>Webcam driver support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <h3 class="mb-4"><i class="bi bi-lightbulb text-primary me-2"></i>How to Use the Resolution Tester</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Manual Testing</h5>
+              <ol class="list-unstyled">
+                <li class="mb-2"><span class="badge bg-primary me-2">1</span>Start the resolution test</li>
+                <li class="mb-2"><span class="badge bg-primary me-2">2</span>Click on any resolution card to test</li>
+                <li class="mb-2"><span class="badge bg-primary me-2">3</span>Green status = Supported</li>
+                <li class="mb-2"><span class="badge bg-primary me-2">4</span>Red status = Not supported</li>
+              </ol>
+            </div>
+            <div class="col-md-6">
+              <h5>Automatic Testing</h5>
+              <ol class="list-unstyled">
+                <li class="mb-2"><span class="badge bg-success me-2">1</span>Click "Test All Resolutions"</li>
+                <li class="mb-2"><span class="badge bg-success me-2">2</span>Wait for automatic testing</li>
+                <li class="mb-2"><span class="badge bg-success me-2">3</span>Review all supported resolutions</li>
+                <li class="mb-2"><span class="badge bg-success me-2">4</span>Find your camera's maximum capability</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="feature-card text-center">
+          <h4 class="mb-3"><i class="bi bi-target text-primary me-2"></i>Resolution Use Cases</h4>
+          <div class="text-start">
+            <h6><i class="bi bi-broadcast text-danger me-2"></i>4K Streaming</h6>
+            <p class="small">Professional content creation, high-end streaming</p>
+
+            <h6><i class="bi bi-camera-video text-primary me-2"></i>Full HD Video Calls</h6>
+            <p class="small">Business meetings, professional presentations</p>
+
+            <h6><i class="bi bi-people text-success me-2"></i>HD Video Chat</h6>
+            <p class="small">Personal video calls, online learning</p>
+
+            <h6><i class="bi bi-phone text-warning me-2"></i>Mobile/Basic Use</h6>
+            <p class="small">Quick checks, low bandwidth situations</p>
+          </div>
+        </div>
+
+        <div class="feature-card text-center">
+          <h4 class="mb-3"><i class="bi bi-shield-check text-primary me-2"></i>Test Results</h4>
+          <p>Our resolution tester shows:</p>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-check text-success me-2"></i>Supported resolutions</li>
+            <li><i class="bi bi-check text-success me-2"></i>Maximum camera capability</li>
+            <li><i class="bi bi-check text-success me-2"></i>Aspect ratio information</li>
+            <li><i class="bi bi-check text-success me-2"></i>Real-time resolution switching</li>
+            <li><i class="bi bi-check text-success me-2"></i>Compatibility testing</li>
+          </ul>
+        </div>
+
+        <div class="feature-card text-center">
+          <h4 class="mb-3"><i class="bi bi-tools text-primary me-2"></i>Other Tools</h4>
+          <p>Complete your webcam testing:</p>
+          <div class="d-grid gap-2">
+            <a href="/" class="btn btn-outline-primary">
+              <i class="bi bi-camera-video me-1"></i>Webcam Test
+            </a>
+            <a href="/fps-checker" class="btn btn-outline-primary">
+              <i class="bi bi-speedometer2 me-1"></i>FPS Checker
+            </a>
+            <a href="/mirror" class="btn btn-outline-primary">
+              <i class="bi bi-mirror me-1"></i>Webcam Mirror
+            </a>
+            <a href="/take-photo" class="btn btn-outline-primary">
+              <i class="bi bi-camera me-1"></i>Take Photo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="mb-3"><i class="bi bi-camera-video-fill me-2"></i>WebcamTest</h5>
+          <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+          <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const resolutionVideo = document.getElementById('resolution-video');
+      const cameraSelect = document.getElementById('camera-select');
+      const resolutionButton = document.getElementById('resolution-button');
+      const testAllButton = document.getElementById('test-all-button');
+      const resolutionStatus = document.getElementById('resolution-status');
+      const resolutionInfo = document.getElementById('resolution-info');
+      const resolutionGrid = document.getElementById('resolution-grid');
+      const currentResolutionDisplay = document.getElementById('current-resolution-display');
+
+      let currentStream = null;
+      let isTestingResolutions = false;
+      let testQueue = [];
+
+      function updateStatus(type, message) {
+        const iconClasses = {
+          'inactive': 'bi-aspect-ratio',
+          'testing': 'bi-hourglass-split',
+          'active': 'bi-check-circle-fill'
+        };
+
+        resolutionStatus.className = `status-indicator status-${type}`;
+        resolutionStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
+      }
+
+      async function enumerateDevices() {
+        try {
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          const videoDevices = devices.filter(device => device.kind === 'videoinput');
+
+          if (videoDevices.length === 0) {
+            updateStatus('inactive', 'No cameras detected. Please connect a camera and try again.');
+            return false;
+          }
+
+          populateCameraSelect(videoDevices);
+          return true;
+        } catch (error) {
+          console.error('Error enumerating devices:', error);
+          updateStatus('inactive', 'Error accessing camera devices');
+          return false;
+        }
+      }
+
+      function populateCameraSelect(videoDevices) {
+        cameraSelect.innerHTML = '';
+        videoDevices.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          option.text = device.label || `Camera ${index + 1}`;
+          cameraSelect.appendChild(option);
+        });
+        cameraSelect.disabled = false;
+      }
+
+      async function startResolutionTest() {
+        try {
+          updateStatus('testing', 'Starting resolution test...');
+
+          const constraints = {
+            video: {
+              width: { ideal: 1280 },
+              height: { ideal: 720 }
+            }
+          };
+
+          if (cameraSelect.value) {
+            constraints.video.deviceId = { exact: cameraSelect.value };
+          }
+
+          currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+
+          if (!cameraSelect.options.length) {
+            await enumerateDevices();
+          }
+
+          resolutionVideo.srcObject = currentStream;
+
+          updateStatus('active', 'Resolution test active - Click on resolution cards to test support');
+          resolutionButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop Test';
+
+          // Show controls and grid
+          resolutionInfo.style.display = 'block';
+          resolutionGrid.classList.remove('d-none');
+          testAllButton.style.display = 'inline-block';
+
+          // Update current resolution display
+          updateCurrentResolution();
+
+        } catch (error) {
+          console.error('Error starting resolution test:', error);
+          updateStatus('inactive', 'Error accessing camera. Please check permissions and try again.');
+        }
+      }
+
+      function stopResolutionTest() {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+          currentStream = null;
+        }
+
+        isTestingResolutions = false;
+        testQueue = [];
+        resolutionVideo.srcObject = null;
+        updateStatus('inactive', 'Click "Start Resolution Test" to discover your webcam\'s supported resolutions');
+        resolutionButton.innerHTML = '<i class="bi bi-play me-2"></i>Start Resolution Test';
+
+        // Hide displays
+        resolutionInfo.style.display = 'none';
+        resolutionGrid.classList.add('d-none');
+        testAllButton.style.display = 'none';
+        currentResolutionDisplay.classList.add('d-none');
+
+        // Reset resolution cards
+        document.querySelectorAll('.resolution-card').forEach(card => {
+          card.className = 'resolution-card';
+          card.querySelector('.resolution-status').className = 'resolution-status';
+        });
+      }
+
+      function updateCurrentResolution() {
+        if (!currentStream) return;
+
+        const videoTrack = currentStream.getVideoTracks()[0];
+        const settings = videoTrack.getSettings();
+
+        if (settings.width && settings.height) {
+          document.getElementById('current-resolution').textContent = `${settings.width}×${settings.height}`;
+          document.getElementById('current-aspect').textContent = calculateAspectRatio(settings.width, settings.height);
+        }
+      }
+
+      function calculateAspectRatio(width, height) {
+        const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+        const divisor = gcd(width, height);
+        return `${width / divisor}:${height / divisor}`;
+      }
+
+      async function testResolution(width, height, card) {
+        if (!currentStream || isTestingResolutions) return;
+
+        const statusIndicator = card.querySelector('.resolution-status');
+        const resolutionName = card.dataset.name;
+
+        try {
+          // Update UI to show testing
+          card.className = 'resolution-card testing';
+          statusIndicator.className = 'resolution-status testing';
+          currentResolutionDisplay.classList.remove('d-none');
+          document.getElementById('current-test-resolution').textContent = `${resolutionName} (${width}×${height})`;
+
+          // Stop current stream
+          if (currentStream) {
+            currentStream.getTracks().forEach(track => track.stop());
+          }
+
+          // Test new resolution
+          const constraints = {
+            video: {
+              width: { exact: width },
+              height: { exact: height },
+              deviceId: cameraSelect.value ? { exact: cameraSelect.value } : undefined
+            }
+          };
+
+          const testStream = await navigator.mediaDevices.getUserMedia(constraints);
+
+          // Success - resolution is supported
+          card.className = 'resolution-card supported active';
+          statusIndicator.className = 'resolution-status supported';
+
+          // Update video stream
+          currentStream = testStream;
+          resolutionVideo.srcObject = currentStream;
+
+          // Update current resolution display
+          setTimeout(updateCurrentResolution, 100);
+
+          // Remove active state after a moment
+          setTimeout(() => {
+            card.classList.remove('active');
+          }, 2000);
+
+        } catch (error) {
+          // Failed - resolution not supported
+          card.className = 'resolution-card unsupported';
+          statusIndicator.className = 'resolution-status unsupported';
+
+          // Restore previous stream if possible
+          if (!currentStream) {
+            try {
+              const fallbackConstraints = {
+                video: {
+                  width: { ideal: 1280 },
+                  height: { ideal: 720 },
+                  deviceId: cameraSelect.value ? { exact: cameraSelect.value } : undefined
+                }
+              };
+              currentStream = await navigator.mediaDevices.getUserMedia(fallbackConstraints);
+              resolutionVideo.srcObject = currentStream;
+              updateCurrentResolution();
+            } catch (fallbackError) {
+              console.error('Failed to restore video stream:', fallbackError);
+            }
+          }
+        }
+
+        currentResolutionDisplay.classList.add('d-none');
+      }
+
+      async function testAllResolutions() {
+        if (isTestingResolutions) return;
+
+        isTestingResolutions = true;
+        testAllButton.disabled = true;
+        testAllButton.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Testing...';
+
+        const resolutionCards = Array.from(document.querySelectorAll('.resolution-card'));
+
+        // Reset all cards
+        resolutionCards.forEach(card => {
+          card.className = 'resolution-card';
+          card.querySelector('.resolution-status').className = 'resolution-status';
+        });
+
+        // Test each resolution
+        for (const card of resolutionCards) {
+          const width = parseInt(card.dataset.width);
+          const height = parseInt(card.dataset.height);
+
+          await testResolution(width, height, card);
+
+          // Wait a moment between tests
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+
+        isTestingResolutions = false;
+        testAllButton.disabled = false;
+        testAllButton.innerHTML = '<i class="bi bi-lightning me-2"></i>Test All Resolutions';
+
+        updateStatus('active', 'All resolution testing complete! Green = Supported, Red = Not supported');
+      }
+
+      // Event listeners
+      resolutionButton.addEventListener('click', () => {
+        if (currentStream) {
+          stopResolutionTest();
+        } else {
+          startResolutionTest();
+        }
+      });
+
+      testAllButton.addEventListener('click', testAllResolutions);
+
+      cameraSelect.addEventListener('change', () => {
+        if (currentStream) {
+          stopResolutionTest();
+          setTimeout(startResolutionTest, 100);
+        }
+      });
+
+      // Resolution card click handlers
+      resolutionGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.resolution-card');
+        if (!card || !currentStream || isTestingResolutions) return;
+
+        const width = parseInt(card.dataset.width);
+        const height = parseInt(card.dataset.height);
+
+        testResolution(width, height, card);
+      });
+
+      // Handle page unload
+      window.addEventListener('beforeunload', () => {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+        }
+      });
+
+      // Check browser support
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+        resolutionButton.disabled = true;
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

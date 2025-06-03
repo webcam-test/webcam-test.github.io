@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Show My Webcam - Detailed Camera Information | WebcamTest</title>
+  <meta name="description" content="View detailed information about your webcam including resolution, frame rate, codec support, and technical specifications. Comprehensive camera analysis tool.">
+  <meta name="keywords" content="show my webcam, webcam information, camera specs, webcam details, camera resolution, webcam properties">
+
+  <link rel="canonical" href="https://webcamtest.com/show-webcam">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 40px;
+    }
+
+    .webcam-preview {
+      position: relative;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    #video-display {
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      border-radius: 15px;
+      border: 3px solid #fff;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      background-color: #1a1a1a;
+    }
+
+    .info-panel {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .spec-row:hover {
+      background-color: rgba(102, 126, 234, 0.05);
+      border-radius: 10px;
+      margin: 0 -10px;
+      padding: 15px 10px;
+    }
+
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .spec-label {
+      font-weight: 600;
+      color: #495057;
+      display: flex;
+      align-items: center;
+    }
+
+    .spec-value {
+      font-weight: 500;
+      color: #0d6efd;
+      text-align: right;
+    }
+
+    .capability-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 2px;
+    }
+
+    .capability-badge.unavailable {
+      background: #6c757d;
+    }
+
+    .resolution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .resolution-card {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .resolution-card:hover {
+      border-color: #667eea;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .resolution-card.active {
+      border-color: #667eea;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    }
+
+    .resolution-card.unsupported {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .status-active {
+      background: rgba(25, 135, 84, 0.1);
+      color: #198754;
+      border: 2px solid rgba(25, 135, 84, 0.2);
+    }
+
+    .status-inactive {
+      background: rgba(108, 117, 125, 0.1);
+      color: #6c757d;
+      border: 2px solid rgba(108, 117, 125, 0.2);
+    }
+
+    .status-error {
+      background: rgba(220, 53, 69, 0.1);
+      color: #dc3545;
+      border: 2px solid rgba(220, 53, 69, 0.2);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 40px 0;
+      }
+
+      .spec-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+
+      .spec-value {
+        text-align: left;
+      }
+
+      .resolution-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+      </a>
+      <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" aria-current="page" href="/mirror">Webcam Mirror</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+          </li>
+                    <li class="nav-item">
+            <a class="nav-link active fw-semibold" aria-current="page" href="/show-webcam">Show My Webcam</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-4">
+        <i class="bi bi-info-circle-fill me-3"></i>Show My Webcam
+      </h1>
+      <p class="lead mb-0">Detailed technical information and specifications about your camera</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="webcam-preview text-center">
+          <div class="status-indicator status-inactive" id="camera-status">
+            <i class="bi bi-camera-video-off me-2"></i>
+            <span>Click "Analyze My Webcam" to start detailed analysis</span>
+          </div>
+
+          <video id="video-display" autoplay muted playsinline></video>
+
+          <div class="mt-3">
+            <select class="form-select d-inline-block me-3" style="max-width: 300px;" disabled id="device-selector">
+              <option value="">Select a camera to analyze</option>
+            </select>
+            <button class="btn btn-gradient btn-lg" id="analyze-button">
+              <i class="bi bi-search me-2"></i>Analyze My Webcam
+            </button>
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h3 class="mb-4"><i class="bi bi-sliders text-primary me-2"></i>Supported Resolutions</h3>
+          <p class="text-muted mb-3">Click on any resolution to test if your camera supports it:</p>
+
+          <div class="resolution-grid" id="resolution-grid">
+            <div class="resolution-card" data-width="4096" data-height="2160">
+              <h5 class="mb-1">4K UHD</h5>
+              <small>4096×2160</small>
+            </div>
+            <div class="resolution-card" data-width="3840" data-height="2160">
+              <h5 class="mb-1">4K</h5>
+              <small>3840×2160</small>
+            </div>
+            <div class="resolution-card" data-width="2560" data-height="1440">
+              <h5 class="mb-1">2K QHD</h5>
+              <small>2560×1440</small>
+            </div>
+            <div class="resolution-card" data-width="1920" data-height="1080">
+              <h5 class="mb-1">Full HD</h5>
+              <small>1920×1080</small>
+            </div>
+            <div class="resolution-card" data-width="1280" data-height="720">
+              <h5 class="mb-1">HD</h5>
+              <small>1280×720</small>
+            </div>
+            <div class="resolution-card" data-width="640" data-height="480">
+              <h5 class="mb-1">VGA</h5>
+              <small>640×480</small>
+            </div>
+            <div class="resolution-card" data-width="320" data-height="240">
+              <h5 class="mb-1">QVGA</h5>
+              <small>320×240</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="info-panel">
+          <h4 class="mb-4">
+            <i class="bi bi-camera-video text-primary me-2"></i>Camera Information
+          </h4>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-tag me-2"></i>Device Name
+            </span>
+            <span class="spec-value" id="device-name">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-aspect-ratio me-2"></i>Current Resolution
+            </span>
+            <span class="spec-value" id="current-resolution">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-speedometer2 me-2"></i>Frame Rate
+            </span>
+            <span class="spec-value" id="frame-rate">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-aspect-ratio-fill me-2"></i>Aspect Ratio
+            </span>
+            <span class="spec-value" id="aspect-ratio">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-eye me-2"></i>Facing Mode
+            </span>
+            <span class="spec-value" id="facing-mode">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-fingerprint me-2"></i>Device ID
+            </span>
+            <span class="spec-value" id="device-id">—</span>
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h4 class="mb-4">
+            <i class="bi bi-gear text-primary me-2"></i>Camera Capabilities
+          </h4>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-zoom-in me-2"></i>Zoom Support
+            </span>
+            <span class="spec-value" id="zoom-support">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-bullseye me-2"></i>Auto Focus
+            </span>
+            <span class="spec-value" id="auto-focus">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-torch me-2"></i>Torch/Flash
+            </span>
+            <span class="spec-value" id="torch-support">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-brightness-high me-2"></i>Exposure Control
+            </span>
+            <span class="spec-value" id="exposure-control">—</span>
+          </div>
+
+          <div class="spec-row">
+            <span class="spec-label">
+              <i class="bi bi-palette me-2"></i>White Balance
+            </span>
+            <span class="spec-value" id="white-balance">—</span>
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h4 class="mb-4">
+            <i class="bi bi-list-stars text-primary me-2"></i>Supported Features
+          </h4>
+          <div id="capabilities-list">
+            <p class="text-muted">Click "Analyze My Webcam" to see supported features</p>
+          </div>
+        </div>
+
+        <div class="info-panel text-center">
+          <h4 class="mb-3">
+            <i class="bi bi-house text-primary me-2"></i>Test Basic Functionality
+          </h4>
+          <p>Want to do a quick webcam test? Go to our main testing page.</p>
+          <a href="/" class="btn btn-gradient">
+            <i class="bi bi-camera-video-fill me-2"></i>Basic Webcam Test
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Details Section -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="info-panel">
+          <h3 class="mb-4"><i class="bi bi-cpu text-primary me-2"></i>Technical Analysis</h3>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h5><i class="bi bi-graph-up text-success me-2"></i>Performance Metrics</h5>
+              <div class="spec-row">
+                <span class="spec-label">Maximum Resolution</span>
+                <span class="spec-value" id="max-resolution">—</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Maximum Frame Rate</span>
+                <span class="spec-value" id="max-framerate">—</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Supported Formats</span>
+                <span class="spec-value" id="supported-formats">—</span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <h5><i class="bi bi-shield-check text-success me-2"></i>Browser Support</h5>
+              <div class="spec-row">
+                <span class="spec-label">WebRTC Support</span>
+                <span class="spec-value" id="webrtc-support">—</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">MediaDevices API</span>
+                <span class="spec-value" id="mediadevices-support">—</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Screen Capture</span>
+                <span class="spec-value" id="screencapture-support">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="mb-3"><i class="bi bi-camera-video-fill me-2"></i>WebcamTest</h5>
+          <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+          <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoDisplay = document.getElementById('video-display');
+      const deviceSelector = document.getElementById('device-selector');
+      const analyzeButton = document.getElementById('analyze-button');
+      const cameraStatus = document.getElementById('camera-status');
+      const resolutionGrid = document.getElementById('resolution-grid');
+
+      // Info elements
+      const deviceNameEl = document.getElementById('device-name');
+      const currentResolutionEl = document.getElementById('current-resolution');
+      const frameRateEl = document.getElementById('frame-rate');
+      const aspectRatioEl = document.getElementById('aspect-ratio');
+      const facingModeEl = document.getElementById('facing-mode');
+      const deviceIdEl = document.getElementById('device-id');
+      const zoomSupportEl = document.getElementById('zoom-support');
+      const autoFocusEl = document.getElementById('auto-focus');
+      const torchSupportEl = document.getElementById('torch-support');
+      const exposureControlEl = document.getElementById('exposure-control');
+      const whiteBalanceEl = document.getElementById('white-balance');
+      const capabilitiesListEl = document.getElementById('capabilities-list');
+      const maxResolutionEl = document.getElementById('max-resolution');
+      const maxFramerateEl = document.getElementById('max-framerate');
+      const supportedFormatsEl = document.getElementById('supported-formats');
+      const webrtcSupportEl = document.getElementById('webrtc-support');
+      const mediadevicesSupportEl = document.getElementById('mediadevices-support');
+      const screencaptureSupportEl = document.getElementById('screencapture-support');
+
+      let currentStream = null;
+      let availableDevices = [];
+      let currentCapabilities = null;
+
+      // Check browser support
+      function checkBrowserSupport() {
+        webrtcSupportEl.innerHTML = navigator.mediaDevices ?
+          '<span class="text-success">✓ Supported</span>' :
+          '<span class="text-danger">✗ Not Supported</span>';
+
+        mediadevicesSupportEl.innerHTML = navigator.mediaDevices && navigator.mediaDevices.getUserMedia ?
+          '<span class="text-success">✓ Supported</span>' :
+          '<span class="text-danger">✗ Not Supported</span>';
+
+        screencaptureSupportEl.innerHTML = navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia ?
+          '<span class="text-success">✓ Supported</span>' :
+          '<span class="text-danger">✗ Not Supported</span>';
+      }
+
+      function updateStatus(type, message) {
+        const iconClasses = {
+          'inactive': 'bi-camera-video-off',
+          'active': 'bi-camera-video-fill text-success',
+          'error': 'bi-x-circle-fill'
+        };
+
+        cameraStatus.className = `status-indicator status-${type}`;
+        cameraStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
+      }
+
+      async function enumerateDevices() {
+        try {
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          availableDevices = devices.filter(device => device.kind === 'videoinput');
+
+          if (availableDevices.length === 0) {
+            updateStatus('error', 'No cameras detected on this device');
+            return false;
+          }
+
+          populateDeviceSelector();
+          return true;
+        } catch (error) {
+          console.error('Error enumerating devices:', error);
+          updateStatus('error', 'Error accessing camera devices');
+          return false;
+        }
+      }
+
+      function populateDeviceSelector() {
+        deviceSelector.innerHTML = '';
+        availableDevices.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          option.text = device.label || `Camera ${index + 1}`;
+          deviceSelector.appendChild(option);
+        });
+        deviceSelector.disabled = false;
+      }
+
+      async function startAnalysis() {
+        try {
+          updateStatus('active', 'Analyzing camera capabilities...');
+
+          const constraints = {
+            video: {
+              width: { ideal: 1920 },
+              height: { ideal: 1080 },
+              frameRate: { ideal: 30 }
+            }
+          };
+
+          if (deviceSelector.value) {
+            constraints.video.deviceId = { exact: deviceSelector.value };
+          }
+
+          // Request camera access first
+          if (!currentStream) {
+            currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+            await enumerateDevices();
+          }
+
+          videoDisplay.srcObject = currentStream;
+
+          const videoTrack = currentStream.getVideoTracks()[0];
+          const settings = videoTrack.getSettings();
+          currentCapabilities = videoTrack.getCapabilities();
+
+          displayCameraInfo(videoTrack, settings, currentCapabilities);
+          updateStatus('active', 'Camera analysis complete - All details loaded');
+          analyzeButton.innerHTML = '<i class="bi bi-stop-circle me-2"></i>Stop Analysis';
+
+        } catch (error) {
+          console.error('Error starting analysis:', error);
+          updateStatus('error', 'Error accessing camera. Please check permissions and try again.');
+        }
+      }
+
+      function stopAnalysis() {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+          currentStream = null;
+        }
+
+        videoDisplay.srcObject = null;
+        updateStatus('inactive', 'Click "Analyze My Webcam" to start detailed analysis');
+        analyzeButton.innerHTML = '<i class="bi bi-search me-2"></i>Analyze My Webcam';
+
+        resetDisplayInfo();
+      }
+
+      function displayCameraInfo(track, settings, capabilities) {
+        // Basic info
+        deviceNameEl.textContent = track.label || 'Unknown Camera';
+        currentResolutionEl.innerHTML = `${settings.width}×${settings.height} <span class="capability-badge">${getResolutionName(settings.width, settings.height)}</span>`;
+        frameRateEl.textContent = settings.frameRate ? `${Math.round(settings.frameRate)} fps` : 'Unknown';
+        aspectRatioEl.textContent = settings.aspectRatio ? settings.aspectRatio.toFixed(2) : calculateAspectRatio(settings.width, settings.height);
+        facingModeEl.textContent = settings.facingMode || 'Unknown';
+        deviceIdEl.textContent = settings.deviceId ? settings.deviceId.substring(0, 20) + '...' : 'Unknown';
+
+        // Capabilities
+        zoomSupportEl.innerHTML = capabilities.zoom ?
+          `<span class="text-success">✓ Yes (${capabilities.zoom.min}x - ${capabilities.zoom.max}x)</span>` :
+          '<span class="text-muted">✗ No</span>';
+
+        autoFocusEl.innerHTML = capabilities.focusMode && capabilities.focusMode.includes('continuous') ?
+          '<span class="text-success">✓ Continuous</span>' :
+          capabilities.focusMode && capabilities.focusMode.includes('manual') ?
+          '<span class="text-warning">Manual Only</span>' :
+          '<span class="text-muted">✗ No</span>';
+
+        torchSupportEl.innerHTML = capabilities.torch ?
+          '<span class="text-success">✓ Supported</span>' :
+          '<span class="text-muted">✗ Not Available</span>';
+
+        exposureControlEl.innerHTML = capabilities.exposureMode ?
+          '<span class="text-success">✓ Available</span>' :
+          '<span class="text-muted">✗ Not Available</span>';
+
+        whiteBalanceEl.innerHTML = capabilities.whiteBalanceMode ?
+          '<span class="text-success">✓ Available</span>' :
+          '<span class="text-muted">✗ Not Available</span>';
+
+        // Technical details
+        if (capabilities.width && capabilities.height) {
+          maxResolutionEl.textContent = `${capabilities.width.max}×${capabilities.height.max}`;
+        } else {
+          maxResolutionEl.textContent = 'Unknown';
+        }
+
+        maxFramerateEl.textContent = capabilities.frameRate ? `${capabilities.frameRate.max} fps` : 'Unknown';
+
+        // Supported formats
+        const formats = [];
+        if (capabilities.width) formats.push('Video');
+        if (capabilities.frameRate) formats.push('Variable FPS');
+        supportedFormatsEl.textContent = formats.length > 0 ? formats.join(', ') : 'Unknown';
+
+        // Display all capabilities
+        displayCapabilitiesList(capabilities);
+
+        // Test resolution support
+        testResolutionSupport();
+      }
+
+      function displayCapabilitiesList(capabilities) {
+        const capabilitiesHtml = [];
+
+        Object.keys(capabilities).forEach(key => {
+          const value = capabilities[key];
+          let displayValue = '';
+
+          if (Array.isArray(value)) {
+            displayValue = value.join(', ');
+          } else if (typeof value === 'object' && value !== null) {
+            if (value.min !== undefined && value.max !== undefined) {
+              displayValue = `${value.min} - ${value.max}`;
+            } else {
+              displayValue = JSON.stringify(value);
+            }
+          } else {
+            displayValue = String(value);
+          }
+
+          capabilitiesHtml.push(`<span class="capability-badge">${key}: ${displayValue}</span>`);
+        });
+
+        capabilitiesListEl.innerHTML = capabilitiesHtml.join(' ');
+      }
+
+      async function testResolutionSupport() {
+        const resolutionCards = document.querySelectorAll('.resolution-card');
+
+        for (const card of resolutionCards) {
+          const width = parseInt(card.dataset.width);
+          const height = parseInt(card.dataset.height);
+
+          try {
+            const testConstraints = {
+              video: {
+                width: { exact: width },
+                height: { exact: height },
+                deviceId: deviceSelector.value ? { exact: deviceSelector.value } : undefined
+              }
+            };
+
+            const testStream = await navigator.mediaDevices.getUserMedia(testConstraints);
+            testStream.getTracks().forEach(track => track.stop());
+
+            card.classList.remove('unsupported');
+            card.classList.add('supported');
+
+          } catch (error) {
+            card.classList.add('unsupported');
+            card.classList.remove('supported');
+          }
+        }
+      }
+
+      function resetDisplayInfo() {
+        const elements = [
+          deviceNameEl, currentResolutionEl, frameRateEl, aspectRatioEl,
+          facingModeEl, deviceIdEl, zoomSupportEl, autoFocusEl,
+          torchSupportEl, exposureControlEl, whiteBalanceEl,
+          maxResolutionEl, maxFramerateEl, supportedFormatsEl
+        ];
+
+        elements.forEach(el => el.textContent = '—');
+        capabilitiesListEl.innerHTML = '<p class="text-muted">Click "Analyze My Webcam" to see supported features</p>';
+
+        // Reset resolution cards
+        document.querySelectorAll('.resolution-card').forEach(card => {
+          card.classList.remove('supported', 'unsupported', 'active');
+        });
+      }
+
+      function getResolutionName(width, height) {
+        if (width >= 3840 && height >= 2160) return '4K UHD';
+        if (width >= 2560 && height >= 1440) return '2K QHD';
+        if (width >= 1920 && height >= 1080) return 'Full HD';
+        if (width >= 1280 && height >= 720) return 'HD';
+        if (width >= 640 && height >= 480) return 'VGA';
+        return 'SD';
+      }
+
+      function calculateAspectRatio(width, height) {
+        if (!width || !height) return 'Unknown';
+        const ratio = width / height;
+        return ratio.toFixed(2);
+      }
+
+      // Event listeners
+      analyzeButton.addEventListener('click', () => {
+        if (currentStream) {
+          stopAnalysis();
+        } else {
+          startAnalysis();
+        }
+      });
+
+      deviceSelector.addEventListener('change', () => {
+        if (currentStream) {
+          stopAnalysis();
+          setTimeout(startAnalysis, 100);
+        }
+      });
+
+      // Resolution card click handlers
+      resolutionGrid.addEventListener('click', async (e) => {
+        const card = e.target.closest('.resolution-card');
+        if (!card || card.classList.contains('unsupported') || !currentStream) return;
+
+        const width = parseInt(card.dataset.width);
+        const height = parseInt(card.dataset.height);
+
+        try {
+          const constraints = {
+            video: {
+              width: { exact: width },
+              height: { exact: height },
+              deviceId: deviceSelector.value ? { exact: deviceSelector.value } : undefined
+            }
+          };
+
+          // Stop current stream
+          currentStream.getTracks().forEach(track => track.stop());
+
+          // Start new stream with selected resolution
+          currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+          videoDisplay.srcObject = currentStream;
+
+          // Update info
+          const videoTrack = currentStream.getVideoTracks()[0];
+          const settings = videoTrack.getSettings();
+          currentResolutionEl.innerHTML = `${settings.width}×${settings.height} <span class="capability-badge">${getResolutionName(settings.width, settings.height)}</span>`;
+
+          // Update active card
+          document.querySelectorAll('.resolution-card').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+
+        } catch (error) {
+          console.error('Error changing resolution:', error);
+          updateStatus('error', 'Failed to change resolution. This resolution may not be supported.');
+        }
+      });
+
+      // Initialize browser support check
+      checkBrowserSupport();
+
+      // Handle page unload
+      window.addEventListener('beforeunload', () => {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+        }
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
