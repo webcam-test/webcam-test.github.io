@@ -936,6 +936,24 @@
         cameraSelect.disabled = false;
       }
 
+      // New function to update dropdown selection based on actual camera being used
+      function updateDropdownSelection(stream) {
+        if (!stream) return;
+
+        const videoTrack = stream.getVideoTracks()[0];
+        const settings = videoTrack.getSettings();
+
+        if (settings.deviceId) {
+          // Find and select the matching option
+          for (let i = 0; i < cameraSelect.options.length; i++) {
+            if (cameraSelect.options[i].value === settings.deviceId) {
+              cameraSelect.selectedIndex = i;
+              break;
+            }
+          }
+        }
+      }
+
       async function startWebcam() {
         try {
           updateStatus('testing', 'Requesting camera access. Please allow access when prompted.');
@@ -975,6 +993,9 @@
           // Enumerate devices after getting permission
           await enumerateDevices();
 
+          // Update dropdown selection to match actual camera being used
+          updateDropdownSelection(currentStream);
+
           videoPreview.srcObject = currentStream;
 
           updateStatus('ready', 'Camera is active and ready for testing');
@@ -1012,6 +1033,10 @@
           }
 
           currentStream = await navigator.mediaDevices.getUserMedia(basicConstraints);
+
+          // Update dropdown selection to match actual camera being used
+          updateDropdownSelection(currentStream);
+
           videoPreview.srcObject = currentStream;
 
           updateStatus('ready', 'Camera is active and ready for testing');
