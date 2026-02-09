@@ -446,10 +446,8 @@
     <div class="container">
       <!-- Page Title -->
       <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-dark mb-3">
-          <i class="bi bi-aspect-ratio text-primary me-3"></i>Webcam Resolution Tester
-        </h1>
-        <p class="lead text-muted">The Webcam Resolution Test is a simple and free method to check online, what is the resolution of your webcam.</p>
+        <h1 class="display-5 fw-bold text-dark mb-3">Test Your Webcam Resolution — Find Maximum Camera Quality</h1>
+        <p class="lead text-muted">Activate your camera to <strong>test your webcam resolution</strong> and discover the <em>maximum video resolution</em> your camera supports — from <em>480p SD</em> to <em>4K Ultra HD</em>. Get a detailed breakdown of every <em>supported resolution</em>, <em>aspect ratio</em>, and <em>pixel dimensions</em> your webcam can output for <em>video calls</em>, <em>recording</em>, and <em>content creation</em>.</p>
       </div>
 
       <div class="row">
@@ -947,32 +945,39 @@
 </aside>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container text-center">
+    <footer class="footer">
+    <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
           <h5 class="mb-3">
             <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
           </h5>
           <p class="mb-2">Advanced online webcam testing platform for all devices</p>
-          <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
-          <div class="mt-3">
-            <a href="mailto:vinithablog@gmail.com" class="text-white text-decoration-none me-3">
-              <i class="bi bi-envelope-fill me-1"></i>Contact
-            </a>
-            <a href="/about" class="text-white text-decoration-none me-3">
-              <i class="bi bi-info-circle-fill me-1"></i>About
-            </a>
-            <a href="/" class="text-white text-decoration-none">
-              <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
-            </a>
+          <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+          <h5 class="mb-3">Tools</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+            <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+            <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+            <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+            <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+            <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center text-md-start">
+          <h5 class="mb-3">Info</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+            <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.addEventListener('DOMContentLoaded', function() {
       const resolutionVideo = document.getElementById('resolution-video');
       const cameraSelect = document.getElementById('camera-select');
@@ -1256,10 +1261,4 @@
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
         resolutionButton.disabled = true;
-      }
-    });
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+   

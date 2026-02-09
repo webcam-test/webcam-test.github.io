@@ -394,10 +394,8 @@
   <div class="container">
     <!-- Page Title -->
     <div class="text-center mb-4">
-      <h1 class="display-5 fw-bold text-dark mb-3">
-        <i class="bi bi-speedometer2 text-primary me-3"></i>Webcam FPS Checker
-      </h1>
-      <p class="lead text-muted">The Webcam FPS Checker is a free test that allows you to find out the frame rate (also known as "frame frequency") of your camera.</p>
+      <h1 class="display-5 fw-bold text-dark mb-3">Check Your Webcam FPS — Measure Frame Rate Performance</h1>
+      <p class="lead text-muted">Start your camera to <strong>check your webcam's FPS</strong> and measure the exact <em>frame rate performance</em> your camera delivers in real time. See your <em>frames per second</em> count live, compare <em>FPS at different resolutions</em>, and determine if your webcam meets the <em>30fps or 60fps</em> requirements for <em>smooth video conferencing</em> and <em>streaming</em>.</p>
     </div>
 
     <div class="row">
@@ -725,47 +723,39 @@
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-  <div class="container text-center">
-    <div class="row">
-      <br>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785"
-     crossorigin="anonymous"></script>
-<!-- Webcamtest - After Content -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5426315045205785"
-     data-ad-slot="5068825756"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<br>
-
-      <div class="col-md-12">
-        <h5 class="mb-3">
-          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-        </h5>
-        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
-        <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
-        <div class="mt-3">
-          <a class="text-white text-decoration-none me-3" href="mailto:vinithablog@gmail.com">
-            <i class="bi bi-envelope-fill me-1"></i>Contact
-          </a>
-          <a class="text-white text-decoration-none me-3" href="/about">
-            <i class="bi bi-info-circle-fill me-1"></i>About
-          </a>
-          <a class="text-white text-decoration-none" href="/">
-            <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
-          </a>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+          <h5 class="mb-3">
+            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+          </h5>
+          <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+          <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+          <h5 class="mb-3">Tools</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+            <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+            <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+            <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+            <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+            <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center text-md-start">
+          <h5 class="mb-3">Info</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+            <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.addEventListener('DOMContentLoaded', function () {
     const fpsVideo = document.getElementById('fps-video');
     const cameraSelect = document.getElementById('camera-select');
@@ -1064,11 +1054,4 @@
     // Check browser support
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
-      fpsButton.disabled = true;
-    }
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+      fpsButton.disabled = t

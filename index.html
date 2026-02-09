@@ -8,7 +8,7 @@
         name="description">
   <meta content="webcam test, camera test, webcam tester, test webcam, web cam test, camera tester, test my webcam, test camera, live camera test, cam test" name="keywords">
 
-  <link href="https://webcam-test.github.io/" rel="canonical">
+  <link href="https://webcam-test.github.io" rel="canonical">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <script async crossorigin="anonymous"
@@ -406,10 +406,8 @@
     <div class="container">
       <!-- Page Title -->
       <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-dark mb-3">
-          <i class="bi bi-camera-video-fill text-primary me-3"></i>Advanced Online Webcam Test
-        </h1>
-        <p class="lead text-muted">Test your camera quality instantly with our comprehensive browser-based testing tool. Compatible with all devices - no downloads required.</p>
+        <h1 class="display-5 fw-bold text-dark mb-3">Test Your Webcam Online — Check Camera Quality Instantly</h1>
+        <p class="lead text-muted">Click <strong>Start</strong> to instantly <strong>test your webcam</strong> — check your <em>camera resolution</em>, <em>frame rate</em>, and <em>video quality</em> right in your browser. Get a full diagnostic report showing your webcam's <em>FPS performance</em>, <em>autofocus capability</em>, and <em>device compatibility</em> across Windows, macOS, and mobile devices.</p>
       </div>
 
       <!-- Browser Alert -->
@@ -842,32 +840,39 @@
 </aside>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container text-center">
+    <footer class="footer">
+    <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
           <h5 class="mb-3">
             <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
           </h5>
           <p class="mb-2">Advanced online webcam testing platform for all devices</p>
-          <p>© 2025 WebcamTest. Test your webcam online - Free camera testing tool.</p>
-          <div class="mt-3">
-            <a href="mailto:vinithablog@gmail.com" class="text-white text-decoration-none me-3">
-              <i class="bi bi-envelope-fill me-1"></i>Contact
-            </a>
-            <a href="/about" class="text-white text-decoration-none me-3">
-              <i class="bi bi-info-circle-fill me-1"></i>About
-            </a>
-            <a href="/" class="text-white text-decoration-none">
-              <i class="bi bi-camera-video-fill me-1"></i>Test Webcam
-            </a>
+          <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+          <h5 class="mb-3">Tools</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+            <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+            <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+            <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+            <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+            <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center text-md-start">
+          <h5 class="mb-3">Info</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+            <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.addEventListener('DOMContentLoaded', function() {
       const videoPreview = document.getElementById('video-preview');
       const cameraSelect = document.getElementById('camera-select');
@@ -1331,10 +1336,4 @@
       }
 
       window.addEventListener('resize', adjustForMobile);
-      adjustForMobile();
-    });
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+      adjustForMobil
