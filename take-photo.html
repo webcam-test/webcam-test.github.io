@@ -142,7 +142,7 @@
     }
 
     .photo-controls {
-      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
       display: flex;
       gap: 1rem;
       justify-content: center;
@@ -495,9 +495,19 @@
         <!-- Main Photo Container -->
         <div class="col-lg-8">
           <div class="photo-container">
-            <div class="status-indicator status-inactive" id="photo-status">
-              <i class="bi bi-camera me-2"></i>
-              <span>Click "Start Camera" to begin taking photos with your webcam</span>
+            <div class="status-indicator status-inactive d-none" id="photo-status">
+            </div>
+
+            <div class="photo-controls mb-3">
+              <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
+                <option value="">Select camera</option>
+              </select>
+              <button class="btn btn-primary-custom btn-lg" id="camera-button">
+                <i class="bi bi-camera me-2"></i>Start Camera
+              </button>
+              <button class="btn btn-outline-primary-custom d-none" id="capture-button">
+                <i class="bi bi-camera-fill me-2"></i>Take Photo
+              </button>
             </div>
 
             <div class="position-relative d-inline-block">
@@ -507,18 +517,6 @@
               </div>
               <div class="countdown" id="countdown"></div>
               <div class="flash-effect" id="flash-effect"></div>
-            </div>
-
-            <div class="photo-controls">
-              <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
-                <option value="">Select camera for photos</option>
-              </select>
-              <button class="btn btn-primary-custom btn-lg" id="camera-button">
-                <i class="bi bi-camera me-2"></i>Start Camera
-              </button>
-              <button class="btn btn-outline-primary-custom d-none" id="capture-button">
-                <i class="bi bi-camera-fill me-2"></i>Take Photo
-              </button>
             </div>
 
             <!-- Photo Settings -->
@@ -870,6 +868,7 @@
           'countdown': 'bi-stopwatch'
         };
 
+        photoStatus.classList.remove('d-none');
         photoStatus.className = `status-indicator status-${type}`;
         photoStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
       }
@@ -950,7 +949,7 @@
         }
 
         photoVideo.srcObject = null;
-        updateStatus('inactive', 'Click "Start Camera" to begin taking photos with your webcam');
+        photoStatus.classList.add('d-none');
         cameraButton.innerHTML = '<i class="bi bi-camera me-2"></i>Start Camera';
 
         // Hide controls

@@ -72,7 +72,6 @@
     }
 
     .controls-section {
-      margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
       justify-content: center;
@@ -380,21 +379,19 @@
         <!-- Main Webcam Container -->
         <div class="col-lg-8">
           <div class="webcam-container">
-            <div class="status-indicator status-inactive" id="camera-status">
-              <i class="bi bi-camera-video-off me-2"></i>
-              <span>Click "Analyze My Webcam" to start detailed analysis</span>
-            </div>
-
-            <video id="video-display" autoplay muted playsinline></video>
-
-            <div class="controls-section">
+            <div class="controls-section mb-3">
               <select class="form-select" style="max-width: 300px;" disabled id="device-selector">
-                <option value="">Select a camera to analyze</option>
+                <option value="">Select camera</option>
               </select>
               <button class="btn btn-primary-custom btn-lg" id="analyze-button">
                 <i class="bi bi-search me-2"></i>Analyze My Webcam
               </button>
             </div>
+
+            <div class="status-indicator d-none" id="camera-status">
+            </div>
+
+            <video id="video-display" autoplay muted playsinline></video>
           </div>
 
           <div class="info-panel">
@@ -727,6 +724,7 @@
           'error': 'bi-x-circle-fill'
         };
 
+        cameraStatus.classList.remove('d-none');
         cameraStatus.className = `status-indicator status-${type}`;
         cameraStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
       }
@@ -805,7 +803,7 @@
         }
 
         videoDisplay.srcObject = null;
-        updateStatus('inactive', 'Click "Analyze My Webcam" to start detailed analysis');
+        cameraStatus.classList.add('d-none');
         analyzeButton.innerHTML = '<i class="bi bi-search me-2"></i>Analyze My Webcam';
 
         resetDisplayInfo();

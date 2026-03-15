@@ -432,33 +432,22 @@
             </script>
           </div>
 
-      <!-- Browser Alert -->
-      <div class="alert alert-info mb-4" id="browser-alert">
-        <div id="browser-message">
-          <i class="bi bi-info-circle-fill me-2"></i>
-          Press "Test my webcam" to check the functionality and supported properties of your camera.
-        </div>
-      </div>
-
       <div class="row">
         <!-- Main Camera Container -->
         <div class="col-lg-8">
           <div class="camera-container">
-            <div class="status-indicator status-inactive" id="status-indicator">
-              <i class="bi bi-camera-video-off me-2"></i>
-              <span>Press "Test my webcam" to begin testing your camera</span>
-            </div>
+            <div class="status-indicator status-inactive d-none" id="status-indicator"></div>
 
-            <video id="video-preview" autoplay muted playsinline></video>
-
-            <div class="camera-controls">
+            <div class="camera-controls mb-3">
               <select class="form-select" style="max-width: 300px;" disabled id="camera-select">
-                <option value="">Click "Test my webcam" to detect cameras</option>
+                <option value="">Select camera</option>
               </select>
               <button class="btn btn-primary-custom btn-lg" id="test-button">
                 <i class="bi bi-camera-video-fill me-2"></i>Test my webcam
               </button>
             </div>
+
+            <video id="video-preview" autoplay muted playsinline></video>
 
             <div class="mt-3 d-none" id="camera-controls">
               <div class="d-flex justify-content-center gap-2 flex-wrap">
@@ -922,6 +911,7 @@
           'ready': 'bi-camera-video-fill text-success'
         };
 
+        statusIndicator.classList.remove('d-none');
         statusIndicator.className = `status-indicator status-${type}`;
 
         if (type === 'recording') {
@@ -1109,7 +1099,7 @@
         }
 
         videoPreview.srcObject = null;
-        updateStatus('inactive', 'Press "Test my webcam" to begin testing your camera');
+        statusIndicator.classList.add('d-none');
         testButton.innerHTML = '<i class="bi bi-camera-video-fill me-2"></i>Test my webcam';
         cameraControls.classList.add('d-none');
 
@@ -1119,7 +1109,7 @@
         resetCameraInfo();
 
         // Reset camera select
-        cameraSelect.innerHTML = '<option value="">Click "Test my webcam" to detect cameras</option>';
+        cameraSelect.innerHTML = '<option value="">Select camera</option>';
         cameraSelect.disabled = true;
       }
 

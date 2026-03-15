@@ -430,9 +430,16 @@
         <!-- Main Mirror Container -->
         <div class="col-lg-8">
           <div class="mirror-container">
-            <div class="status-indicator status-inactive" id="mirror-status">
-              <i class="bi bi-mirror me-2"></i>
-              <span>Click "Start Mirror" to begin using your webcam as a mirror</span>
+            <div class="status-indicator d-none" id="mirror-status">
+            </div>
+
+            <div class="mirror-controls mb-3">
+              <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+                <option value="">Select camera</option>
+              </select>
+              <button class="btn btn-primary-custom btn-lg" id="mirror-button">
+                <i class="bi bi-mirror me-2"></i>Start Mirror
+              </button>
             </div>
 
             <div class="mirror-frame">
@@ -440,15 +447,6 @@
               <div class="mirror-overlay" id="mirror-overlay">
                 <i class="bi bi-eye me-1"></i>Looking good!
               </div>
-            </div>
-
-            <div class="mirror-controls">
-              <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
-                <option value="">Select camera for mirror</option>
-              </select>
-              <button class="btn btn-primary-custom btn-lg" id="mirror-button">
-                <i class="bi bi-mirror me-2"></i>Start Mirror
-              </button>
             </div>
 
             <!-- Zoom Controls -->
@@ -731,6 +729,7 @@
           'active': 'bi-eye-fill text-success'
         };
 
+        mirrorStatus.classList.remove('d-none');
         mirrorStatus.className = `status-indicator status-${type}`;
         mirrorStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
       }
@@ -821,7 +820,7 @@
         }
 
         mirrorVideo.srcObject = null;
-        updateStatus('inactive', 'Click "Start Mirror" to begin using your webcam as a mirror');
+        mirrorStatus.classList.add('d-none');
         mirrorButton.innerHTML = '<i class="bi bi-mirror me-2"></i>Start Mirror';
 
         // Hide controls

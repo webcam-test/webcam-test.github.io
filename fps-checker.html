@@ -425,9 +425,18 @@
       <!-- Main FPS Container -->
       <div class="col-lg-8">
         <div class="fps-container">
-          <div class="status-indicator status-inactive" id="fps-status">
+          <div class="status-indicator d-none" id="fps-status">
             <i class="bi bi-speedometer2 me-2"></i>
-            <span>Click "Start FPS Test" to begin measuring your webcam's frame rate</span>
+            <span></span>
+          </div>
+
+          <div class="fps-controls mb-3">
+            <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+              <option value="">Select camera</option>
+            </select>
+            <button class="btn btn-primary-custom btn-lg" id="fps-button">
+              <i class="bi bi-play me-2"></i>Start FPS Test
+            </button>
           </div>
 
           <div class="position-relative d-inline-block">
@@ -435,15 +444,6 @@
             <div class="fps-display" id="fps-display" style="display: none;">
               <div>FPS: <span id="current-fps">0</span></div>
             </div>
-          </div>
-
-          <div class="fps-controls">
-            <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
-              <option value="">Select camera for FPS test</option>
-            </select>
-            <button class="btn btn-primary-custom btn-lg" id="fps-button">
-              <i class="bi bi-play me-2"></i>Start FPS Test
-            </button>
           </div>
 
           <!-- FPS Metrics -->
@@ -805,6 +805,7 @@
         'active': 'bi-check-circle-fill'
       };
 
+      fpsStatus.classList.remove('d-none');
       fpsStatus.className = `status-indicator status-${type}`;
       fpsStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
     }
@@ -896,7 +897,7 @@
 
       isTestingFPS = false;
       fpsVideo.srcObject = null;
-      updateStatus('inactive', 'Click "Start FPS Test" to begin measuring your webcam\'s frame rate');
+      fpsStatus.classList.add('d-none');
       fpsButton.innerHTML = '<i class="bi bi-play me-2"></i>Start FPS Test';
 
       // Hide displays

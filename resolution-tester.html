@@ -476,9 +476,19 @@
         <!-- Main Resolution Container -->
         <div class="col-lg-8">
           <div class="resolution-container">
-            <div class="status-indicator status-inactive" id="resolution-status">
-              <i class="bi bi-aspect-ratio me-2"></i>
-              <span>Click "Start Resolution Test" to discover your webcam's supported resolutions</span>
+            <div class="status-indicator status-inactive d-none" id="resolution-status">
+            </div>
+
+            <div class="resolution-controls mb-3">
+              <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
+                <option value="">Select camera</option>
+              </select>
+              <button class="btn btn-primary-custom btn-lg" id="resolution-button">
+                <i class="bi bi-play me-2"></i>Start Resolution Test
+              </button>
+              <button class="btn btn-outline-primary-custom" id="test-all-button" style="display: none;">
+                <i class="bi bi-lightning me-2"></i>Test All Resolutions
+              </button>
             </div>
 
             <div class="position-relative d-inline-block">
@@ -487,18 +497,6 @@
                 <div>Current: <span id="current-resolution">0×0</span></div>
                 <div>Aspect: <span id="current-aspect">0:0</span></div>
               </div>
-            </div>
-
-            <div class="resolution-controls">
-              <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
-                <option value="">Select camera for resolution test</option>
-              </select>
-              <button class="btn btn-primary-custom btn-lg" id="resolution-button">
-                <i class="bi bi-play me-2"></i>Start Resolution Test
-              </button>
-              <button class="btn btn-outline-primary-custom" id="test-all-button" style="display: none;">
-                <i class="bi bi-lightning me-2"></i>Test All Resolutions
-              </button>
             </div>
 
             <div class="current-resolution d-none" id="current-resolution-display">
@@ -992,6 +990,7 @@
           'active': 'bi-check-circle-fill'
         };
 
+        resolutionStatus.classList.remove('d-none');
         resolutionStatus.className = `status-indicator status-${type}`;
         resolutionStatus.innerHTML = `<i class="${iconClasses[type]} me-2"></i>${message}`;
       }
@@ -1075,7 +1074,7 @@
         isTestingResolutions = false;
         testQueue = [];
         resolutionVideo.srcObject = null;
-        updateStatus('inactive', 'Click "Start Resolution Test" to discover your webcam\'s supported resolutions');
+        resolutionStatus.classList.add('d-none');
         resolutionButton.innerHTML = '<i class="bi bi-play me-2"></i>Start Resolution Test';
 
         // Hide displays
