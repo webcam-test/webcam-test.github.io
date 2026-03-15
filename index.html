@@ -408,7 +408,7 @@
       <!-- Page Title -->
       <div class="text-center mb-4">
         <h1 class="display-5 fw-bold text-dark mb-3">Test Your Webcam Online — Check Camera Quality</h1>
-        <p class="lead text-muted">Click the <strong>Test my webcam</strong> button to run <strong>WebcamTest</strong> — check your <em>camera resolution</em>, <em>frame rate</em>, and <em>video quality</em> right in your browser. Your camera's <em>FPS performance</em>, <em>autofocus capability</em>, and <em>device name</em> are displayed in a full readout — no downloads, no sign-up required.</p>
+        <p class="lead text-muted">Click the <strong>Test my webcam</strong> button to check your <em>camera resolution</em>, <em>frame rate</em>, and <em>video quality</em> right in your browser. Your camera's <em>FPS performance</em>, <em>autofocus capability</em>, and <em>device name</em> are displayed in a full readout — no downloads, no sign-up required.</p>
       </div>
 
           <div class="text-center mb-3">
@@ -439,12 +439,12 @@
             <div class="status-indicator status-inactive d-none" id="status-indicator"></div>
 
             <div class="camera-controls mb-3">
-              <select class="form-select" style="max-width: 300px;" disabled id="camera-select">
-                <option value="">Select camera</option>
-              </select>
               <button class="btn btn-primary-custom btn-lg" id="test-button">
                 <i class="bi bi-camera-video-fill me-2"></i>Test my webcam
               </button>
+              <select class="form-select" style="max-width: 300px;" disabled id="camera-select">
+                <option value="">Select camera</option>
+              </select>
             </div>
 
             <video id="video-preview" autoplay muted playsinline></video>
@@ -614,8 +614,8 @@
             <h4 class="text-primary mb-3">
               <i class="bi bi-laptop me-2"></i>Desktop & Laptop Testing
             </h4>
-            <p><strong>Built-in Webcams:</strong> Modern laptops feature integrated cameras with HD resolution and advanced image processing. Test functionality, check for hardware conflicts, and verify video driver compatibility.</p>
-            <p><strong>External USB Webcams:</strong> High-quality USB cameras, 4K webcams, and professional streaming setups. <a href="/resolution-tester" class="text-decoration-none">Our tool measures resolution up to 4K</a>, frame rates to 60fps, and latency performance for real-time monitoring.</p>
+            <p><strong>Built-in Webcams:</strong> Modern laptops feature integrated cameras with HD resolution and advanced image processing. <a href="/show-webcam" class="text-decoration-none">View your webcam's detailed specs</a> to check for hardware conflicts and verify video driver compatibility.</p>
+            <p><strong>External USB Webcams:</strong> High-quality USB cameras, 4K webcams, and professional streaming setups. Our tool measures resolution up to 4K, frame rates to 60fps, and latency performance for real-time monitoring.</p>
             <ul class="list-unstyled mt-3">
               <li class="mb-2">
                 <i class="bi bi-check text-success me-2"></i>Windows camera driver compatibility
@@ -687,12 +687,12 @@
             <h5 class="text-primary mb-3">
               <i class="bi bi-display me-2"></i>Resolution Testing
             </h5>
-            <p>Test your webcam's maximum resolution capabilities from 480p to 4K. Identify optimal resolution settings for different use cases like video calls, streaming, or content creation.</p>
+            <p><a href="/resolution-tester" class="text-decoration-none">Test your webcam's maximum resolution capabilities</a> from 480p to 4K. Identify optimal resolution settings for different use cases like video calls, streaming, or content creation.</p>
 
             <h5 class="text-primary mb-3">
               <i class="bi bi-speedometer2 me-2"></i>Frame Rate Analysis
             </h5>
-            <p>Measure your camera's frame rate performance at different resolutions. Test 60fps, 30fps, and 24fps capabilities for smooth video playback and recording.</p>
+            <p><a href="/fps-checker" class="text-decoration-none">Measure your camera's frame rate performance</a> at different resolutions. Test 60fps, 30fps, and 24fps capabilities for smooth video playback and recording.</p>
           </div>
           <div class="col-md-6">
             <h5 class="text-primary mb-3">
@@ -722,7 +722,7 @@
           <div class="feature-card h-100 text-center">
             <i class="bi bi-camera-video display-4 text-primary mb-3"></i>
             <h4 class="text-primary">Remote Work & Video Conferencing</h4>
-            <p>Essential for remote workers and business users. Test camera quality before important meetings, verify video clarity, and ensure professional appearance.</p>
+            <p>Essential for remote workers and business users. Test camera quality before important meetings, use the <a href="/mirror" class="text-decoration-none">webcam mirror</a> to verify video clarity, and ensure professional appearance.</p>
             <ul class="list-unstyled text-start">
               <li class="mb-2">
                 <i class="bi bi-check text-success me-2"></i>Pre-meeting camera verification
@@ -744,7 +744,7 @@
           <div class="feature-card h-100 text-center">
             <i class="bi bi-broadcast display-4 text-primary mb-3"></i>
             <h4 class="text-primary">Content Creation & Streaming</h4>
-            <p>Critical for YouTubers, streamers, and content creators. Verify video quality, test different camera angles, and optimize settings for audience engagement.</p>
+            <p>Critical for YouTubers, streamers, and content creators. Verify video quality, <a href="/take-photo" class="text-decoration-none">take a photo with your webcam</a> to test different camera angles, and optimize settings for audience engagement.</p>
             <ul class="list-unstyled text-start">
               <li class="mb-2">
                 <i class="bi bi-check text-success me-2"></i>Streaming quality verification
