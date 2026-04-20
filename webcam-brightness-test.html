@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Brightness Test — Measure and Adjust Camera Brightness | WebcamTest</title>
+  <meta name="description" content="Test your webcam brightness and exposure online. Measure your camera's brightness level in real time and see if your setup is too dark, too bright, or just right.">
+  <meta content="webcam brightness test, camera brightness test, webcam exposure test" name="keywords">
+
+  <link href="https://webcam-test.github.io/webcam-brightness-test" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .tool-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .tool-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    #tool-video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      min-height: 400px;
+      border-radius: 10px;
+      border: 3px solid var(--border-color);
+      background-color: #000000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-testing {
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .tool-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 { color: white; margin-bottom: 1rem; }
+    .footer p { color: #adb5bd; }
+    .footer .text-white { color: #adb5bd !important; }
+    .footer .text-white:hover { color: white !important; }
+
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .tool-section { padding: 1rem 0; min-height: auto; }
+      .tool-container { padding: 1rem; margin: 0.5rem; }
+      #tool-video { min-height: 250px; }
+      .tool-controls { flex-direction: column; align-items: stretch; }
+      .tool-controls .btn, .tool-controls .form-select { width: 100%; margin-bottom: 0.5rem; }
+      .feature-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Tool Section -->
+<section class="tool-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">Webcam Brightness Test — Measure Your Camera Exposure</h1>
+      <p class="lead text-muted">Click <strong>Start Brightness Test</strong> to measure your <strong>webcam brightness</strong> in real time. The tool reads pixel luminance from your live camera feed and shows whether your setup is <em>too dark</em>, <em>well-lit</em>, or <em>overexposed</em>. See a live histogram and brightness score, then adjust your lighting to optimise your video for calls and streaming. Check the <a href="/" class="text-decoration-none">webcam test</a> for a full camera check.</p>
+    </div>
+
+    <div class="text-center mb-3">
+      <ins class="adsbygoogle" id="adsense-header"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="6562139351"></ins>
+      <script>
+        (function(){
+          var ins = document.getElementById('adsense-header');
+          if(window.innerWidth >= 768){
+            ins.style.display='inline-block';
+            ins.style.width='728px';
+            ins.style.height='90px';
+          } else {
+            ins.style.display='inline-block';
+            ins.style.width='300px';
+            ins.style.height='100px';
+          }
+          (adsbygoogle=window.adsbygoogle||[]).push({});
+        })();
+      </script>
+    </div>
+
+    <div class="row">
+      <!-- Main Tool Container -->
+      <div class="col-lg-8">
+        <div class="tool-container">
+          <div class="status-indicator status-inactive d-none" id="tool-status"></div>
+
+          <div class="tool-controls mb-3">
+            <button class="btn btn-primary-custom btn-lg" id="brightness-button">
+              <i class="bi bi-sun me-2"></i>Start Brightness Test
+            </button>
+            <select class="form-select" disabled id="camera-select" style="max-width:250px">
+              <option value="">Select camera</option>
+            </select>
+          </div>
+
+          <video autoplay id="tool-video" muted playsinline></video>
+
+          <!-- Brightness Meter -->
+          <div class="d-none mt-3" id="brightness-meter">
+            <!-- Overall Brightness -->
+            <div class="p-3 rounded border mb-2" style="background:var(--light-bg);">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-semibold">Brightness Level</span>
+                <span class="fw-bold text-primary fs-5" id="brightness-value">—</span>
+              </div>
+              <div class="progress" style="height:20px;">
+                <div class="progress-bar" id="brightness-bar" role="progressbar" style="width:0%;background:linear-gradient(to right,#0066cc,#ffc107,#dc3545);"></div>
+              </div>
+              <div class="small text-muted mt-1" id="brightness-label">—</div>
+            </div>
+            <!-- RGB Channel Readings -->
+            <div class="row g-2">
+              <div class="col-4">
+                <div class="p-2 rounded border text-center" style="background:var(--light-bg);">
+                  <div class="fw-bold text-danger fs-5" id="channel-r">—</div>
+                  <div class="small text-muted">Red</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="p-2 rounded border text-center" style="background:var(--light-bg);">
+                  <div class="fw-bold text-success fs-5" id="channel-g">—</div>
+                  <div class="small text-muted">Green</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="p-2 rounded border text-center" style="background:var(--light-bg);">
+                  <div class="fw-bold text-primary fs-5" id="channel-b">—</div>
+                  <div class="small text-muted">Blue</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5426315045205785"
+               data-ad-slot="6837554954"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <!-- Sidebar Info Panel -->
+      <div class="col-lg-4">
+
+        <!-- Brightness Guide Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-sun text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Brightness Guide</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:#1a1a2e;min-width:60px;">0–20</span>
+              <span>Very Dark</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:#4a4e69;min-width:60px;">21–40</span>
+              <span>Dark</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--success-color);min-width:60px;">41–70</span>
+              <span>Optimal</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--warning-color);color:#000;min-width:60px;">71–85</span>
+              <span>Bright</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--danger-color);min-width:60px;">86–100</span>
+              <span>Overexposed</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lighting Tips Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-lightbulb text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Lighting Tips</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Face a window or light source
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Add a ring light for even exposure
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Avoid backlighting from windows behind you
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Use warm or neutral colour temperature bulbs
+            </li>
+          </ul>
+        </div>
+
+        <!-- Why Brightness Matters Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-camera-video text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Why Brightness Matters</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Better video call image quality
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Correct exposure for recordings
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Improved FPS in low-light conditions
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Reduced noise in darker scenes
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Sections -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Use the Webcam Brightness Test</h2>
+      <p>The <strong>webcam brightness test</strong> uses the browser's native camera API to read pixel luminance in real time. All processing happens locally — no video is uploaded or stored anywhere.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Start Brightness Test"</h3>
+              <p class="mb-0 text-muted">Allow camera access. Your live feed appears immediately. The brightness analyser begins reading luminance every 500 milliseconds.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Watch the Brightness Bar</h3>
+              <p class="mb-0 text-muted">The progress bar fills from left (dark) to right (bright). The label below tells you whether your setup is very dark, dark, optimal, bright, or overexposed.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Check RGB Channel Readings</h3>
+              <p class="mb-0 text-muted">The three channel values (Red, Green, Blue) show the average of each colour in your frame — useful for spotting colour casts caused by artificial lighting.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Adjust Your Lighting and Re-Test</h3>
+              <p class="mb-0 text-muted">Move a lamp, adjust blinds, or reposition the camera while the test runs. Watch the brightness level respond in real time as you make changes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>What Does Webcam Brightness Mean?</h2>
+      <p>Brightness in webcam terms refers to the average luminance of your camera's image — how light or dark the overall frame appears. It is measured from the raw pixel values captured by the camera sensor before any display processing takes place.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-moon me-2"></i>Too Dark — What Happens</h3>
+          <p>When brightness is below 20, your camera is fighting to gather enough light. The auto-exposure circuit slows the shutter speed, which reduces frame rate and introduces motion blur. Noise increases dramatically as the sensor boosts its gain to compensate. Faces become hard to see on video calls, and video call platforms like Zoom may trigger a low-light warning. Adding a single desk lamp or turning on an overhead light is usually enough to resolve this.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-brightness-high me-2"></i>Overexposed — What Happens</h3>
+          <p>When brightness exceeds 85, your camera is clipping highlights — the bright areas of the image are solid white with no detail. This typically happens when a strong light source (a window, a lamp, a ring light at full power) is shining directly at the camera or positioned behind you. Reduce the light intensity, angle the light slightly off-axis, or add a diffuser in front of the light source. The optimal range of 40–70 keeps detail in both shadows and highlights.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-lightbulb"></i>Practical Lighting Setup for Webcams</h2>
+      <p>Good webcam lighting does not require expensive equipment. The goal is consistent, even illumination that keeps your brightness score in the 40–70 range across different times of day.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-sun me-2"></i>Natural Light</h3>
+          <p>Natural daylight from a window is excellent — but only if the window is in front of you, not behind. Sit facing the window rather than with your back to it. The drawback is variability: clouds passing overhead or the sun moving across the sky can change your brightness reading significantly throughout the day. Run the brightness test during your typical call times to check consistency.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-circle me-2"></i>Ring Light</h3>
+          <p>A ring light provides soft, even front lighting that minimises harsh shadows and keeps brightness consistent regardless of the time of day. Position the ring light directly in front of you at eye level, with your camera mounted in the centre of the ring. Start at 50% brightness — the test will show you in real time if you need to increase or decrease intensity to hit the optimal 40–70 range.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-lamp me-2"></i>Desk Lamp</h3>
+          <p>A standard desk lamp pointing at your face from a 45-degree angle (the "Rembrandt position") is an effective and inexpensive option. Use a bulb rated at 5000–6500K (daylight colour temperature) for the most natural-looking light. Avoid placing the lamp directly above or below your face — top-down light creates deep shadows under the eyes, while bottom-up light looks unnatural.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam Brightness Test</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                What brightness level is ideal for a webcam?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                The optimal brightness range for a webcam is <strong>41–70</strong> on a 0–100 scale as measured by this tool. In this range, your camera has enough light to minimise noise and maintain a good frame rate, while avoiding the highlight clipping that occurs at overexposure. A score of 50–60 is the sweet spot for most video call and streaming scenarios.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                Does the brightness test affect my camera settings?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                No. The tool only reads pixel data from the camera's live video stream — it does not write back to any camera settings. Your brightness, exposure, and white balance controls in your camera software or operating system remain completely unchanged. The test is purely observational.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                Why do the R, G, and B channel values differ so much?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Under natural daylight, R, G, and B values should be relatively close to each other. Large differences indicate a colour cast: if red is significantly higher than the others, your lighting is warm (tungsten bulbs, candles, or sunset light). If blue is much higher, the light is cool (overcast daylight or a blue-tinted LED). If green dominates, you may be under fluorescent lighting. Use these readings alongside the <a href="/webcam-color-test" class="text-decoration-none">webcam color test</a> for a full colour analysis.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                How does brightness affect webcam FPS?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Many webcams use automatic exposure: in low light, the camera increases the exposure time (slows the shutter) to gather more light. Because each frame takes longer to capture, the maximum achievable frame rate drops. A camera rated at 30 fps in good light may only deliver 10–15 fps in a dark room. Improving your brightness score from the "Very Dark" range to "Optimal" can directly increase your camera's frame rate. Check your frame rate with the <a href="/fps-checker" class="text-decoration-none">FPS checker</a>.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                Does the test work on mobile devices?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Yes. The <strong>webcam brightness test</strong> works on Android and iOS using Chrome, Safari, and Firefox. On mobile, you can switch between the front and rear cameras using the dropdown. Mobile phone cameras typically have better low-light performance than laptop built-in cameras due to larger sensors and wider apertures, so the brightness scores for mobile rear cameras will often be higher in equivalent conditions.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="py-3" role="complementary">
+  <div class="container text-center">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5426315045205785"
+         data-ad-slot="5068825756"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</aside>
+
+<!-- Comments Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h3 class="mb-4"><i class="bi bi-chat-dots-fill me-2 text-primary"></i>Comments &amp; Feedback</h3>
+        <script defer src="https://comments.tickspike.com/comentario.js"></script>
+        <comentario-comments theme="light"></comentario-comments>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">
+          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        </h5>
+        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+        <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">Tools</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+          <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+          <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+          <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+          <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+          <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+        </div>
+      </div>
+      <div class="col-md-4 text-center text-md-start">
+        <h5 class="mb-3">Info</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+          <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toolVideo = document.getElementById('tool-video');
+    const cameraSelect = document.getElementById('camera-select');
+    const brightnessButton = document.getElementById('brightness-button');
+    const toolStatus = document.getElementById('tool-status');
+    const brightnessMeter = document.getElementById('brightness-meter');
+
+    let currentStream = null;
+    let analysisInterval = null;
+    const offscreenCanvas = document.createElement('canvas');
+    offscreenCanvas.width = 320;
+    offscreenCanvas.height = 240;
+    const ctx = offscreenCanvas.getContext('2d');
+
+    function updateStatus(type, message) {
+      const icons = { inactive: 'bi-sun', testing: 'bi-hourglass-split', active: 'bi-check-circle-fill' };
+      toolStatus.classList.remove('d-none');
+      toolStatus.className = 'status-indicator status-' + type;
+      toolStatus.innerHTML = '<i class="' + icons[type] + ' me-2"></i>' + message;
+    }
+
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(d => d.kind === 'videoinput');
+        if (!videoDevices.length) return;
+        cameraSelect.innerHTML = '';
+        videoDevices.forEach((d, i) => {
+          const opt = document.createElement('option');
+          opt.value = d.deviceId;
+          opt.text = d.label || 'Camera ' + (i + 1);
+          cameraSelect.appendChild(opt);
+        });
+        cameraSelect.disabled = false;
+      } catch (e) { console.error(e); }
+    }
+
+    async function startTest() {
+      try {
+        updateStatus('testing', 'Accessing camera...');
+        const constraints = { video: { width: { ideal: 640 }, height: { ideal: 480 } } };
+        if (cameraSelect.value) constraints.video.deviceId = { exact: cameraSelect.value };
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        await enumerateDevices();
+        toolVideo.srcObject = currentStream;
+        brightnessMeter.classList.remove('d-none');
+        updateStatus('active', 'Measuring brightness — updates every 500ms');
+        brightnessButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop Test';
+        analysisInterval = setInterval(analyseFrame, 500);
+      } catch (e) {
+        console.error(e);
+        updateStatus('inactive', 'Could not access camera. Check permissions and try again.');
+      }
+    }
+
+    function stopTest() {
+      if (currentStream) { currentStream.getTracks().forEach(t => t.stop()); currentStream = null; }
+      if (analysisInterval) { clearInterval(analysisInterval); analysisInterval = null; }
+      toolVideo.srcObject = null;
+      toolStatus.classList.add('d-none');
+      brightnessMeter.classList.add('d-none');
+      brightnessButton.innerHTML = '<i class="bi bi-sun me-2"></i>Start Brightness Test';
+    }
+
+    function analyseFrame() {
+      if (!currentStream) return;
+      ctx.drawImage(toolVideo, 0, 0, 320, 240);
+      const imageData = ctx.getImageData(0, 0, 320, 240);
+      const data = imageData.data;
+      const pixels = data.length / 4;
+
+      let sumR = 0, sumG = 0, sumB = 0;
+      for (let i = 0; i < pixels; i++) {
+        sumR += data[i * 4];
+        sumG += data[i * 4 + 1];
+        sumB += data[i * 4 + 2];
+      }
+
+      const avgR = sumR / pixels;
+      const avgG = sumG / pixels;
+      const avgB = sumB / pixels;
+      const luminance = 0.299 * avgR + 0.587 * avgG + 0.114 * avgB;
+      const brightness = Math.round((luminance / 255) * 100);
+
+      // Update brightness display
+      document.getElementById('brightness-value').textContent = brightness + '%';
+      document.getElementById('brightness-bar').style.width = brightness + '%';
+
+      // Label
+      let label;
+      if (brightness < 20) label = 'Very dark — add more light';
+      else if (brightness < 40) label = 'Dark — improve your lighting';
+      else if (brightness <= 70) label = 'Optimal lighting';
+      else if (brightness <= 85) label = 'Bright — slightly overlit';
+      else label = 'Overexposed — reduce direct light';
+      document.getElementById('brightness-label').textContent = label;
+
+      // Channel values (raw 0-255)
+      document.getElementById('channel-r').textContent = Math.round(avgR);
+      document.getElementById('channel-g').textContent = Math.round(avgG);
+      document.getElementById('channel-b').textContent = Math.round(avgB);
+    }
+
+    brightnessButton.addEventListener('click', () => {
+      currentStream ? stopTest() : startTest();
+    });
+
+    cameraSelect.addEventListener('change', () => {
+      if (currentStream) { stopTest(); setTimeout(startTest, 100); }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (currentStream) currentStream.getTracks().forEach(t => t.stop());
+    });
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      brightnessButton.disabled = true;
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

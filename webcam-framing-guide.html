@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Framing Guide — Rule of Thirds Camera Overlay | WebcamTest</title>
+  <meta name="description" content="Use the webcam framing guide to compose your shot with a rule-of-thirds overlay on your live camera feed. Visualise professional camera framing directly in your browser.">
+  <meta content="webcam framing guide, rule of thirds webcam, camera framing, webcam composition" name="keywords">
+
+  <link href="https://webcam-test.github.io/webcam-framing-guide" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    /* Header */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* Main Tool Section */
+    .tool-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .tool-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    #tool-video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      min-height: 400px;
+      border-radius: 10px;
+      border: 3px solid var(--border-color);
+      background-color: #000000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .tool-controls {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-testing {
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    /* Info Panel */
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    /* Advertisement Cards */
+    .ad-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .ad-card .card-header {
+      background-color: var(--light-bg);
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #adb5bd;
+    }
+
+    .footer .text-white {
+      color: #adb5bd !important;
+    }
+
+    .footer .text-white:hover {
+      color: white !important;
+    }
+
+    /* Form controls */
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .tool-section {
+        padding: 1rem 0;
+        min-height: auto;
+      }
+
+      .tool-container {
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+
+      #tool-video {
+        min-height: 250px;
+      }
+
+      .tool-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tool-controls .btn,
+      .tool-controls .form-select {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Tool Section -->
+<section class="tool-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">Webcam Framing Guide — Compose Your Shot with a Live Overlay</h1>
+      <p class="lead text-muted">Click <strong>Start Framing Guide</strong> and the <strong>webcam framing guide</strong> overlays a <em>rule-of-thirds grid</em>, <em>centre crosshair</em>, and <em>face position guide</em> on your live camera feed. Use it to compose your shot perfectly before a video call, stream, or recording. Try the <a href="/mirror" class="text-decoration-none">webcam mirror</a> to check your appearance without overlays.</p>
+    </div>
+
+          <div class="text-center mb-3">
+            <ins class="adsbygoogle" id="adsense-header"
+                 data-ad-client="ca-pub-5426315045205785"
+                 data-ad-slot="6562139351"></ins>
+            <script>
+                (function(){
+                    var ins = document.getElementById('adsense-header');
+                    if(window.innerWidth >= 768){
+                        ins.style.display='inline-block';
+                        ins.style.width='728px';
+                        ins.style.height='90px';
+                    } else {
+                        ins.style.display='inline-block';
+                        ins.style.width='300px';
+                        ins.style.height='100px';
+                    }
+                    (adsbygoogle=window.adsbygoogle||[]).push({});
+                })();
+            </script>
+          </div>
+
+    <div class="row">
+      <!-- Main Tool Container -->
+      <div class="col-lg-8">
+        <div class="tool-container">
+          <div class="status-indicator status-inactive d-none" id="tool-status">
+            <i class="bi bi-grid-3x3 me-2"></i>
+            <span></span>
+          </div>
+
+          <div class="tool-controls mb-3">
+            <button class="btn btn-primary-custom btn-lg" id="framing-button">
+              <i class="bi bi-grid-3x3 me-2"></i>Start Framing Guide
+            </button>
+            <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+              <option value="">Select camera</option>
+            </select>
+          </div>
+
+          <div class="d-none mt-3 d-flex flex-wrap gap-2 justify-content-center" id="guide-controls">
+            <button class="btn btn-sm btn-primary" id="toggle-thirds">
+              <i class="bi bi-grid-3x3 me-1"></i>Rule of Thirds
+            </button>
+            <button class="btn btn-sm btn-primary" id="toggle-center">
+              <i class="bi bi-crosshair me-1"></i>Centre Cross
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" id="toggle-face">
+              <i class="bi bi-person-circle me-1"></i>Face Guide
+            </button>
+          </div>
+
+          <canvas id="framing-canvas" style="display:none;width:100%;max-width:800px;height:auto;min-height:400px;border-radius:10px;border:3px solid var(--border-color);background:#000;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></canvas>
+          <video id="tool-video" autoplay muted playsinline style="display:none;"></video>
+        </div>
+
+          <div class="text-center mt-3">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5426315045205785"
+                 data-ad-slot="6837554954"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+      </div>
+
+      <!-- Sidebar Info Panel -->
+      <div class="col-lg-4">
+
+        <!-- Guide Overlays Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-grid-3x3 text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Guide Overlays</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Rule of Thirds</strong> — composition grid dividing the frame into 9 equal sections
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Centre Cross</strong> — crosshair marking the exact centre of the frame
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Face Guide</strong> — oval indicating the optimal face position area
+            </li>
+          </ul>
+        </div>
+
+        <!-- Framing Tips Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-lightbulb text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Framing Tips</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Position eyes along the top third horizontal line
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Centre framing works best for formal calls
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Off-centre framing adds a dynamic feel for creative content
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Leave adequate headroom above your head
+            </li>
+          </ul>
+        </div>
+
+        <!-- Why Framing Matters Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-star text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Why Framing Matters</h5>
+          </div>
+          <p class="mb-2 text-muted">Good camera framing projects professionalism on video calls, improves streaming thumbnails, and makes your content more engaging for viewers.</p>
+          <p class="mb-0 text-muted">A well-composed shot requires no expensive equipment — just the right camera position, which this guide helps you find instantly.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Sections -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Use the Webcam Framing Guide — Step by Step</h2>
+      <p>The <strong>webcam framing guide</strong> draws composition overlays directly onto a canvas element displaying your live camera feed. All overlays are rendered locally in your browser — no video data is processed on any server.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Start Framing Guide"</h3>
+              <p class="mb-0 text-muted">Your browser requests camera permission. Click <strong>Allow</strong>. Your live feed appears with the rule-of-thirds grid and centre cross overlaid by default.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Position Your Camera</h3>
+              <p class="mb-0 text-muted">Adjust your camera height and angle until your eyes align with the upper horizontal line of the rule-of-thirds grid. This creates an engaging, professional eye level.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Toggle Overlays</h3>
+              <p class="mb-0 text-muted">Click <strong>Rule of Thirds</strong>, <strong>Centre Cross</strong>, or <strong>Face Guide</strong> buttons to toggle each overlay on or off independently. Combine them as needed.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Enable the Face Guide</h3>
+              <p class="mb-0 text-muted">Click <strong>Face Guide</strong> to display an oval guide showing where your face should sit for optimal framing. Position your head inside the oval for the best composition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>The Rule of Thirds — Why It Works</h2>
+      <p>The <strong>rule of thirds</strong> is a fundamental composition principle used in photography, film, and design. It divides the frame into a 3×3 grid of nine equal sections. The four points where the grid lines intersect are called power points — these are the most visually engaging positions to place your subject because they align with how the human eye naturally scans an image.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-people me-2"></i>For Video Calls and Meetings</h3>
+          <p>Position your eyes along the upper horizontal third line with your face roughly centred horizontally. This creates a natural, engaging composition that looks professional on Zoom, Teams, and Google Meet. Avoid placing your eyes in the top 20% of the frame (too much headroom) or below the vertical midpoint (too low — looks like you are leaning away).</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-broadcast me-2"></i>For Streaming and Content Creation</h3>
+          <p>Streamers often position themselves off-centre — placing their face at one of the left or right power points — to leave room for a game capture, screen share, or graphic on the opposite side of the frame. The <strong>camera framing</strong> guide makes it easy to find these positions precisely without guessing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-star"></i>Why Good Webcam Framing Matters for Professional Appearance</h2>
+      <p>Camera framing is one of the most impactful and most overlooked aspects of video call quality. A well-framed shot communicates attentiveness and preparation — it signals that you have thought about how you present yourself on camera. Poor framing — ceiling shots, extreme close-ups, or off-axis angles — is distracting for other participants and detracts from your message.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-briefcase me-2"></i>Professional Video Calls</h3>
+          <p>In business meetings and job interviews conducted over video, your framing is part of your first impression. Eye-level framing — camera at eye height, eyes at the upper third — is the equivalent of good posture in a face-to-face meeting. Use the <strong>webcam framing guide</strong> to lock in this position before any important call.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-play-btn me-2"></i>Video Content and Tutorials</h3>
+          <p>For YouTube videos, online courses, and tutorial recordings, consistent framing across your content builds a professional identity. The rule-of-thirds overlay helps you replicate the exact same camera position each time you sit down to record, ensuring all your videos have a cohesive look.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-camera2 me-2"></i>Streaming Thumbnails</h3>
+          <p>Streaming platforms show a thumbnail of your webcam feed to viewers. A well-composed, well-lit frame makes your stream look more professional in browser previews and VOD listings. Good <strong>camera framing</strong> is the starting point for a high-quality stream regardless of the resolution or bitrate you use.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam Framing Guide</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                What is the rule of thirds in webcam framing?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                The <strong>rule of thirds</strong> divides the frame into a 3×3 grid. Placing your eyes along the top horizontal line creates a naturally engaging composition. It is the most widely used framing principle in photography and video because it avoids placing the subject in the dead centre of the frame, which can feel static — while keeping the subject clearly prominent in the upper portion of the shot.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
+                Where should I position my eyes in the frame?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                For professional video calls, position your eyes along the upper horizontal line of the rule-of-thirds grid — roughly one third from the top of the frame. This leaves a natural amount of headroom above your head and avoids the uncomfortable look of eyes positioned at the very top edge of the frame. The <strong>webcam framing guide</strong> overlays this line directly so you can position your camera precisely.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
+                Does the framing guide record my video?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                No. The <strong>webcam framing guide</strong> runs entirely in your browser. No video data is saved, stored, or uploaded at any point. The overlays are drawn locally on a canvas element and are only visible in this browser tab. Your camera feed is completely private.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
+                What does the Face Guide oval show?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                The Face Guide draws an oval centred around the upper portion of the frame — the area where your face should sit for an ideal portrait-style composition. It is a rough target zone rather than an exact measurement. Position your face so it fills the oval comfortably, with your eyes near the top of the oval. This is a useful reference for users setting up a camera position for the first time.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container text-center my-3">
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:300px;height:250px"
+       data-ad-client="ca-pub-5426315045205785"
+       data-ad-slot="5068825756"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- Comments Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h3 class="mb-4"><i class="bi bi-chat-dots-fill me-2 text-primary"></i>Comments &amp; Feedback</h3>
+        <script defer src="https://comments.tickspike.com/comentario.js"></script>
+        <comentario-comments theme="light"></comentario-comments>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+          <h5 class="mb-3">
+            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+          </h5>
+          <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+          <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+          <h5 class="mb-3">Tools</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+            <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+            <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+            <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+            <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+            <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center text-md-start">
+          <h5 class="mb-3">Info</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+            <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toolVideo = document.getElementById('tool-video');
+    const framingCanvas = document.getElementById('framing-canvas');
+    const cameraSelect = document.getElementById('camera-select');
+    const framingButton = document.getElementById('framing-button');
+    const guideControls = document.getElementById('guide-controls');
+    const toggleThirds = document.getElementById('toggle-thirds');
+    const toggleCenter = document.getElementById('toggle-center');
+    const toggleFace = document.getElementById('toggle-face');
+    const toolStatus = document.getElementById('tool-status');
+
+    let currentStream = null;
+    let animationId = null;
+    let ctx = null;
+    let showThirds = true;
+    let showCenter = true;
+    let showFace = false;
+
+    function updateStatus(type, message) {
+      toolStatus.classList.remove('d-none');
+      toolStatus.className = `status-indicator status-${type}`;
+      toolStatus.innerHTML = `<i class="bi bi-grid-3x3 me-2"></i>${message}`;
+    }
+
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(device => device.kind === 'videoinput');
+        if (videoDevices.length === 0) return;
+        cameraSelect.innerHTML = '';
+        videoDevices.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          option.text = device.label || `Camera ${index + 1}`;
+          cameraSelect.appendChild(option);
+        });
+        cameraSelect.disabled = false;
+      } catch (error) {
+        console.error('Error enumerating devices:', error);
+      }
+    }
+
+    function drawThirds() {
+      const w = framingCanvas.width;
+      const h = framingCanvas.height;
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.lineWidth = 1;
+
+      // Vertical lines at 1/3 and 2/3
+      ctx.beginPath();
+      ctx.moveTo(w / 3, 0);
+      ctx.lineTo(w / 3, h);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo((w / 3) * 2, 0);
+      ctx.lineTo((w / 3) * 2, h);
+      ctx.stroke();
+
+      // Horizontal lines at 1/3 and 2/3
+      ctx.beginPath();
+      ctx.moveTo(0, h / 3);
+      ctx.lineTo(w, h / 3);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, (h / 3) * 2);
+      ctx.lineTo(w, (h / 3) * 2);
+      ctx.stroke();
+    }
+
+    function drawCenterCross() {
+      const w = framingCanvas.width;
+      const h = framingCanvas.height;
+      ctx.strokeStyle = 'rgba(0,200,255,0.7)';
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      ctx.moveTo(w / 2, 0);
+      ctx.lineTo(w / 2, h);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, h / 2);
+      ctx.lineTo(w, h / 2);
+      ctx.stroke();
+    }
+
+    function drawFaceGuide() {
+      const w = framingCanvas.width;
+      const h = framingCanvas.height;
+      const cx = w / 2;
+      const cy = h / 3;
+      const rx = w * 0.18;
+      const ry = h * 0.28;
+
+      ctx.strokeStyle = 'rgba(255,200,0,0.6)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    function drawFrame() {
+      if (!currentStream || toolVideo.readyState < 2) {
+        animationId = requestAnimationFrame(drawFrame);
+        return;
+      }
+
+      const vw = toolVideo.videoWidth || 640;
+      const vh = toolVideo.videoHeight || 480;
+
+      if (framingCanvas.width !== vw || framingCanvas.height !== vh) {
+        framingCanvas.width = vw;
+        framingCanvas.height = vh;
+      }
+
+      ctx.filter = 'none';
+      ctx.drawImage(toolVideo, 0, 0, framingCanvas.width, framingCanvas.height);
+
+      if (showThirds) drawThirds();
+      if (showCenter) drawCenterCross();
+      if (showFace) drawFaceGuide();
+
+      animationId = requestAnimationFrame(drawFrame);
+    }
+
+    async function startFramingGuide() {
+      try {
+        updateStatus('testing', 'Starting camera...');
+
+        const constraints = {
+          video: true,
+          audio: false
+        };
+
+        if (cameraSelect.value) {
+          constraints.video = { deviceId: { exact: cameraSelect.value } };
+        }
+
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        toolVideo.srcObject = currentStream;
+
+        await enumerateDevices();
+
+        toolVideo.onloadedmetadata = function () {
+          framingCanvas.width = toolVideo.videoWidth || 640;
+          framingCanvas.height = toolVideo.videoHeight || 480;
+          ctx = framingCanvas.getContext('2d');
+          framingCanvas.style.display = 'block';
+          guideControls.classList.remove('d-none');
+          animationId = requestAnimationFrame(drawFrame);
+          updateStatus('active', 'Framing guide active — toggle overlays below');
+          framingButton.innerHTML = '<i class="bi bi-stop-circle me-2"></i>Stop Framing Guide';
+        };
+
+      } catch (error) {
+        console.error('Error starting framing guide:', error);
+        updateStatus('inactive', 'Error accessing camera. Please check permissions and try again.');
+      }
+    }
+
+    function stopFramingGuide() {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+        currentStream = null;
+      }
+      toolVideo.srcObject = null;
+      framingCanvas.style.display = 'none';
+      guideControls.classList.add('d-none');
+      toolStatus.classList.add('d-none');
+      framingButton.innerHTML = '<i class="bi bi-grid-3x3 me-2"></i>Start Framing Guide';
+    }
+
+    framingButton.addEventListener('click', function () {
+      if (currentStream) {
+        stopFramingGuide();
+      } else {
+        startFramingGuide();
+      }
+    });
+
+    function wireToggle(button, getter, setter) {
+      button.addEventListener('click', function () {
+        const newVal = !getter();
+        setter(newVal);
+        if (newVal) {
+          button.classList.remove('btn-outline-secondary');
+          button.classList.add('btn-primary');
+        } else {
+          button.classList.remove('btn-primary');
+          button.classList.add('btn-outline-secondary');
+        }
+      });
+    }
+
+    wireToggle(toggleThirds, function () { return showThirds; }, function (v) { showThirds = v; });
+    wireToggle(toggleCenter, function () { return showCenter; }, function (v) { showCenter = v; });
+    wireToggle(toggleFace, function () { return showFace; }, function (v) { showFace = v; });
+
+    cameraSelect.addEventListener('change', function () {
+      if (currentStream) {
+        stopFramingGuide();
+        setTimeout(startFramingGuide, 100);
+      }
+    });
+
+    window.addEventListener('beforeunload', function () {
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+      }
+    });
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      framingButton.disabled = true;
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

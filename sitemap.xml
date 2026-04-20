@@ -49,6 +49,94 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Webcam Recorder -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-recorder</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Webcam Effects -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-effects</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Webcam GIF Maker -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-gif</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Timelapse -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-timelapse</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Quality Test -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-quality-test</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Zoom Test -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-zoom-test</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Brightness Test -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-brightness-test</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Color Test -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-color-test</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Camera Comparison -->
+  <url>
+    <loc>https://webcam-test.github.io/camera-comparison</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Lighting Test -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-lighting-test</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Webcam Framing Guide -->
+  <url>
+    <loc>https://webcam-test.github.io/webcam-framing-guide</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- About Page -->
   <url>
     <loc>https://webcam-test.github.io/about</loc>

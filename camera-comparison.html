@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Comparison Tool — Compare Two Cameras Side by Side | WebcamTest</title>
+  <meta name="description" content="Compare two webcams side by side online. Select any two connected cameras and view them simultaneously to compare video quality, colour, and resolution — free and private.">
+  <meta content="webcam comparison tool, compare webcams online, camera comparison, side by side webcam" name="keywords">
+
+  <link href="https://webcam-test.github.io/camera-comparison" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    /* Header */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* Main Tool Section */
+    .tool-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .tool-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-testing {
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    /* Advertisement Cards */
+    .ad-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .ad-card .card-header {
+      background-color: var(--light-bg);
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #adb5bd;
+    }
+
+    .footer .text-white {
+      color: #adb5bd !important;
+    }
+
+    .footer .text-white:hover {
+      color: white !important;
+    }
+
+    /* Form controls */
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .tool-section {
+        padding: 1rem 0;
+        min-height: auto;
+      }
+
+      .tool-container {
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Tool Section -->
+<section class="tool-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">Webcam Comparison Tool — Compare Two Cameras Side by Side</h1>
+      <p class="lead text-muted">Select two cameras and click <strong>Start Comparison</strong> to view them <em>side by side</em> with the <strong>webcam comparison tool</strong>. Compare video quality, colour accuracy, and resolution between your built-in laptop camera and an external USB webcam — or any two cameras connected to your device. All streams are processed locally; nothing is uploaded. Run a <a href="/" class="text-decoration-none">webcam test</a> first to confirm both cameras are detected.</p>
+    </div>
+
+    <div class="text-center mb-3">
+      <ins class="adsbygoogle" id="adsense-header"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="6562139351"></ins>
+      <script>
+        (function(){
+          var ins = document.getElementById('adsense-header');
+          if(window.innerWidth >= 768){
+            ins.style.display='inline-block';
+            ins.style.width='728px';
+            ins.style.height='90px';
+          } else {
+            ins.style.display='inline-block';
+            ins.style.width='300px';
+            ins.style.height='100px';
+          }
+          (adsbygoogle=window.adsbygoogle||[]).push({});
+        })();
+      </script>
+    </div>
+
+    <!-- Full-width tool container -->
+    <div class="tool-container">
+      <div class="text-center mb-3">
+        <div class="status-indicator status-inactive" id="compare-status">
+          <i class="bi bi-layout-split me-2"></i>
+          <span>Select two cameras and click Start Comparison</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="d-flex gap-3 flex-wrap justify-content-center mb-3">
+        <select class="form-select" id="camera-a-select" style="max-width:250px;">
+          <option value="">Camera A — Select</option>
+        </select>
+        <select class="form-select" id="camera-b-select" style="max-width:250px;">
+          <option value="">Camera B — Select</option>
+        </select>
+        <button class="btn btn-primary-custom btn-lg" id="compare-button">
+          <i class="bi bi-layout-split me-2"></i>Start Comparison
+        </button>
+      </div>
+
+      <!-- Side-by-side video feeds -->
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-2 rounded border text-center" style="background:#000;">
+            <p class="text-white fw-semibold mb-1 pt-1">Camera A</p>
+            <video id="video-a" autoplay muted playsinline style="width:100%;height:auto;min-height:280px;border-radius:8px;background:#000;"></video>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 rounded border text-center" style="background:#000;">
+            <p class="text-white fw-semibold mb-1 pt-1">Camera B</p>
+            <video id="video-b" autoplay muted playsinline style="width:100%;height:auto;min-height:280px;border-radius:8px;background:#000;"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Single-camera notice -->
+      <div class="alert alert-warning mt-3 d-none" id="single-camera-notice" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>Only one camera was detected. Connect a second camera to use the comparison feature.
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="6837554954"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</section>
+
+<!-- Feature Cards Row -->
+<section class="py-4">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card h-100 text-center">
+          <i class="bi bi-laptop fs-2 text-primary mb-3 d-block"></i>
+          <h3 class="h5 fw-bold mb-2">Built-in vs USB</h3>
+          <p class="text-muted mb-0">Compare your laptop's built-in camera to a dedicated USB webcam and see which delivers better colour accuracy and sharpness side by side.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card h-100 text-center">
+          <i class="bi bi-arrows-angle-expand fs-2 text-primary mb-3 d-block"></i>
+          <h3 class="h5 fw-bold mb-2">Test Multiple Angles</h3>
+          <p class="text-muted mb-0">Position cameras at different angles or distances and compare the live feeds simultaneously to find the best framing for calls or recordings.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card h-100 text-center">
+          <i class="bi bi-palette fs-2 text-primary mb-3 d-block"></i>
+          <h3 class="h5 fw-bold mb-2">Quality Comparison</h3>
+          <p class="text-muted mb-0">Use the side-by-side view to spot differences in colour reproduction, sharpness, dynamic range, and low-light performance between two cameras.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Sections -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Use the Webcam Comparison Tool — Step by Step</h2>
+      <p>The <strong>webcam comparison tool</strong> runs entirely in your browser using the standard WebRTC media API. No software, no account, no upload — both camera streams are handled locally and displayed side by side in real time.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Select Camera A and Camera B</h3>
+              <p class="mb-0 text-muted">Use the two dropdowns to choose which cameras you want to compare. Both selects are populated automatically when you land on the page — no permission prompt needed yet.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Start Comparison"</h3>
+              <p class="mb-0 text-muted">Your browser will request camera permission. Click <strong>Allow</strong>. Both selected cameras start streaming simultaneously into the left and right panels.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Compare the Live Feeds</h3>
+              <p class="mb-0 text-muted">Look at colour accuracy, brightness, sharpness, and motion smoothness across both panels. Both feeds update in real time at the full frame rate each camera supports.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Stop and Switch Cameras</h3>
+              <p class="mb-0 text-muted">Click <strong>Stop Comparison</strong> at any time to end both streams. Change the dropdown selections and start again to compare a different pair of cameras.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>What Can You Compare with Two Webcams?</h2>
+      <p>Viewing two cameras side by side makes it easy to spot differences that are invisible when you only ever look at one feed at a time. The <strong>camera comparison</strong> view reveals several important performance factors at a glance.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-palette me-2"></i>Colour Accuracy and White Balance</h3>
+          <p>Different cameras process colour very differently even when pointed at the same scene. A built-in laptop camera may shift skin tones towards yellow while a USB webcam produces cooler, more neutral tones. Side-by-side comparison immediately shows which camera's automatic white balance is closer to the real-world colours in your room.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-zoom-in me-2"></i>Sharpness and Detail</h3>
+          <p>Resolution alone does not determine sharpness — lens quality, compression, and sensor size all play a role. A <strong>compare webcams</strong> view lets you see whether a higher-megapixel camera actually looks sharper in practice, or whether a lower-spec camera with better glass produces a crisper image at the default resolution your browser negotiates.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-sun"></i>Low-Light Performance — the Biggest Differentiator</h2>
+      <p>The most dramatic difference between a budget built-in camera and a dedicated external webcam is usually how they handle low light. Use the <strong>webcam comparison tool</strong> to test this directly.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-moon text-primary me-2"></i>Dim the Lights</h3>
+          <p class="text-muted">Reduce your room lighting and watch both feeds simultaneously. One camera may maintain reasonable brightness while the other becomes grainy or drops its frame rate as the auto-exposure compensates. This is the single most useful test the <strong>side by side webcam</strong> view enables.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-noise-reduction text-primary me-2"></i>Noise and Grain</h3>
+          <p class="text-muted">In low light, cameras with smaller sensors produce more visible grain (digital noise). The comparison view makes it easy to see which camera applies better noise reduction or has a larger sensor that keeps the image cleaner without sacrificing detail.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam Comparison Tool</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                Do I need two cameras to use this tool?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                Yes — the <strong>webcam comparison tool</strong> is designed to stream two separate cameras simultaneously. If only one camera is detected, the tool will display a notice and Camera B will remain blank. Most laptops have one built-in camera; connect a USB webcam as the second device to make a meaningful <strong>camera comparison</strong>.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                Does the comparison tool record or upload my video?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                No. Both streams are displayed live in your browser only. No video data is recorded, uploaded, or transmitted anywhere. The tool uses the browser's <code>getUserMedia</code> API to access camera streams and pipes them directly into the two video elements on the page — nothing is stored.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                Can I compare the front and rear cameras on my phone?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Browser limitations on mobile typically only allow one camera stream at a time per tab. On desktop with two physical cameras connected, both streams work simultaneously. On mobile, you can switch between front and rear cameras using the selects, but you may not be able to stream both at the same time depending on your browser and OS version.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                Why does one camera look better than the other at the same resolution?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Resolution is only one factor. Sensor size, lens quality, image signal processor (ISP), autofocus speed, and the camera's compression algorithm all affect the final image quality. A higher-resolution sensor with a poor lens can look worse than a lower-resolution camera with a better optical design. The <strong>side by side webcam</strong> view gives you a direct, real-world comparison that no specification sheet can replicate.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="py-3" role="complementary">
+  <div class="container text-center">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5426315045205785"
+         data-ad-slot="5068825756"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</aside>
+
+<!-- Comments Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h3 class="mb-4"><i class="bi bi-chat-dots-fill me-2 text-primary"></i>Comments &amp; Feedback</h3>
+        <script defer src="https://comments.tickspike.com/comentario.js"></script>
+        <comentario-comments theme="light"></comentario-comments>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">
+          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        </h5>
+        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+        <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">Tools</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+          <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+          <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+          <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+          <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+          <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+        </div>
+      </div>
+      <div class="col-md-4 text-center text-md-start">
+        <h5 class="mb-3">Info</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+          <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const videoA = document.getElementById('video-a');
+    const videoB = document.getElementById('video-b');
+    const cameraASelect = document.getElementById('camera-a-select');
+    const cameraBSelect = document.getElementById('camera-b-select');
+    const compareButton = document.getElementById('compare-button');
+    const compareStatus = document.getElementById('compare-status');
+    const singleCameraNotice = document.getElementById('single-camera-notice');
+
+    let streamA = null;
+    let streamB = null;
+    let isRunning = false;
+
+    function updateStatus(type, message) {
+      compareStatus.className = 'status-indicator status-' + type;
+      compareStatus.innerHTML = '<i class="bi bi-layout-split me-2"></i>' + message;
+    }
+
+    async function enumerateDevices() {
+      try {
+        // Request permission first so labels are available
+        const tempStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        tempStream.getTracks().forEach(t => t.stop());
+
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(d => d.kind === 'videoinput');
+
+        if (videoDevices.length === 0) {
+          updateStatus('inactive', 'No cameras detected. Please connect a camera and try again.');
+          compareButton.disabled = true;
+          return;
+        }
+
+        if (videoDevices.length === 1) {
+          singleCameraNotice.classList.remove('d-none');
+        }
+
+        populateSelects(videoDevices);
+      } catch (err) {
+        console.error('Error enumerating devices:', err);
+        updateStatus('inactive', 'Could not access camera. Check browser permissions and try again.');
+      }
+    }
+
+    function populateSelects(devices) {
+      cameraASelect.innerHTML = '';
+      cameraBSelect.innerHTML = '';
+
+      devices.forEach((device, index) => {
+        const label = device.label || 'Camera ' + (index + 1);
+
+        const optA = document.createElement('option');
+        optA.value = device.deviceId;
+        optA.text = label;
+        cameraASelect.appendChild(optA);
+
+        const optB = document.createElement('option');
+        optB.value = device.deviceId;
+        optB.text = label;
+        cameraBSelect.appendChild(optB);
+      });
+
+      // Default Camera B to second device if available
+      if (devices.length >= 2) {
+        cameraBSelect.selectedIndex = 1;
+      }
+    }
+
+    async function startComparison() {
+      try {
+        updateStatus('testing', 'Starting both camera streams...');
+        stopComparison(false);
+
+        const constraintsA = { video: { deviceId: { exact: cameraASelect.value } } };
+        const constraintsB = { video: { deviceId: { exact: cameraBSelect.value } } };
+
+        const [sA, sB] = await Promise.all([
+          navigator.mediaDevices.getUserMedia(constraintsA),
+          navigator.mediaDevices.getUserMedia(constraintsB)
+        ]);
+
+        streamA = sA;
+        streamB = sB;
+        videoA.srcObject = streamA;
+        videoB.srcObject = streamB;
+        isRunning = true;
+
+        updateStatus('active', 'Comparing cameras — both streams are live');
+        compareButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop Comparison';
+      } catch (err) {
+        console.error('Error starting comparison:', err);
+        updateStatus('inactive', 'Error accessing one or both cameras. Check that they are not in use by another app.');
+      }
+    }
+
+    function stopComparison(resetButton = true) {
+      if (streamA) {
+        streamA.getTracks().forEach(t => t.stop());
+        streamA = null;
+      }
+      if (streamB) {
+        streamB.getTracks().forEach(t => t.stop());
+        streamB = null;
+      }
+      videoA.srcObject = null;
+      videoB.srcObject = null;
+      isRunning = false;
+
+      if (resetButton) {
+        updateStatus('inactive', 'Select two cameras and click Start Comparison');
+        compareButton.innerHTML = '<i class="bi bi-layout-split me-2"></i>Start Comparison';
+      }
+    }
+
+    compareButton.addEventListener('click', function () {
+      if (isRunning) {
+        stopComparison(true);
+      } else {
+        startComparison();
+      }
+    });
+
+    window.addEventListener('beforeunload', function () {
+      stopComparison(false);
+    });
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      compareButton.disabled = true;
+    } else {
+      enumerateDevices();
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

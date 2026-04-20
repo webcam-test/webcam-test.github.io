@@ -24,6 +24,17 @@ Static webcam testing utility hosted on GitHub Pages. No backend, no runtime dep
 - `mirror.html` — webcam mirror/stream viewer
 - `fps-checker.html` — frame rate testing
 - `resolution-tester.html` — resolution testing
+- `webcam-recorder.html` — record webcam video (Hub A)
+- `webcam-effects.html` — live camera filters
+- `webcam-gif.html` — animated GIF maker
+- `webcam-timelapse.html` — timelapse capture
+- `webcam-quality-test.html` — image quality analysis
+- `webcam-zoom-test.html` — digital zoom test
+- `webcam-brightness-test.html` — brightness/exposure test
+- `webcam-color-test.html` — colour accuracy test
+- `camera-comparison.html` — side-by-side camera comparison
+- `webcam-lighting-test.html` — lighting conditions test
+- `webcam-framing-guide.html` — rule-of-thirds overlay
 - `about.html` — about page
 - `contact.html` — contact page
 - `404.html` — error page (copied via CopyPlugin)
@@ -100,7 +111,7 @@ These have <10/mo volume individually but strengthen the site's topical coverage
 | Webcam Timelapse | `webcam-timelapse.html` | webcam timelapse online | Capture frames at intervals → download video |
 | Webcam Brightness Test | `webcam-brightness-test.html` | webcam brightness test | Measure and adjust brightness/contrast |
 
-Rotate webcam (170/mo) is not recommended — HIGH competition.
+Rotate webcam (170/mo)
 
 ---
 
@@ -178,9 +189,9 @@ Each supporting page has **3 body content slots**:
 |---|------|------|----------------|--------|--------|
 | 1 | Take Webcam Photo | `take-photo.html` | "webcam photo" | 8,100 | Existing |
 | 2 | Webcam Mirror | `mirror.html` | "webcam mirror" | 6,600 | Existing |
-| 3 | Webcam Effects | `webcam-effects.html` | "webcam effects online" | 1,600 | To build |
-| 4 | Webcam GIF Maker | `webcam-gif.html` | "webcam gif maker" | 20 | To build |
-| 5 | Webcam Timelapse | `webcam-timelapse.html` | "webcam timelapse online" | <10 | To build |
+| 3 | Webcam Effects | `webcam-effects.html` | "webcam effects online" | 1,600 | Built |
+| 4 | Webcam GIF Maker | `webcam-gif.html` | "webcam gif maker" | 20 | Built |
+| 5 | Webcam Timelapse | `webcam-timelapse.html` | "webcam timelapse online" | <10 | Built |
 
 ---
 
@@ -191,10 +202,10 @@ Each supporting page has **3 body content slots**:
 | # | Page | File | Primary Keyword | Vol/mo | Status |
 |---|------|------|----------------|--------|--------|
 | 1 | Resolution Tester | `resolution-tester.html` | "webcam resolution test" | 110 | Existing |
-| 2 | Webcam Quality Test | `webcam-quality-test.html` | "webcam quality test" | 50 | To build |
-| 3 | Webcam Zoom Test | `webcam-zoom-test.html` | "webcam zoom test" | 10 | To build |
-| 4 | Webcam Brightness Test | `webcam-brightness-test.html` | "webcam brightness test" | <10 | To build |
-| 5 | Webcam Color Test | `webcam-color-test.html` | "webcam color test" | <10 | To build |
+| 2 | Webcam Quality Test | `webcam-quality-test.html` | "webcam quality test" | 50 | Built |
+| 3 | Webcam Zoom Test | `webcam-zoom-test.html` | "webcam zoom test" | 10 | Built |
+| 4 | Webcam Brightness Test | `webcam-brightness-test.html` | "webcam brightness test" | <10 | Built |
+| 5 | Webcam Color Test | `webcam-color-test.html` | "webcam color test" | <10 | Built |
 
 ---
 
@@ -204,11 +215,9 @@ Each supporting page has **3 body content slots**:
 
 | # | Page | File | Primary Keyword | Vol/mo | Status |
 |---|------|------|----------------|--------|--------|
-| 1 | Barcode Scanner | `barcode-scanner.html` | "barcode scanner webcam" | 1,000 | To build |
-| 2 | QR Code Scanner | `qr-scanner.html` | "qr code scanner webcam" | 170 | To build |
-| 3 | Camera Comparison | `camera-comparison.html` | "webcam comparison tool" | <10 | To build |
-| 4 | Webcam Lighting Test | `webcam-lighting-test.html` | "webcam lighting test" | <10 | To build |
-| 5 | Webcam Framing Guide | `webcam-framing-guide.html` | "webcam framing guide" | <10 | To build |
+| 1 | Camera Comparison | `camera-comparison.html` | "webcam comparison tool" | <10 | Built |
+| 2 | Webcam Lighting Test | `webcam-lighting-test.html` | "webcam lighting test" | <10 | Built |
+| 3 | Webcam Framing Guide | `webcam-framing-guide.html` | "webcam framing guide" | <10 | Built |
 
 ---
 
@@ -228,21 +237,21 @@ Bidirectional. Bridge targets change monthly as the supporter shuffle changes wh
 
 Build in this order to maximise SEO value and unlock the rotation system progressively.
 
-| Priority | Page | File | Reason |
-|----------|------|------|--------|
-| 1 | Webcam Recorder | `webcam-recorder.html` | Hub A — 14,800/mo, unlocks entire Silo A rotation |
-| 2 | Webcam Effects | `webcam-effects.html` | Silo A — 1,600/mo, high relative volume |
-| 3 | Barcode Scanner | `barcode-scanner.html` | Silo C — 1,000/mo, first high-volume Silo C page |
-| 4 | QR Code Scanner | `qr-scanner.html` | Silo C — 170/mo, pairs naturally with barcode scanner |
-| 5 | Webcam Quality Test | `webcam-quality-test.html` | Silo B — 50/mo |
-| 6 | Webcam GIF Maker | `webcam-gif.html` | Silo A — 20/mo, completes creative cluster |
-| 7 | Webcam Zoom Test | `webcam-zoom-test.html` | Silo B — 10/mo |
-| 8 | Webcam Timelapse | `webcam-timelapse.html` | Silo A — topical depth |
-| 9 | Webcam Brightness Test | `webcam-brightness-test.html` | Silo B — topical depth |
-| 10 | Webcam Color Test | `webcam-color-test.html` | Silo B — topical depth |
-| 11 | Camera Comparison | `camera-comparison.html` | Silo C — topical depth |
-| 12 | Webcam Lighting Test | `webcam-lighting-test.html` | Silo C — topical depth |
-| 13 | Webcam Framing Guide | `webcam-framing-guide.html` | Silo C — topical depth |
+All pages have been built. Content writing is next.
+
+| Page | File | Status |
+|------|------|--------|
+| Webcam Recorder (Hub A) | `webcam-recorder.html` | Built — content pending |
+| Webcam Effects | `webcam-effects.html` | Built — content pending |
+| Webcam GIF Maker | `webcam-gif.html` | Built — content pending |
+| Webcam Timelapse | `webcam-timelapse.html` | Built — content pending |
+| Webcam Quality Test | `webcam-quality-test.html` | Built — content pending |
+| Webcam Zoom Test | `webcam-zoom-test.html` | Built — content pending |
+| Webcam Brightness Test | `webcam-brightness-test.html` | Built — content pending |
+| Webcam Color Test | `webcam-color-test.html` | Built — content pending |
+| Camera Comparison | `camera-comparison.html` | Built — content pending |
+| Webcam Lighting Test | `webcam-lighting-test.html` | Built — content pending |
+| Webcam Framing Guide | `webcam-framing-guide.html` | Built — content pending |
 
 ---
 

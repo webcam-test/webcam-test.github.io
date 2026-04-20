@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Lighting Test — Check Your Camera Lighting Online | WebcamTest</title>
+  <meta name="description" content="Test your webcam lighting conditions online. Measure brightness, exposure uniformity, and lighting quality from your live camera feed and get instant improvement tips.">
+  <meta content="webcam lighting test, camera lighting test, webcam exposure, lighting check webcam" name="keywords">
+
+  <link href="https://webcam-test.github.io/webcam-lighting-test" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .tool-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .tool-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    #tool-video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      min-height: 400px;
+      border-radius: 10px;
+      border: 3px solid var(--border-color);
+      background-color: #000000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-testing {
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .tool-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 { color: white; margin-bottom: 1rem; }
+    .footer p { color: #adb5bd; }
+    .footer .text-white { color: #adb5bd !important; }
+    .footer .text-white:hover { color: white !important; }
+
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .tool-section { padding: 1rem 0; min-height: auto; }
+      .tool-container { padding: 1rem; margin: 0.5rem; }
+      #tool-video { min-height: 250px; }
+      .tool-controls { flex-direction: column; align-items: stretch; }
+      .tool-controls .btn, .tool-controls .form-select { width: 100%; margin-bottom: 0.5rem; }
+      .feature-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Tool Section -->
+<section class="tool-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">Webcam Lighting Test — Analyse Your Camera Lighting Conditions</h1>
+      <p class="lead text-muted">Click <strong>Start Lighting Test</strong> to run a <strong>webcam lighting test</strong> on your live camera feed. The tool measures overall brightness, lighting uniformity, and exposure quality — then scores your setup as Excellent, Good, Average, or Poor with specific tips to improve. Use alongside the <a href="/webcam-brightness-test" class="text-decoration-none">brightness test</a> for a detailed exposure check.</p>
+    </div>
+
+    <div class="text-center mb-3">
+      <ins class="adsbygoogle" id="adsense-header"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="6562139351"></ins>
+      <script>
+        (function(){
+          var ins = document.getElementById('adsense-header');
+          if(window.innerWidth >= 768){
+            ins.style.display='inline-block';
+            ins.style.width='728px';
+            ins.style.height='90px';
+          } else {
+            ins.style.display='inline-block';
+            ins.style.width='300px';
+            ins.style.height='100px';
+          }
+          (adsbygoogle=window.adsbygoogle||[]).push({});
+        })();
+      </script>
+    </div>
+
+    <div class="row">
+      <!-- Main Tool Container -->
+      <div class="col-lg-8">
+        <div class="tool-container">
+          <div class="status-indicator status-inactive d-none" id="tool-status"></div>
+
+          <div class="tool-controls mb-3">
+            <button class="btn btn-primary-custom btn-lg" id="lighting-button">
+              <i class="bi bi-brightness-high me-2"></i>Start Lighting Test
+            </button>
+            <select class="form-select" disabled id="camera-select" style="max-width:250px">
+              <option value="">Select camera</option>
+            </select>
+          </div>
+
+          <video autoplay id="tool-video" muted playsinline></video>
+
+          <!-- Lighting Results -->
+          <div class="d-none mt-3" id="lighting-results">
+            <!-- 3 Metric Cards -->
+            <div class="row g-3 mb-2">
+              <div class="col-4">
+                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                  <div class="fs-2 fw-bold text-primary" id="light-brightness">—</div>
+                  <div class="small text-muted"><i class="bi bi-sun me-1"></i>Brightness</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                  <div class="fs-2 fw-bold text-primary" id="light-uniformity">—</div>
+                  <div class="small text-muted"><i class="bi bi-distribute-horizontal me-1"></i>Uniformity</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                  <div class="fs-2 fw-bold text-primary" id="light-quality">—</div>
+                  <div class="small text-muted"><i class="bi bi-star me-1"></i>Overall</div>
+                </div>
+              </div>
+            </div>
+            <!-- Assessment Card -->
+            <div class="p-3 rounded border mt-2 text-center" id="lighting-assessment" style="background:var(--light-bg);">
+              <div class="fw-bold fs-5 mb-1" id="lighting-grade">—</div>
+              <div class="text-muted small" id="lighting-tip">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5426315045205785"
+               data-ad-slot="6837554954"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <!-- Sidebar Info Panel -->
+      <div class="col-lg-4">
+
+        <!-- Lighting Scores Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-star text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Lighting Scores</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--success-color);min-width:60px;">80–100</span>
+              <span>Excellent</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--primary-color);min-width:60px;">60–79</span>
+              <span>Good</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--warning-color);color:#000;min-width:60px;">40–59</span>
+              <span>Average</span>
+            </li>
+            <li class="mb-2 d-flex align-items-center">
+              <span class="badge me-2" style="background:var(--danger-color);min-width:60px;">0–39</span>
+              <span>Poor</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Common Issues Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-exclamation-triangle text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Common Issues</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Backlit</strong> — window or bright source behind you
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Too dark</strong> — no light source facing you
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Harsh shadows</strong> — single side light source
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Overexposed</strong> — direct bright light too close
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ideal Setup Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-lightbulb text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Ideal Setup</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Soft light facing you (diffused or bounced)
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Avoid windows directly behind you
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Ring light or desk lamp at eye level
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>5000–6500K colour temperature bulbs
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Sections -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Use the Webcam Lighting Test</h2>
+      <p>The <strong>webcam lighting test</strong> measures three aspects of your lighting in real time: overall brightness, spatial uniformity, and a combined quality score. No setup required — just click Start and the analysis runs automatically every second.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Start Lighting Test"</h3>
+              <p class="mb-0 text-muted">Allow camera access. The live feed appears and the tool immediately starts measuring your lighting. Scores update every second.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Read Brightness and Uniformity</h3>
+              <p class="mb-0 text-muted">Brightness shows whether the overall frame is well-lit. Uniformity reveals how evenly distributed the light is — shadows and hotspots both lower this score.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Check the Grade and Tip</h3>
+              <p class="mb-0 text-muted">The assessment card shows your overall lighting grade and a specific improvement tip based on which metric is pulling your score down.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Adjust and Watch Scores Update</h3>
+              <p class="mb-0 text-muted">Move a lamp, open a blind, or change your position. The scores update every second so you can dial in the best lighting configuration in real time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>What the Lighting Metrics Measure</h2>
+      <p>The tool divides your camera frame into a 3x3 grid of nine zones and analyses each zone independently. This approach catches problems that a simple average would miss — such as a bright hotspot on one side while the rest of the frame is dark.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-sun me-2"></i>Brightness Score</h3>
+          <p>The brightness score is calculated from the overall average luminance of all nine zones. The optimal luminance range corresponds to a score of 40–70 on a 0–100 scale — enough light to suppress sensor noise and maintain frame rate, but not so bright that highlights are blown out. Very dark rooms (below 20) and overlit setups (above 85) both produce lower scores.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-distribute-horizontal me-2"></i>Uniformity Score</h3>
+          <p>Uniformity measures how evenly the light is spread across your frame. The tool calculates the standard deviation of the nine zone luminances — a high standard deviation means some zones are much brighter or darker than others, indicating harsh shadows, a strong backlight, or a single side-light source. A score of 80+ means the light is spread relatively evenly, which is the ideal for video calls.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-star me-2"></i>Overall Score</h3>
+          <p>The overall quality score is the average of the brightness and uniformity scores, clamped between 0 and 100. Because both dimensions are equally weighted, a setup with great brightness but very uneven distribution will score around 60 — reflecting that while you have enough light, the placement needs improvement. Aim for 80+ on both individual metrics to achieve the best overall score.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-lightbulb"></i>Common Lighting Setups and How They Score</h2>
+      <p>Different environments produce predictably different results in the lighting test. Understanding which pattern matches your current setup helps you identify the fastest path to improvement.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-window me-2"></i>Window Behind You</h3>
+          <p>This is the most common poor-lighting scenario. The window creates a strong backlight that makes the background very bright while your face appears as a dark silhouette. Brightness score may appear adequate (because the window is bright), but uniformity will be very low due to the extreme contrast between the lit background and the dark foreground zone. <strong>Fix:</strong> turn your desk so you face the window instead of having your back to it.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-moon me-2"></i>Dark Room, No Dedicated Light</h3>
+          <p>Working in a dim room with only ambient ceiling light typically produces a low brightness score and moderate uniformity. The camera compensates with a slow shutter and high gain, increasing noise. Both brightness and uniformity scores will be below 40 in most cases. <strong>Fix:</strong> add a desk lamp or ring light positioned in front of you. Even a single 40W equivalent LED bulb at 5000K makes a significant difference.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-circle-half me-2"></i>Single Side Light</h3>
+          <p>A lamp placed directly to one side creates a half-lit face — one cheek bright, the other in deep shadow. This produces a moderate brightness score but very low uniformity, because the left and right zones differ dramatically. <strong>Fix:</strong> add a second, softer fill light on the opposite side, or move the existing light to a more frontal position (45 degrees from the camera axis rather than 90 degrees).</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle me-2"></i>Ring Light Facing You</h3>
+          <p>A ring light positioned directly in front of you at eye level typically produces the best scores of any common setup. The circular design provides even illumination from all sides simultaneously, eliminating directional shadows. Brightness will be in the optimal range and uniformity will be high. Most ring lights at medium intensity (50–70%) produce an overall lighting score of 75–90 in this test.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam Lighting Test</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                What lighting score should I aim for for video calls?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                Aim for an overall lighting score of <strong>60 or above</strong> for everyday video calls on Zoom, Teams, and Google Meet. A score of 80+ is excellent and will produce noticeably better image quality — particularly if you are presenting or recording. The uniformity score is especially important for calls: a score below 50 often means you have visible harsh shadows on your face that will be distracting to participants.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                How is uniformity different from brightness?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Brightness measures the overall amount of light in the frame — essentially, is the whole image bright enough or too dark? Uniformity measures how consistently that light is spread — are some parts of the frame much brighter or darker than others? You can have good brightness but poor uniformity (a bright backlight with your face in shadow), or low brightness with good uniformity (a dim but evenly lit room). Both dimensions need to be high for the best video quality.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                Why does my uniformity score drop when I move?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                The uniformity score analyses the brightness distribution across nine zones of the entire frame — including background areas. If you move to one side, you may partially reveal a bright window or a dark wall, increasing the brightness contrast between zones and lowering uniformity. For the most accurate assessment of your setup, sit still in your normal video call position and give the test 3–4 seconds to stabilise.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                Does this test save any video or images?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                No. The <strong>webcam lighting test</strong> processes frames locally in your browser. Each frame is drawn to an offscreen canvas, the pixel data is analysed numerically, and the frame is immediately discarded. No video is recorded, no images are saved, and nothing is transmitted to any server. Your camera feed is private throughout the test.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                What is the best colour temperature for webcam lighting?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                The recommended colour temperature for webcam lighting is <strong>5000–6500K</strong>, which corresponds to natural daylight. At this temperature, skin tones look natural and whites appear clean rather than warm or cold. Most ring lights, video-oriented LED panels, and "daylight" labelled bulbs fall in this range. Avoid mixing colour temperatures — for example, combining a 2700K tungsten desk lamp with 6500K daylight from a window creates an inconsistent colour cast that is difficult for the camera's auto white balance to correct.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="py-3" role="complementary">
+  <div class="container text-center">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5426315045205785"
+         data-ad-slot="5068825756"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</aside>
+
+<!-- Comments Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h3 class="mb-4"><i class="bi bi-chat-dots-fill me-2 text-primary"></i>Comments &amp; Feedback</h3>
+        <script defer src="https://comments.tickspike.com/comentario.js"></script>
+        <comentario-comments theme="light"></comentario-comments>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">
+          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        </h5>
+        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+        <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">Tools</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+          <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+          <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+          <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+          <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+          <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+        </div>
+      </div>
+      <div class="col-md-4 text-center text-md-start">
+        <h5 class="mb-3">Info</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+          <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toolVideo = document.getElementById('tool-video');
+    const cameraSelect = document.getElementById('camera-select');
+    const lightingButton = document.getElementById('lighting-button');
+    const toolStatus = document.getElementById('tool-status');
+    const lightingResults = document.getElementById('lighting-results');
+
+    let currentStream = null;
+    let analysisInterval = null;
+    const offscreenCanvas = document.createElement('canvas');
+    offscreenCanvas.width = 300;
+    offscreenCanvas.height = 300;
+    const ctx = offscreenCanvas.getContext('2d');
+
+    function updateStatus(type, message) {
+      const icons = { inactive: 'bi-brightness-high', testing: 'bi-hourglass-split', active: 'bi-check-circle-fill' };
+      toolStatus.classList.remove('d-none');
+      toolStatus.className = 'status-indicator status-' + type;
+      toolStatus.innerHTML = '<i class="' + icons[type] + ' me-2"></i>' + message;
+    }
+
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(d => d.kind === 'videoinput');
+        if (!videoDevices.length) return;
+        cameraSelect.innerHTML = '';
+        videoDevices.forEach((d, i) => {
+          const opt = document.createElement('option');
+          opt.value = d.deviceId;
+          opt.text = d.label || 'Camera ' + (i + 1);
+          cameraSelect.appendChild(opt);
+        });
+        cameraSelect.disabled = false;
+      } catch (e) { console.error(e); }
+    }
+
+    async function startTest() {
+      try {
+        updateStatus('testing', 'Accessing camera...');
+        const constraints = { video: { width: { ideal: 640 }, height: { ideal: 480 } } };
+        if (cameraSelect.value) constraints.video.deviceId = { exact: cameraSelect.value };
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        await enumerateDevices();
+        toolVideo.srcObject = currentStream;
+        lightingResults.classList.remove('d-none');
+        updateStatus('active', 'Measuring lighting — scores update every second');
+        lightingButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop Test';
+        analysisInterval = setInterval(analyseFrame, 1000);
+      } catch (e) {
+        console.error(e);
+        updateStatus('inactive', 'Could not access camera. Check permissions and try again.');
+      }
+    }
+
+    function stopTest() {
+      if (currentStream) { currentStream.getTracks().forEach(t => t.stop()); currentStream = null; }
+      if (analysisInterval) { clearInterval(analysisInterval); analysisInterval = null; }
+      toolVideo.srcObject = null;
+      toolStatus.classList.add('d-none');
+      lightingResults.classList.add('d-none');
+      lightingButton.innerHTML = '<i class="bi bi-brightness-high me-2"></i>Start Lighting Test';
+    }
+
+    function analyseFrame() {
+      if (!currentStream) return;
+      // Draw to 300x300 canvas (divisible evenly by 3 for zones)
+      ctx.drawImage(toolVideo, 0, 0, 300, 300);
+      const imageData = ctx.getImageData(0, 0, 300, 300);
+      const data = imageData.data;
+      const zoneSize = 100; // 3x3 grid, each zone is 100x100
+
+      // Calculate average luminance per zone
+      const zoneLum = new Array(9).fill(0);
+      for (let zy = 0; zy < 3; zy++) {
+        for (let zx = 0; zx < 3; zx++) {
+          const zIdx = zy * 3 + zx;
+          let sum = 0, count = 0;
+          for (let py = zy * zoneSize; py < (zy + 1) * zoneSize; py++) {
+            for (let px = zx * zoneSize; px < (zx + 1) * zoneSize; px++) {
+              const i = (py * 300 + px) * 4;
+              sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+              count++;
+            }
+          }
+          zoneLum[zIdx] = sum / count;
+        }
+      }
+
+      // Overall average luminance
+      const overallAvg = zoneLum.reduce((a, b) => a + b, 0) / 9;
+
+      // Brightness score: map overallAvg (0-255) to 0-100, with optimal 40-70
+      // Simple linear mapping first
+      const rawBrightness = (overallAvg / 255) * 100;
+      // Score: optimal range 40-70 maps to higher score; outside that range scores lower
+      let brightnessScore;
+      if (rawBrightness >= 40 && rawBrightness <= 70) {
+        brightnessScore = Math.round(70 + ((rawBrightness - 40) / 30) * 30);
+        // Clamp around 70-100 for the ideal range
+        brightnessScore = Math.min(100, Math.max(70, Math.round(100 - Math.abs(rawBrightness - 55) * 1.2)));
+      } else if (rawBrightness < 40) {
+        brightnessScore = Math.round((rawBrightness / 40) * 70);
+      } else {
+        // rawBrightness > 70
+        brightnessScore = Math.round(70 - ((rawBrightness - 70) / 30) * 50);
+      }
+      brightnessScore = Math.max(0, Math.min(100, brightnessScore));
+
+      // Uniformity score: 100 - (std dev of zone luminances / max_zone * 100)
+      const maxZone = Math.max(...zoneLum);
+      const mean = overallAvg;
+      const variance = zoneLum.reduce((acc, z) => acc + Math.pow(z - mean, 2), 0) / 9;
+      const stdDev = Math.sqrt(variance);
+      const uniformityScore = Math.max(0, Math.min(100, Math.round(100 - (stdDev / (maxZone || 1)) * 100)));
+
+      // Overall: average of brightness and uniformity, clamped 0-100
+      const overallScore = Math.max(0, Math.min(100, Math.round((brightnessScore + uniformityScore) / 2)));
+
+      // Update DOM
+      document.getElementById('light-brightness').textContent = brightnessScore;
+      document.getElementById('light-uniformity').textContent = uniformityScore;
+      document.getElementById('light-quality').textContent = overallScore;
+
+      // Grade and tip
+      let grade, tip;
+      if (overallScore >= 80) {
+        grade = 'Excellent lighting';
+        tip = 'Your lighting setup is well-configured for video calls and streaming.';
+      } else if (overallScore >= 60) {
+        grade = 'Good lighting';
+        tip = 'Lighting is acceptable. Small improvements could push this to excellent.';
+      } else if (overallScore >= 40) {
+        grade = 'Average — consider adding a light source';
+        if (brightnessScore < uniformityScore) {
+          tip = 'Brightness is the main issue — add a lamp or ring light facing you.';
+        } else {
+          tip = 'Light distribution is uneven — try moving your light to a more frontal position.';
+        }
+      } else {
+        grade = 'Poor lighting — add more light';
+        if (brightnessScore < uniformityScore) {
+          tip = 'The scene is too dark. Add a dedicated light source in front of you.';
+        } else {
+          tip = 'Strong shadows or backlighting detected. Face a light source and avoid sitting with your back to a bright window.';
+        }
+      }
+
+      document.getElementById('lighting-grade').textContent = grade;
+      document.getElementById('lighting-tip').textContent = tip;
+    }
+
+    lightingButton.addEventListener('click', () => {
+      currentStream ? stopTest() : startTest();
+    });
+
+    cameraSelect.addEventListener('change', () => {
+      if (currentStream) { stopTest(); setTimeout(startTest, 100); }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (currentStream) currentStream.getTracks().forEach(t => t.stop());
+    });
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      lightingButton.disabled = true;
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

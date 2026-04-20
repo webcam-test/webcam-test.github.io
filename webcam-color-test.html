@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Color Test — Check Camera Colour Accuracy Online | WebcamTest</title>
+  <meta name="description" content="Test your webcam's colour accuracy online. Analyse red, green, and blue channel balance from your live camera feed and check for colour casts or white balance issues.">
+  <meta content="webcam color test, camera color accuracy, webcam colour test, white balance checker" name="keywords">
+
+  <link href="https://webcam-test.github.io/webcam-color-test" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .tool-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .tool-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    #tool-video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      min-height: 400px;
+      border-radius: 10px;
+      border: 3px solid var(--border-color);
+      background-color: #000000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-testing {
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .tool-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 { color: white; margin-bottom: 1rem; }
+    .footer p { color: #adb5bd; }
+    .footer .text-white { color: #adb5bd !important; }
+    .footer .text-white:hover { color: white !important; }
+
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .tool-section { padding: 1rem 0; min-height: auto; }
+      .tool-container { padding: 1rem; margin: 0.5rem; }
+      #tool-video { min-height: 250px; }
+      .tool-controls { flex-direction: column; align-items: stretch; }
+      .tool-controls .btn, .tool-controls .form-select { width: 100%; margin-bottom: 0.5rem; }
+      .feature-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Tool Section -->
+<section class="tool-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">Webcam Color Test — Check Your Camera's Colour Balance</h1>
+      <p class="lead text-muted">Click <strong>Start Color Test</strong> to analyse your <strong>webcam's colour balance</strong> in real time. The tool samples your live camera feed to measure <em>red</em>, <em>green</em>, and <em>blue channel levels</em>, detect colour casts, and check for <em>white balance issues</em>. Get a quick read on whether your camera is reproducing accurate colours or showing a warm, cool, or tinted bias. Use the <a href="/show-webcam" class="text-decoration-none">webcam viewer</a> for full device specifications.</p>
+    </div>
+
+    <div class="text-center mb-3">
+      <ins class="adsbygoogle" id="adsense-header"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="6562139351"></ins>
+      <script>
+        (function(){
+          var ins = document.getElementById('adsense-header');
+          if(window.innerWidth >= 768){
+            ins.style.display='inline-block';
+            ins.style.width='728px';
+            ins.style.height='90px';
+          } else {
+            ins.style.display='inline-block';
+            ins.style.width='300px';
+            ins.style.height='100px';
+          }
+          (adsbygoogle=window.adsbygoogle||[]).push({});
+        })();
+      </script>
+    </div>
+
+    <div class="row">
+      <!-- Main Tool Container -->
+      <div class="col-lg-8">
+        <div class="tool-container">
+          <div class="status-indicator status-inactive d-none" id="tool-status"></div>
+
+          <div class="tool-controls mb-3">
+            <button class="btn btn-primary-custom btn-lg" id="color-button">
+              <i class="bi bi-palette me-2"></i>Start Color Test
+            </button>
+            <select class="form-select" disabled id="camera-select" style="max-width:250px">
+              <option value="">Select camera</option>
+            </select>
+          </div>
+
+          <video autoplay id="tool-video" muted playsinline></video>
+
+          <!-- Color Analysis Panel -->
+          <div class="d-none mt-3" id="color-results">
+            <!-- RGB Bars -->
+            <div class="p-3 rounded border mb-2" style="background:var(--light-bg);">
+              <!-- Red channel -->
+              <div class="mb-2">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="fw-semibold text-danger"><i class="bi bi-circle-fill me-1"></i>Red</span>
+                  <span class="fw-bold text-danger" id="color-r-val">—</span>
+                </div>
+                <div class="progress" style="height:14px;">
+                  <div class="progress-bar bg-danger" id="color-r-bar" role="progressbar" style="width:0%;"></div>
+                </div>
+              </div>
+              <!-- Green channel -->
+              <div class="mb-2">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="fw-semibold text-success"><i class="bi bi-circle-fill me-1"></i>Green</span>
+                  <span class="fw-bold text-success" id="color-g-val">—</span>
+                </div>
+                <div class="progress" style="height:14px;">
+                  <div class="progress-bar bg-success" id="color-g-bar" role="progressbar" style="width:0%;"></div>
+                </div>
+              </div>
+              <!-- Blue channel -->
+              <div class="mb-0">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="fw-semibold text-primary"><i class="bi bi-circle-fill me-1"></i>Blue</span>
+                  <span class="fw-bold text-primary" id="color-b-val">—</span>
+                </div>
+                <div class="progress" style="height:14px;">
+                  <div class="progress-bar bg-primary" id="color-b-bar" role="progressbar" style="width:0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- White Balance Assessment -->
+            <div class="p-3 rounded border text-center mb-2" id="wb-assessment" style="background:var(--light-bg);">
+              <div class="fw-bold mb-1">White Balance Assessment</div>
+              <div class="fs-5 fw-bold" id="wb-text">Analysing...</div>
+              <div class="small text-muted" id="wb-note"></div>
+            </div>
+
+            <!-- Dominant Colour Swatch -->
+            <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+              <span class="small text-muted fw-semibold">Dominant Colour:</span>
+              <div id="color-swatch" style="width:40px;height:40px;border-radius:6px;border:2px solid var(--border-color);background:#888;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5426315045205785"
+               data-ad-slot="6837554954"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <!-- Sidebar Info Panel -->
+      <div class="col-lg-4">
+
+        <!-- Colour Channels Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-palette text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Colour Channels</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-circle-fill text-danger me-2"></i><strong>Red</strong> — warmth, skin tones, sunlight
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-circle-fill text-success me-2"></i><strong>Green</strong> — most luminance information
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-circle-fill text-primary me-2"></i><strong>Blue</strong> — cool tones, sky, shadows
+            </li>
+          </ul>
+          <p class="small text-muted mb-0">Values show each channel as a percentage of its maximum (0–100). Balanced channels indicate neutral white balance.</p>
+        </div>
+
+        <!-- White Balance Guide Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-thermometer-half text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">White Balance Guide</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i><strong>Neutral</strong> — channels balanced
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-thermometer-high text-danger me-2"></i><strong>Warm</strong> — red/orange cast
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-thermometer-low text-primary me-2"></i><strong>Cool</strong> — blue cast
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-circle text-success me-2"></i><strong>Green cast</strong> — fluorescent lighting
+            </li>
+          </ul>
+        </div>
+
+        <!-- Fix Colour Issues Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-wrench text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Fix Colour Issues</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Adjust white balance in camera settings
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Match lighting colour temperature (5000–6500K)
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Avoid mixing daylight and tungsten sources
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle text-success me-2"></i>Update webcam driver for better AWB
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Sections -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Use the Webcam Color Test</h2>
+      <p>The <strong>webcam color test</strong> analyses colour channel balance from your live camera feed in real time. It takes no photos and stores no data — all processing is local to your browser tab.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Start Color Test"</h3>
+              <p class="mb-0 text-muted">Allow camera access when prompted. The live feed appears and colour analysis begins at 500ms intervals automatically.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Read the RGB Progress Bars</h3>
+              <p class="mb-0 text-muted">Three bars show the relative strength of Red, Green, and Blue. Balanced bars indicate neutral colour. One dominant bar points to a colour cast.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Check White Balance Assessment</h3>
+              <p class="mb-0 text-muted">The assessment card shows whether your camera's colour output is Neutral, Warm, Cool, or has a Green cast — with a brief note on the cause.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">View the Dominant Colour Swatch</h3>
+              <p class="mb-0 text-muted">The swatch shows the average colour of the entire frame at a glance. Under neutral white light, this swatch should appear close to a neutral grey or match the colours in the scene.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>Understanding Colour Casts and White Balance</h2>
+      <p>White balance is the process of adjusting a camera's colour output so that white objects appear truly white under different light sources. When white balance is off, the entire image takes on a colour tint — called a <strong>colour cast</strong> — that affects how accurately your face, clothing, and background are reproduced.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-thermometer-high me-2"></i>Warm / Red Cast</h3>
+          <p>A warm cast gives your image an orange or yellow tint. This is caused by light sources with a low colour temperature — tungsten bulbs (2700K), candles, or warm-toned LED strips. On video calls, a warm cast makes skin tones look orange and can make white shirts appear cream or yellow. To fix it, switch to a daylight-temperature bulb (5000–6500K) or manually set the camera's white balance to "Daylight" or "Cloudy."</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-thermometer-low me-2"></i>Cool / Blue Cast</h3>
+          <p>A cool cast gives the image a blue or cold tint. This typically occurs under overcast daylight, shade, or high-colour-temperature LEDs (above 6500K). Blue casts make skin tones look pale or ashen and can make the background appear hazy. Setting the camera's white balance to "Incandescent" or "Tungsten" will add warmth to counteract the blue, or adding a warm-tinted light source in front of you achieves the same result.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-lightbulb me-2"></i>Green Cast</h3>
+          <p>A green cast is the signature of fluorescent tube lighting, which has an irregular spectral output that spikes strongly in the green channel. Offices lit by fluorescent overhead lights commonly produce this effect. Green casts make skin tones look sickly and are difficult to correct with camera white balance controls alone. Replacing fluorescent lights with LEDs at 5000K or adding a complementary magenta gel over the light source are the most effective fixes.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle me-2"></i>Neutral / Balanced</h3>
+          <p>When all three channels (R, G, B) are within approximately 10 points of each other, the camera is producing a balanced output. This does not guarantee perfect colour accuracy — it means the overall colour temperature is close to neutral. Cameras with strong auto white balance (AWB) algorithms will continuously adjust the channels to maintain neutral balance regardless of the light source, which is why the readings may shift slightly as you move around or change scenes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-gear"></i>How Webcams Handle Colour — Auto White Balance Explained</h2>
+      <p>Most webcams include an <strong>Auto White Balance (AWB)</strong> system that continuously samples the image and adjusts the colour channels to keep white areas looking white. Understanding how AWB works helps you interpret the colour test readings correctly.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-arrow-repeat me-2"></i>Continuous AWB Adjustment</h3>
+          <p>Most webcam AWB systems sample the image every few frames and make small corrections. This means the RGB channel readings in this tool may shift slightly over time even in stable lighting — that is the camera's AWB at work, not measurement error. If the readings are fluctuating large amounts (10+ points per second), the AWB is struggling with the current lighting — likely mixed or rapidly changing light sources.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-lock me-2"></i>Locking White Balance</h3>
+          <p>Some cameras allow you to lock the white balance at a fixed setting via the camera's companion software or operating system settings. A locked white balance prevents the camera from continuously shifting the colour tones as your background changes — useful for content creators who want consistent colour between scenes. Run the color test after locking white balance to confirm the fixed setting is producing neutral output before recording.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam Color Test</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                What does a balanced webcam colour reading mean?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                A balanced reading means your red, green, and blue channel averages are within approximately 10 percentage points of each other. This indicates that your camera's white balance is reproducing colour neutrally — white objects will appear white rather than orange, blue, or green. Balanced colour is the foundation of natural-looking video on calls and recordings.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                Does the color test access or save any image from my webcam?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                No. The tool draws each video frame to an offscreen canvas, samples the average pixel values for each colour channel, and immediately discards the frame data. No images are saved, no video is recorded, and nothing is transmitted to any server. All processing is entirely local within your browser tab.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                Why does my colour cast change when I move?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Webcam auto white balance recalculates based on the overall colour distribution of the visible scene. When you move in front of a different background — for example, a blue wall versus a yellow wall — the AWB system adjusts to compensate, which shifts the channel values. This is normal behaviour. To get a stable reading for your camera's base white balance performance, sit still in front of a plain, neutral-coloured background.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                How do I fix a warm colour cast on my webcam?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                A warm cast (red channel significantly higher than blue) is most often caused by tungsten or warm-LED lighting. Switch to daylight-balanced bulbs rated at 5000–6500K. If you cannot change the bulbs, look in your camera's software for a manual white balance setting — selecting "Daylight" or "Fluorescent" presets will add a blue correction to counteract the warmth. Some webcam companion apps (Logitech G Hub, Razer Synapse) provide granular colour temperature controls.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                Does the dominant colour swatch show my skin tone?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                The swatch shows the average colour of all pixels in the entire frame — not just your face. If you fill most of the frame and your background is plain, the swatch will closely reflect the colour of your face and clothing. If there is a large, colourful background behind you, the swatch will be pulled toward those background colours. For the most informative reading, sit close to the camera with a neutral-coloured wall behind you.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="py-3" role="complementary">
+  <div class="container text-center">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5426315045205785"
+         data-ad-slot="5068825756"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</aside>
+
+<!-- Comments Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h3 class="mb-4"><i class="bi bi-chat-dots-fill me-2 text-primary"></i>Comments &amp; Feedback</h3>
+        <script defer src="https://comments.tickspike.com/comentario.js"></script>
+        <comentario-comments theme="light"></comentario-comments>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">
+          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        </h5>
+        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+        <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">Tools</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+          <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+          <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+          <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+          <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+          <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+        </div>
+      </div>
+      <div class="col-md-4 text-center text-md-start">
+        <h5 class="mb-3">Info</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+          <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toolVideo = document.getElementById('tool-video');
+    const cameraSelect = document.getElementById('camera-select');
+    const colorButton = document.getElementById('color-button');
+    const toolStatus = document.getElementById('tool-status');
+    const colorResults = document.getElementById('color-results');
+
+    let currentStream = null;
+    let analysisInterval = null;
+    const offscreenCanvas = document.createElement('canvas');
+    offscreenCanvas.width = 320;
+    offscreenCanvas.height = 240;
+    const ctx = offscreenCanvas.getContext('2d');
+
+    function updateStatus(type, message) {
+      const icons = { inactive: 'bi-palette', testing: 'bi-hourglass-split', active: 'bi-check-circle-fill' };
+      toolStatus.classList.remove('d-none');
+      toolStatus.className = 'status-indicator status-' + type;
+      toolStatus.innerHTML = '<i class="' + icons[type] + ' me-2"></i>' + message;
+    }
+
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(d => d.kind === 'videoinput');
+        if (!videoDevices.length) return;
+        cameraSelect.innerHTML = '';
+        videoDevices.forEach((d, i) => {
+          const opt = document.createElement('option');
+          opt.value = d.deviceId;
+          opt.text = d.label || 'Camera ' + (i + 1);
+          cameraSelect.appendChild(opt);
+        });
+        cameraSelect.disabled = false;
+      } catch (e) { console.error(e); }
+    }
+
+    async function startTest() {
+      try {
+        updateStatus('testing', 'Accessing camera...');
+        const constraints = { video: { width: { ideal: 640 }, height: { ideal: 480 } } };
+        if (cameraSelect.value) constraints.video.deviceId = { exact: cameraSelect.value };
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        await enumerateDevices();
+        toolVideo.srcObject = currentStream;
+        colorResults.classList.remove('d-none');
+        updateStatus('active', 'Analysing colour balance — updates every 500ms');
+        colorButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop Test';
+        analysisInterval = setInterval(analyseFrame, 500);
+      } catch (e) {
+        console.error(e);
+        updateStatus('inactive', 'Could not access camera. Check permissions and try again.');
+      }
+    }
+
+    function stopTest() {
+      if (currentStream) { currentStream.getTracks().forEach(t => t.stop()); currentStream = null; }
+      if (analysisInterval) { clearInterval(analysisInterval); analysisInterval = null; }
+      toolVideo.srcObject = null;
+      toolStatus.classList.add('d-none');
+      colorResults.classList.add('d-none');
+      colorButton.innerHTML = '<i class="bi bi-palette me-2"></i>Start Color Test';
+    }
+
+    function analyseFrame() {
+      if (!currentStream) return;
+      ctx.drawImage(toolVideo, 0, 0, 320, 240);
+      const imageData = ctx.getImageData(0, 0, 320, 240);
+      const data = imageData.data;
+      const pixels = data.length / 4;
+
+      let sumR = 0, sumG = 0, sumB = 0;
+      for (let i = 0; i < pixels; i++) {
+        sumR += data[i * 4];
+        sumG += data[i * 4 + 1];
+        sumB += data[i * 4 + 2];
+      }
+
+      const avgR = Math.round(sumR / pixels);
+      const avgG = Math.round(sumG / pixels);
+      const avgB = Math.round(sumB / pixels);
+
+      // Normalize to 0-100
+      const normR = Math.round((avgR / 255) * 100);
+      const normG = Math.round((avgG / 255) * 100);
+      const normB = Math.round((avgB / 255) * 100);
+
+      // Update bars and values
+      document.getElementById('color-r-val').textContent = normR + '%';
+      document.getElementById('color-g-val').textContent = normG + '%';
+      document.getElementById('color-b-val').textContent = normB + '%';
+      document.getElementById('color-r-bar').style.width = normR + '%';
+      document.getElementById('color-g-bar').style.width = normG + '%';
+      document.getElementById('color-b-bar').style.width = normB + '%';
+
+      // White balance assessment
+      let wbText, wbNote;
+      if (normR > normG + 10 && normR > normB + 10) {
+        wbText = 'Warm / Red cast';
+        wbNote = 'Your lighting may be too warm — try a daylight-temperature bulb.';
+      } else if (normB > normG + 10 && normB > normR + 10) {
+        wbText = 'Cool / Blue cast';
+        wbNote = 'Your light source is cool — try a warmer bulb or adjust white balance.';
+      } else if (normG > normR + 10 && normG > normB + 10) {
+        wbText = 'Green cast';
+        wbNote = 'Common under fluorescent lighting — try switching to LED bulbs.';
+      } else {
+        wbText = 'Neutral — white balance looks correct';
+        wbNote = 'Colour channels are balanced. Your camera is reproducing colour accurately.';
+      }
+
+      document.getElementById('wb-text').textContent = wbText;
+      document.getElementById('wb-note').textContent = wbNote;
+
+      // Dominant colour swatch
+      document.getElementById('color-swatch').style.backgroundColor = 'rgb(' + avgR + ',' + avgG + ',' + avgB + ')';
+    }
+
+    colorButton.addEventListener('click', () => {
+      currentStream ? stopTest() : startTest();
+    });
+
+    cameraSelect.addEventListener('change', () => {
+      if (currentStream) { stopTest(); setTimeout(startTest, 100); }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (currentStream) currentStream.getTracks().forEach(t => t.stop());
+    });
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      colorButton.disabled = true;
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

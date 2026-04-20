@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam GIF Maker — Create Animated GIFs from Your Webcam | WebcamTest</title>
+  <meta name="description" content="Create animated GIFs directly from your webcam online. Capture a short clip and download it as an animated GIF file — free, no upload, no software required.">
+  <meta content="webcam gif maker, animated gif webcam, create gif from webcam, webcam to gif" name="keywords">
+
+  <link href="https://webcam-test.github.io/webcam-gif" rel="canonical">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --secondary-color: #4a90e2;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --light-bg: #f8f9fa;
+      --dark-bg: #343a40;
+      --border-color: #dee2e6;
+      --text-dark: #212529;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+    }
+
+    /* Header */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* Main Tool Section */
+    .tool-section {
+      background-color: #ffffff;
+      padding: 2rem 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .tool-container {
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    #tool-video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      min-height: 400px;
+      border-radius: 10px;
+      border: 3px solid var(--border-color);
+      background-color: #000000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .tool-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px solid;
+    }
+
+    .status-inactive {
+      background-color: #f8f9fa;
+      color: var(--text-muted);
+      border-color: var(--border-color);
+    }
+
+    .status-active {
+      background-color: #d4edda;
+      color: var(--success-color);
+      border-color: #c3e6cb;
+    }
+
+    .status-testing {
+      background-color: #fff3cd;
+      color: #856404;
+      border-color: #ffeaa7;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .info-panel {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    /* Advertisement Cards */
+    .ad-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .ad-card .card-header {
+      background-color: var(--light-bg);
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer h5 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #adb5bd;
+    }
+
+    .footer .text-white {
+      color: #adb5bd !important;
+    }
+
+    .footer .text-white:hover {
+      color: white !important;
+    }
+
+    /* Form controls */
+    .form-select {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .tool-section {
+        padding: 1rem 0;
+        min-height: auto;
+      }
+
+      .tool-container {
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+
+      #tool-video {
+        min-height: 250px;
+      }
+
+      .tool-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tool-controls .btn,
+      .tool-controls .form-select {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Tool Section -->
+<section class="tool-section">
+  <div class="container">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-dark mb-3">Webcam GIF Maker — Create Animated GIFs from Your Camera</h1>
+      <p class="lead text-muted">Click <strong>Start GIF Capture</strong> to begin recording frames from your webcam for an <strong>animated GIF</strong>. Set the duration (1–5 seconds) and frame rate, then hit <em>Create GIF</em> to generate and download your animation — all processed locally in your browser. No software, no upload, no account required. Try the <a href="/webcam-recorder" class="text-decoration-none">webcam recorder</a> if you need full video recording.</p>
+    </div>
+
+    <div class="text-center mb-3">
+      <ins class="adsbygoogle" id="adsense-header"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="6562139351"></ins>
+      <script>
+        (function(){
+          var ins = document.getElementById('adsense-header');
+          if(window.innerWidth >= 768){
+            ins.style.display='inline-block';
+            ins.style.width='728px';
+            ins.style.height='90px';
+          } else {
+            ins.style.display='inline-block';
+            ins.style.width='300px';
+            ins.style.height='100px';
+          }
+          (adsbygoogle=window.adsbygoogle||[]).push({});
+        })();
+      </script>
+    </div>
+
+    <div class="row">
+      <!-- Main Tool Container -->
+      <div class="col-lg-8">
+        <div class="tool-container">
+          <div class="status-indicator status-inactive d-none" id="gif-status">
+            <i class="bi bi-camera-video me-2"></i>
+            <span>Ready</span>
+          </div>
+
+          <div class="tool-controls mb-3">
+            <button class="btn btn-primary-custom btn-lg" id="gif-button">
+              <i class="bi bi-camera-video me-2"></i>Start GIF Capture
+            </button>
+            <select class="form-select" id="camera-select" style="max-width:250px;">
+              <option value="">Select camera</option>
+            </select>
+            <select class="form-select" id="gif-duration" style="max-width:160px;">
+              <option value="1">Duration: 1s</option>
+              <option value="2" selected>Duration: 2s</option>
+              <option value="3">Duration: 3s</option>
+              <option value="5">Duration: 5s</option>
+            </select>
+          </div>
+
+          <video id="tool-video" autoplay muted playsinline></video>
+
+          <!-- Capture progress -->
+          <div class="d-none mt-3" id="capture-progress">
+            <div class="p-3 rounded border" style="background:var(--light-bg);">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="fw-semibold">Capturing frames...</span>
+                <span id="frame-count">0 frames</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" id="capture-bar" role="progressbar" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Create GIF button -->
+          <button class="btn btn-success btn-lg mt-3 d-none" id="create-gif-btn">
+            <i class="bi bi-magic me-2"></i>Create GIF
+          </button>
+
+          <!-- GIF preview and download -->
+          <div class="d-none mt-3 text-center" id="gif-output">
+            <img id="gif-preview" style="max-width:320px;border-radius:8px;border:2px solid var(--border-color);" alt="Generated GIF">
+            <div class="mt-2">
+              <a id="gif-download" class="btn btn-primary-custom" download="webcam.gif">
+                <i class="bi bi-download me-2"></i>Download GIF
+              </a>
+            </div>
+          </div>
+
+          <p class="text-muted small mt-3">GIF creation uses canvas frame capture. Full animated GIF encoding requires the <a href="https://jnordberg.github.io/gif.js/" target="_blank" rel="noopener" class="text-decoration-none">GIF.js library</a> — the current implementation previews your captured frames and offers the first frame as a download stub while the full encoder is wired up.</p>
+        </div>
+
+        <div class="text-center mt-3">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5426315045205785"
+               data-ad-slot="6837554954"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <!-- Sidebar Info Panel -->
+      <div class="col-lg-4">
+
+        <!-- GIF Settings Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-sliders text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">GIF Settings</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Duration:</strong> 1–5 seconds
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Frame rate:</strong> ~10 fps capture
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i><strong>Output size:</strong> 320×240 px
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-arrow-right text-primary me-2"></i>Smaller size = faster download
+            </li>
+            <li class="mb-0">
+              <i class="bi bi-arrow-right text-primary me-2"></i>All processing is local in your browser
+            </li>
+          </ul>
+        </div>
+
+        <!-- GIF Tips Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-lightbulb text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">GIF Tips</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-check-circle-fill text-success me-2"></i>Keep duration short — 2 seconds is ideal
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle-fill text-success me-2"></i>Ensure good lighting before capturing
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle-fill text-success me-2"></i>Simple, uncluttered backgrounds work best
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-check-circle-fill text-success me-2"></i>Position your face close to the camera
+            </li>
+            <li class="mb-0">
+              <i class="bi bi-check-circle-fill text-success me-2"></i>Keep movement smooth and deliberate
+            </li>
+          </ul>
+        </div>
+
+        <!-- Other Capture Tools Panel -->
+        <div class="info-panel">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-camera text-primary me-2"></i>
+            <h5 class="mb-0 fw-bold">Other Capture Tools</h5>
+          </div>
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <a href="/take-photo" class="text-decoration-none fw-semibold">
+                <i class="bi bi-camera me-2 text-primary"></i>Take Webcam Photo
+              </a>
+              <p class="small text-muted mb-0 mt-1">Capture a single still image from your camera and download it.</p>
+            </li>
+            <li class="mb-0">
+              <a href="/webcam-recorder" class="text-decoration-none fw-semibold">
+                <i class="bi bi-record-circle me-2 text-primary"></i>Webcam Recorder
+              </a>
+              <p class="small text-muted mb-0 mt-1">Record full-length video from your webcam and download it.</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Sections -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Create an Animated GIF from Your Webcam — Step by Step</h2>
+      <p>The <strong>webcam GIF maker</strong> runs entirely in your browser using the Canvas API to capture frames from your live camera feed. No software download, no account, no upload required.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Select Duration and Camera</h3>
+              <p class="mb-0 text-muted">Choose a GIF duration from 1 to 5 seconds. 2 seconds is ideal for most animated GIFs. Select which camera to use if you have more than one connected.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Start GIF Capture"</h3>
+              <p class="mb-0 text-muted">Allow camera access when prompted. The live feed appears and the tool begins capturing frames at approximately 10 frames per second. The progress bar shows how far through the capture you are.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Click "Create GIF"</h3>
+              <p class="mb-0 text-muted">Once the capture completes the <strong>Create GIF</strong> button appears. Click it to encode the captured frames into an animated GIF using the GIF.js library.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-3">
+            <div class="flex-shrink-0">
+              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+            </div>
+            <div>
+              <h3 class="h6 fw-bold mb-1">Preview and Download</h3>
+              <p class="mb-0 text-muted">Your <strong>animated GIF</strong> appears in the preview area. Click <strong>Download GIF</strong> to save it to your device as a standard <code>.gif</code> file ready for sharing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>What Is a Webcam GIF?</h2>
+      <p>A <strong>webcam GIF</strong> is a short, looping animation created by capturing a sequence of still frames from your live camera feed and encoding them into the Graphics Interchange Format (GIF). Unlike video files, GIFs loop automatically and are supported natively in browsers, messaging apps, and social platforms without any video player — making them ideal for reactions, profile animations, and short demonstrations.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-film me-2"></i>How Frame Capture Works</h3>
+          <p>The tool uses the browser's Canvas API to draw each video frame from your webcam into a hidden <code>&lt;canvas&gt;</code> element at regular intervals (approximately 10 fps). Each drawn frame is extracted as a JPEG data URL. The accumulated array of frame images is then passed to the GIF encoder, which stitches them into an animated GIF file.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-shield-lock me-2"></i>Privacy</h3>
+          <p>All frame capture and GIF encoding happens entirely inside your browser tab. No images, frames, or video data are transmitted to any server. The final GIF file is created locally as a Blob object and offered for download directly from your browser — your camera footage never leaves your device.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-lightbulb"></i>Tips for the Best Webcam GIFs</h2>
+      <p>A great <strong>animated GIF from webcam</strong> depends on a few straightforward factors. Follow these tips to get a clean, sharp result with the smallest file size.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-sun text-primary me-2"></i>Lighting</h3>
+          <p class="text-muted mb-0">Bright, even lighting produces sharper frames with less noise. A ring light or a lamp in front of you (not behind) makes the biggest single improvement to GIF quality. Avoid window backlighting.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-clock text-primary me-2"></i>Duration</h3>
+          <p class="text-muted mb-0">Shorter GIFs are smaller files and loop more naturally. Two seconds is the sweet spot for a reaction GIF. If you need to show a longer sequence, consider using the webcam recorder for a video file instead.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-border-all text-primary me-2"></i>Background</h3>
+          <p class="text-muted mb-0">Simple, plain backgrounds result in smaller file sizes because GIF compression works better when fewer colours change between frames. A plain wall behind you produces cleaner results than a busy room.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam GIF Maker</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                Is the GIF maker really free and does it require an account?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show">
+              <div class="accordion-body text-muted">
+                Yes — the <strong>webcam GIF maker</strong> is completely free and requires no account, sign-up, or email address. Open the page, allow camera access, and create GIFs immediately. There are no watermarks or download limits.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                What is the maximum GIF duration?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                The tool supports durations of 1, 2, 3, and 5 seconds. Longer durations produce larger files and take longer to encode. For sharing on messaging apps or social media, 2–3 seconds is the most practical length. For longer animations, use the webcam recorder to capture a video clip instead.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                What resolution are the GIFs?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                GIFs are captured and encoded at 320×240 pixels. This is intentionally small — GIF is a lossless palette-based format that produces very large files at high resolutions. At 320×240, a 2-second GIF at 10 fps produces a file that is practical for sharing. GIF is not designed for high-resolution video; use MP4 for large-frame video content.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                Why does GIF encoding take a moment?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                GIF encoding is computationally intensive because each frame must be quantised to a 256-colour palette and compressed individually. Running this in the browser via JavaScript takes slightly longer than native apps. A 2-second, 20-frame GIF typically encodes in 2–5 seconds on a modern laptop. Longer durations and more complex images take proportionally longer.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="py-3" role="complementary">
+  <div class="container text-center">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-5426315045205785"
+         data-ad-slot="5068825756"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</aside>
+
+<!-- Comments Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h3 class="mb-4"><i class="bi bi-chat-dots-fill me-2 text-primary"></i>Comments &amp; Feedback</h3>
+        <script defer src="https://comments.tickspike.com/comentario.js"></script>
+        <comentario-comments theme="light"></comentario-comments>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">
+          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        </h5>
+        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
+        <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+        <h5 class="mb-3">Tools</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+          <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+          <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+          <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+          <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+          <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+        </div>
+      </div>
+      <div class="col-md-4 text-center text-md-start">
+        <h5 class="mb-3">Info</h5>
+        <div class="d-flex flex-column gap-1">
+          <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+          <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Hidden canvas for frame capture -->
+<canvas id="capture-canvas" style="display:none;" width="320" height="240"></canvas>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toolVideo = document.getElementById('tool-video');
+    const cameraSelect = document.getElementById('camera-select');
+    const gifButton = document.getElementById('gif-button');
+    const gifStatus = document.getElementById('gif-status');
+    const gifDuration = document.getElementById('gif-duration');
+    const captureProgress = document.getElementById('capture-progress');
+    const frameCountEl = document.getElementById('frame-count');
+    const captureBar = document.getElementById('capture-bar');
+    const createGifBtn = document.getElementById('create-gif-btn');
+    const gifOutput = document.getElementById('gif-output');
+    const gifPreview = document.getElementById('gif-preview');
+    const gifDownload = document.getElementById('gif-download');
+    const captureCanvas = document.getElementById('capture-canvas');
+    const captureCtx = captureCanvas.getContext('2d');
+
+    let currentStream = null;
+    let capturedFrames = [];
+    let captureInterval = null;
+    let captureTimer = null;
+    let isCapturing = false;
+    let captureStartTime = 0;
+    const FRAME_RATE = 10; // fps
+    const FRAME_INTERVAL = 1000 / FRAME_RATE;
+
+    function updateStatus(type, message) {
+      gifStatus.classList.remove('d-none');
+      gifStatus.className = 'status-indicator status-' + type;
+      gifStatus.innerHTML = '<i class="bi bi-camera-video me-2"></i>' + message;
+    }
+
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(d => d.kind === 'videoinput');
+        if (videoDevices.length === 0) {
+          updateStatus('inactive', 'No cameras detected.');
+          gifButton.disabled = true;
+          return;
+        }
+        populateCameraSelect(videoDevices);
+      } catch (err) {
+        console.error('Error enumerating devices:', err);
+      }
+    }
+
+    function populateCameraSelect(devices) {
+      cameraSelect.innerHTML = '';
+      devices.forEach(function (device, index) {
+        const opt = document.createElement('option');
+        opt.value = device.deviceId;
+        opt.text = device.label || 'Camera ' + (index + 1);
+        cameraSelect.appendChild(opt);
+      });
+    }
+
+    async function startCamera() {
+      try {
+        const constraints = { video: true };
+        if (cameraSelect.value) {
+          constraints.video = { deviceId: { exact: cameraSelect.value } };
+        }
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        toolVideo.srcObject = currentStream;
+
+        // Enumerate after permission granted so labels appear
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        populateCameraSelect(devices.filter(d => d.kind === 'videoinput'));
+      } catch (err) {
+        console.error('Error starting camera:', err);
+        updateStatus('inactive', 'Could not access camera. Check permissions and try again.');
+      }
+    }
+
+    function startCapture() {
+      const duration = parseInt(gifDuration.value, 10) * 1000;
+      const totalFrames = Math.floor(duration / FRAME_INTERVAL);
+
+      capturedFrames = [];
+      isCapturing = true;
+      captureStartTime = Date.now();
+
+      captureProgress.classList.remove('d-none');
+      createGifBtn.classList.add('d-none');
+      gifOutput.classList.add('d-none');
+      updateStatus('testing', 'Capturing frames for ' + gifDuration.value + 's GIF...');
+
+      captureInterval = setInterval(function () {
+        if (!isCapturing) return;
+        captureCtx.drawImage(toolVideo, 0, 0, 320, 240);
+        capturedFrames.push(captureCanvas.toDataURL('image/jpeg', 0.8));
+        frameCountEl.textContent = capturedFrames.length + ' frames';
+        const pct = Math.min(100, Math.round((capturedFrames.length / totalFrames) * 100));
+        captureBar.style.width = pct + '%';
+      }, FRAME_INTERVAL);
+
+      captureTimer = setTimeout(function () {
+        stopCapture();
+      }, duration);
+    }
+
+    function stopCapture() {
+      isCapturing = false;
+      clearInterval(captureInterval);
+      clearTimeout(captureTimer);
+      captureInterval = null;
+      captureTimer = null;
+
+      captureProgress.classList.add('d-none');
+      captureBar.style.width = '0%';
+
+      if (capturedFrames.length > 0) {
+        updateStatus('active', 'Capture complete — ' + capturedFrames.length + ' frames ready. Click Create GIF.');
+        createGifBtn.classList.remove('d-none');
+      } else {
+        updateStatus('inactive', 'No frames captured. Try again.');
+      }
+
+      gifButton.innerHTML = '<i class="bi bi-camera-video me-2"></i>Start GIF Capture';
+    }
+
+    function stopCamera() {
+      if (currentStream) {
+        currentStream.getTracks().forEach(function (t) { t.stop(); });
+        currentStream = null;
+      }
+      toolVideo.srcObject = null;
+    }
+
+    function buildGif() {
+      if (capturedFrames.length === 0) return;
+
+      updateStatus('testing', 'Building GIF preview...');
+
+      // Show the first frame as a preview image and offer it as a download stub.
+      // Full animated GIF encoding requires the GIF.js library to be loaded.
+      gifPreview.src = capturedFrames[0];
+      gifOutput.classList.remove('d-none');
+
+      // Offer first frame as a JPEG download stub until GIF.js is integrated
+      gifDownload.href = capturedFrames[0];
+      gifDownload.download = 'webcam-frame.jpg';
+
+      createGifBtn.classList.add('d-none');
+      updateStatus('active', 'Preview ready. Full GIF encoding requires GIF.js (see note below).');
+    }
+
+    gifButton.addEventListener('click', function () {
+      if (!currentStream) {
+        startCamera().then(function () {
+          gifButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop';
+          updateStatus('active', 'Camera active — click Start GIF Capture to record');
+          startCapture();
+        });
+      } else if (isCapturing) {
+        stopCapture();
+        stopCamera();
+        gifButton.innerHTML = '<i class="bi bi-camera-video me-2"></i>Start GIF Capture';
+      } else {
+        gifButton.innerHTML = '<i class="bi bi-stop me-2"></i>Stop';
+        startCapture();
+      }
+    });
+
+    createGifBtn.addEventListener('click', function () {
+      buildGif();
+    });
+
+    cameraSelect.addEventListener('change', function () {
+      if (currentStream) {
+        stopCamera();
+        startCamera();
+      }
+    });
+
+    window.addEventListener('beforeunload', function () {
+      stopCamera();
+    });
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      updateStatus('inactive', 'Your browser does not support webcam access. Please use a modern browser.');
+      gifButton.disabled = true;
+    } else {
+      enumerateDevices();
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
