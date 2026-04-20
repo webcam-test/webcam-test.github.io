@@ -211,49 +211,120 @@
         padding: 1.5rem;
       }
     }
+
+    /* Dropdown Navigation */
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      border-radius: 8px;
+      padding: 0.5rem;
+      min-width: 200px;
+    }
+    .dropdown-item {
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: background-color 0.15s ease;
+    }
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+      background-color: rgba(0,102,204,0.08);
+      color: var(--primary-color);
+    }
+    .dropdown-item.active,
+    .dropdown-item:active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    .nav-link.dropdown-toggle.active {
+      opacity: 1;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        padding: 0.75rem 0 0.25rem;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        margin-top: 0.5rem;
+      }
+      .dropdown-menu {
+        background-color: rgba(0,0,0,0.2);
+        box-shadow: none;
+        border-radius: 6px;
+        margin: 0.25rem 0 0.5rem 1rem;
+        padding: 0.25rem;
+      }
+      .dropdown-item {
+        color: rgba(255,255,255,0.85);
+        font-size: 0.875rem;
+      }
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+      }
+      .dropdown-item.active {
+        background-color: rgba(255,255,255,0.2);
+        color: white;
+        font-weight: 600;
+      }
+    }
   </style>
 </head>
 
 <body>
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-    </a>
-    <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/mirror">Webcam Mirror</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/fps-checker">FPS Checker</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/resolution-tester">Resolution Tester</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/take-photo">Take Photo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/show-webcam">Show My Webcam</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-semibold" href="/contact">Contact</a>
-        </li>
-      </ul>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+      </a>
+      <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Capture</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/webcam-recorder"><i class="bi bi-record-circle me-2 text-primary"></i>Webcam Recorder</a></li>
+              <li><a class="dropdown-item" href="/take-photo"><i class="bi bi-camera me-2 text-primary"></i>Take Photo</a></li>
+              <li><a class="dropdown-item" href="/mirror"><i class="bi bi-mirror me-2 text-primary"></i>Webcam Mirror</a></li>
+              <li><a class="dropdown-item" href="/webcam-effects"><i class="bi bi-magic me-2 text-primary"></i>Webcam Effects</a></li>
+              <li><a class="dropdown-item" href="/webcam-gif"><i class="bi bi-file-image me-2 text-primary"></i>GIF Maker</a></li>
+              <li><a class="dropdown-item" href="/webcam-timelapse"><i class="bi bi-clock me-2 text-primary"></i>Timelapse</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Test &amp; Measure</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/fps-checker"><i class="bi bi-speedometer2 me-2 text-primary"></i>FPS Checker</a></li>
+              <li><a class="dropdown-item" href="/resolution-tester"><i class="bi bi-aspect-ratio me-2 text-primary"></i>Resolution Tester</a></li>
+              <li><a class="dropdown-item" href="/webcam-quality-test"><i class="bi bi-search me-2 text-primary"></i>Quality Test</a></li>
+              <li><a class="dropdown-item" href="/webcam-zoom-test"><i class="bi bi-zoom-in me-2 text-primary"></i>Zoom Test</a></li>
+              <li><a class="dropdown-item" href="/webcam-brightness-test"><i class="bi bi-sun me-2 text-primary"></i>Brightness Test</a></li>
+              <li><a class="dropdown-item" href="/webcam-color-test"><i class="bi bi-palette me-2 text-primary"></i>Color Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Device &amp; Setup</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/show-webcam"><i class="bi bi-info-circle me-2 text-primary"></i>Show My Webcam</a></li>
+              <li><a class="dropdown-item" href="/camera-comparison"><i class="bi bi-layout-split me-2 text-primary"></i>Camera Comparison</a></li>
+              <li><a class="dropdown-item" href="/webcam-lighting-test"><i class="bi bi-brightness-high me-2 text-primary"></i>Lighting Test</a></li>
+              <li><a class="dropdown-item" href="/webcam-framing-guide"><i class="bi bi-grid-3x3 me-2 text-primary"></i>Framing Guide</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/about">About</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 <!-- Main Tool Section -->
 <section class="tool-section">
@@ -547,38 +618,57 @@
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
-        <h5 class="mb-3">
-          <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-        </h5>
-        <p class="mb-2">Advanced online webcam testing platform for all devices</p>
-        <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. Free camera testing tool.</p>
-      </div>
-      <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
-        <h5 class="mb-3">Tools</h5>
-        <div class="d-flex flex-column gap-1">
-          <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
-          <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
-          <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
-          <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
-          <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
-          <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+          <h5 class="mb-3">
+            <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+          </h5>
+          <p class="mb-2">Free online webcam testing tools for every device and browser.</p>
+          <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. All rights reserved.</p>
         </div>
-      </div>
-      <div class="col-md-4 text-center text-md-start">
-        <h5 class="mb-3">Info</h5>
-        <div class="d-flex flex-column gap-1">
-          <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
-          <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+          <h5 class="mb-3">Capture &amp; Creative</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/webcam-recorder" class="text-white text-decoration-none"><i class="bi bi-record-circle me-1"></i>Webcam Recorder</a>
+            <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
+            <a href="/mirror" class="text-white text-decoration-none"><i class="bi bi-mirror me-1"></i>Webcam Mirror</a>
+            <a href="/webcam-effects" class="text-white text-decoration-none"><i class="bi bi-magic me-1"></i>Webcam Effects</a>
+            <a href="/webcam-gif" class="text-white text-decoration-none"><i class="bi bi-file-image me-1"></i>GIF Maker</a>
+            <a href="/webcam-timelapse" class="text-white text-decoration-none"><i class="bi bi-clock me-1"></i>Timelapse</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+          <h5 class="mb-3">Test &amp; Measure</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
+            <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
+            <a href="/resolution-tester" class="text-white text-decoration-none"><i class="bi bi-aspect-ratio me-1"></i>Resolution Tester</a>
+            <a href="/webcam-quality-test" class="text-white text-decoration-none"><i class="bi bi-search me-1"></i>Quality Test</a>
+            <a href="/webcam-zoom-test" class="text-white text-decoration-none"><i class="bi bi-zoom-in me-1"></i>Zoom Test</a>
+            <a href="/webcam-brightness-test" class="text-white text-decoration-none"><i class="bi bi-sun me-1"></i>Brightness Test</a>
+            <a href="/webcam-color-test" class="text-white text-decoration-none"><i class="bi bi-palette me-1"></i>Color Test</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center text-md-start">
+          <h5 class="mb-3">Device &amp; Setup</h5>
+          <div class="d-flex flex-column gap-1 mb-3">
+            <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
+            <a href="/camera-comparison" class="text-white text-decoration-none"><i class="bi bi-layout-split me-1"></i>Camera Comparison</a>
+            <a href="/webcam-lighting-test" class="text-white text-decoration-none"><i class="bi bi-brightness-high me-1"></i>Lighting Test</a>
+            <a href="/webcam-framing-guide" class="text-white text-decoration-none"><i class="bi bi-grid-3x3 me-1"></i>Framing Guide</a>
+          </div>
+          <h5 class="mb-2">Info</h5>
+          <div class="d-flex flex-column gap-1">
+            <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
+            <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -715,6 +805,24 @@
     }
   });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+      document.querySelectorAll('.navbar-nav .dropdown-item, .navbar-nav > li > .nav-link').forEach(function (el) {
+        var href = el.getAttribute('href');
+        if (!href) return;
+        var hrefClean = href.replace(/\/$/, '') || '/';
+        if (hrefClean === path) {
+          el.classList.add('active');
+          el.setAttribute('aria-current', 'page');
+          var dropdown = el.closest('.dropdown');
+          if (dropdown) {
+            dropdown.querySelector('.dropdown-toggle').classList.add('active');
+          }
+        }
+      });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
