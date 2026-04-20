@@ -608,7 +608,265 @@
     </div>
   </section>
 
-    <!-- After Content Advertisement -->
+  <!-- How to Use Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-list-ol"></i>How to Use the Webcam Viewer — See Your Camera Details
+        </h2>
+        <p class="text-muted mb-4">The webcam viewer runs entirely in your browser and reports your camera's live technical specifications in seconds. No software to install, no account required.</p>
+        <div class="row g-4">
+          <div class="col-md-3 text-center">
+            <div class="display-5 fw-bold text-primary mb-2">1</div>
+            <h3 class="h6 fw-bold text-dark">Click Analyze My Webcam</h3>
+            <p class="text-muted small">Press the <strong>Analyze My Webcam</strong> button at the top. Your browser will immediately prompt you for camera access.</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="display-5 fw-bold text-primary mb-2">2</div>
+            <h3 class="h6 fw-bold text-dark">Allow Camera Access</h3>
+            <p class="text-muted small">Click <strong>Allow</strong> in the browser permission pop-up. This is required so the browser can read your webcam's stream and extract device capabilities.</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="display-5 fw-bold text-primary mb-2">3</div>
+            <h3 class="h6 fw-bold text-dark">View Your Webcam Details</h3>
+            <p class="text-muted small">The info panel fills in with your camera's device name, resolution, frame rate, aspect ratio, facing mode, autofocus status, and full capability list.</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="display-5 fw-bold text-primary mb-2">4</div>
+            <h3 class="h6 fw-bold text-dark">Test Supported Resolutions</h3>
+            <p class="text-muted small">Click any resolution card below the viewer to check whether your webcam hardware can actually stream at that resolution — from 320×240 QVGA all the way to 4K UHD.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Results Mean Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-clipboard-data-fill"></i>What Your Webcam Details Actually Tell You
+      </h2>
+      <p class="text-center text-muted mb-5">Each field in the webcam viewer is read directly from your live camera stream — not pulled from manufacturer specs or cached device data. Here's what each one means.</p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-display text-primary me-2"></i>Resolution</h3>
+            <p class="text-muted">Resolution is the number of pixels your webcam is actively delivering in its current video stream — for example, 1920×1080 pixels (Full HD) or 1280×720 pixels (HD). This is the <em>active streaming resolution</em>, which can differ from the maximum your camera hardware supports. Many webcams default to a lower resolution until the software or browser requests a higher one. Use the resolution grid below the viewer to test your camera's true maximum.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-speedometer2 text-primary me-2"></i>Frame Rate (FPS)</h3>
+            <p class="text-muted">Frame rate — measured in frames per second (FPS) — is how many individual images your webcam captures per second. 30 FPS is the standard for video calls on Zoom, Microsoft Teams, and Google Meet. 60 FPS delivers smoother motion for streaming and recording. A frame rate below 20 FPS will appear choppy to people on the other end of a video call. For a dedicated FPS analysis, use the <a href="/fps-checker" class="text-decoration-none">webcam FPS checker</a>.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-camera-video text-primary me-2"></i>Device Name & Device ID</h3>
+            <p class="text-muted">The device name is the exact label your operating system assigns to the webcam — typically the manufacturer and model, such as "Logitech HD Pro Webcam C920" or "FaceTime HD Camera". This is the name that appears in Zoom's, Teams', or OBS Studio's camera selection dropdown. The device ID is a unique browser-generated identifier for the camera on your specific device — it changes if you use a different browser or clear your browser data.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-bullseye text-primary me-2"></i>Autofocus, Facing Mode & Aspect Ratio</h3>
+            <p class="text-muted"><strong>Autofocus</strong> — whether your webcam continuously adjusts focus as you move. Continuous autofocus keeps you sharp on video calls; fixed-focus cameras rely on being placed at the right distance. <strong>Facing mode</strong> indicates whether the camera is front-facing (user/selfie) or rear-facing (environment) — relevant on phones and tablets. <strong>Aspect ratio</strong> is the width-to-height proportion of the video frame — 16:9 is standard widescreen, 4:3 is the older square format.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Check Details Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-question-circle-fill"></i>Why Check Your Webcam Specifications?
+        </h2>
+        <p class="text-muted mb-4">An online webcam viewer gives you verified, live data about your camera — not guesses based on what the box claims. Here's when that matters:</p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-camera-video text-primary me-2"></i>Before Video Calls & Meetings</h3>
+            <p class="text-muted">Confirm which webcam is active and what resolution it's actually delivering before joining a Zoom call, Teams meeting, or Google Meet session. If your camera's device name shows a virtual camera or the wrong input, you can catch it before you're live. Knowing your frame rate in advance tells you whether your video will look smooth or choppy to other participants.</p>
+          </div>
+          <div class="col-md-6">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-receipt text-success me-2"></i>Verifying a Webcam Purchase</h3>
+            <p class="text-muted">Webcam manufacturers advertise maximum specifications, but real-world performance can differ. A webcam sold as "1080p" may only stream at 720p at 30 FPS through a standard browser or USB 2.0 port. The webcam viewer shows you the specifications your camera is <em>actually delivering</em> on your device — giving you accurate data to compare against what was advertised.</p>
+          </div>
+          <div class="col-md-6">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-tools text-warning me-2"></i>Diagnosing Poor Video Quality</h3>
+            <p class="text-muted">If your webcam looks blurry, choppy, or washed out on calls, the viewer's technical readout tells you why. A low active resolution means the camera is being limited by your app or browser settings. A low frame rate points to a bandwidth or processing constraint. Missing autofocus explains blurry video during movement. Each data point in the webcam details panel is a troubleshooting clue.</p>
+          </div>
+          <div class="col-md-6">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-code-slash text-info me-2"></i>Developers & Technical Users</h3>
+            <p class="text-muted">The webcam viewer exposes WebRTC MediaTrackCapabilities and MediaTrackSettings in a readable format — useful for developers building video applications, QA teams testing camera integrations, or anyone who needs to verify browser-level camera API support without writing their own test code. Browser support status for WebRTC, MediaDevices API, and screen capture is displayed in the Technical Analysis panel above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Windows Webcam Viewer Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-windows"></i>Does Windows 10 or Windows 11 Have a Built-In Webcam Viewer?
+        </h2>
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <p class="text-muted">Windows 10 and Windows 11 include a basic <strong>Camera app</strong> that lets you view your webcam feed and take photos or videos — but it doesn't display technical webcam specifications like resolution, frame rate, device ID, autofocus status, or supported capabilities.</p>
+            <p class="text-muted">To open the Windows Camera app: press the <strong>Start menu</strong>, search for <em>Camera</em>, and open it. This confirms your webcam hardware is detected by Windows, but gives you no insight into the specs your camera is actually delivering.</p>
+            <p class="text-muted mb-0">For a full webcam details view — including live resolution, FPS, device name, facing mode, autofocus, and the complete supported resolutions list — this online webcam viewer gives you far more information than the built-in Windows Camera app, directly in your browser, with no software to install.</p>
+          </div>
+          <div class="col-lg-5">
+            <div class="p-4 rounded" style="background-color: var(--light-bg); border-left: 4px solid var(--primary-color);">
+              <h3 class="h6 fw-bold text-primary mb-3"><i class="bi bi-apple me-2"></i>On Mac?</h3>
+              <p class="text-muted small mb-3">macOS does not have a dedicated webcam viewer app. You can use <strong>FaceTime</strong> or <strong>Photo Booth</strong> to preview your camera, but neither displays technical specifications. Open this webcam viewer in Safari or Chrome on your Mac to see your camera's full details.</p>
+              <h3 class="h6 fw-bold text-primary mb-2"><i class="bi bi-phone me-2"></i>On iPhone, iPad, or Android?</h3>
+              <p class="text-muted small mb-0">Open this page in Safari (iOS) or Chrome (Android) and tap <strong>Analyze My Webcam</strong>. Your front camera activates by default, and the details panel displays the specs of your mobile camera in the same format as desktop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-shield-lock-fill"></i>Your Webcam Data Stays on Your Device
+        </h2>
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <p class="text-muted">All webcam analysis happens locally inside your browser. The viewer reads your camera's stream properties using the browser's built-in WebRTC API — no video frames are recorded, no device data is transmitted, and nothing is stored on any server.</p>
+            <p class="text-muted mb-0">Your camera permission is granted to the browser, not to this website directly. You can verify this by opening your browser's developer tools and monitoring network requests — you'll see no camera data being sent anywhere. Disconnecting your internet connection before clicking Analyze will demonstrate this: the webcam viewer continues to work perfectly offline.</p>
+          </div>
+          <div class="col-lg-4 text-center mt-4 mt-lg-0">
+            <i class="bi bi-shield-check display-1 text-success mb-3 d-block"></i>
+            <div class="d-flex flex-column gap-2">
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>No video recorded</span>
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>No specs uploaded</span>
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>100% browser-side</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-question-circle-fill"></i>Frequently Asked Questions — Webcam Viewer
+      </h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                  How do I view my webcam details online?
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  Click <strong>Analyze My Webcam</strong> at the top of this page and allow camera access when your browser prompts you. Within a few seconds, the webcam viewer displays your camera's device name, active resolution, frame rate, aspect ratio, facing mode, autofocus status, and the full list of camera capabilities — no sign-up or software needed.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
+                  Does Windows 10 or Windows 11 have a built-in webcam viewer?
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  Windows 10 and 11 include the built-in <strong>Camera app</strong> (search for it in the Start menu), which previews your camera feed and lets you take photos or videos. However, it doesn't display technical specs like resolution, FPS, device ID, or autofocus status. This online webcam viewer shows all of those details directly in your browser without installing anything.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
+                  How do I check my webcam details on a Mac?
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  macOS doesn't have a built-in tool for viewing webcam specifications. Open this page in Safari or Chrome on your Mac and click <strong>Analyze My Webcam</strong> — it reads your camera's live stream details, including resolution, FPS, device name, and capabilities, directly in the browser. You can also check your camera hardware model in <strong>System Information → Camera</strong> (Apple menu → About This Mac → System Report → Camera).
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
+                  What is a good resolution for a webcam?
+                </button>
+              </h3>
+              <div id="faq4" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  For video calls on Zoom, Teams, or Google Meet, <strong>1280×720 (HD)</strong> is the minimum recommended resolution. <strong>1920×1080 (Full HD)</strong> is the standard for professional video calls and most streaming setups. 4K webcams exist but provide limited benefit for video calls since most platforms cap their streams at 1080p. If your webcam viewer shows a resolution below 720p, check whether your camera supports higher resolutions using the resolution grid, or consider upgrading your webcam.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="true" aria-controls="faq5">
+                  What does "facing mode" mean in my webcam specifications?
+                </button>
+              </h3>
+              <div id="faq5" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  Facing mode describes which direction the camera is oriented. <strong>"user"</strong> means front-facing (the camera points toward you — typical for laptop webcams and phone selfie cameras). <strong>"environment"</strong> means rear-facing (pointing away from you — typical for the main camera on a phone or tablet). Desktop and laptop webcams almost always report "user". On mobile devices, you may see both options available in the camera selector.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="true" aria-controls="faq6">
+                  Why does my webcam show a lower resolution than its specs claim?
+                </button>
+              </h3>
+              <div id="faq6" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  Several things can cause this. First, browsers and applications request a default resolution when they open a camera — they don't automatically ask for the maximum. Second, USB 2.0 bandwidth limits can prevent 4K or high-FPS streams from reaching their claimed resolution. Third, some webcams compress the video stream before it reaches the browser, reducing the effective resolution. Click the <strong>1920×1080</strong> or <strong>4K</strong> resolution cards in the grid above to explicitly request higher resolutions and see whether your camera hardware can deliver them.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="true" aria-controls="faq7">
+                  What is the difference between the webcam viewer and the webcam test?
+                </button>
+              </h3>
+              <div id="faq7" class="accordion-collapse collapse show">
+                <div class="accordion-body text-muted">
+                  The <a href="/" class="text-decoration-none">webcam test</a> checks whether your camera is working at all — it shows a live feed and confirms the camera is accessible, active, and delivering video. The webcam viewer goes deeper: it displays your full camera specifications, lets you test every supported resolution, and exposes hardware capabilities like autofocus and exposure control. Use the test first to confirm your camera works; use the viewer to understand exactly what it can do.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- After Content Advertisement -->
 <div class="text-center my-3">
       <ins class="adsbygoogle"
            style="display:inline-block;width:300px;height:250px"

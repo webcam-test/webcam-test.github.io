@@ -549,59 +549,138 @@
     </div>
   </section>
 
-  <!-- Why Test Your Webcam Section -->
-  <section class="py-5">
+  <!-- How to Test Section -->
+  <section class="py-5 bg-white">
     <div class="container">
       <div class="feature-card">
         <h2 class="section-header">
-          <i class="bi bi-check-circle-fill"></i>Why Test Your Webcam?
+          <i class="bi bi-list-ol"></i>How to Test Your Webcam Online — Step by Step
         </h2>
+        <p class="text-muted mb-4">Running a camera test takes less than 60 seconds and requires nothing to install. Here's exactly how it works:</p>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="text-center p-3">
+              <div class="display-4 fw-bold text-primary mb-2">1</div>
+              <h3 class="h5 fw-bold text-dark">Click "Test My Webcam"</h3>
+              <p class="text-muted">Press the <strong>Test my webcam</strong> button at the top of this page. Your browser immediately requests camera access — this is the only permission needed and nothing is transmitted off your device.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center p-3">
+              <div class="display-4 fw-bold text-primary mb-2">2</div>
+              <h3 class="h5 fw-bold text-dark">Allow Camera Access</h3>
+              <p class="text-muted">Click <strong>Allow</strong> in the browser permission pop-up. If you accidentally click Block, click the camera or padlock icon in the browser address bar to reset the permission, then refresh and try again.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center p-3">
+              <div class="display-4 fw-bold text-primary mb-2">3</div>
+              <h3 class="h5 fw-bold text-dark">Review Your Camera Info</h3>
+              <p class="text-muted">Your live feed appears immediately. The info panel fills in with your camera's resolution, frame rate, device name, aspect ratio, facing mode, and autofocus status — all read directly from the live stream.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 p-3 rounded" style="background-color: var(--light-bg); border-left: 4px solid var(--primary-color);">
+          <p class="mb-0 text-muted"><strong class="text-primary"><i class="bi bi-lightbulb me-2"></i>Multiple cameras?</strong> If you have both a built-in laptop camera and an external USB webcam connected, a dropdown selector appears automatically after your first camera loads. Select any camera to switch to it and test each one individually.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Does It Check Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-clipboard-data-fill"></i>What Does the Webcam Test Check?
+      </h2>
+      <p class="text-center text-muted mb-5">Every metric shown is measured live from your actual camera stream — not guessed or estimated from device specs.</p>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card h-100 text-center">
+            <i class="bi bi-display text-primary display-5 mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Resolution</h3>
+            <p class="text-muted">The pixel dimensions your camera is actively streaming — for example, 1920×1080 (Full HD) or 1280×720 (HD Ready). Higher resolution means sharper, more detailed video on calls and recordings. <a href="/resolution-tester" class="text-decoration-none">Test your maximum supported resolution.</a></p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card h-100 text-center">
+            <i class="bi bi-speedometer2 text-primary display-5 mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Frame Rate (FPS)</h3>
+            <p class="text-muted">How many frames per second your camera delivers. 30 FPS is the standard for video calls; 60 FPS produces smoother motion for live streaming and recording. Anything below 20 FPS will appear choppy. <a href="/fps-checker" class="text-decoration-none">Run a dedicated FPS test.</a></p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card h-100 text-center">
+            <i class="bi bi-camera-video text-primary display-5 mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Camera Name & Device ID</h3>
+            <p class="text-muted">The exact device name reported by your OS — useful for confirming which camera is active in your system, verifying driver recognition, and identifying the correct input in Zoom, Microsoft Teams, or Google Meet settings.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card h-100 text-center">
+            <i class="bi bi-aspect-ratio text-primary display-5 mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Aspect Ratio & Autofocus</h3>
+            <p class="text-muted">Aspect ratio is the width-to-height proportion of your video frame — 16:9 is standard widescreen, 4:3 is the older square format. Autofocus status tells you whether the camera actively adjusts focus as you move — key for sharp video during calls.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Test Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-check-circle-fill"></i>Why Test Your Webcam Before a Call?
+        </h2>
+        <p class="text-muted mb-4">A quick camera check before a Zoom meeting, Microsoft Teams call, Google Meet session, or job interview takes 60 seconds and can prevent a lot of embarrassment. A camera test reveals problems your OS won't warn you about:</p>
         <div class="row">
           <div class="col-md-6">
             <ul class="list-unstyled">
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Verify new webcam purchases and installations work correctly</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Silent camera failure</strong> — the camera appears active in your OS but delivers a black or frozen frame to the app on the other end</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Check if built-in laptop camera is properly enabled and configured</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Wrong camera selected</strong> — a virtual camera, IR sensor, or old device is active instead of your real webcam</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Ensure computer webcam provides clear video during calls</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Low frame rate</strong> — video looks choppy and unprofessional even though the camera preview looks fine locally</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Test external USB webcams and their video quality</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Driver not installed</strong> — a newly connected external USB webcam isn't being recognised by the system until drivers are set up</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Confirm other applications can properly detect your cameras</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Resolution locked too low</strong> — your camera is streaming at 480p when it's capable of 1080p Full HD</span>
               </li>
             </ul>
           </div>
           <div class="col-md-6">
             <ul class="list-unstyled">
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Troubleshoot video issues before important meetings</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Browser permission blocked</strong> — a previous accidental denial means no tab can use your camera until you manually reset it</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Optimize camera settings for streaming and content creation</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Camera locked by another app</strong> — Zoom, OBS Studio, or Teams running in the background holds exclusive camera access</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Test mobile device cameras and tablets</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Poor lighting</strong> — see in real time exactly how dark or overexposed your lighting setup looks on camera before the call starts</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Measure webcam quality and technical specifications</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>New webcam verification</strong> — confirm a just-installed camera is working correctly before you rely on it in front of an audience</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
-                <i class="bi bi-arrow-right text-primary me-3 mt-1"></i>
-                <span>Educational purposes and video engineering learning</span>
+                <i class="bi bi-arrow-right text-primary me-3 mt-1 flex-shrink-0"></i>
+                <span><strong>Mobile camera check</strong> — test front or rear camera on iPhone, iPad, or Android directly in the browser, no app needed</span>
               </li>
             </ul>
           </div>
@@ -610,176 +689,243 @@
     </div>
   </section>
 
-  <!-- Device Compatibility Section -->
-  <section class="py-5 bg-white">
-    <div class="container">
-      <h2 class="section-header">
-        <i class="bi bi-devices"></i>Webcam Testing Across All Devices
-      </h2>
-
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="feature-card h-100">
-            <h4 class="text-primary mb-3">
-              <i class="bi bi-laptop me-2"></i>Desktop & Laptop Testing
-            </h4>
-            <p><strong>Built-in Webcams:</strong> Modern laptops feature integrated cameras with HD resolution and advanced image processing. <a href="/show-webcam" class="text-decoration-none">View your webcam's detailed specs</a> to check for hardware conflicts and verify video driver compatibility.</p>
-            <p><strong>External USB Webcams:</strong> High-quality USB cameras, 4K webcams, and professional streaming setups. Our tool measures resolution up to 4K, frame rates to 60fps, and latency performance for real-time monitoring.</p>
-            <ul class="list-unstyled mt-3">
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Windows camera driver compatibility
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>macOS camera permissions and settings
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Linux V4L2 driver support testing
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Multiple camera interface management
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="feature-card h-100">
-            <h4 class="text-primary mb-3">
-              <i class="bi bi-phone me-2"></i>Mobile Device Testing
-            </h4>
-            <p><strong>Smartphone Cameras:</strong> Modern smartphones feature multiple cameras with advanced computational photography. Test front-facing selfie cameras, rear cameras, and ultra-wide lenses.</p>
-            <p><strong>Tablet Camera Systems:</strong> iPad and Android tablet cameras with advanced video recording capabilities. Verify landscape and portrait mode camera switching and video stabilization.</p>
-            <ul class="list-unstyled mt-3">
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>iOS Safari camera access and permissions
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Android Chrome camera compatibility
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Mobile camera resolution testing
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Touch-to-focus and zoom functionality
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Technical Specifications Section -->
+  <!-- Device & Browser Compatibility Section -->
   <section class="py-5">
     <div class="container">
       <h2 class="section-header">
-        <i class="bi bi-gear-fill"></i>Advanced Webcam Analysis & Diagnostics
+        <i class="bi bi-devices"></i>Works on Every Device and Browser
       </h2>
-
-      <div class="feature-card">
-        <h3 class="mb-4 text-primary">Real-Time Video Analysis</h3>
-        <p>Our webcam testing platform provides comprehensive real-time analysis of your video input using advanced WebRTC technologies:</p>
-
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h5 class="text-primary mb-3">
-              <i class="bi bi-display me-2"></i>Resolution Testing
-            </h5>
-            <p><a href="/resolution-tester" class="text-decoration-none">Test your webcam's maximum resolution capabilities</a> from 480p to 4K. Identify optimal resolution settings for different use cases like video calls, streaming, or content creation.</p>
-
-            <h5 class="text-primary mb-3">
-              <i class="bi bi-speedometer2 me-2"></i>Frame Rate Analysis
-            </h5>
-            <p><a href="/fps-checker" class="text-decoration-none">Measure your camera's frame rate performance</a> at different resolutions. Test 60fps, 30fps, and 24fps capabilities for smooth video playback and recording.</p>
+      <p class="text-center text-muted mb-5">The webcam test runs entirely in your browser using the WebRTC API — no plugins, no Flash, no downloads required on any platform.</p>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold mb-3">
+              <i class="bi bi-laptop text-primary me-2"></i>Desktop & Laptop
+            </h3>
+            <p class="text-muted">Test built-in laptop cameras and external USB webcams on Windows 10, Windows 11, macOS, and Linux. Our tool reads your webcam's device name directly from the OS, confirms driver recognition, and measures actual stream resolution and frame rate rather than relying on manufacturer specs.</p>
+            <p class="text-muted mb-0">For a deeper hardware breakdown, <a href="/show-webcam" class="text-decoration-none">open the full camera details page</a> to see your aspect ratio, autofocus mode, facing mode, and device ID in one place.</p>
           </div>
-          <div class="col-md-6">
-            <h5 class="text-primary mb-3">
-              <i class="bi bi-camera-reels me-2"></i>Video Quality Assessment
-            </h5>
-            <p>Evaluate color accuracy, brightness levels, contrast ratios, and overall image quality. Essential for determining camera suitability for professional use.</p>
-
-            <h5 class="text-primary mb-3">
-              <i class="bi bi-shield-check me-2"></i>Compatibility Testing
-            </h5>
-            <p>Test browser compatibility, driver functionality, and cross-platform support across Windows, macOS, Linux, iOS, and Android operating systems.</p>
+        </div>
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold mb-3">
+              <i class="bi bi-phone text-primary me-2"></i>Mobile & Tablet
+            </h3>
+            <p class="text-muted">Works on iPhone and iPad via Safari, and on Android phones and tablets via Chrome. Switch between front and rear cameras using the dropdown selector once your first camera loads. Mobile cameras often support multiple resolutions — test yours with the <a href="/resolution-tester" class="text-decoration-none">resolution tester</a>.</p>
+            <p class="text-muted mb-0">Supported browsers: <strong>Chrome</strong>, <strong>Firefox</strong>, <strong>Safari</strong>, <strong>Edge</strong>, and <strong>Opera</strong> across all major operating systems.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Use Cases Section -->
+  <!-- Who Uses It Section -->
   <section class="py-5 bg-white">
     <div class="container">
       <h2 class="section-header">
-        <i class="bi bi-people-fill"></i>Essential Use Cases for Webcam Testing
+        <i class="bi bi-people-fill"></i>Who Uses a Webcam Checker?
       </h2>
-
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="feature-card h-100 text-center">
-            <i class="bi bi-camera-video display-4 text-primary mb-3"></i>
-            <h4 class="text-primary">Remote Work & Video Conferencing</h4>
-            <p>Essential for remote workers and business users. Test camera quality before important meetings, use the <a href="/mirror" class="text-decoration-none">webcam mirror</a> to verify video clarity, and ensure professional appearance.</p>
-            <ul class="list-unstyled text-start">
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Pre-meeting camera verification
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Video quality assessment
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Lighting condition testing
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Multiple platform compatibility
-              </li>
-            </ul>
+            <i class="bi bi-camera-video display-4 text-primary mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Remote Workers & Meeting Hosts</h3>
+            <p class="text-muted">A two-minute camera test before a Zoom call, Microsoft Teams meeting, or Google Meet session confirms your video quality is sharp, your frame rate is smooth, and the right camera is selected — so you're never the person with the frozen or black-screen feed.</p>
           </div>
         </div>
-
         <div class="col-lg-4">
           <div class="feature-card h-100 text-center">
-            <i class="bi bi-broadcast display-4 text-primary mb-3"></i>
-            <h4 class="text-primary">Content Creation & Streaming</h4>
-            <p>Critical for YouTubers, streamers, and content creators. Verify video quality, <a href="/take-photo" class="text-decoration-none">take a photo with your webcam</a> to test different camera angles, and optimize settings for audience engagement.</p>
-            <ul class="list-unstyled text-start">
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Streaming quality verification
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Camera setup optimization
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>YouTube content testing
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Live broadcast preparation
-              </li>
-            </ul>
+            <i class="bi bi-broadcast display-4 text-primary mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Streamers & Content Creators</h3>
+            <p class="text-muted">Verify that your streaming camera delivers the resolution and frame rate your setup requires. Use the <a href="/take-photo" class="text-decoration-none">webcam snapshot tool</a> to compare angles and lighting conditions before going live on Twitch, YouTube, or your recording software.</p>
           </div>
         </div>
-
         <div class="col-lg-4">
           <div class="feature-card h-100 text-center">
-            <i class="bi bi-mortarboard display-4 text-primary mb-3"></i>
-            <h4 class="text-primary">Online Education & Training</h4>
-            <p>Educators and trainers require clear video for effective knowledge transfer. Test cameras for online courses, webinars, and virtual classroom environments.</p>
-            <ul class="list-unstyled text-start">
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Online teaching preparation
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Webinar video quality check
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Student interaction clarity
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check text-success me-2"></i>Recording lecture video
-              </li>
-            </ul>
+            <i class="bi bi-mortarboard display-4 text-primary mb-3 d-block"></i>
+            <h3 class="h5 fw-bold text-dark">Students & Online Educators</h3>
+            <p class="text-muted">Check your camera before online classes, virtual tutoring sessions, or recorded lectures. Confirm video quality is clear enough for students to read facial expressions and on-screen demonstrations — a poor camera feed is one of the most common complaints in online learning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Troubleshooting Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-tools"></i>Webcam Not Working? Fix the Most Common Problems
+      </h2>
+      <p class="text-center text-muted mb-5">If the test isn't showing a live image, one of these six issues is almost always the cause:</p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-shield-x text-danger me-2"></i>Browser Permission Denied</h3>
+            <p class="text-muted mb-0">If you previously clicked <strong>Block</strong> when asked for camera access, your browser will silently refuse future requests without prompting again. Fix: click the padlock or camera icon in the browser address bar, change the camera setting from <em>Blocked</em> to <em>Allow</em>, then refresh the page. This works the same way in Chrome, Firefox, Safari, and Edge.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-app text-warning me-2"></i>Camera Already in Use by Another App</h3>
+            <p class="text-muted mb-0">Most webcams allow only one application to access them at a time. If Zoom, Microsoft Teams, OBS Studio, or your OS's built-in camera app is already running, the browser cannot claim the camera. Fully close any application that might be using it, then refresh this page and try again.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-toggle-off text-secondary me-2"></i>Camera Disabled in System Settings</h3>
+            <p class="text-muted mb-0"><strong>Windows 10/11:</strong> Settings → Privacy & Security → Camera → enable "Camera access" and allow it for your browser. <strong>macOS:</strong> System Settings → Privacy & Security → Camera → tick your browser. <strong>iPhone/iPad:</strong> Settings → Safari → Camera → Allow. <strong>Android:</strong> Settings → Apps → your browser → Permissions → Camera.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-cpu text-primary me-2"></i>Driver Not Installed or Out of Date</h3>
+            <p class="text-muted mb-0">External USB webcams — particularly older or budget models — sometimes need a manufacturer-supplied driver to function correctly. Built-in laptop cameras rarely need manual driver installation. Visit the camera manufacturer's website, download the latest driver for your OS version, install it, and restart your computer.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-usb text-info me-2"></i>USB Connection Problem</h3>
+            <p class="text-muted mb-0">If an external webcam isn't detected, try connecting it to a different USB port — preferably a USB 3.0 port (typically marked blue or with the SS symbol). Avoid USB hubs where possible, as some don't deliver enough power. Unplugging the camera, waiting a few seconds, and plugging it back in often triggers re-detection by the OS.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-2"><i class="bi bi-exclamation-circle text-danger me-2"></i>Hardware or Firmware Failure</h3>
+            <p class="text-muted mb-0">If none of the above steps resolve the issue, test your webcam on a second device to determine whether it's a system-specific problem or a hardware fault. For built-in laptop cameras that fail on every OS, the camera module or its ribbon cable may need replacing. Contact the manufacturer if the device is still under warranty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="feature-card">
+        <h2 class="section-header">
+          <i class="bi bi-shield-lock-fill"></i>Your Privacy Is Fully Protected
+        </h2>
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <p class="text-muted">Everything that happens during the webcam test happens entirely inside your own browser. Your camera feed is processed locally using the browser's built-in WebRTC API — no video frames, screenshots, or camera data are ever transmitted to any server.</p>
+            <p class="text-muted mb-0">We don't record your video, store your device information, or require any account or sign-up. The permission you grant is a browser-level permission between you and your own operating system — this website never touches your camera data directly. You can verify this yourself: disconnect your internet connection and the webcam test will still work perfectly, because it doesn't rely on any external server to function.</p>
+          </div>
+          <div class="col-lg-4 text-center mt-4 mt-lg-0">
+            <i class="bi bi-shield-check display-1 text-success mb-3 d-block"></i>
+            <div class="d-flex flex-column gap-2">
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>No video stored</span>
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>No data uploaded</span>
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>No account required</span>
+              <span class="badge bg-success py-2 px-3 fs-6"><i class="bi bi-check me-1"></i>100% browser-side</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-header">
+        <i class="bi bi-question-circle-fill"></i>Frequently Asked Questions — Webcam Test
+      </h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq1-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                  How do I test if my webcam is working?
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1-heading">
+                <div class="accordion-body text-muted">
+                  Click the <strong>Test my webcam</strong> button at the top of this page and click Allow when your browser asks for camera access. Your live camera feed will appear within a few seconds. If you can see yourself on screen and the info panel on the right shows a resolution and frame rate, your webcam is working correctly.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq2-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
+                  How do I check if my webcam is working on Windows 10 or Windows 11?
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse show" aria-labelledby="faq2-heading">
+                <div class="accordion-body text-muted">
+                  Open this webcam test in Chrome, Edge, or Firefox and click the test button — this works on both Windows 10 and Windows 11 without any extra software. If the camera doesn't show a live image, go to <strong>Settings → Privacy & Security → Camera</strong> and make sure camera access is enabled for your browser. You can also use the built-in Windows Camera app to verify the hardware is recognised by the OS.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq3-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
+                  Which browsers are compatible with the online camera test?
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse show" aria-labelledby="faq3-heading">
+                <div class="accordion-body text-muted">
+                  The webcam test works in all modern browsers that support the WebRTC standard: <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, <strong>Mozilla Firefox</strong>, <strong>Apple Safari</strong> (version 11 and later), and <strong>Opera</strong>. Internet Explorer is not supported. For the best experience and most accurate camera data, Chrome or Edge is recommended on desktop.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq4-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
+                  Can I test my webcam on my phone or tablet?
+                </button>
+              </h3>
+              <div id="faq4" class="accordion-collapse collapse show" aria-labelledby="faq4-heading">
+                <div class="accordion-body text-muted">
+                  Yes. Open this page in Safari on iPhone or iPad, or in Chrome on an Android device, and tap the test button. Mobile devices with both front and rear cameras will show a dropdown selector after the first camera loads — tap it to switch between them. Note that some older Android browsers may not expose all camera metrics, so Chrome for Android is the most reliable option.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq5-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="true" aria-controls="faq5">
+                  What do resolution and FPS mean for my webcam?
+                </button>
+              </h3>
+              <div id="faq5" class="accordion-collapse collapse show" aria-labelledby="faq5-heading">
+                <div class="accordion-body text-muted">
+                  <strong>Resolution</strong> is the number of pixels in your video frame — 1920×1080 means 1,920 pixels wide by 1,080 pixels tall (Full HD). Higher resolution produces a sharper image. <strong>FPS</strong> (frames per second) is how many individual images the camera captures each second. 30 FPS is standard for video calls; lower than 20 FPS will look choppy. Most webcams cap at 30 FPS at high resolutions and can reach 60 FPS at lower ones.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq6-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="true" aria-controls="faq6">
+                  Why use an online webcam test instead of a desktop app?
+                </button>
+              </h3>
+              <div id="faq6" class="accordion-collapse collapse show" aria-labelledby="faq6-heading">
+                <div class="accordion-body text-muted">
+                  An online camera test requires no installation, doesn't need administrator rights, and works the same way across Windows, macOS, Linux, and mobile platforms. Because it runs in the same browser environment as Zoom, Teams, and Google Meet, it accurately reflects whether those applications will be able to access your camera — a desktop app test doesn't replicate that context. It also means there's nothing to uninstall afterwards.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border mb-3 rounded">
+              <h3 class="accordion-header" id="faq7-heading">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="true" aria-controls="faq7">
+                  Is my camera video sent to any server?
+                </button>
+              </h3>
+              <div id="faq7" class="accordion-collapse collapse show" aria-labelledby="faq7-heading">
+                <div class="accordion-body text-muted">
+                  No. Your camera feed never leaves your device. All processing happens locally in your browser using JavaScript and the WebRTC API. No video frames, images, or camera metadata are transmitted to any server at any point. You can confirm this by disconnecting your internet and running the test — it continues to work because it has no dependency on any external server.
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
