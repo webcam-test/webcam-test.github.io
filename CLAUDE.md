@@ -101,3 +101,15 @@ These have <10/mo volume individually but strengthen the site's topical coverage
 | Webcam Brightness Test | webcam brightness test | Measure and adjust brightness/contrast |
 
 Rotate webcam (170/mo) is not recommended — HIGH competition.
+
+---
+
+## W3 HTML Validator — Pending
+
+All pages should be validated using live URLs via the Nu HTML Checker:
+`https://validator.w3.org/nu/?doc=https://webcam-test.github.io/<page-path>`
+
+Example:
+- `https://validator.w3.org/nu/?doc=https://webcam-test.github.io/`
+
+No pages have been validated yet. After each deploy, re-run the validator on changed pages to catch any new issues.
