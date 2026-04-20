@@ -236,7 +236,8 @@
     .section-header {
       color: var(--text-dark);
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
     }
 
     .section-header i {
@@ -311,7 +312,7 @@
       <a class="navbar-brand" href="/">
         <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
       </a>
-      <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -395,9 +396,9 @@
           </div>
 
           <div class="info-panel">
-            <h3 class="section-header">
+            <h2 class="section-header">
               <i class="bi bi-sliders"></i>Supported Resolutions
-            </h3>
+            </h2>
             <p class="text-muted mb-3">Click on any resolution to test if your camera supports it:</p>
 
             <div class="resolution-grid" id="resolution-grid">
@@ -557,9 +558,9 @@
       <div class="row mt-4">
         <div class="col-12">
           <div class="info-panel">
-            <h3 class="section-header">
+            <h2 class="section-header">
               <i class="bi bi-cpu"></i>Technical Analysis
-            </h3>
+            </h2>
 
             <div class="row">
 
