@@ -649,11 +649,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
                 Does the color test access or save any image from my webcam?
               </button>
             </h3>
-            <div id="faq2" class="accordion-collapse collapse">
+            <div id="faq2" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 No. The tool draws each video frame to an offscreen canvas, samples the average pixel values for each colour channel, and immediately discards the frame data. No images are saved, no video is recorded, and nothing is transmitted to any server. All processing is entirely local within your browser tab.
               </div>
@@ -662,11 +662,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
                 Why does my colour cast change when I move?
               </button>
             </h3>
-            <div id="faq3" class="accordion-collapse collapse">
+            <div id="faq3" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 Webcam auto white balance recalculates based on the overall colour distribution of the visible scene. When you move in front of a different background — for example, a blue wall versus a yellow wall — the AWB system adjusts to compensate, which shifts the channel values. This is normal behaviour. To get a stable reading for your camera's base white balance performance, sit still in front of a plain, neutral-coloured background.
               </div>
@@ -675,11 +675,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
                 How do I fix a warm colour cast on my webcam?
               </button>
             </h3>
-            <div id="faq4" class="accordion-collapse collapse">
+            <div id="faq4" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 A warm cast (red channel significantly higher than blue) is most often caused by tungsten or warm-LED lighting. Switch to daylight-balanced bulbs rated at 5000–6500K. If you cannot change the bulbs, look in your camera's software for a manual white balance setting — selecting "Daylight" or "Fluorescent" presets will add a blue correction to counteract the warmth. Some webcam companion apps (Logitech G Hub, Razer Synapse) provide granular colour temperature controls.
               </div>
@@ -688,11 +688,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="true" aria-controls="faq5">
                 Does the dominant colour swatch show my skin tone?
               </button>
             </h3>
-            <div id="faq5" class="accordion-collapse collapse">
+            <div id="faq5" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 The swatch shows the average colour of all pixels in the entire frame — not just your face. If you fill most of the frame and your background is plain, the swatch will closely reflect the colour of your face and clothing. If there is a large, colourful background behind you, the swatch will be pulled toward those background colours. For the most informative reading, sit close to the camera with a neutral-coloured wall behind you.
               </div>

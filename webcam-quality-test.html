@@ -701,11 +701,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
                 Does the quality test record or save my video?
               </button>
             </h3>
-            <div id="faq2" class="accordion-collapse collapse">
+            <div id="faq2" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 No. The <strong>webcam quality test</strong> processes pixel data locally in your browser and never transmits any video or image data. Each frame is drawn to an offscreen canvas, analysed mathematically, and then discarded. Nothing is saved to disk or sent to any server.
               </div>
@@ -714,11 +714,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
                 Why does my sharpness score change even when I'm not moving?
               </button>
             </h3>
-            <div id="faq3" class="accordion-collapse collapse">
+            <div id="faq3" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 Sharpness can fluctuate because webcams continuously adjust their auto-focus and auto-exposure settings in real time. Each adjustment briefly changes the edge contrast in the frame. Cameras without auto-focus (fixed-focus models) will typically show a more stable sharpness score. The tool samples every 2 seconds, so small fluctuations between readings are normal.
               </div>
@@ -727,11 +727,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
                 Why is my noise score low even though my image looks clean?
               </button>
             </h3>
-            <div id="faq4" class="accordion-collapse collapse">
+            <div id="faq4" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 Noise is measured as pixel-level variance across blocks of the image. Some cameras apply heavy in-camera noise reduction that smooths pixel differences — this can actually lower apparent sharpness while improving the noise score. A very smooth, almost watercolour-like image at the pixel level might show a high noise score but lower sharpness. Balancing these two metrics gives the best overall quality.
               </div>
@@ -740,11 +740,11 @@
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="true" aria-controls="faq5">
                 Does resolution affect the quality score?
               </button>
             </h3>
-            <div id="faq5" class="accordion-collapse collapse">
+            <div id="faq5" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
                 Yes, indirectly. The test analyses a 640×480 sample from the live feed. If your camera is streaming at a higher resolution, the browser may downsample it before analysis, which can slightly affect edge detection. Higher native resolution generally produces higher sharpness scores because there is more pixel detail for the Laplacian filter to detect. Use the <a href="/resolution-tester" class="text-decoration-none">resolution tester</a> to check what resolution your camera is actually streaming at.
               </div>
