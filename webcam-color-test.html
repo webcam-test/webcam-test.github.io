@@ -581,6 +581,48 @@
       </div>
     </div>
 
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-eye"></i>What Is Webcam Color Accuracy?</h2>
+      <p>Webcam colour accuracy refers to how faithfully your camera reproduces the colours in the real scene it is capturing. A camera with high colour accuracy will render skin tones naturally, reproduce white surfaces as white, and show clothing colours that match how they look in person. A camera with poor colour accuracy will introduce a cast — a systematic bias toward one colour — that alters the appearance of everything in the frame.</p>
+      <p>Consumer webcams vary widely in their colour accuracy, even at similar price points. The main factors that affect colour output are the sensor's spectral sensitivity (how the photodiodes respond to different wavelengths of light), the in-camera image processing pipeline (how the raw sensor data is converted to the final RGB image), and the auto white balance algorithm (how aggressively the camera corrects for ambient light colour temperature).</p>
+      <p>This <strong>webcam color test</strong> measures the average RGB channel values in your live feed and identifies whether your camera is producing a warm, cool, or green colour cast under your current lighting. It does not compare against a calibration target — for that level of accuracy, hardware colorimeters are used in professional camera settings. What it does provide is a clear, practical measurement of whether your camera's colour output is balanced enough for video calls, streaming, and content creation.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-sun"></i>How Lighting Affects Your Webcam's Color Output</h2>
+      <p>The single most influential factor in your <strong>webcam color</strong> output is the light source illuminating your scene. Every light source has a colour temperature — measured in Kelvin (K) — that describes whether the light appears warm, neutral, or cool. When your camera's white balance setting does not match the colour temperature of your light source, a colour cast appears.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-lightbulb me-2"></i>Indoor Bulbs (2700–3000K)</h3>
+          <p>Standard incandescent and warm-white LED bulbs emit light at 2700–3000K — a very warm, amber tone. Under these bulbs, cameras with auto white balance will attempt to correct, but a residual warm cast often remains, particularly with lower-quality webcam AWB systems. The result is a slightly orange skin tone and cream-coloured whites. Using a daylight-balanced LED (5000–6500K) replaces this cast with neutral output.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-cloud-sun me-2"></i>Natural Daylight (5500–6500K)</h3>
+          <p>Natural daylight is considered the reference standard for accurate colour rendering. Overcast sky light (around 6500K) is particularly neutral and provides excellent colour accuracy without any directional harshness. The challenge with daylight as a primary light source is variability — the colour temperature shifts throughout the day as the sun moves across the sky, making your <strong>webcam color test</strong> readings fluctuate between morning and afternoon.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-fluorescent me-2"></i>Fluorescent Lighting</h3>
+          <p>Fluorescent tubes produce light with an irregular spectral distribution that spikes sharply in the green portion of the visible spectrum. Most webcam white balance algorithms are not well-calibrated for fluorescent sources, leaving a residual green cast that makes skin tones look pallid and white objects look greenish. Replacing overhead fluorescent tubes with LED panels (5000K) is the most effective fix — adding a magenta-tinted light source in front of you can compensate if tube replacement is not possible.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-pc-display me-2"></i>Mixed Light Sources</h3>
+          <p>Mixed lighting — for example, a warm desk lamp on one side and cool window light on the other — creates areas of different colour temperature across the frame. The camera's AWB picks an average, which means neither source is fully corrected. One side of your face looks warm and orange, the other looks cool and blue. The fix is to use a single consistent light source, ideally at 5000–6500K, to eliminate the temperature mismatch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-wrench"></i>Common Webcam Color Problems and How to Fix Them</h2>
+      <p>If your <strong>webcam color test</strong> is showing unbalanced RGB channels, these are the most common causes and their solutions:</p>
+      <ul class="mt-2">
+        <li class="mb-3"><strong>Red channel significantly higher than blue (warm cast):</strong> Your light source is too warm. Replace your desk lamp or overhead bulb with a daylight-temperature LED rated at 5000–6500K. If you cannot change the bulb, try setting your camera's manual white balance to "Daylight" or "Cloudy" to add a cool correction.</li>
+        <li class="mb-3"><strong>Blue channel significantly higher than red (cool cast):</strong> Your room or your primary light source is too cool — overcast light from a north-facing window, or blue-tinted LED strips. Adding a warm accent light in front of you, or selecting "Incandescent" or "Tungsten" in your camera's white balance menu, will add warmth to counteract the blue tint.</li>
+        <li class="mb-3"><strong>Green channel highest (green cast):</strong> This is almost certainly fluorescent overhead lighting. Replace the tubes with LED panels, or add a dedicated ring light or key light in front of you at 5000K. Your ring light will become the dominant light source and override the fluorescent cast in the camera's AWB calculation.</li>
+        <li class="mb-3"><strong>All channels fluctuating rapidly:</strong> Your camera's auto white balance is struggling with rapidly changing or mixed light conditions — perhaps a window with passing clouds, or a TV screen in the background. Minimize the changing light sources, or lock your camera's white balance at a fixed setting using your camera's companion software.</li>
+        <li class="mb-3"><strong>Low overall values with colour cast:</strong> Low overall pixel values combined with a colour cast usually means both a lighting problem and a colour temperature mismatch. Fix the brightness issue first (see the <a href="/webcam-brightness-test.html">Webcam Brightness Test</a>) and the colour balance will often improve automatically as the camera gains more light to work with.</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 

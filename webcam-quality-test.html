@@ -545,7 +545,7 @@
 
     <div class="feature-card">
       <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Use the Webcam Quality Test</h2>
-      <p>The <strong>webcam quality test</strong> runs entirely in your browser using the standard WebRTC camera API. No software installation, no account, no upload — your video never leaves your device.</p>
+      <p>The <strong>webcam quality test</strong> runs entirely in your browser using the standard WebRTC camera API. No software installation, no account, no upload required — your video never leaves your device. The tool analyses your live camera feed in real time and returns scores for sharpness, brightness, noise, and contrast — the four measurable factors that determine how good your webcam image actually looks.</p>
       <div class="row g-3 mt-1">
         <div class="col-md-6">
           <div class="d-flex gap-3">
@@ -638,6 +638,41 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-star"></i>What Makes a High-Quality Webcam Image?</h2>
+      <p>The four metrics this <strong>webcam quality test</strong> measures directly correspond to the qualities that make video call footage look professional and clear. Understanding what each metric represents helps you interpret your scores and prioritize fixes.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle me-2"></i>High Sharpness</h3>
+          <p>Sharpness means your camera is capturing crisp edges and fine detail — text on a whiteboard is legible, individual hairs are distinct, fabric textures are visible. A sharp image projects competence on video calls and makes presentations easier to follow. The most common causes of poor sharpness are a dirty lens, incorrect camera positioning (too close for a fixed-focus lens), or a low-resolution camera being upscaled.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle me-2"></i>Correct Brightness</h3>
+          <p>Correct brightness means your face is well-exposed — not too dark (causing grainy, noisy output) and not too bright (washing out facial features and creating a glowing, flat appearance). The optimal brightness score of 40–70 corresponds to a scene where your face is clearly visible with defined shadows and highlights. Achieving this almost always requires intentional lighting rather than relying on ambient room light alone.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle me-2"></i>Low Noise</h3>
+          <p>Low noise means the image is clean and smooth — there is no grain, speckle, or pixelated static in flat areas like skin tone or walls. Noise is almost always a lighting problem. Cameras boost their sensor gain in dark conditions, which amplifies electrical interference into visible pixel variation. A higher noise score on this test (which inverts raw noise to show better = higher) means your camera's output is clean enough for professional-quality video.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle me-2"></i>Good Contrast</h3>
+          <p>Good contrast means there is a meaningful tonal difference between dark and light areas in your image — your face has natural shadows and dimension, rather than looking flat or washed out. Low contrast is common when the room is evenly lit from multiple angles without any directional shadow, or when a camera's automatic contrast enhancement algorithm over-processes the image. A good contrast score indicates your camera setup produces visually interesting, three-dimensional images.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-exclamation-triangle"></i>Troubleshooting a Low Webcam Quality Score</h2>
+      <p>If your overall <strong>webcam quality test</strong> score is below 60, work through these diagnostic checks from most to least likely cause:</p>
+      <ul class="mt-2">
+        <li class="mb-3"><strong>Low brightness score (&lt;30):</strong> Your environment is too dark. Add a desk lamp or ring light in front of you — not behind. Even a lamp placed off to one side at roughly 45 degrees from the camera makes an immediate and dramatic difference. If you are working near a window, face the window rather than having it behind you.</li>
+        <li class="mb-3"><strong>Low sharpness score (&lt;40):</strong> Check your lens first — a fingerprint or smudge is the most common cause of unexpected blur. Wipe the camera lens with a clean microfibre cloth. If the lens is clean, check whether your camera has a fixed-focus minimum distance — many built-in laptop cameras are optimized for a 60–90cm sitting distance and lose sharpness closer than that.</li>
+        <li class="mb-3"><strong>High noise (low noise score):</strong> Add more light. Noise is almost entirely a lighting problem, not a camera hardware problem. Increasing the ambient light level in your scene — or adding a dedicated light source — reduces the sensor gain your camera uses and dramatically reduces grain. Even a 60-watt desk lamp pointed at your face will improve noise scores significantly.</li>
+        <li class="mb-3"><strong>Low contrast score:</strong> Avoid even, flat lighting from all sides. A single directional light source creates the shadows that give an image contrast. If your room has fluorescent overhead lighting on both sides, a face-forward desk lamp as a key light will restore contrast by introducing directional shadow.</li>
+        <li class="mb-3"><strong>All scores low consistently:</strong> Run the <a href="/resolution-tester.html">Resolution Tester</a> to confirm what resolution your camera is actually streaming at. If your camera is streaming at 320×240 instead of 720p or 1080p, a browser or driver issue may be limiting the camera. Restarting the browser or updating camera drivers often resolves unexpected low-resolution streaming.</li>
+      </ul>
     </div>
 
   </div>

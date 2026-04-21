@@ -553,13 +553,60 @@
       <div class="row g-4 mt-1">
         <div class="col-md-6">
           <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-aspect-ratio me-2"></i>Resolution and Zoom</h3>
-          <p>A camera capturing at 1080p (1920×1080) at 1× zoom has 2,073,600 pixels of detail. At 2× digital zoom, the tool crops to a 960×540 region and upscales it — meaning each output pixel now represents 4 original pixels. Use the <a href="/resolution-tester" class="text-decoration-none">resolution tester</a> to confirm your camera's native resolution before testing zoom quality.</p>
+          <p>A camera capturing at 1080p (1920×1080) at 1× zoom has 2,073,600 pixels of detail. At 2× digital zoom, the tool crops to a 960×540 region and upscales it — meaning each output pixel now represents 4 original pixels. Use the <a href="/resolution-tester.html">resolution tester</a> to confirm your camera's native resolution before testing zoom quality.</p>
         </div>
         <div class="col-md-6">
           <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-camera me-2"></i>When to Use Digital Zoom</h3>
-          <p>Digital zoom is useful when you need to frame a subject more tightly and cannot physically move the camera closer. For video calls, 1.2× to 1.5× digital zoom is often enough to crop out a distracting background while keeping acceptable image quality. Beyond 2× the quality trade-off becomes visible to most viewers.</p>
+          <p>Digital zoom is useful when you need to frame a subject more tightly and cannot physically move the camera closer. For video calls, 1.2× to 1.5× <strong>digital zoom webcam</strong> output is often enough to crop out a distracting background while keeping acceptable image quality. Beyond 2× the quality trade-off becomes visible to most viewers.</p>
         </div>
       </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-binoculars"></i>Digital Zoom vs. Optical Zoom — What's the Difference?</h2>
+      <p>Most consumer webcams available today provide only digital zoom, not optical zoom. Understanding the difference helps you set realistic expectations for what the <strong>webcam zoom test</strong> can demonstrate and when a different camera would make a real difference.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-x-circle text-danger me-2"></i>Digital Zoom</h3>
+          <p>Digital zoom is purely a crop-and-upscale operation performed in software. It does not use any additional lens or optical element — it simply discards the outer portion of the frame and magnifies the centre pixels. Quality degrades proportionally with zoom level. All standard webcams — built-in laptop cameras, external USB webcams — use digital zoom exclusively. This is what the <strong>camera zoom test</strong> on this page demonstrates.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-check-circle text-success me-2"></i>Optical Zoom</h3>
+          <p>Optical zoom uses physical lens elements that move to change the focal length, bringing distant subjects closer without any pixel interpolation. Because the same number of sensor pixels is used to capture a smaller area of the scene, optical zoom preserves full image quality at any zoom level. Professional PTZ (pan-tilt-zoom) webcams and some high-end conference room cameras offer optical zoom, but these are specialist hardware products, not standard consumer webcams.</p>
+        </div>
+      </div>
+      <p class="mt-3">The practical takeaway: if your workflow requires zooming in on a specific area — a whiteboard, a product, a document — moving the camera physically closer will always produce better quality than relying on digital zoom. If you cannot move the camera, a higher-resolution sensor (4K at 1×) gives you more pixels to crop into before quality becomes unacceptable.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-people"></i>Practical Use Cases for Webcam Digital Zoom</h2>
+      <p>Despite its quality limitations, digital zoom has several legitimate uses in everyday webcam scenarios:</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-camera-video text-primary me-2"></i>Video Call Framing</h3>
+          <p class="text-muted mb-0">At 1.2×–1.5×, digital zoom tightens your framing to show your head and shoulders rather than your upper body and room — the standard composition for professional video calls. At this level, quality loss is minimal on a 1080p camera.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-crop text-primary me-2"></i>Cropping Distracting Backgrounds</h3>
+          <p class="text-muted mb-0">If your physical camera position is fixed but your background has a distracting object (a pile of laundry, a bookshelf), a slight digital zoom lets you crop it out without repositioning the camera or the background object.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-display text-primary me-2"></i>Demonstrating Objects at Distance</h3>
+          <p class="text-muted mb-0">For presentations or tutorials where you need to show a physical object but the camera is mounted at a fixed distance, 2× zoom provides a workable closeup view at the cost of some sharpness. This is most effective with a 1080p or higher resolution camera.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-wrench"></i>Troubleshooting — Common Issues with the Zoom Test</h2>
+      <p>If the <strong>webcam zoom test</strong> is not behaving as expected, here are the most common issues and their fixes:</p>
+      <ul class="mt-2">
+        <li class="mb-2"><strong>Camera permission denied:</strong> Click the camera icon in your browser's address bar and select Allow for this site. In some browsers, you may need to reload the page after granting permission.</li>
+        <li class="mb-2"><strong>No camera found:</strong> Ensure your webcam is physically connected and not currently in use by another application. Close Zoom, Teams, or any other app using your camera, then reload the page.</li>
+        <li class="mb-2"><strong>Canvas appears blank at high zoom:</strong> Some browser configurations may restrict canvas rendering size. Try using Chrome or Firefox and ensure hardware acceleration is enabled in your browser settings.</li>
+        <li class="mb-2"><strong>Zoom feels laggy:</strong> The canvas render loop runs at your camera's native frame rate. If it feels slow, your camera may be running at a reduced frame rate due to low-light conditions or a high-resolution stream. A well-lit environment helps cameras maintain consistent 30fps output.</li>
+        <li class="mb-2"><strong>Image quality looks worse than expected at 1×:</strong> This is likely the camera itself, not the zoom test. Run the <a href="/webcam-quality-test.html">Webcam Quality Test</a> to get scored metrics for your camera's sharpness, brightness, and noise at native 1× resolution.</li>
+      </ul>
     </div>
 
   </div>
@@ -581,33 +628,59 @@
             </h3>
             <div id="faq1" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
-                No. The <strong>webcam zoom test</strong> simulates digital zoom by cropping and upscaling the camera frame inside the browser canvas. Hardware optical zoom is not accessible via the standard browser getUserMedia API. If your camera supports the experimental zoom constraint, it may be accessible in Chrome via the advanced constraints API, but this tool uses canvas-based zoom for broadest compatibility.
+                No. The <strong>webcam zoom test</strong> simulates digital zoom by cropping and upscaling the camera frame inside the browser canvas. Hardware optical zoom is not accessible via the standard browser getUserMedia API. This tool uses canvas-based zoom for broadest compatibility across all webcam hardware and browsers.
               </div>
             </div>
           </div>
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
                 Why does quality degrade at higher zoom levels?
               </button>
             </h3>
-            <div id="faq2" class="accordion-collapse collapse show">
+            <div id="faq2" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                Digital zoom crops a portion of the original frame and enlarges it. The fewer pixels in the cropped region, the more each pixel must be upscaled to fill the display. At 5× zoom, a camera with 720p resolution effectively has only 144p of detail in the visible area before upscaling — which results in visible pixelation. This quality loss is inherent to all <strong>digital zoom webcam</strong> approaches and is not a limitation of this tool.
+                Digital zoom crops a portion of the original frame and enlarges it. The fewer pixels in the cropped region, the more each pixel must be upscaled to fill the display. At 5× zoom, a 720p camera effectively has only 144p of real detail in the visible area before upscaling — resulting in visible pixelation and blur. This quality loss is inherent to all <strong>digital zoom webcam</strong> approaches.
               </div>
             </div>
           </div>
 
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
-              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
                 Is there a zoom level that maintains good quality?
               </button>
             </h3>
-            <div id="faq3" class="accordion-collapse collapse show">
+            <div id="faq3" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                For a 1080p camera, up to approximately 1.5× zoom maintains acceptable quality for video calls. A 4K camera (if accessible via the browser API) can sustain good quality up to 2× zoom before degradation becomes noticeable. The <strong>camera zoom test</strong> lets you see the quality threshold for your specific camera at each zoom level so you can find the best balance for your use case.
+                For a 1080p camera, up to approximately 1.5× zoom maintains acceptable quality for video calls. A 4K camera can sustain good quality up to 2× zoom before degradation becomes noticeable to most viewers. The <strong>camera zoom test</strong> lets you see the quality threshold for your specific camera at each zoom level so you can find the best balance for your use case.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                Does my webcam support optical zoom?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Most consumer webcams — including built-in laptop cameras and standard USB webcams — do not have optical zoom. Optical zoom is a feature of PTZ (pan-tilt-zoom) conference cameras and specialist broadcast hardware. If your camera claims to support zoom, it is almost certainly digital zoom (software crop) rather than true optical magnification.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                Is the zoom test safe and private?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Yes. The <strong>webcam zoom test</strong> processes your camera feed entirely inside your browser using the Canvas API. No video frames, images, or data are transmitted to any server. Your camera feed is only accessible while the page is open, and you can revoke camera permission at any time using the lock icon in your browser's address bar.
               </div>
             </div>
           </div>

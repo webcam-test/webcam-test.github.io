@@ -556,7 +556,7 @@
 
     <div class="feature-card">
       <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Create a Webcam Timelapse Online — Step by Step</h2>
-      <p>The <strong>webcam timelapse</strong> tool uses the browser's Canvas API to capture still frames from your live camera at a set interval, building up a sequence of images that can be played back at full speed to produce the timelapse effect.</p>
+      <p>The <strong>webcam timelapse online</strong> tool uses the browser's Canvas API to capture still frames from your live camera at a set interval, building up a sequence of images that produces the timelapse effect when played back at speed. No software download is required — the entire capture process runs inside your browser with no account, no upload, and no data leaving your device.</p>
       <div class="row g-3 mt-1">
         <div class="col-md-6">
           <div class="d-flex gap-3">
@@ -565,7 +565,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Choose Your Interval and Camera</h3>
-              <p class="mb-0 text-muted">Select how often the tool should capture a frame — every 1, 2, 5, 10, or 30 seconds. Faster intervals work better for quick processes; slower intervals suit hour-long sessions where storage matters.</p>
+              <p class="mb-0 text-muted">Select how often the tool should capture a frame — every 1, 2, 5, 10, or 30 seconds. Faster intervals work better for quick processes; slower intervals suit longer sessions where storage matters. Select which camera to use if you have more than one device connected.</p>
             </div>
           </div>
         </div>
@@ -576,7 +576,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start Timelapse"</h3>
-              <p class="mb-0 text-muted">Allow camera access when prompted. The live feed appears and the tool starts capturing frames automatically. A brief red flash on the video border confirms each frame has been saved.</p>
+              <p class="mb-0 text-muted">Allow camera access when prompted. The live feed appears and the tool starts capturing frames automatically at your chosen interval. A brief red flash on the video border confirms each frame has been saved.</p>
             </div>
           </div>
         </div>
@@ -587,7 +587,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Watch the Frame Counter</h3>
-              <p class="mb-0 text-muted">The stats panel shows the number of frames captured, total elapsed time, and an estimated playback duration at 10fps. Thumbnails of each captured frame appear in the strip below the video.</p>
+              <p class="mb-0 text-muted">The stats panel shows frames captured, total elapsed time, and an estimated playback duration at 10fps. Thumbnails of each captured frame appear in the strip below the video in real time.</p>
             </div>
           </div>
         </div>
@@ -598,7 +598,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Stop and Download</h3>
-              <p class="mb-0 text-muted">Click <strong>Stop Timelapse</strong> when done. The download button appears. Click it to save your captured frames. With JSZip loaded, all frames download as a ZIP; without it, individual frame links are opened.</p>
+              <p class="mb-0 text-muted">Click <strong>Stop Timelapse</strong> when done. All captured frames download as a ZIP file. Import them as an image sequence into any video editor to compile a finished timelapse video.</p>
             </div>
           </div>
         </div>
@@ -606,35 +606,68 @@
     </div>
 
     <div class="feature-card">
-      <h2 class="section-header"><i class="bi bi-info-circle"></i>What Is a Timelapse and How Does It Work?</h2>
-      <p>A <strong>timelapse</strong> is a filming technique where frames are captured at a much slower rate than the final playback speed. When the recorded frames are played back at a normal frame rate (typically 24–30fps), time appears to move faster — a process that took an hour is condensed into a few seconds of video.</p>
+      <h2 class="section-header"><i class="bi bi-info-circle"></i>What Is a Webcam Timelapse?</h2>
+      <p>A <strong>webcam timelapse</strong> is a video technique where individual frames are captured at a much slower rate than normal video — instead of 30 frames per second, you might capture one frame every 5 seconds. When those frames are played back at normal video speed (typically 24–30fps), time appears to rush forward. A process that took one hour in real life becomes a 5-second clip. A full day compresses into under a minute.</p>
+      <p>Traditional timelapse required dedicated camera hardware, desktop software, and post-production work to assemble the final video. The <strong>webcam timelapse online</strong> approach changes this entirely — your browser captures frames directly from your webcam, stores them locally, and lets you download them in one ZIP file with no installation needed. The only post-production step is importing the frame sequence into a video editor if you want a compiled video output.</p>
       <div class="row g-4 mt-1">
         <div class="col-md-6">
-          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-clock me-2"></i>Speed Factor</h3>
-          <p>The speed factor determines how much faster your timelapse plays compared to real time. If you capture one frame every 5 seconds and play back at 10fps, the speed factor is 50× — one minute of real activity becomes 1.2 seconds of timelapse footage. The estimated playback duration shown in the tool uses 10fps as the assumed playback rate.</p>
+          <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-clock me-2"></i>Speed Factor and Playback Duration</h3>
+          <p>The speed factor determines how much faster your timelapse appears compared to real time. Capture every 5 seconds, play back at 10fps: the speed factor is 50× — one minute of real activity becomes 1.2 seconds of footage. The estimated playback duration shown in the tool's stats panel uses 10fps as the assumed playback frame rate. You can choose a different playback speed in your video editor to slow down or speed up the final result.</p>
         </div>
         <div class="col-md-6">
           <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-cpu me-2"></i>Browser-Based Capture</h3>
-          <p>This tool uses the Canvas API to copy each video frame into a hidden canvas element at the chosen interval, then converts it to a compressed JPEG image stored in browser memory. All processing happens locally — no frames are uploaded or stored on any server. Memory usage increases with session length; for very long sessions, shorter intervals may exhaust available RAM.</p>
+          <p>The tool uses the Canvas API to copy each video frame into a hidden canvas element at the chosen interval, then converts it to a compressed JPEG stored in browser memory. All processing is local — no frames are uploaded or stored on any server. Memory usage increases with session length; for very long sessions at short intervals, be aware that RAM consumption grows steadily throughout the capture.</p>
         </div>
       </div>
     </div>
 
     <div class="feature-card">
-      <h2 class="section-header"><i class="bi bi-camera"></i>Timelapse Subject Ideas — What to Capture</h2>
-      <p>The best timelapse subjects are ones where visible change happens gradually over a period that would be boring to watch in real time but fascinating at high speed.</p>
+      <h2 class="section-header"><i class="bi bi-sliders"></i>Capture Interval — Choosing the Right Setting</h2>
+      <p>The capture interval is the most important setting in any timelapse. Choose it based on how quickly your subject changes and how long you plan to record. Here is a practical guide:</p>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1">Every 1–2 Seconds</h3>
+          <p class="text-muted mb-0">Best for fast activities: food preparation, assembling small objects, sketching, or anything that completes in under 10 minutes. A 5-minute activity at 1-second intervals produces 300 frames — about 30 seconds of playback at 10fps.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1">Every 5–10 Seconds</h3>
+          <p class="text-muted mb-0">Ideal for medium-length activities lasting 15 minutes to 2 hours: desk work sessions, cooking projects, construction assembly, or outdoor weather over an afternoon. This is the most versatile interval for general-purpose timelapse.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1">Every 30 Seconds</h3>
+          <p class="text-muted mb-0">Suited for slow, long-duration changes: plant growth over several days, light changing through a window over a full day, or a slow home renovation project over multiple hours. Fewer frames per session means lower memory usage and smaller downloads.</p>
+        </div>
+      </div>
+      <p class="mt-3">As a rule: if you want your final video to be 10–30 seconds long, aim for 100–300 frames. Work backwards from that number to set your interval based on how long your recording session will last.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-camera"></i>What to Capture — Webcam Timelapse Subject Ideas</h2>
+      <p>The best <strong>webcam timelapse</strong> subjects are things where visible change happens gradually — interesting in fast-forward but tedious to watch in real time. Here are the most effective subject categories for a webcam-based setup:</p>
       <div class="row g-4 mt-1">
         <div class="col-md-4">
           <h3 class="h6 fw-bold mb-1"><i class="bi bi-flower1 text-success me-2"></i>Plant Growth</h3>
-          <p class="text-muted mb-0">Place a seedling or flower in front of the camera and capture every 10–30 minutes over several days. Plant timelapse is one of the most popular subjects because the results are dramatic and visually compelling.</p>
+          <p class="text-muted mb-0">Place a seedling, cut flower, or sprouting seed in front of the camera and capture every 10–30 minutes over several days. Plant timelapse is one of the most popular subjects because the change is dramatic and visually striking.</p>
         </div>
         <div class="col-md-4">
-          <h3 class="h6 fw-bold mb-1"><i class="bi bi-tools text-primary me-2"></i>DIY and Assembly</h3>
-          <p class="text-muted mb-0">Record yourself building furniture, painting a room, or assembling a model. Capture every 2–5 seconds. The result shows the complete project appearing in under a minute, making for an engaging social media post.</p>
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-tools text-primary me-2"></i>DIY and Assembly Projects</h3>
+          <p class="text-muted mb-0">Record yourself building furniture, painting a room, cooking a meal from scratch, or assembling a model. Capture every 2–5 seconds to compress a 30-minute project into a 1–3 minute video that makes an excellent social media post.</p>
         </div>
         <div class="col-md-4">
-          <h3 class="h6 fw-bold mb-1"><i class="bi bi-brush text-danger me-2"></i>Artwork Creation</h3>
-          <p class="text-muted mb-0">Set up the camera above a drawing or painting surface and capture every 10 seconds. Watching a piece of art develop from blank canvas to finished work in timelapse is a popular content format for artists.</p>
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-brush text-danger me-2"></i>Artwork and Creative Work</h3>
+          <p class="text-muted mb-0">Set the camera above a drawing or painting surface and capture every 10 seconds. Watching art develop from a blank surface to a finished piece in under a minute is a compelling content format widely shared by artists on social media.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-cloud-sun text-info me-2"></i>Weather and Sky Changes</h3>
+          <p class="text-muted mb-0">Point the camera at a window with a sky view and capture every 30 seconds over several hours. Clouds rolling, light changing from morning to evening, or a storm moving in all make striking timelapse material.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-house text-warning me-2"></i>Home and Garden Projects</h3>
+          <p class="text-muted mb-0">Capture a room being cleaned, furniture being rearranged, or a garden bed being planted. Framing the start and finish of a visible change in a single timelapse gives a satisfying before-and-after effect in video form.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-laptop text-secondary me-2"></i>Work Sessions</h3>
+          <p class="text-muted mb-0">Record yourself working at your desk, coding, writing, or doing creative work. A "day in the life" timelapse of your work session — compressed from hours to seconds — is a popular format for productivity and creator content.</p>
         </div>
       </div>
     </div>
@@ -658,7 +691,7 @@
             </h3>
             <div id="faq1" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
-                The timelapse runs until you click Stop. The practical limit is your browser's available memory — each captured frame is stored as a JPEG in RAM. At a 5-second interval, a one-hour session captures 720 frames. At roughly 15–30KB per JPEG, that is around 10–20MB, well within normal browser limits. Very long sessions (several hours) at short intervals may eventually exceed available memory.
+                The <strong>webcam timelapse</strong> runs until you click Stop. The practical limit is your browser's available RAM — each captured frame is stored as a compressed JPEG in memory. At a 5-second interval over one hour, you capture 720 frames. At roughly 15–30KB per JPEG, that is around 10–20MB — well within normal browser memory limits. Very long sessions at short intervals (e.g. every 1 second for 4+ hours) may eventually approach memory limits on lower-RAM devices.
               </div>
             </div>
           </div>
@@ -671,7 +704,7 @@
             </h3>
             <div id="faq2" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                Yes. The timelapse capture runs as JavaScript inside the browser tab. If you switch to a different application, the tab may throttle JavaScript timers, causing missed frames. For best results, keep the browser window visible and active throughout your capture session. Do not lock your computer or let the display sleep.
+                Yes. The timelapse capture runs as JavaScript inside the browser tab. If the tab becomes inactive or background-throttled (which browsers do to save battery), JavaScript timers may be delayed, causing uneven intervals or missed frames. For reliable results, keep the browser window visible and in the foreground throughout the session. Do not lock your computer or let the display sleep.
               </div>
             </div>
           </div>
@@ -684,7 +717,7 @@
             </h3>
             <div id="faq3" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                Frames are saved as JPEG images (quality 0.8). With the JSZip library loaded, all frames are bundled into a single ZIP file for easy download. Without JSZip, clicking the download button triggers individual file links. To compile the frames into a video, import them as an image sequence into a video editor such as DaVinci Resolve, Adobe Premiere, or the free OpenShot editor.
+                Frames are saved as JPEG images. All frames download together as a ZIP file. To compile the frames into a finished timelapse video, import them as an image sequence into a video editor. DaVinci Resolve (free), Adobe Premiere, and the free OpenShot editor all support image sequence import. Set the sequence frame rate to 10–30fps depending on how fast you want the final video to play.
               </div>
             </div>
           </div>
@@ -697,7 +730,7 @@
             </h3>
             <div id="faq4" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                The brief red border flash on the video element is a visual confirmation that a frame has been captured and saved. It works like the shutter flash on a camera — it gives you clear feedback that the tool is working correctly at each interval without interrupting the live view.
+                The brief red border flash on the video element is a visual confirmation that a frame has been captured and stored. It functions like the shutter flash on a camera — it gives you clear feedback that the <strong>webcam timelapse online</strong> tool is capturing correctly at each interval without interrupting your live view.
               </div>
             </div>
           </div>
@@ -710,7 +743,20 @@
             </h3>
             <div id="faq5" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                No. All frames are captured and stored locally in your browser's memory. Nothing is transmitted to any server. When you close the tab or reload the page, all captured frames are discarded. Download your frames before closing if you want to keep them.
+                No. All frames are captured and stored locally in your browser's memory. Nothing is transmitted to any server at any point. When you close the tab or reload the page, all captured frames are permanently discarded from memory. Download your ZIP file before closing if you want to keep the frames.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                What is the difference between timelapse and hyperlapse?
+              </button>
+            </h3>
+            <div id="faq6" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                A timelapse is captured from a stationary camera position — the camera does not move during recording. A hyperlapse involves physically moving the camera between frames, creating the effect of travelling through space at high speed. This <strong>webcam timelapse</strong> tool is designed for stationary capture with your webcam held in a fixed position. For hyperlapse, you would need to move your camera or device between each frame capture.
               </div>
             </div>
           </div>

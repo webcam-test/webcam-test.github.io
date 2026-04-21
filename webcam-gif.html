@@ -545,7 +545,7 @@
 
     <div class="feature-card">
       <h2 class="section-header"><i class="bi bi-play-circle"></i>How to Create an Animated GIF from Your Webcam — Step by Step</h2>
-      <p>The <strong>webcam GIF maker</strong> runs entirely in your browser using the Canvas API to capture frames from your live camera feed. No software download, no account, no upload required.</p>
+      <p>The <strong>webcam GIF maker</strong> runs entirely in your browser using the Canvas API to capture frames from your live camera feed and encode them directly into the GIF format. No software download, no account, no upload required — the entire process from capture to download happens locally on your device.</p>
       <div class="row g-3 mt-1">
         <div class="col-md-6">
           <div class="d-flex gap-3">
@@ -554,7 +554,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Select Duration and Camera</h3>
-              <p class="mb-0 text-muted">Choose a GIF duration from 1 to 5 seconds. 2 seconds is ideal for most animated GIFs. Select which camera to use if you have more than one connected.</p>
+              <p class="mb-0 text-muted">Choose a GIF duration from 1 to 5 seconds. 2 seconds is ideal for most reaction GIFs. Select which camera to use if you have more than one device connected.</p>
             </div>
           </div>
         </div>
@@ -565,7 +565,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start GIF Capture"</h3>
-              <p class="mb-0 text-muted">Allow camera access when prompted. The live feed appears and the tool begins capturing frames at approximately 10 frames per second. The progress bar shows how far through the capture you are.</p>
+              <p class="mb-0 text-muted">Allow camera access when prompted. The live preview appears and the tool begins capturing frames at approximately 10 fps. The progress bar shows how far through the capture you are in real time.</p>
             </div>
           </div>
         </div>
@@ -576,7 +576,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Create GIF"</h3>
-              <p class="mb-0 text-muted">Once the capture completes the <strong>Create GIF</strong> button appears. Click it to encode the captured frames into an animated GIF using the GIF.js library.</p>
+              <p class="mb-0 text-muted">Once capture completes, the <strong>Create GIF</strong> button appears. Click it to encode the captured frames into an animated GIF file using the GIF.js library running in your browser.</p>
             </div>
           </div>
         </div>
@@ -587,7 +587,7 @@
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Preview and Download</h3>
-              <p class="mb-0 text-muted">Your <strong>animated GIF</strong> appears in the preview area. Click <strong>Download GIF</strong> to save it to your device as a standard <code>.gif</code> file ready for sharing.</p>
+              <p class="mb-0 text-muted">Your <strong>animated GIF</strong> appears in the preview area looping immediately. Click <strong>Download GIF</strong> to save a standard <code>.gif</code> file to your device — ready to share anywhere GIFs are supported.</p>
             </div>
           </div>
         </div>
@@ -596,36 +596,67 @@
 
     <div class="feature-card">
       <h2 class="section-header"><i class="bi bi-info-circle"></i>What Is a Webcam GIF?</h2>
-      <p>A <strong>webcam GIF</strong> is a short, looping animation created by capturing a sequence of still frames from your live camera feed and encoding them into the Graphics Interchange Format (GIF). Unlike video files, GIFs loop automatically and are supported natively in browsers, messaging apps, and social platforms without any video player — making them ideal for reactions, profile animations, and short demonstrations.</p>
+      <p>A <strong>webcam GIF</strong> is a short, looping animation created by capturing a sequence of still frames from your live camera feed and encoding them into the Graphics Interchange Format — the .gif file type. Unlike video files, GIFs loop automatically without a play button and are supported natively in every browser, messaging app, email client, and social platform without any video player. This makes them the fastest format for sharing a reaction, expression, or quick demonstration.</p>
+      <p>The GIF format itself dates to 1987 and uses a palette-based compression system that limits each frame to 256 unique colours. This limitation is why GIFs look different from video — slight colour banding and dithering are normal. At small dimensions like 320×240 pixels, the visual quality is more than sufficient for the sharing contexts where GIFs are most commonly used: messaging, profile images, social posts, and comment threads.</p>
       <div class="row g-4 mt-1">
         <div class="col-md-6">
           <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-film me-2"></i>How Frame Capture Works</h3>
-          <p>The tool uses the browser's Canvas API to draw each video frame from your webcam into a hidden <code>&lt;canvas&gt;</code> element at regular intervals (approximately 10 fps). Each drawn frame is extracted as a JPEG data URL. The accumulated array of frame images is then passed to the GIF encoder, which stitches them into an animated GIF file.</p>
+          <p>The tool uses the browser's Canvas API to draw each video frame from your webcam into a hidden <code>&lt;canvas&gt;</code> element at regular intervals (approximately 10 fps). Each drawn frame is extracted as image data and passed directly to the GIF.js encoder. The accumulation of frames is then processed into a single animated GIF file — all inside your browser tab, with no data leaving your device.</p>
         </div>
         <div class="col-md-6">
           <h3 class="h5 fw-bold text-primary mb-2"><i class="bi bi-shield-lock me-2"></i>Privacy</h3>
-          <p>All frame capture and GIF encoding happens entirely inside your browser tab. No images, frames, or video data are transmitted to any server. The final GIF file is created locally as a Blob object and offered for download directly from your browser — your camera footage never leaves your device.</p>
+          <p>All frame capture and GIF encoding happens entirely inside your browser. No images, frames, or video data are transmitted to any server at any point. The final GIF file is created locally as a Blob object and offered for download directly from your browser — your camera footage never leaves your device.</p>
         </div>
       </div>
     </div>
 
     <div class="feature-card">
-      <h2 class="section-header"><i class="bi bi-lightbulb"></i>Tips for the Best Webcam GIFs</h2>
-      <p>A great <strong>animated GIF from webcam</strong> depends on a few straightforward factors. Follow these tips to get a clean, sharp result with the smallest file size.</p>
+      <h2 class="section-header"><i class="bi bi-lightbulb"></i>Tips for Making Better Webcam GIFs</h2>
+      <p>Getting a clean, sharp <strong>animated GIF from webcam</strong> takes only a few adjustments. These factors have the biggest impact on both visual quality and file size:</p>
       <div class="row g-4 mt-1">
         <div class="col-md-4">
           <h3 class="h6 fw-bold mb-1"><i class="bi bi-sun text-primary me-2"></i>Lighting</h3>
-          <p class="text-muted mb-0">Bright, even lighting produces sharper frames with less noise. A ring light or a lamp in front of you (not behind) makes the biggest single improvement to GIF quality. Avoid window backlighting.</p>
+          <p class="text-muted mb-0">Bright, even front lighting produces sharper frames with less colour noise. A ring light or a lamp positioned in front of you — not behind — is the single biggest quality improvement you can make. Backlighting from a window creates a silhouette and washes out detail.</p>
         </div>
         <div class="col-md-4">
           <h3 class="h6 fw-bold mb-1"><i class="bi bi-clock text-primary me-2"></i>Duration</h3>
-          <p class="text-muted mb-0">Shorter GIFs are smaller files and loop more naturally. Two seconds is the sweet spot for a reaction GIF. If you need to show a longer sequence, consider using the webcam recorder for a video file instead.</p>
+          <p class="text-muted mb-0">Keep GIFs short. Two seconds is the sweet spot for reactions and expressions — long enough to show movement, short enough to loop naturally and keep the file size manageable. For clips longer than 3 seconds, a video file from the webcam recorder will look better than a GIF.</p>
         </div>
         <div class="col-md-4">
           <h3 class="h6 fw-bold mb-1"><i class="bi bi-border-all text-primary me-2"></i>Background</h3>
-          <p class="text-muted mb-0">Simple, plain backgrounds result in smaller file sizes because GIF compression works better when fewer colours change between frames. A plain wall behind you produces cleaner results than a busy room.</p>
+          <p class="text-muted mb-0">Simple, plain backgrounds produce smaller files and cleaner animations. GIF compression works by identifying pixels that do not change between frames — a still plain wall compresses far better than a busy room with moving objects. Solid-colour walls behind you can cut file size by 30–50%.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-camera text-primary me-2"></i>Movement</h3>
+          <p class="text-muted mb-0">Deliberate, clear movements work best in a GIF. Subtle facial expressions can be hard to read at 10 fps and 320×240 pixels. Larger gestures — a wave, a nod, a surprised expression — communicate more clearly at this resolution and frame rate.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-arrow-clockwise text-primary me-2"></i>Looping</h3>
+          <p class="text-muted mb-0">GIFs loop back to the first frame when they finish, so beginning and ending poses matter. If your first and last frames are visually similar, the loop is seamless. If they are very different, the jump will be obvious. A slight pause at the end of your expression before capture ends creates a smoother loop point.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 fw-bold mb-1"><i class="bi bi-rulers text-primary me-2"></i>Camera Distance</h3>
+          <p class="text-muted mb-0">Sitting closer to the camera fills more of the 320×240 frame with your face, making expressions more readable. At arm's length or more, facial details become small at the GIF's output resolution. Position yourself so your face occupies roughly the upper half of the preview frame.</p>
         </div>
       </div>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-file-earmark-image"></i>GIF File Size — What to Expect</h2>
+      <p>GIF files from a <strong>webcam to GIF</strong> tool are typically larger than you might expect relative to their short duration — especially compared to video formats. A 2-second GIF at 10 fps (20 frames) at 320×240 pixels typically produces a file between 200KB and 600KB depending on the complexity and movement in the scene. A simple face against a plain background is at the low end; a detailed, colourful background with lots of movement will be at the high end.</p>
+      <p>For comparison, the same 2-second clip as an MP4 video would be around 50–100KB. The GIF format is not efficient by modern standards — it predates H.264 video compression by nearly two decades. Its enduring popularity is due entirely to its universal compatibility and auto-loop behaviour, not its compression efficiency. If file size is a concern, some messaging platforms (such as Discord and Telegram) automatically convert GIFs to video during upload and serve them as looping MP4s anyway.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2 class="section-header"><i class="bi bi-share"></i>What to Use Webcam GIFs For</h2>
+      <p>The <strong>webcam GIF maker</strong> is most useful when you need a looping, universally compatible animation that loads without a video player. Common uses include:</p>
+      <ul class="mt-2">
+        <li class="mb-2"><strong>Reaction GIFs:</strong> Capture a facial expression or gesture for use in messaging threads, Slack channels, or social media comments. Personal reaction GIFs add a more authentic, personalized touch than stock GIF libraries.</li>
+        <li class="mb-2"><strong>Profile and avatar animations:</strong> Some platforms (Slack, Discord, older social networks) support animated GIF avatars. A 1–2 second subtle loop — a blink, a small wave — makes a profile feel alive.</li>
+        <li class="mb-2"><strong>Email signatures:</strong> A short looping GIF in an email signature can draw attention without the overhead of a full video embed.</li>
+        <li class="mb-2"><strong>Quick demonstrations:</strong> Record a brief how-to gesture or UI interaction to share in a chat message where a full video would be too heavyweight.</li>
+        <li class="mb-2"><strong>Social media posts:</strong> Twitter (X), Facebook, Reddit, and most forums render .gif files as inline looping animations with no play button required.</li>
+      </ul>
     </div>
 
   </div>
@@ -642,12 +673,12 @@
           <div class="accordion-item mb-2 border rounded">
             <h3 class="accordion-header">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
-                Is the GIF maker really free and does it require an account?
+                Is the webcam GIF maker free and does it require an account?
               </button>
             </h3>
             <div id="faq1" class="accordion-collapse collapse show">
               <div class="accordion-body text-muted">
-                Yes — the <strong>webcam GIF maker</strong> is completely free and requires no account, sign-up, or email address. Open the page, allow camera access, and create GIFs immediately. There are no watermarks or download limits.
+                Yes — the <strong>webcam GIF maker</strong> is completely free with no account, sign-up, or email address required. Open the page, allow camera access, and create GIFs immediately. There are no watermarks, no download limits, and no premium tier.
               </div>
             </div>
           </div>
@@ -660,7 +691,7 @@
             </h3>
             <div id="faq2" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                The tool supports durations of 1, 2, 3, and 5 seconds. Longer durations produce larger files and take longer to encode. For sharing on messaging apps or social media, 2–3 seconds is the most practical length. For longer animations, use the webcam recorder to capture a video clip instead.
+                The tool supports durations of 1, 2, 3, and 5 seconds. Longer durations produce larger files and take longer to encode. For sharing on messaging apps or social media, 2–3 seconds is the most practical length. For longer animations, use the <a href="/webcam-recorder.html">Webcam Recorder</a> to capture a video file instead.
               </div>
             </div>
           </div>
@@ -673,7 +704,7 @@
             </h3>
             <div id="faq3" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                GIFs are captured and encoded at 320×240 pixels. This is intentionally small — GIF is a lossless palette-based format that produces very large files at high resolutions. At 320×240, a 2-second GIF at 10 fps produces a file that is practical for sharing. GIF is not designed for high-resolution video; use MP4 for large-frame video content.
+                GIFs are captured and encoded at 320×240 pixels. This is intentionally small — GIF is a palette-based format that produces very large files at high resolutions due to its compression method. At 320×240, a 2-second GIF at 10 fps is practical for sharing. For high-resolution video capture, use the Webcam Recorder to download an MP4 or WebM file instead.
               </div>
             </div>
           </div>
@@ -686,7 +717,20 @@
             </h3>
             <div id="faq4" class="accordion-collapse collapse">
               <div class="accordion-body text-muted">
-                GIF encoding is computationally intensive because each frame must be quantised to a 256-colour palette and compressed individually. Running this in the browser via JavaScript takes slightly longer than native apps. A 2-second, 20-frame GIF typically encodes in 2–5 seconds on a modern laptop. Longer durations and more complex images take proportionally longer.
+                GIF encoding requires each frame to be quantised to a 256-colour palette and then compressed individually using LZW compression. Running this in the browser via JavaScript takes a few seconds. A 2-second, 20-frame GIF typically encodes in 2–5 seconds on a modern device. Longer durations and more visually complex scenes (more colours, more movement) take proportionally longer.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-2 border rounded">
+            <h3 class="accordion-header">
+              <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                Does the webcam GIF maker work on mobile?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse">
+              <div class="accordion-body text-muted">
+                Yes. The <strong>create gif from webcam</strong> tool works on Android in Chrome and on iOS in Safari. On mobile, the front-facing camera is used by default. Because GIF encoding is CPU-intensive, encoding may take slightly longer on older mobile devices than on a desktop computer.
               </div>
             </div>
           </div>
