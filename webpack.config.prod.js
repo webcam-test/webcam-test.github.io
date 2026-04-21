@@ -30,7 +30,7 @@ module.exports = merge(common, {
         { from: 'webcam-color-test.html', to: 'webcam-color-test.html' },
         { from: 'camera-comparison.html', to: 'camera-comparison.html' },
         { from: 'webcam-lighting-test.html', to: 'webcam-lighting-test.html' },
-        { from: 'webcam-framing-guide.html', to: 'webcam-framing-guide.html' },
+        { from: 'webcam-grid-overlay.html', to: 'webcam-grid-overlay.html' },
       ],
     }),
   ],

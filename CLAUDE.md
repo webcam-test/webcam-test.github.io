@@ -34,7 +34,7 @@ Static webcam testing utility hosted on GitHub Pages. No backend, no runtime dep
 - `webcam-color-test.html` — colour accuracy test
 - `camera-comparison.html` — side-by-side camera comparison
 - `webcam-lighting-test.html` — lighting conditions test
-- `webcam-framing-guide.html` — rule-of-thirds overlay
+- `webcam-grid-overlay.html` — rule-of-thirds grid, crosshair and face guide overlay
 - `about.html` — about page
 - `contact.html` — contact page
 - `404.html` — error page (copied via CopyPlugin)
@@ -106,7 +106,7 @@ These have <10/mo volume individually but strengthen the site's topical coverage
 |------|------|---------|----------------|
 | Camera Comparison | `camera-comparison.html` | webcam comparison tool | Side-by-side split view of two cameras |
 | Webcam Lighting Test | `webcam-lighting-test.html` | webcam lighting test | Analyse brightness/exposure from canvas |
-| Webcam Framing Guide | `webcam-framing-guide.html` | webcam framing guide | Rule-of-thirds overlay on live feed |
+| Webcam Grid Overlay | `webcam-grid-overlay.html` | webcam grid overlay | Rule-of-thirds grid, crosshair and face guide on live feed |
 | Webcam Color Test | `webcam-color-test.html` | webcam color test | Color accuracy analysis from canvas |
 | Webcam Timelapse | `webcam-timelapse.html` | webcam timelapse online | Capture frames at intervals → download video |
 | Webcam Brightness Test | `webcam-brightness-test.html` | webcam brightness test | Measure and adjust brightness/contrast |
@@ -217,7 +217,7 @@ Each supporting page has **3 body content slots**:
 |---|------|------|----------------|--------|--------|
 | 1 | Camera Comparison | `camera-comparison.html` | "webcam comparison tool" | <10 | Built |
 | 2 | Webcam Lighting Test | `webcam-lighting-test.html` | "webcam lighting test" | <10 | Built |
-| 3 | Webcam Framing Guide | `webcam-framing-guide.html` | "webcam framing guide" | <10 | Built |
+| 3 | Webcam Grid Overlay | `webcam-grid-overlay.html` | "webcam grid overlay" | <10 | Built |
 
 ---
 
@@ -251,7 +251,7 @@ All pages have been built. Content writing is next.
 | Webcam Color Test | `webcam-color-test.html` | Built — content pending |
 | Camera Comparison | `camera-comparison.html` | Built — content pending |
 | Webcam Lighting Test | `webcam-lighting-test.html` | Built — content pending |
-| Webcam Framing Guide | `webcam-framing-guide.html` | Built — content pending |
+| Webcam Grid Overlay | `webcam-grid-overlay.html` | Built — content pending |
 
 ---
 

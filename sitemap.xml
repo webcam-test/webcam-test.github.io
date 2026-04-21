@@ -129,10 +129,10 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Webcam Framing Guide -->
+  <!-- Webcam Grid Overlay -->
   <url>
-    <loc>https://webcam-test.github.io/webcam-framing-guide</loc>
-    <lastmod>2026-04-20</lastmod>
+    <loc>https://webcam-test.github.io/webcam-grid-overlay</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
