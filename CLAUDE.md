@@ -17,7 +17,7 @@ Static webcam testing utility hosted on GitHub Pages. No backend, no runtime dep
 
 **Build pipeline**: Webpack bundles `./js/app.js` (intentionally empty — all page logic lives as inline `<script>` in each HTML file) → `./dist/`. Production build uses HtmlWebpackPlugin for `index.html` and CopyPlugin for static assets. **Important**: non-index HTML pages are NOT automatically copied — each must be explicitly added to the `CopyPlugin` patterns in `webpack.config.prod.js`.
 
-**Page structure**: Each HTML file is a standalone page (no routing framework). Pages are self-contained with inline styles and inline JS. Bootstrap 5.3.0-alpha1 + Bootstrap Icons 1.11.1 loaded from CDN. The pages are:
+**Page structure**: Each HTML file is a standalone page (no routing framework). Pages are self-contained with inline styles and inline JS. Bootstrap 5.3.3 + Bootstrap Icons 1.11.1 loaded from CDN. The pages are:
 - `index.html` — homepage/landing
 - `show-webcam.html` — detailed camera info
 - `take-photo.html` — photo capture
@@ -42,7 +42,7 @@ Static webcam testing utility hosted on GitHub Pages. No backend, no runtime dep
 **Adding a new page**: (1) create the HTML file, (2) add a `{ from: 'page.html', to: 'page.html' }` entry in `webpack.config.prod.js` CopyPlugin patterns, (3) update `sitemap.xml`.
 
 **External dependencies (CDN only)**:
-- Bootstrap 5.3.0-alpha1 + Bootstrap Icons 1.11.1
+- Bootstrap 5.3.3 + Bootstrap Icons 1.11.1
 - Google AdSense (`ca-pub-5426315045205785`) — present on all feature pages
 
 **Webpack configs**: `webpack.common.js` (shared), `webpack.config.dev.js` (dev server), `webpack.config.prod.js` (production).
@@ -117,7 +117,7 @@ Rotate webcam (170/mo)
 
 ## Internal Linking Strategy — Advanced Silo
 
-**Status: Planned — not yet implemented. Implementation begins once `webcam-recorder.html` (Hub A) is built.**
+**Status: LIVE as of 2026-04-21.** Script, GitHub Actions workflow, and HTML markers all deployed. First rotation applied for April 2026. Subsequent rotations run automatically on days 1–3 of each month.
 
 Three-level authority silo matching the same architecture used in mic-tests.github.io. Body content links only — nav, footer, and sidebar links are navigational and do not count toward silo structure.
 
@@ -151,11 +151,9 @@ Each hub has **4 body content slots**:
 
 | Hub | File | Primary Keyword | Vol/mo | Status |
 |-----|------|----------------|--------|--------|
-| **A — Webcam Recorder** | `webcam-recorder.html` | "webcam recorder" | 14,800 | **To build — highest priority** |
-| **B — FPS Checker** | `fps-checker.html` | "webcam fps checker" | 40 | Existing |
-| **C — Show My Webcam** | `show-webcam.html` | "webcam viewer" | 2,400 | Existing |
-
-> Hub A (`webcam-recorder.html`) must be built before the rotation script can run. Hubs B and C already exist.
+| **A — Webcam Recorder** | `webcam-recorder.html` | "webcam recorder" | 14,800 | Built — silo markers live |
+| **B — FPS Checker** | `fps-checker.html` | "webcam fps checker" | 40 | Built — silo markers live |
+| **C — Show My Webcam** | `show-webcam.html` | "webcam viewer" | 2,400 | Built — silo markers live |
 
 ---
 
@@ -235,65 +233,54 @@ Bidirectional. Bridge targets change monthly as the supporter shuffle changes wh
 
 ### Page Build Priority Order
 
-Build in this order to maximise SEO value and unlock the rotation system progressively.
-
-All pages have been built. Content writing is next.
+All pages are built and silo markers are live. Content writing is next.
 
 | Page | File | Status |
 |------|------|--------|
-| Webcam Recorder (Hub A) | `webcam-recorder.html` | Built — content pending |
-| Webcam Effects | `webcam-effects.html` | Built — content pending |
-| Webcam GIF Maker | `webcam-gif.html` | Built — content pending |
-| Webcam Timelapse | `webcam-timelapse.html` | Built — content pending |
-| Webcam Quality Test | `webcam-quality-test.html` | Built — content pending |
-| Webcam Zoom Test | `webcam-zoom-test.html` | Built — content pending |
-| Webcam Brightness Test | `webcam-brightness-test.html` | Built — content pending |
-| Webcam Color Test | `webcam-color-test.html` | Built — content pending |
-| Camera Comparison | `camera-comparison.html` | Built — content pending |
-| Webcam Lighting Test | `webcam-lighting-test.html` | Built — content pending |
-| Webcam Grid Overlay | `webcam-grid-overlay.html` | Built — content pending |
+| Webcam Recorder (Hub A) | `webcam-recorder.html` | Built — silo live — content pending |
+| Webcam Effects | `webcam-effects.html` | Built — silo live — content pending |
+| Webcam GIF Maker | `webcam-gif.html` | Built — silo live — content pending |
+| Webcam Timelapse | `webcam-timelapse.html` | Built — silo live — content pending |
+| Webcam Quality Test | `webcam-quality-test.html` | Built — silo live — content pending |
+| Webcam Zoom Test | `webcam-zoom-test.html` | Built — silo live — content pending |
+| Webcam Brightness Test | `webcam-brightness-test.html` | Built — silo live — content pending |
+| Webcam Color Test | `webcam-color-test.html` | Built — silo live — content pending |
+| Camera Comparison | `camera-comparison.html` | Built — silo live — content pending |
+| Webcam Lighting Test | `webcam-lighting-test.html` | Built — silo live — content pending |
+| Webcam Grid Overlay | `webcam-grid-overlay.html` | Built — silo live — content pending |
 
 ---
 
-### Monthly Rotation System — Implementation Plan
+### Monthly Rotation System — LIVE
 
-Mirrors the system built for mic-tests.github.io. To be implemented once `webcam-recorder.html` is built.
+Implemented 2026-04-21. Mirrors the system built for mic-tests.github.io.
 
 #### Script
 
-**Planned file:** `utilities/silo_linking/generate_silo_rotation.py`
+**File:** `utilities/silo_linking/generate_silo_rotation.py`
 
-Same architecture as mic-tests.github.io:
-- Deterministic shuffles via `random.Random(MD5-seed)`
+```bash
+python3 utilities/silo_linking/generate_silo_rotation.py            # apply current month
+python3 utilities/silo_linking/generate_silo_rotation.py --dry-run  # preview without writing
+python3 utilities/silo_linking/generate_silo_rotation.py --date=2026-06  # apply specific month
+```
+
+- Deterministic shuffles via `random.Random(MD5-seed)` — same month always produces same output
 - Hub order shuffles monthly → pillar link + hub left/right neighbours rotate
 - Supporter order shuffles per silo → prev/next chain + bridge endpoints rotate
 - Hub `slot_a` anchor rotates among 6 long-tail "webcam test" variants per hub per month
-- 6 sentence templates per anchor keyword (90 total)
-- HTML comment markers injected into body content paragraphs
-
-```bash
-python3 utilities/silo_linking/generate_silo_rotation.py            # apply
-python3 utilities/silo_linking/generate_silo_rotation.py --dry-run  # preview
-python3 utilities/silo_linking/generate_silo_rotation.py --date=2026-06  # test specific month
-```
+- 6 sentence templates per anchor keyword (132 sentences total across 22 anchor keywords)
+- Script detects first-run (no markers) vs. subsequent runs (update existing markers)
 
 #### GitHub Actions Workflow
 
-**Planned file:** `.github/workflows/silo-rotation.yml`
+**File:** `.github/workflows/silo-rotation.yml`
 
-```yaml
-on:
-  schedule:
-    - cron: '0 16 1-3 * *'   # midnight SGT, days 1–3 of each month
-  workflow_dispatch:
-    inputs:
-      date:
-        description: 'Override month (YYYY-MM). Leave empty for today.'
-        required: false
-        default: ''
-```
-
-Uses built-in `GITHUB_TOKEN` — no PAT required. Days 2 and 3 are retry safety nets; once committed, subsequent runs detect no diff and exit cleanly.
+- Cron: `0 16 1-3 * *` — midnight SGT on days 1, 2, and 3 of each month
+- Days 2 and 3 are retry safety nets; idempotent — no diff = no commit
+- `workflow_dispatch` with optional `date` input (YYYY-MM) for manual override
+- Uses built-in `GITHUB_TOKEN` — no PAT required
+- View runs: GitHub → Actions → "Monthly Silo Link Rotation"
 
 #### HTML Comment Markers
 
@@ -302,16 +289,44 @@ Each silo link injected as:
 <!-- SILO_START:slot_a -->sentence with <a href="/url">anchor</a><!-- SILO_END:slot_a -->
 ```
 
-Inserted after the first `</p>` following a designated heading. Injection target headings to be determined per page once all pages are built.
+Empty slots (e.g. no left/right hub neighbour) render as `<!-- SILO_START:slot_b --><!-- SILO_END:slot_b -->`.
 
-#### Rotation Algorithm (same as mic-tests.github.io)
+Inserted after the first `</p>` following the designated heading. All internal links use clean URLs (no `.html`).
+
+#### Injection Target Headings (per page)
+
+The script uses `(heading_tag, heading_text_fragment)` to locate injection points. `None` = first `<p>` after `<h1>`.
+
+| Page | slot_a | slot_b | slot_c | slot_d |
+|------|--------|--------|--------|--------|
+| `index.html` | after h1 | — | — | — |
+| `webcam-recorder.html` | after h1 | "What the Webcam Recorder Captures" | "Webcam Recording Quality" | "Who Uses an Online Webcam Recorder" |
+| `fps-checker.html` | after h1 | "What Does FPS Mean for Your Webcam" | "Why Your Webcam FPS Matters" | "How to Improve Your Webcam FPS" |
+| `show-webcam.html` | after h1 | "How to Use the Webcam Viewer" | "Why Check Your Webcam Specifications" | "What Your Webcam Details Actually Tell You" |
+| `take-photo.html` | after h1 | "How to Take a Webcam Photo Online" | "What Can You Use a Webcam Photo For" | — |
+| `mirror.html` | after h1 | "How to Use the Webcam Mirror Online" | "Mirror View vs. Natural View" | — |
+| `webcam-effects.html` | after h1 | "Creative Filters and Effects for Your Camera" | "How Live Camera Filters Work in a Browser" | — |
+| `webcam-gif.html` | after h1 | "Tips for Making Better Webcam GIFs" | "What to Use Webcam GIFs For" | — |
+| `webcam-timelapse.html` | after h1 | "Capture Interval" | "What to Capture — Webcam Timelapse Subject Ideas" | — |
+| `resolution-tester.html` | after h1 | "What Is Webcam Resolution" | "What Webcam Resolution Do You Actually Need" | — |
+| `webcam-quality-test.html` | after h1 | "What the Quality Metrics Measure" | "Troubleshooting a Low Webcam Quality Score" | — |
+| `webcam-zoom-test.html` | after h1 | "Understanding Digital Zoom Quality" | "Practical Use Cases for Webcam Digital Zoom" | — |
+| `webcam-brightness-test.html` | after h1 | "What Does Webcam Brightness Mean" | "Why Webcam Brightness Matters" | — |
+| `webcam-color-test.html` | after h1 | "Understanding Colour Casts and White Balance" | "How Lighting Affects Your Webcam" | — |
+| `camera-comparison.html` | after h1 | "What Can You Compare with Two Webcams" | "When to Use the Webcam Comparison Tool" | — |
+| `webcam-lighting-test.html` | after h1 | "What the Lighting Metrics Measure" | "Natural vs. Artificial Light" | — |
+| `webcam-grid-overlay.html` | after h1 | "The Three Overlays" | "Who Uses a Webcam Grid Overlay" | — |
+
+#### Rotation Algorithm
 
 1. **Hub slot_a anchor** — each hub independently picks 1 of 6 long-tail pillar variants per month via `MD5(year-month-hub_file-slot_a) % 6`
 2. **Hub order shuffle** — `random.Random(MD5(year-month-pillar)).shuffle(HUBS)` → determines pillar link + hub left/right neighbours
 3. **Supporter shuffle per silo** — `random.Random(MD5(year-month-silo_N)).shuffle(supporters)` → determines hub down-link + supporter chain order + bridge endpoints
 4. **Sentence selection** — `MD5(year-month-source_file-anchor) % 6` → picks 1 of 6 sentence templates
 
-All shuffles are deterministic — same month always produces same output.
+#### Pillar Anchor Variants (hub slot_a pointing up to index.html)
+
+`"webcam test"`, `"online webcam test"`, `"free webcam test"`, `"test my webcam"`, `"webcam check online"`, `"test your webcam online"`
 
 ---
 

@@ -31,6 +31,7 @@ module.exports = merge(common, {
         { from: 'camera-comparison.html', to: 'camera-comparison.html' },
         { from: 'webcam-lighting-test.html', to: 'webcam-lighting-test.html' },
         { from: 'webcam-grid-overlay.html', to: 'webcam-grid-overlay.html' },
+        { from: 'sitemap.html', to: 'sitemap.html' },
       ],
     }),
   ],
