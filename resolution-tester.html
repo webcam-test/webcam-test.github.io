@@ -15,66 +15,11 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
 
-    :root {
-      --primary-color: #0066cc;
-      --secondary-color: #4a90e2;
-      --success-color: #28a745;
-      --danger-color: #dc3545;
-      --warning-color: #ffc107;
-      --light-bg: #f8f9fa;
-      --dark-bg: #343a40;
-      --border-color: #dee2e6;
-      --text-dark: #212529;
-      --text-muted: #6c757d;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-bg);
-    }
-
-    /* Header */
-    .navbar {
-      background-color: var(--primary-color) !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    /* Main Resolution Section */
-    .resolution-section {
-      background-color: #ffffff;
-      padding: 2rem 0;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .resolution-container {
-      background-color: #ffffff;
-      border: 2px solid var(--border-color);
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      position: relative;
-    }
-
-    #resolution-video {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      min-height: 400px;
-      border-radius: 10px;
-      border: 3px solid var(--border-color);
-      background-color: #000000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    }
-
-    .resolution-info {
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="/css/site.css">
+  <style>
+.resolution-info {
       position: absolute;
       top: 20px;
       left: 20px;
@@ -88,8 +33,7 @@
       border: 2px solid #00ff00;
       box-shadow: 0 0 20px rgba(0,255,0,0.3);
     }
-
-    .resolution-controls {
+.resolution-controls {
       margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
@@ -97,15 +41,13 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
-    .resolution-grid {
+.resolution-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin-top: 1.5rem;
     }
-
-    .resolution-card {
+.resolution-card {
       background-color: var(--light-bg);
       border: 2px solid var(--border-color);
       border-radius: 10px;
@@ -115,61 +57,46 @@
       transition: all 0.3s ease;
       position: relative;
     }
-
-    .resolution-card:hover {
+.resolution-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-
-    .resolution-card.supported {
+.resolution-card.supported {
       border-color: var(--success-color);
       background-color: rgba(40, 167, 69, 0.1);
     }
-
-    .resolution-card.unsupported {
+.resolution-card.unsupported {
       border-color: var(--danger-color);
       background-color: rgba(220, 53, 69, 0.1);
       opacity: 0.6;
       cursor: not-allowed;
     }
-
-    .resolution-card.testing {
+.resolution-card.testing {
       border-color: var(--warning-color);
       background-color: rgba(255, 193, 7, 0.1);
       animation: pulse 1.5s infinite;
     }
-
-    .resolution-card.active {
+.resolution-card.active {
       border-color: var(--primary-color);
       background-color: rgba(0, 102, 204, 0.1);
       box-shadow: 0 0 20px rgba(0,102,204,0.4);
     }
-
-    @keyframes pulse {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-
-    .resolution-title {
+.resolution-title {
       font-size: 1.2rem;
       font-weight: bold;
       margin-bottom: 10px;
       color: var(--text-dark);
     }
-
-    .resolution-dimensions {
+.resolution-dimensions {
       font-size: 14px;
       color: var(--text-muted);
       margin-bottom: 5px;
     }
-
-    .resolution-aspect {
+.resolution-aspect {
       font-size: 12px;
       color: var(--text-muted);
     }
-
-    .resolution-status {
+.resolution-status {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -178,87 +105,27 @@
       border-radius: 50%;
       background: #666;
     }
-
-    .resolution-status.supported {
+.resolution-status.supported {
       background: var(--success-color);
       box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
     }
-
-    .resolution-status.unsupported {
+.resolution-status.unsupported {
       background: var(--danger-color);
     }
-
-    .resolution-status.testing {
+.resolution-status.testing {
       background: var(--warning-color);
       animation: blink 1s infinite;
     }
-
-    @keyframes blink {
+@keyframes blink {
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0.3; }
     }
-
-    .status-indicator {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      border: 1px solid;
-    }
-
-    .status-inactive {
-      background-color: #f8f9fa;
-      color: var(--text-muted);
-      border-color: var(--border-color);
-    }
-
-    .status-active {
+.status-active {
       background-color: #d4edda;
       color: var(--success-color);
       border-color: #c3e6cb;
     }
-
-    .status-testing {
-      background-color: #fff3cd;
-      color: #856404;
-      border-color: #ffeaa7;
-    }
-
-    .btn-primary-custom {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary-custom:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
-    }
-
-    .btn-outline-primary-custom {
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      background-color: transparent;
-      font-weight: 500;
-      padding: 0.5rem 1.5rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-outline-primary-custom:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    .current-resolution {
+.current-resolution {
       background: rgba(0,0,0,0.8);
       color: white;
       padding: 10px 20px;
@@ -267,206 +134,35 @@
       font-family: 'Courier New', monospace;
       text-align: center;
     }
-
-    /* Info Panel */
-    .info-panel {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .feature-card {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .section-header {
-      color: var(--text-dark);
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .section-header i {
-      color: var(--primary-color);
-      margin-right: 0.5rem;
-    }
-
-    /* Advertisement Cards */
-    .ad-card {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .ad-card .card-header {
-      background-color: var(--light-bg);
-      border-bottom: 1px solid var(--border-color);
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .footer {
-      background-color: var(--dark-bg);
-      color: white;
-      padding: 3rem 0 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .footer h5 {
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .footer p {
-      color: #adb5bd;
-    }
-
-    .footer .text-white {
-      color: #adb5bd !important;
-    }
-
-    .footer .text-white:hover {
-      color: white !important;
-    }
-
-    /* Form controls */
-    .form-select {
-      border: 2px solid var(--border-color);
-      border-radius: 8px;
-      padding: 0.75rem;
-      font-weight: 500;
-    }
-
-    .form-select:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .resolution-section {
-        padding: 1rem 0;
-        min-height: auto;
-      }
-
-      .resolution-container {
-        padding: 1rem;
-        margin: 0.5rem;
-      }
-
-      #resolution-video {
-        min-height: 250px;
-      }
-
-      .resolution-info {
+@media (max-width: 768px) {
+.resolution-info {
         font-size: 14px;
         padding: 10px 15px;
       }
-
-      .resolution-grid {
+.resolution-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 0.5rem;
       }
-
-      .resolution-controls {
+.resolution-controls {
         flex-direction: column;
         align-items: stretch;
       }
-
-      .resolution-controls .btn,
+.resolution-controls .btn,
       .resolution-controls .form-select {
         width: 100%;
         margin-bottom: 0.5rem;
       }
-
-      .feature-card {
-        padding: 1.5rem;
-      }
-    }
-
-    /* Dropdown Navigation */
-    .dropdown-menu {
-      border: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      border-radius: 8px;
-      padding: 0.5rem;
-      min-width: 200px;
-    }
-    .dropdown-item {
-      border-radius: 6px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      transition: background-color 0.15s ease;
-    }
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-      background-color: rgba(0,102,204,0.08);
-      color: var(--primary-color);
-    }
-    .dropdown-item.active,
-    .dropdown-item:active {
-      background-color: var(--primary-color);
-      color: white;
-    }
-    .nav-link.dropdown-toggle.active {
-      opacity: 1;
-    }
-    @media (max-width: 991.98px) {
-      .navbar-collapse {
-        padding: 0.75rem 0 0.25rem;
-        border-top: 1px solid rgba(255,255,255,0.15);
-        margin-top: 0.5rem;
-      }
-      .dropdown-menu {
-        background-color: rgba(0,0,0,0.2);
-        box-shadow: none;
-        border-radius: 6px;
-        margin: 0.25rem 0 0.5rem 1rem;
-        padding: 0.25rem;
-      }
-      .dropdown-item {
-        color: rgba(255,255,255,0.85);
-        font-size: 0.875rem;
-      }
-      .dropdown-item:hover,
-      .dropdown-item:focus {
-        background-color: rgba(255,255,255,0.1);
-        color: white;
-      }
-      .dropdown-item.active {
-        background-color: rgba(255,255,255,0.2);
-        color: white;
-        font-weight: 600;
-      }
-    }
+}
   </style>
 </head>
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg site-nav">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        <span class="brand-icon"><i class="bi bi-camera-video-fill"></i></span>
+        WebcamTest
       </a>
       <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -516,14 +212,16 @@
   </nav>
 
   <!-- Main Resolution Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold text-dark mb-3">Test Your Webcam Resolution — Find Maximum Camera Quality</h1>
+      <p class="lead text-muted">Click the <strong>Start Resolution Test</strong> button to <strong>test your webcam resolution</strong> and discover the <em>maximum video resolution</em> your camera supports — from <em>480p SD</em> to <em>4K Ultra HD</em>. Get a full breakdown of every <em>supported resolution</em>, <em>aspect ratio</em>, and <em>pixel dimensions</em> your webcam can output. Use our camera testing tool for a quick overall check. <!-- SILO_START:slot_a -->Use the <a href="/fps-checker">webcam fps checker</a> to measure your camera's exact frame rate at any resolution.<!-- SILO_END:slot_a --></p>
+    </div>
+  </section>
+
   <section class="resolution-section">
     <div class="container">
       <!-- Page Title -->
-      <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-dark mb-3">Test Your Webcam Resolution — Find Maximum Camera Quality</h1>
-        <p class="lead text-muted">Click the <strong>Start Resolution Test</strong> button to <strong>test your webcam resolution</strong> and discover the <em>maximum video resolution</em> your camera supports — from <em>480p SD</em> to <em>4K Ultra HD</em>. Get a full breakdown of every <em>supported resolution</em>, <em>aspect ratio</em>, and <em>pixel dimensions</em> your webcam can output. Use our camera testing tool for a quick overall check. <!-- SILO_START:slot_a -->Use the <a href="/fps-checker">webcam fps checker</a> to measure your camera's exact frame rate at any resolution.<!-- SILO_END:slot_a --></p>
-      </div>
-
           <div class="text-center mb-3">
             <ins class="adsbygoogle" id="adsense-header"
                  data-ad-client="ca-pub-5426315045205785"
@@ -547,7 +245,7 @@
 
       <div class="row">
         <!-- Main Resolution Container -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="resolution-container">
             <div class="status-indicator status-inactive d-none" id="resolution-status">
             </div>
@@ -676,7 +374,7 @@
         </div>
 
         <!-- Sidebar Info Panel -->
-        <div class="col-lg-4">
+        <div class="col-lg-12 mt-4">
 
           <!-- Resolution Categories Panel -->
           <div class="info-panel">

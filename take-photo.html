@@ -15,67 +15,11 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
 
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="/css/site.css">
   <style>
-    :root {
-      --primary-color: #0066cc;
-      --secondary-color: #4a90e2;
-      --success-color: #28a745;
-      --danger-color: #dc3545;
-      --warning-color: #ffc107;
-      --light-bg: #f8f9fa;
-      --dark-bg: #343a40;
-      --border-color: #dee2e6;
-      --text-dark: #212529;
-      --text-muted: #6c757d;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-bg);
-    }
-
-    /* Header */
-    .navbar {
-      background-color: var(--primary-color) !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    /* Main Photo Section */
-    .photo-section {
-      background-color: #ffffff;
-      padding: 2rem 0;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .photo-container {
-      background-color: #ffffff;
-      border: 2px solid var(--border-color);
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      position: relative;
-    }
-
-    #photo-video {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      min-height: 400px;
-      border-radius: 10px;
-      border: 3px solid var(--border-color);
-      background-color: #000000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    }
-
-    .photo-overlay {
+.photo-overlay {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -92,23 +36,19 @@
       opacity: 0;
       pointer-events: none;
     }
-
-    .photo-overlay.visible {
+.photo-overlay.visible {
       opacity: 1;
       pointer-events: all;
     }
-
-    .photo-overlay:hover {
+.photo-overlay:hover {
       transform: translate(-50%, -50%) scale(1.1);
       background: rgba(255,255,255,1);
     }
-
-    .photo-overlay i {
+.photo-overlay i {
       font-size: 2rem;
       color: var(--primary-color);
     }
-
-    .countdown {
+.countdown {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -121,12 +61,10 @@
       pointer-events: none;
       transition: all 0.3s ease;
     }
-
-    .countdown.visible {
+.countdown.visible {
       opacity: 1;
     }
-
-    .flash-effect {
+.flash-effect {
       position: absolute;
       top: 0;
       left: 0;
@@ -137,13 +75,11 @@
       pointer-events: none;
       border-radius: 10px;
     }
-
-    .flash-effect.active {
+.flash-effect.active {
       opacity: 0.8;
       transition: opacity 0.1s ease;
     }
-
-    .photo-controls {
+.photo-controls {
       margin-bottom: 1.5rem;
       display: flex;
       gap: 1rem;
@@ -151,8 +87,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
-    .photo-gallery {
+.photo-gallery {
       background-color: var(--light-bg);
       border: 1px solid var(--border-color);
       border-radius: 15px;
@@ -161,8 +96,7 @@
       max-height: 400px;
       overflow-y: auto;
     }
-
-    .photo-item {
+.photo-item {
       position: relative;
       margin-bottom: 20px;
       border-radius: 10px;
@@ -170,18 +104,15 @@
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-
-    .photo-item:hover {
+.photo-item:hover {
       transform: scale(1.02);
     }
-
-    .photo-item img {
+.photo-item img {
       width: 100%;
       height: auto;
       display: block;
     }
-
-    .photo-actions {
+.photo-actions {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -194,298 +125,71 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-
-    .photo-item:hover .photo-actions {
+.photo-item:hover .photo-actions {
       opacity: 1;
     }
-
-    .photo-settings {
+.photo-settings {
       background-color: var(--light-bg);
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 1.5rem;
       margin-top: 1.5rem;
     }
-
-    .settings-row {
+.settings-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 15px;
     }
-
-    .settings-row:last-child {
+.settings-row:last-child {
       margin-bottom: 0;
     }
-
-    .status-indicator {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      border: 1px solid;
-    }
-
-    .status-inactive {
-      background-color: #f8f9fa;
-      color: var(--text-muted);
-      border-color: var(--border-color);
-    }
-
-    .status-active {
+.status-active {
       background-color: #d4edda;
       color: var(--success-color);
       border-color: #c3e6cb;
     }
-
-    .status-countdown {
+.status-countdown {
       background-color: #fff3cd;
       color: #856404;
       border-color: #ffeaa7;
     }
-
-    .btn-primary-custom {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary-custom:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
-    }
-
-    .btn-outline-primary-custom {
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      background-color: transparent;
-      font-weight: 500;
-      padding: 0.5rem 1.5rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-outline-primary-custom:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    /* Info Panel */
-    .info-panel {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .feature-card {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .section-header {
-      color: var(--text-dark);
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .section-header i {
-      color: var(--primary-color);
-      margin-right: 0.5rem;
-    }
-
-    /* Advertisement Cards */
-    .ad-card {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .ad-card .card-header {
-      background-color: var(--light-bg);
-      border-bottom: 1px solid var(--border-color);
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .footer {
-      background-color: var(--dark-bg);
-      color: white;
-      padding: 3rem 0 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .footer h5 {
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .footer p {
-      color: #adb5bd;
-    }
-
-    .footer .text-white {
-      color: #adb5bd !important;
-    }
-
-    .footer .text-white:hover {
-      color: white !important;
-    }
-
-    /* Form controls */
-    .form-select, .form-range {
-      border: 2px solid var(--border-color);
-      border-radius: 8px;
-      padding: 0.75rem;
-      font-weight: 500;
-    }
-
-    .form-select:focus, .form-range:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .photo-section {
-        padding: 1rem 0;
-        min-height: auto;
-      }
-
-      .photo-container {
-        padding: 1rem;
-        margin: 0.5rem;
-      }
-
-      #photo-video {
-        min-height: 250px;
-      }
-
-      .photo-overlay {
+@media (max-width: 768px) {
+.photo-overlay {
         width: 60px;
         height: 60px;
       }
-
-      .photo-overlay i {
+.photo-overlay i {
         font-size: 1.5rem;
       }
-
-      .countdown {
+.countdown {
         font-size: 6rem;
       }
-
-      .photo-controls {
+.photo-controls {
         flex-direction: column;
         align-items: stretch;
       }
-
-      .photo-controls .btn,
+.photo-controls .btn,
       .photo-controls .form-select {
         width: 100%;
         margin-bottom: 0.5rem;
       }
-
-      .settings-row {
+.settings-row {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
       }
-
-      .feature-card {
-        padding: 1.5rem;
-      }
-    }
-
-    /* Dropdown Navigation */
-    .dropdown-menu {
-      border: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      border-radius: 8px;
-      padding: 0.5rem;
-      min-width: 200px;
-    }
-    .dropdown-item {
-      border-radius: 6px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      transition: background-color 0.15s ease;
-    }
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-      background-color: rgba(0,102,204,0.08);
-      color: var(--primary-color);
-    }
-    .dropdown-item.active,
-    .dropdown-item:active {
-      background-color: var(--primary-color);
-      color: white;
-    }
-    .nav-link.dropdown-toggle.active {
-      opacity: 1;
-    }
-    @media (max-width: 991.98px) {
-      .navbar-collapse {
-        padding: 0.75rem 0 0.25rem;
-        border-top: 1px solid rgba(255,255,255,0.15);
-        margin-top: 0.5rem;
-      }
-      .dropdown-menu {
-        background-color: rgba(0,0,0,0.2);
-        box-shadow: none;
-        border-radius: 6px;
-        margin: 0.25rem 0 0.5rem 1rem;
-        padding: 0.25rem;
-      }
-      .dropdown-item {
-        color: rgba(255,255,255,0.85);
-        font-size: 0.875rem;
-      }
-      .dropdown-item:hover,
-      .dropdown-item:focus {
-        background-color: rgba(255,255,255,0.1);
-        color: white;
-      }
-      .dropdown-item.active {
-        background-color: rgba(255,255,255,0.2);
-        color: white;
-        font-weight: 600;
-      }
-    }
+}
   </style>
 </head>
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg site-nav">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        <span class="brand-icon"><i class="bi bi-camera-video-fill"></i></span>
+        WebcamTest
       </a>
       <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -535,14 +239,16 @@
   </nav>
 
   <!-- Main Photo Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold text-dark mb-3">Take a Photo with Your Webcam — Capture Pictures Online</h1>
+      <p class="lead text-muted">Click the <strong>Start Camera</strong> button, then hit <strong>Take Photo</strong> to <strong>take a photo with your webcam</strong> directly in your browser — no software download or installation needed. Capture <em>high-resolution pictures</em> from your <em>laptop camera</em> or <em>external USB webcam</em>, preview each shot, and download your <em>webcam photos</em> in PNG format. Want to test your webcam first? Try our free camera check. <!-- SILO_START:slot_a -->The <a href="/webcam-recorder">webcam recorder</a> captures both video and audio simultaneously and downloads automatically when you stop.<!-- SILO_END:slot_a --></p>
+    </div>
+  </section>
+
   <section class="photo-section">
     <div class="container">
       <!-- Page Title -->
-      <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-dark mb-3">Take a Photo with Your Webcam — Capture Pictures Online</h1>
-        <p class="lead text-muted">Click the <strong>Start Camera</strong> button, then hit <strong>Take Photo</strong> to <strong>take a photo with your webcam</strong> directly in your browser — no software download or installation needed. Capture <em>high-resolution pictures</em> from your <em>laptop camera</em> or <em>external USB webcam</em>, preview each shot, and download your <em>webcam photos</em> in PNG format. Want to test your webcam first? Try our free camera check. <!-- SILO_START:slot_a -->The <a href="/webcam-recorder">webcam recorder</a> captures both video and audio simultaneously and downloads automatically when you stop.<!-- SILO_END:slot_a --></p>
-      </div>
-
           <div class="text-center mb-3">
             <ins class="adsbygoogle" id="adsense-header"
                  data-ad-client="ca-pub-5426315045205785"
@@ -566,7 +272,7 @@
 
       <div class="row">
         <!-- Main Photo Container -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="photo-container">
             <div class="status-indicator status-inactive d-none" id="photo-status">
             </div>
@@ -645,7 +351,7 @@
         </div>
 
         <!-- Sidebar Info Panel -->
-        <div class="col-lg-4">
+        <div class="col-lg-12 mt-4">
 
           <!-- How to Take Photos Panel -->
           <div class="info-panel">

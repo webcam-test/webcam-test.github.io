@@ -13,64 +13,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="/css/site.css">
   <style>
-    :root {
-      --primary-color: #0066cc;
-      --secondary-color: #4a90e2;
-      --success-color: #28a745;
-      --danger-color: #dc3545;
-      --warning-color: #ffc107;
-      --light-bg: #f8f9fa;
-      --dark-bg: #343a40;
-      --border-color: #dee2e6;
-      --text-dark: #212529;
-      --text-muted: #6c757d;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-bg);
-    }
-
-    /* Header */
-    .navbar {
-      background-color: var(--primary-color) !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    /* Main Section */
-    .main-section {
-      background-color: #ffffff;
-      padding: 2rem 0;
-      min-height: 80vh;
-    }
-
-    .feature-card {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .timeline {
+.timeline {
       position: relative;
       padding-left: 30px;
     }
-
-    .timeline::before {
+.timeline::before {
       content: '';
       position: absolute;
       left: 15px;
@@ -79,13 +30,11 @@
       width: 2px;
       background: var(--primary-color);
     }
-
-    .timeline-item {
+.timeline-item {
       position: relative;
       margin-bottom: 30px;
     }
-
-    .timeline-item::before {
+.timeline-item::before {
       content: '';
       position: absolute;
       left: -22px;
@@ -97,8 +46,7 @@
       border: 3px solid white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-
-    .stats-card {
+.stats-card {
       background-color: var(--primary-color);
       color: white;
       border-radius: 10px;
@@ -107,143 +55,29 @@
       margin-bottom: 1rem;
       transition: transform 0.3s ease;
     }
-
-    .stats-card:hover {
+.stats-card:hover {
       transform: translateY(-3px);
     }
-
-    .stats-number {
+.stats-number {
       font-size: 2.5rem;
       font-weight: bold;
       display: block;
     }
-
-    .section-header {
-      color: var(--text-dark);
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .section-header i {
-      color: var(--primary-color);
-      margin-right: 0.5rem;
-    }
-
-    .btn-primary-custom {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary-custom:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
-    }
-
-    .footer {
-      background-color: var(--dark-bg);
-      color: white;
-      padding: 3rem 0 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .footer h5 {
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .footer p {
-      color: #adb5bd;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .main-section {
-        padding: 1rem 0;
-      }
-
-      .feature-card {
-        padding: 1.5rem;
-      }
-
-      .stats-number {
+@media (max-width: 768px) {
+.stats-number {
         font-size: 2rem;
       }
-    }
-
-    /* Dropdown Navigation */
-    .dropdown-menu {
-      border: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      border-radius: 8px;
-      padding: 0.5rem;
-      min-width: 200px;
-    }
-    .dropdown-item {
-      border-radius: 6px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      transition: background-color 0.15s ease;
-    }
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-      background-color: rgba(0,102,204,0.08);
-      color: var(--primary-color);
-    }
-    .dropdown-item.active,
-    .dropdown-item:active {
-      background-color: var(--primary-color);
-      color: white;
-    }
-    .nav-link.dropdown-toggle.active {
-      opacity: 1;
-    }
-    @media (max-width: 991.98px) {
-      .navbar-collapse {
-        padding: 0.75rem 0 0.25rem;
-        border-top: 1px solid rgba(255,255,255,0.15);
-        margin-top: 0.5rem;
-      }
-      .dropdown-menu {
-        background-color: rgba(0,0,0,0.2);
-        box-shadow: none;
-        border-radius: 6px;
-        margin: 0.25rem 0 0.5rem 1rem;
-        padding: 0.25rem;
-      }
-      .dropdown-item {
-        color: rgba(255,255,255,0.85);
-        font-size: 0.875rem;
-      }
-      .dropdown-item:hover,
-      .dropdown-item:focus {
-        background-color: rgba(255,255,255,0.1);
-        color: white;
-      }
-      .dropdown-item.active {
-        background-color: rgba(255,255,255,0.2);
-        color: white;
-        font-weight: 600;
-      }
-    }
+}
   </style>
 </head>
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg site-nav">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        <span class="brand-icon"><i class="bi bi-camera-video-fill"></i></span>
+        WebcamTest
       </a>
       <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -293,17 +127,19 @@
   </nav>
 
   <!-- Main Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold text-dark mb-3">About WebcamTest — Free Online Camera Testing Tools</h1>
+      <p class="lead text-muted">Discover how <strong>WebcamTest</strong> helps you <em>verify camera functionality</em>, <em>troubleshoot video issues</em>, and <em>optimize webcam quality</em> across all your devices for free. Explore our suite of <em>browser-based camera testing tools</em> built to check <em>resolution</em>, <em>FPS</em>, <em>video quality</em>, and more — no downloads required.</p>
+    </div>
+  </section>
+
   <section class="main-section">
     <div class="container">
       <!-- Page Title -->
-      <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold text-dark mb-3">About WebcamTest — Free Online Camera Testing Tools</h1>
-        <p class="lead text-muted">Discover how <strong>WebcamTest</strong> helps you <em>verify camera functionality</em>, <em>troubleshoot video issues</em>, and <em>optimize webcam quality</em> across all your devices for free. Explore our suite of <em>browser-based camera testing tools</em> built to check <em>resolution</em>, <em>FPS</em>, <em>video quality</em>, and more — no downloads required.</p>
-      </div>
-
       <div class="row">
         <!-- Main Content -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="feature-card">
             <h2 class="section-header">
               <i class="bi bi-camera-video-fill"></i>What is WebcamTest?
@@ -430,7 +266,7 @@
         </div>
 
         <!-- Sidebar -->
-        <div class="col-lg-4">
+        <div class="col-lg-12 mt-4">
           <div class="stats-card">
             <span class="stats-number">100%</span>
             <span>Browser-based Testing</span>

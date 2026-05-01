@@ -284,11 +284,23 @@ section.bg-light {
 /* ================================================================
    Camera section
    ================================================================ */
-.camera-section {
+.camera-section,
+.fps-section,
+.tool-section,
+.mirror-section,
+.photo-section,
+.resolution-section,
+.main-section {
   padding: 1.25rem 0 3rem;
 }
 
-.camera-container {
+.camera-container,
+.fps-container,
+.tool-container,
+.mirror-container,
+.photo-container,
+.resolution-container,
+.webcam-container {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -298,10 +310,21 @@ section.bg-light {
 }
 
 @media (min-width: 992px) {
-  .camera-container { padding: 2.75rem; }
+  .camera-container,
+  .fps-container,
+  .tool-container,
+  .mirror-container,
+  .photo-container,
+  .resolution-container,
+  .webcam-container { padding: 2.75rem; }
 }
 
-#video-preview {
+#video-preview,
+#fps-video,
+#tool-video,
+#mirror-video,
+#photo-video,
+#resolution-video {
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -313,7 +336,12 @@ section.bg-light {
 }
 
 @media (min-width: 992px) {
-  #video-preview { min-height: 560px; }
+  #video-preview,
+  #fps-video,
+  #tool-video,
+  #mirror-video,
+  #photo-video,
+  #resolution-video { min-height: 560px; }
 }
 
 .camera-controls {

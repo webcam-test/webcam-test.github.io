@@ -14,55 +14,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="/css/site.css">
   <style>
-    :root {
-      --primary-color: #0066cc;
-      --secondary-color: #4a90e2;
-      --success-color: #28a745;
-      --danger-color: #dc3545;
-      --warning-color: #ffc107;
-      --light-bg: #f8f9fa;
-      --dark-bg: #343a40;
-      --border-color: #dee2e6;
-      --text-dark: #212529;
-      --text-muted: #6c757d;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-bg);
-    }
-
-    /* Header */
-    .navbar {
-      background-color: var(--primary-color) !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    /* Main Section */
-    .main-section {
-      background-color: #ffffff;
-      padding: 2rem 0;
-      min-height: 80vh;
-    }
-
-    .webcam-container {
-      background-color: #ffffff;
-      border: 2px solid var(--border-color);
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    #video-display {
+#video-display {
       width: 100%;
       max-width: 640px;
       height: auto;
@@ -72,64 +28,47 @@
       background-color: #000000;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
-
-    .controls-section {
+.controls-section {
       display: flex;
       gap: 1rem;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
     }
-
-    .info-panel {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .spec-row {
+.spec-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 0;
       border-bottom: 1px solid rgba(0,0,0,0.1);
     }
-
-    .spec-row:hover {
+.spec-row:hover {
       background-color: rgba(0, 102, 204, 0.05);
       border-radius: 8px;
       margin: 0 -10px;
       padding: 12px 10px;
     }
-
-    .spec-row:last-child {
+.spec-row:last-child {
       border-bottom: none;
     }
-
-    .spec-label {
+.spec-label {
       font-weight: 600;
       color: var(--text-dark);
       display: flex;
       align-items: center;
     }
-
-    .spec-value {
+.spec-value {
       font-weight: 500;
       color: var(--primary-color);
       text-align: right;
     }
-
-    .resolution-grid {
+.resolution-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1rem;
       margin-top: 1rem;
     }
-
-    .resolution-card {
+.resolution-card {
       background-color: var(--light-bg);
       border: 2px solid var(--border-color);
       border-radius: 10px;
@@ -138,76 +77,31 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
-    .resolution-card:hover {
+.resolution-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-
-    .resolution-card.supported {
+.resolution-card.supported {
       border-color: var(--success-color);
       background-color: rgba(40, 167, 69, 0.1);
     }
-
-    .resolution-card.unsupported {
+.resolution-card.unsupported {
       border-color: var(--danger-color);
       background-color: rgba(220, 53, 69, 0.1);
       opacity: 0.6;
       cursor: not-allowed;
     }
-
-    .resolution-card.active {
+.resolution-card.active {
       border-color: var(--primary-color);
       background-color: rgba(0, 102, 204, 0.1);
       box-shadow: 0 0 20px rgba(0,102,204,0.4);
     }
-
-    .status-indicator {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      border: 1px solid;
-    }
-
-    .status-inactive {
-      background-color: #f8f9fa;
-      color: var(--text-muted);
-      border-color: var(--border-color);
-    }
-
-    .status-active {
+.status-active {
       background-color: #d4edda;
       color: var(--success-color);
       border-color: #c3e6cb;
     }
-
-    .status-error {
-      background-color: #f8d7da;
-      color: var(--danger-color);
-      border-color: #f5c6cb;
-    }
-
-    .btn-primary-custom {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary-custom:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
-    }
-
-    .capability-badge {
+.capability-badge {
       display: inline-block;
       padding: 4px 8px;
       background-color: var(--primary-color);
@@ -217,160 +111,45 @@
       font-weight: 500;
       margin: 2px;
     }
-
-    .capability-badge.unavailable {
+.capability-badge.unavailable {
       background-color: var(--text-muted);
     }
-
-    /* Form controls */
-    .form-select {
-      border: 2px solid var(--border-color);
-      border-radius: 8px;
-      padding: 0.75rem;
-      font-weight: 500;
-    }
-
-    .form-select:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
-    }
-
-    .section-header {
-      color: var(--text-dark);
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .section-header i {
-      color: var(--primary-color);
-      margin-right: 0.5rem;
-    }
-
-    .footer {
-      background-color: var(--dark-bg);
-      color: white;
-      padding: 3rem 0 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .footer h5 {
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .footer p {
-      color: #adb5bd;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .main-section {
-        padding: 1rem 0;
-      }
-
-      .webcam-container {
-        padding: 1rem;
-        margin: 0.5rem;
-      }
-
-      #video-display {
+@media (max-width: 768px) {
+#video-display {
         min-height: 250px;
       }
-
-      .controls-section {
+.controls-section {
         flex-direction: column;
         align-items: stretch;
       }
-
-      .controls-section .btn,
+.controls-section .btn,
       .controls-section .form-select {
         width: 100%;
         margin-bottom: 0.5rem;
       }
-
-      .spec-row {
+.spec-row {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
       }
-
-      .spec-value {
+.spec-value {
         text-align: left;
       }
-
-      .resolution-grid {
+.resolution-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 0.5rem;
       }
-    }
-
-    /* Dropdown Navigation */
-    .dropdown-menu {
-      border: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      border-radius: 8px;
-      padding: 0.5rem;
-      min-width: 200px;
-    }
-    .dropdown-item {
-      border-radius: 6px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      transition: background-color 0.15s ease;
-    }
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-      background-color: rgba(0,102,204,0.08);
-      color: var(--primary-color);
-    }
-    .dropdown-item.active,
-    .dropdown-item:active {
-      background-color: var(--primary-color);
-      color: white;
-    }
-    .nav-link.dropdown-toggle.active {
-      opacity: 1;
-    }
-    @media (max-width: 991.98px) {
-      .navbar-collapse {
-        padding: 0.75rem 0 0.25rem;
-        border-top: 1px solid rgba(255,255,255,0.15);
-        margin-top: 0.5rem;
-      }
-      .dropdown-menu {
-        background-color: rgba(0,0,0,0.2);
-        box-shadow: none;
-        border-radius: 6px;
-        margin: 0.25rem 0 0.5rem 1rem;
-        padding: 0.25rem;
-      }
-      .dropdown-item {
-        color: rgba(255,255,255,0.85);
-        font-size: 0.875rem;
-      }
-      .dropdown-item:hover,
-      .dropdown-item:focus {
-        background-color: rgba(255,255,255,0.1);
-        color: white;
-      }
-      .dropdown-item.active {
-        background-color: rgba(255,255,255,0.2);
-        color: white;
-        font-weight: 600;
-      }
-    }
+}
   </style>
 </head>
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg site-nav">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
+        <span class="brand-icon"><i class="bi bi-camera-video-fill"></i></span>
+        WebcamTest
       </a>
       <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -420,14 +199,16 @@
   </nav>
 
   <!-- Main Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold text-dark mb-3">Show Your Webcam Details — View Full Camera Specifications</h1>
+      <p class="lead text-muted">Click the <strong>Analyze My Webcam</strong> button to <strong>see your webcam's full technical specifications</strong> — <em>video resolution</em>, <em>frame rate</em>, <em>codec support</em>, and <em>device capabilities</em> in one detailed view. Review your camera's <em>autofocus mode</em>, <em>facing direction</em>, <em>aspect ratio</em>, and <em>quality rating</em> to understand exactly what your <em>webcam hardware</em> can deliver. Start with a quick online webcam test if you haven't already. <!-- SILO_START:slot_a -->A <a href="/">free webcam test</a> catches camera access problems before they interrupt a meeting or call.<!-- SILO_END:slot_a --></p>
+    </div>
+  </section>
+
   <section class="main-section">
     <div class="container">
       <!-- Page Title -->
-      <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-dark mb-3">Show Your Webcam Details — View Full Camera Specifications</h1>
-        <p class="lead text-muted">Click the <strong>Analyze My Webcam</strong> button to <strong>see your webcam's full technical specifications</strong> — <em>video resolution</em>, <em>frame rate</em>, <em>codec support</em>, and <em>device capabilities</em> in one detailed view. Review your camera's <em>autofocus mode</em>, <em>facing direction</em>, <em>aspect ratio</em>, and <em>quality rating</em> to understand exactly what your <em>webcam hardware</em> can deliver. Start with a quick online webcam test if you haven't already. <!-- SILO_START:slot_a -->A <a href="/">free webcam test</a> catches camera access problems before they interrupt a meeting or call.<!-- SILO_END:slot_a --></p>
-      </div>
-
           <div class="text-center mb-3">
             <ins class="adsbygoogle" id="adsense-header"
                  data-ad-client="ca-pub-5426315045205785"
@@ -451,7 +232,7 @@
 
       <div class="row">
         <!-- Main Webcam Container -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="webcam-container">
             <div class="controls-section mb-3">
               <button class="btn btn-primary-custom btn-lg" id="analyze-button">
@@ -518,7 +299,7 @@
         </div>
 
         <!-- Sidebar Info Panel -->
-        <div class="col-lg-4">
+        <div class="col-lg-12 mt-4">
           <!-- Camera Information Panel -->
           <div class="info-panel">
             <div class="d-flex align-items-center mb-3">
