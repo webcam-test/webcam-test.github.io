@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Webcam Comparison Tool — Compare Cameras Online</title>
   <meta name="description" content="Compare two webcams side by side online. Select two cameras to view them simultaneously and compare video quality, colour, and resolution — free.">
-  <meta content="webcam comparison tool, compare webcams online, camera comparison, side by side webcam" name="keywords">
-
-  <link href="https://webcam-test.github.io/camera-comparison" rel="canonical">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <meta name="keywords" content="webcam comparison tool, compare webcams online, camera comparison, side by side webcam">
+  <meta name="google-adsense-account" content="ca-pub-5426315045205785">
+  <link rel="canonical" href="https://webcam-test.github.io/camera-comparison">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
 
@@ -419,21 +421,21 @@
       <div class="col-md-4">
         <div class="feature-card h-100 text-center">
           <i class="bi bi-laptop fs-2 text-primary mb-3 d-block"></i>
-          <h3 class="h5 fw-bold mb-2">Built-in vs USB</h3>
+          <p class="h5 fw-bold mb-2">Built-in vs USB</p>
           <p class="text-muted mb-0">Compare your laptop's built-in camera to a dedicated USB webcam and see which delivers better colour accuracy and sharpness side by side.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="feature-card h-100 text-center">
           <i class="bi bi-arrows-angle-expand fs-2 text-primary mb-3 d-block"></i>
-          <h3 class="h5 fw-bold mb-2">Test Multiple Angles</h3>
+          <p class="h5 fw-bold mb-2">Test Multiple Angles</p>
           <p class="text-muted mb-0">Position cameras at different angles or distances and compare the live feeds simultaneously to find the best framing for calls or recordings.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="feature-card h-100 text-center">
           <i class="bi bi-palette fs-2 text-primary mb-3 d-block"></i>
-          <h3 class="h5 fw-bold mb-2">Quality Comparison</h3>
+          <p class="h5 fw-bold mb-2">Quality Comparison</p>
           <p class="text-muted mb-0">Use the side-by-side view to spot differences in colour reproduction, sharpness, dynamic range, and low-light performance between two cameras.</p>
         </div>
       </div>
@@ -573,12 +575,12 @@
         <div class="accordion" id="faqAccordion">
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq1-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
                 Do I need two cameras to use this tool?
               </button>
             </h3>
-            <div id="faq1" class="accordion-collapse collapse show">
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1-heading">
               <div class="accordion-body text-muted">
                 Yes — the <strong>webcam comparison tool</strong> is designed to stream two separate cameras simultaneously. If only one camera is detected, the tool will display a notice and Camera B will remain blank. Most laptops have one built-in camera; connect a USB webcam as the second device to make a meaningful <strong>camera comparison</strong>.
               </div>
@@ -586,12 +588,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq2-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
                 Does the comparison tool record or upload my video?
               </button>
             </h3>
-            <div id="faq2" class="accordion-collapse collapse show">
+            <div id="faq2" class="accordion-collapse collapse show" aria-labelledby="faq2-heading">
               <div class="accordion-body text-muted">
                 No. Both streams are displayed live in your browser only. No video data is recorded, uploaded, or transmitted anywhere. The tool uses the browser's <code>getUserMedia</code> API to access camera streams and pipes them directly into the two video elements on the page — nothing is stored.
               </div>
@@ -599,12 +601,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq3-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
                 Can I compare the front and rear cameras on my phone?
               </button>
             </h3>
-            <div id="faq3" class="accordion-collapse collapse show">
+            <div id="faq3" class="accordion-collapse collapse show" aria-labelledby="faq3-heading">
               <div class="accordion-body text-muted">
                 Browser limitations on mobile typically only allow one camera stream at a time per tab. On desktop with two physical cameras connected, both streams work simultaneously. On mobile, you can switch between front and rear cameras using the selects, but you may not be able to stream both at the same time depending on your browser and OS version.
               </div>
@@ -612,12 +614,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq4-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
                 Why does one camera look better than the other at the same resolution?
               </button>
             </h3>
-            <div id="faq4" class="accordion-collapse collapse show">
+            <div id="faq4" class="accordion-collapse collapse show" aria-labelledby="faq4-heading">
               <div class="accordion-body text-muted">
                 Resolution is only one factor. Sensor size, lens quality, image signal processor (ISP), autofocus speed, and the camera's compression algorithm all affect the final image quality. A higher-resolution sensor with a poor lens can look worse than a lower-resolution camera with a better optical design. The <strong>side by side webcam</strong> view gives you a direct, real-world comparison that no specification sheet can replicate.
               </div>

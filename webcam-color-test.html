@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Webcam Color Test — Camera Colour Accuracy</title>
   <meta name="description" content="Test your webcam's colour accuracy online. Analyse RGB channel balance from your live camera feed and check for colour casts or white balance issues.">
-  <meta content="webcam color test, camera color accuracy, webcam colour test, white balance checker" name="keywords">
-
-  <link href="https://webcam-test.github.io/webcam-color-test" rel="canonical">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <meta name="keywords" content="webcam color test, camera color accuracy, webcam colour test, white balance checker">
+  <meta name="google-adsense-account" content="ca-pub-5426315045205785">
+  <link rel="canonical" href="https://webcam-test.github.io/webcam-color-test">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
 
@@ -423,7 +425,7 @@
         <div class="info-panel">
           <div class="d-flex align-items-center mb-3">
             <i class="bi bi-palette text-primary me-2"></i>
-            <h5 class="mb-0 fw-bold">Colour Channels</h5>
+            <p class="mb-0 fw-bold">Colour Channels</p>
           </div>
           <ul class="list-unstyled">
             <li class="mb-2">
@@ -443,7 +445,7 @@
         <div class="info-panel">
           <div class="d-flex align-items-center mb-3">
             <i class="bi bi-thermometer-half text-primary me-2"></i>
-            <h5 class="mb-0 fw-bold">White Balance Guide</h5>
+            <p class="mb-0 fw-bold">White Balance Guide</p>
           </div>
           <ul class="list-unstyled">
             <li class="mb-2">
@@ -465,7 +467,7 @@
         <div class="info-panel">
           <div class="d-flex align-items-center mb-3">
             <i class="bi bi-wrench text-primary me-2"></i>
-            <h5 class="mb-0 fw-bold">Fix Colour Issues</h5>
+            <p class="mb-0 fw-bold">Fix Colour Issues</p>
           </div>
           <ul class="list-unstyled">
             <li class="mb-2">
@@ -635,12 +637,12 @@
         <div class="accordion" id="faqAccordion">
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq1-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
                 What does a balanced webcam colour reading mean?
               </button>
             </h3>
-            <div id="faq1" class="accordion-collapse collapse show">
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1-heading">
               <div class="accordion-body text-muted">
                 A balanced reading means your red, green, and blue channel averages are within approximately 10 percentage points of each other. This indicates that your camera's white balance is reproducing colour neutrally — white objects will appear white rather than orange, blue, or green. Balanced colour is the foundation of natural-looking video on calls and recordings.
               </div>
@@ -648,12 +650,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq2-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
                 Does the color test access or save any image from my webcam?
               </button>
             </h3>
-            <div id="faq2" class="accordion-collapse collapse show">
+            <div id="faq2" class="accordion-collapse collapse show" aria-labelledby="faq2-heading">
               <div class="accordion-body text-muted">
                 No. The tool draws each video frame to an offscreen canvas, samples the average pixel values for each colour channel, and immediately discards the frame data. No images are saved, no video is recorded, and nothing is transmitted to any server. All processing is entirely local within your browser tab.
               </div>
@@ -661,12 +663,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq3-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
                 Why does my colour cast change when I move?
               </button>
             </h3>
-            <div id="faq3" class="accordion-collapse collapse show">
+            <div id="faq3" class="accordion-collapse collapse show" aria-labelledby="faq3-heading">
               <div class="accordion-body text-muted">
                 Webcam auto white balance recalculates based on the overall colour distribution of the visible scene. When you move in front of a different background — for example, a blue wall versus a yellow wall — the AWB system adjusts to compensate, which shifts the channel values. This is normal behaviour. To get a stable reading for your camera's base white balance performance, sit still in front of a plain, neutral-coloured background.
               </div>
@@ -674,12 +676,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq4-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
                 How do I fix a warm colour cast on my webcam?
               </button>
             </h3>
-            <div id="faq4" class="accordion-collapse collapse show">
+            <div id="faq4" class="accordion-collapse collapse show" aria-labelledby="faq4-heading">
               <div class="accordion-body text-muted">
                 A warm cast (red channel significantly higher than blue) is most often caused by tungsten or warm-LED lighting. Switch to daylight-balanced bulbs rated at 5000–6500K. If you cannot change the bulbs, look in your camera's software for a manual white balance setting — selecting "Daylight" or "Fluorescent" presets will add a blue correction to counteract the warmth. Some webcam companion apps (Logitech G Hub, Razer Synapse) provide granular colour temperature controls.
               </div>
@@ -687,12 +689,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq5-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="true" aria-controls="faq5">
                 Does the dominant colour swatch show my skin tone?
               </button>
             </h3>
-            <div id="faq5" class="accordion-collapse collapse show">
+            <div id="faq5" class="accordion-collapse collapse show" aria-labelledby="faq5-heading">
               <div class="accordion-body text-muted">
                 The swatch shows the average colour of all pixels in the entire frame — not just your face. If you fill most of the frame and your background is plain, the swatch will closely reflect the colour of your face and clothing. If there is a large, colourful background behind you, the swatch will be pulled toward those background colours. For the most informative reading, sit close to the camera with a neutral-coloured wall behind you.
               </div>

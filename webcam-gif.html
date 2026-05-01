@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Webcam GIF Maker — Create GIFs from Your Camera</title>
   <meta name="description" content="Create animated GIFs directly from your webcam online. Capture a short clip and download it as an animated GIF file — free, no upload, no software required.">
-  <meta content="webcam gif maker, animated gif webcam, create gif from webcam, webcam to gif" name="keywords">
-
-  <link href="https://webcam-test.github.io/webcam-gif" rel="canonical">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <meta name="keywords" content="webcam gif maker, animated gif webcam, create gif from webcam, webcam to gif">
+  <meta name="google-adsense-account" content="ca-pub-5426315045205785">
+  <link rel="canonical" href="https://webcam-test.github.io/webcam-gif">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5426315045205785" crossorigin="anonymous"></script>
 
@@ -466,7 +468,7 @@
         <div class="info-panel">
           <div class="d-flex align-items-center mb-3">
             <i class="bi bi-sliders text-primary me-2"></i>
-            <h5 class="mb-0 fw-bold">GIF Settings</h5>
+            <p class="mb-0 fw-bold">GIF Settings</p>
           </div>
           <ul class="list-unstyled">
             <li class="mb-2">
@@ -491,7 +493,7 @@
         <div class="info-panel">
           <div class="d-flex align-items-center mb-3">
             <i class="bi bi-lightbulb text-primary me-2"></i>
-            <h5 class="mb-0 fw-bold">GIF Tips</h5>
+            <p class="mb-0 fw-bold">GIF Tips</p>
           </div>
           <ul class="list-unstyled">
             <li class="mb-2">
@@ -649,12 +651,12 @@
         <div class="accordion" id="faqAccordion">
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq1-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
                 Is the webcam GIF maker free and does it require an account?
               </button>
             </h3>
-            <div id="faq1" class="accordion-collapse collapse show">
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1-heading">
               <div class="accordion-body text-muted">
                 Yes — the <strong>webcam GIF maker</strong> is completely free with no account, sign-up, or email address required. Open the page, allow camera access, and create GIFs immediately. There are no watermarks, no download limits, and no premium tier.
               </div>
@@ -662,12 +664,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq2-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="true" aria-controls="faq2">
                 What is the maximum GIF duration?
               </button>
             </h3>
-            <div id="faq2" class="accordion-collapse collapse show">
+            <div id="faq2" class="accordion-collapse collapse show" aria-labelledby="faq2-heading">
               <div class="accordion-body text-muted">
                 The tool supports durations of 1, 2, 3, and 5 seconds. Longer durations produce larger files and take longer to encode. For sharing on messaging apps or social media, 2–3 seconds is the most practical length. For longer animations, use the Webcam Recorder to capture a video file instead.
               </div>
@@ -675,12 +677,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq3-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="true" aria-controls="faq3">
                 What resolution are the GIFs?
               </button>
             </h3>
-            <div id="faq3" class="accordion-collapse collapse show">
+            <div id="faq3" class="accordion-collapse collapse show" aria-labelledby="faq3-heading">
               <div class="accordion-body text-muted">
                 GIFs are captured and encoded at 320×240 pixels. This is intentionally small — GIF is a palette-based format that produces very large files at high resolutions due to its compression method. At 320×240, a 2-second GIF at 10 fps is practical for sharing. For high-resolution video capture, use the Webcam Recorder to download an MP4 or WebM file instead.
               </div>
@@ -688,12 +690,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq4-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="true" aria-controls="faq4">
                 Why does GIF encoding take a moment?
               </button>
             </h3>
-            <div id="faq4" class="accordion-collapse collapse show">
+            <div id="faq4" class="accordion-collapse collapse show" aria-labelledby="faq4-heading">
               <div class="accordion-body text-muted">
                 GIF encoding requires each frame to be quantised to a 256-colour palette and then compressed individually using LZW compression. Running this in the browser via JavaScript takes a few seconds. A 2-second, 20-frame GIF typically encodes in 2–5 seconds on a modern device. Longer durations and more visually complex scenes (more colours, more movement) take proportionally longer.
               </div>
@@ -701,12 +703,12 @@
           </div>
 
           <div class="accordion-item mb-2 border rounded">
-            <h3 class="accordion-header">
+            <h3 class="accordion-header" id="faq5-heading">
               <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="true" aria-controls="faq5">
                 Does the webcam GIF maker work on mobile?
               </button>
             </h3>
-            <div id="faq5" class="accordion-collapse collapse show">
+            <div id="faq5" class="accordion-collapse collapse show" aria-labelledby="faq5-heading">
               <div class="accordion-body text-muted">
                 Yes. The <strong>create gif from webcam</strong> tool works on Android in Chrome and on iOS in Safari. On mobile, the front-facing camera is used by default. Because GIF encoding is CPU-intensive, encoding may take slightly longer on older mobile devices than on a desktop computer.
               </div>
