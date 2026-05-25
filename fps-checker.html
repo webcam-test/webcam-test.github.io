@@ -24,14 +24,14 @@
       top: 20px;
       left: 20px;
       background: rgba(0,0,0,0.9);
-      color: #00ff00;
+      color: #ffffff;
       padding: 15px 20px;
       border-radius: 15px;
       font-family: 'Courier New', monospace;
       font-size: 24px;
       font-weight: bold;
-      border: 2px solid #00ff00;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
 .fps-metrics {
       display: grid;
@@ -49,7 +49,7 @@
 .metric-value {
       font-size: 2rem;
       font-weight: bold;
-      color: #00ff00;
+      color: var(--color-primary);
       font-family: 'Courier New', monospace;
     }
 .metric-label {
@@ -81,9 +81,9 @@
       flex-wrap: wrap;
     }
 .status-active {
-      background-color: #d4edda;
+      background-color: var(--color-success-soft);
       color: var(--success-color);
-      border-color: #c3e6cb;
+      border-color: var(--color-success);
     }
 .fps-rating {
       display: inline-block;
@@ -452,8 +452,8 @@
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
-          <div class="p-3 rounded border h-100 text-center" style="background-color:rgba(0,102,204,0.08);border-color:#0066cc!important;">
-            <h3 class="h6 fw-bold mb-1" style="color:#0066cc;">30–59 FPS — Good</h3>
+          <div class="p-3 rounded border h-100 text-center" style="background-color:rgba(79,70,229,0.08);border-color:#4f46e5!important;">
+            <h3 class="h6 fw-bold mb-1" style="color:#4f46e5;">30–59 FPS — Good</h3>
             <p class="mb-0 small text-muted">The standard for video calls on Zoom, Teams, Google Meet, and Skype. Video looks smooth and natural at this <strong>frame rate</strong>. 30 fps is the target most platforms aim for when conditions are good.</p>
           </div>
         </div>
@@ -537,7 +537,7 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-5 bg-light">
+<section class="py-5">
   <div class="container">
     <h2 class="section-header"><i class="bi bi-question-circle"></i>Frequently Asked Questions — Webcam FPS Checker</h2>
     <div class="row justify-content-center">
@@ -641,16 +641,18 @@
   </div>
 </section>
 
-<div class="container text-center my-3">
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-5426315045205785"
-     data-ad-slot="5068825756"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+  <aside class="py-3" role="complementary" aria-label="Footer Advertisement">
+    <div class="text-center">
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:250px"
+           data-ad-client="ca-pub-5426315045205785"
+           data-ad-slot="5068825756"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
 
 <!-- Comments Section -->
-<section class="py-5 bg-light">
+<section class="py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -964,7 +966,7 @@
 
       // Draw FPS line
       if (recentData.length > 1) {
-        chartCtx.strokeStyle = '#00ff00';
+        chartCtx.strokeStyle = '#4f46e5';
         chartCtx.lineWidth = 3;
         chartCtx.beginPath();
 

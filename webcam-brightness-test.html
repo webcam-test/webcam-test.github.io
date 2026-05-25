@@ -20,11 +20,12 @@
   <link rel="stylesheet" href="/css/site.css">
   <style>
 .status-active {
-      background-color: #d4edda;
+      background-color: var(--color-success-soft);
       color: var(--success-color);
-      border-color: #c3e6cb;
+      border-color: var(--color-success);
     }
 .tool-controls {
+      margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
       justify-content: center;
@@ -151,7 +152,7 @@
                 <span class="fw-bold text-primary fs-5" id="brightness-value">—</span>
               </div>
               <div class="progress" style="height:20px;">
-                <div class="progress-bar" id="brightness-bar" role="progressbar" style="width:0%;background:linear-gradient(to right,#0066cc,#ffc107,#dc3545);"></div>
+                <div class="progress-bar" id="brightness-bar" role="progressbar" style="width:0%;background:linear-gradient(to right,#16a34a,#ffc107,#dc3545);"></div>
               </div>
               <div class="small text-muted mt-1" id="brightness-label">—</div>
             </div>
