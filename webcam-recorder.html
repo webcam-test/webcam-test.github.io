@@ -18,32 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.tool-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-@media (max-width: 768px) {
-.tool-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-.tool-controls .btn,
-      .tool-controls .form-select {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-}
-  </style>
 </head>
 
 <body>
@@ -146,7 +120,7 @@
             <button class="btn btn-primary-custom btn-lg" id="record-button">
               <i class="bi bi-record-circle me-2"></i>Start Recording
             </button>
-            <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+            <select class="form-select camera-select" disabled id="camera-select">
               <option value="">Select camera</option>
             </select>
             <button class="btn btn-outline-primary-custom" id="download-button" style="display:none;">
@@ -154,7 +128,7 @@
             </button>
           </div>
 
-          <div class="d-none mt-3" id="timer-display" style="font-family:'Courier New',monospace;font-size:1.5rem;color:var(--danger-color);font-weight:bold;">
+          <div class="d-none mt-3 timer-display" id="timer-display">
             <i class="bi bi-record-circle-fill me-2"></i><span id="timer-text">00:00</span>
           </div>
 
@@ -251,7 +225,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start Recording"</h3>
@@ -262,7 +236,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Record Your Video</h3>
@@ -273,7 +247,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Stop to Finish</h3>
@@ -284,7 +258,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Download Your Recording</h3>

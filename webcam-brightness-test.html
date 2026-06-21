@@ -18,25 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-.tool-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-@media (max-width: 768px) {
-.tool-controls { flex-direction: column; align-items: stretch; }
-.tool-controls .btn, .tool-controls .form-select { width: 100%; margin-bottom: 0.5rem; }
-}
-  </style>
 </head>
 
 <body>
@@ -136,7 +117,7 @@
             <button class="btn btn-primary-custom btn-lg" id="brightness-button">
               <i class="bi bi-sun me-2"></i>Start Brightness Test
             </button>
-            <select class="form-select" disabled id="camera-select" style="max-width:250px">
+            <select class="form-select camera-select" disabled id="camera-select">
               <option value="">Select camera</option>
             </select>
           </div>
@@ -146,32 +127,32 @@
           <!-- Brightness Meter -->
           <div class="d-none mt-3" id="brightness-meter">
             <!-- Overall Brightness -->
-            <div class="p-3 rounded border mb-2" style="background:var(--light-bg);">
+            <div class="p-3 rounded border mb-2 panel-bg">
               <div class="d-flex justify-content-between align-items-center mb-1">
                 <span class="fw-semibold">Brightness Level</span>
                 <span class="fw-bold text-primary fs-5" id="brightness-value">—</span>
               </div>
-              <div class="progress" style="height:20px;">
-                <div class="progress-bar" id="brightness-bar" role="progressbar" style="width:0%;background:linear-gradient(to right,#16a34a,#ffc107,#dc3545);"></div>
+              <div class="progress progress-md">
+                <div class="progress-bar progress-gradient-bar" id="brightness-bar" role="progressbar" style="width:0%"></div>
               </div>
               <div class="small text-muted mt-1" id="brightness-label">—</div>
             </div>
             <!-- RGB Channel Readings -->
             <div class="row g-2">
               <div class="col-4">
-                <div class="p-2 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-2 rounded border text-center panel-bg">
                   <div class="fw-bold text-danger fs-5" id="channel-r">—</div>
                   <div class="small text-muted">Red</div>
                 </div>
               </div>
               <div class="col-4">
-                <div class="p-2 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-2 rounded border text-center panel-bg">
                   <div class="fw-bold text-success fs-5" id="channel-g">—</div>
                   <div class="small text-muted">Green</div>
                 </div>
               </div>
               <div class="col-4">
-                <div class="p-2 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-2 rounded border text-center panel-bg">
                   <div class="fw-bold text-primary fs-5" id="channel-b">—</div>
                   <div class="small text-muted">Blue</div>
                 </div>
@@ -202,23 +183,23 @@
           </div>
           <ul class="list-unstyled">
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:#1a1a2e;min-width:60px;">0–20</span>
+              <span class="badge me-2" class="grade-badge grade-badge-night">0–20</span>
               <span>Very Dark</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:#4a4e69;min-width:60px;">21–40</span>
+              <span class="badge me-2" class="grade-badge grade-badge-dark">21–40</span>
               <span>Dark</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--success-color);min-width:60px;">41–70</span>
+              <span class="badge me-2" class="grade-badge grade-badge-success">41–70</span>
               <span>Optimal</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--warning-color);color:#000;min-width:60px;">71–85</span>
+              <span class="badge me-2" class="grade-badge grade-badge-warning">71–85</span>
               <span>Bright</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--danger-color);min-width:60px;">86–100</span>
+              <span class="badge me-2" class="grade-badge grade-badge-danger">86–100</span>
               <span>Overexposed</span>
             </li>
           </ul>
@@ -284,7 +265,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start Brightness Test"</h3>
@@ -295,7 +276,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Watch the Brightness Bar</h3>
@@ -306,7 +287,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Check RGB Channel Readings</h3>
@@ -317,7 +298,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Adjust Your Lighting and Re-Test</h3>

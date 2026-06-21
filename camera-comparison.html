@@ -18,13 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-  </style>
 </head>
 
 <body>
@@ -125,10 +118,10 @@
 
       <!-- Controls -->
       <div class="d-flex gap-3 flex-wrap justify-content-center mb-3">
-        <select class="form-select" id="camera-a-select" style="max-width:250px;">
+        <select class="form-select camera-select" id="camera-a-select">
           <option value="">Camera A — Select</option>
         </select>
-        <select class="form-select" id="camera-b-select" style="max-width:250px;">
+        <select class="form-select camera-select" id="camera-b-select">
           <option value="">Camera B — Select</option>
         </select>
         <button class="btn btn-primary-custom btn-lg" id="compare-button">
@@ -139,15 +132,15 @@
       <!-- Side-by-side video feeds -->
       <div class="row g-3">
         <div class="col-md-6">
-          <div class="p-2 rounded border text-center" style="background:#000;">
+          <div class="p-2 rounded border text-center camera-panel">
             <p class="text-white fw-semibold mb-1 pt-1">Camera A</p>
-            <video id="video-a" autoplay muted playsinline style="width:100%;height:auto;min-height:280px;border-radius:8px;background:#000;"></video>
+            <video id="video-a" autoplay muted playsinline class="comparison-video"></video>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="p-2 rounded border text-center" style="background:#000;">
+          <div class="p-2 rounded border text-center camera-panel">
             <p class="text-white fw-semibold mb-1 pt-1">Camera B</p>
-            <video id="video-b" autoplay muted playsinline style="width:100%;height:auto;min-height:280px;border-radius:8px;background:#000;"></video>
+            <video id="video-b" autoplay muted playsinline class="comparison-video"></video>
           </div>
         </div>
       </div>
@@ -210,7 +203,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Select Camera A and Camera B</h3>
@@ -221,7 +214,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start Comparison"</h3>
@@ -232,7 +225,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Compare the Live Feeds</h3>
@@ -243,7 +236,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Stop and Switch Cameras</h3>

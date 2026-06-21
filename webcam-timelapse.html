@@ -18,36 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-#tool-video.flash {
-      border-color: rgba(255, 0, 0, 0.7);
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
-    }
-.tool-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-@media (max-width: 768px) {
-.tool-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-.tool-controls .btn,
-      .tool-controls .form-select {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-}
-  </style>
 </head>
 
 <body>
@@ -150,10 +120,10 @@
             <button class="btn btn-primary-custom btn-lg" id="timelapse-button">
               <i class="bi bi-play-circle me-2"></i>Start Timelapse
             </button>
-            <select class="form-select" id="camera-select" style="max-width:250px;">
+            <select class="form-select camera-select" id="camera-select">
               <option value="">Select camera</option>
             </select>
-            <select class="form-select" id="interval-select" style="max-width:180px;">
+            <select class="form-select camera-select-sm" id="interval-select">
               <option value="1000">Every 1s</option>
               <option value="2000" selected>Every 2s</option>
               <option value="5000">Every 5s</option>
@@ -167,15 +137,15 @@
           <!-- Stats row -->
           <div class="d-none mt-3" id="timelapse-stats">
             <div class="d-flex gap-3 justify-content-center flex-wrap">
-              <div class="p-3 rounded border text-center" style="min-width:120px;background:var(--light-bg);">
+              <div class="p-3 rounded border text-center" class="timelapse-stat panel-bg">
                 <div class="fs-3 fw-bold text-primary" id="frame-counter">0</div>
                 <div class="small text-muted">Frames Captured</div>
               </div>
-              <div class="p-3 rounded border text-center" style="min-width:120px;background:var(--light-bg);">
+              <div class="p-3 rounded border text-center" class="timelapse-stat panel-bg">
                 <div class="fs-3 fw-bold text-primary" id="elapsed-time">0s</div>
                 <div class="small text-muted">Elapsed Time</div>
               </div>
-              <div class="p-3 rounded border text-center" style="min-width:120px;background:var(--light-bg);">
+              <div class="p-3 rounded border text-center" class="timelapse-stat panel-bg">
                 <div class="fs-3 fw-bold text-primary" id="estimated-duration">0s</div>
                 <div class="small text-muted">At 10fps Playback</div>
               </div>
@@ -184,7 +154,7 @@
 
           <!-- Thumbnail strip -->
           <div class="d-none mt-3" id="thumbnail-strip">
-            <div class="d-flex gap-2 overflow-auto pb-2" id="thumbnail-container" style="max-height:100px;"></div>
+            <div class="d-flex gap-2 overflow-auto pb-2" id="thumbnail-container" class="thumbnail-strip"></div>
           </div>
 
           <!-- Download button -->
@@ -300,7 +270,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Choose Your Interval and Camera</h3>
@@ -311,7 +281,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start Timelapse"</h3>
@@ -322,7 +292,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Watch the Frame Counter</h3>
@@ -333,7 +303,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Stop and Download</h3>
@@ -583,7 +553,7 @@
   </footer>
 
 <!-- Hidden canvas for frame capture -->
-<canvas id="capture-canvas" style="display:none;" width="640" height="480"></canvas>
+<canvas id="capture-canvas" class="capture-canvas" width="640" height="480"></canvas>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

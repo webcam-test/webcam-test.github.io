@@ -18,25 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-.tool-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-@media (max-width: 768px) {
-.tool-controls { flex-direction: column; align-items: stretch; }
-.tool-controls .btn, .tool-controls .form-select { width: 100%; margin-bottom: 0.5rem; }
-}
-  </style>
 </head>
 
 <body>
@@ -136,7 +117,7 @@
             <button class="btn btn-primary-custom btn-lg" id="color-button">
               <i class="bi bi-palette me-2"></i>Start Color Test
             </button>
-            <select class="form-select" disabled id="camera-select" style="max-width:250px">
+            <select class="form-select camera-select" disabled id="camera-select">
               <option value="">Select camera</option>
             </select>
           </div>
@@ -146,14 +127,14 @@
           <!-- Color Analysis Panel -->
           <div class="d-none mt-3" id="color-results">
             <!-- RGB Bars -->
-            <div class="p-3 rounded border mb-2" style="background:var(--light-bg);">
+            <div class="p-3 rounded border mb-2 panel-bg">
               <!-- Red channel -->
               <div class="mb-2">
                 <div class="d-flex justify-content-between mb-1">
                   <span class="fw-semibold text-danger"><i class="bi bi-circle-fill me-1"></i>Red</span>
                   <span class="fw-bold text-danger" id="color-r-val">—</span>
                 </div>
-                <div class="progress" style="height:14px;">
+                <div class="progress progress-sm">
                   <div class="progress-bar bg-danger" id="color-r-bar" role="progressbar" style="width:0%;"></div>
                 </div>
               </div>
@@ -163,7 +144,7 @@
                   <span class="fw-semibold text-success"><i class="bi bi-circle-fill me-1"></i>Green</span>
                   <span class="fw-bold text-success" id="color-g-val">—</span>
                 </div>
-                <div class="progress" style="height:14px;">
+                <div class="progress progress-sm">
                   <div class="progress-bar bg-success" id="color-g-bar" role="progressbar" style="width:0%;"></div>
                 </div>
               </div>
@@ -173,14 +154,14 @@
                   <span class="fw-semibold text-primary"><i class="bi bi-circle-fill me-1"></i>Blue</span>
                   <span class="fw-bold text-primary" id="color-b-val">—</span>
                 </div>
-                <div class="progress" style="height:14px;">
+                <div class="progress progress-sm">
                   <div class="progress-bar bg-primary" id="color-b-bar" role="progressbar" style="width:0%;"></div>
                 </div>
               </div>
             </div>
 
             <!-- White Balance Assessment -->
-            <div class="p-3 rounded border text-center mb-2" id="wb-assessment" style="background:var(--light-bg);">
+            <div class="p-3 rounded border text-center mb-2 panel-bg" id="wb-assessment">
               <div class="fw-bold mb-1">White Balance Assessment</div>
               <div class="fs-5 fw-bold" id="wb-text">Analysing...</div>
               <div class="small text-muted" id="wb-note"></div>
@@ -189,7 +170,7 @@
             <!-- Dominant Colour Swatch -->
             <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
               <span class="small text-muted fw-semibold">Dominant Colour:</span>
-              <div id="color-swatch" style="width:40px;height:40px;border-radius:6px;border:2px solid var(--border-color);background:#888;"></div>
+              <div id="color-swatch" class="color-swatch"></div>
             </div>
           </div>
         </div>
@@ -288,7 +269,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Start Color Test"</h3>
@@ -299,7 +280,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Read the RGB Progress Bars</h3>
@@ -310,7 +291,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Check White Balance Assessment</h3>
@@ -321,7 +302,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">View the Dominant Colour Swatch</h3>

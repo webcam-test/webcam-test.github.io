@@ -18,32 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-.tool-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-@media (max-width: 768px) {
-.tool-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-.tool-controls .btn,
-      .tool-controls .form-select {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-}
-  </style>
 </head>
 
 <body>
@@ -143,7 +117,7 @@
             <button class="btn btn-primary-custom btn-lg" id="quality-button">
               <i class="bi bi-search me-2"></i>Analyse Quality
             </button>
-            <select class="form-select" disabled id="camera-select" style="max-width:250px">
+            <select class="form-select camera-select" disabled id="camera-select">
               <option value="">Select camera</option>
             </select>
           </div>
@@ -154,34 +128,34 @@
           <div class="d-none mt-3" id="quality-results">
             <div class="row g-3">
               <div class="col-6 col-md-3">
-                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-3 rounded border text-center panel-bg">
                   <div class="fs-2 fw-bold text-primary" id="score-sharpness">—</div>
                   <div class="small text-muted"><i class="bi bi-eye me-1"></i>Sharpness</div>
                 </div>
               </div>
               <div class="col-6 col-md-3">
-                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-3 rounded border text-center panel-bg">
                   <div class="fs-2 fw-bold text-primary" id="score-brightness">—</div>
                   <div class="small text-muted"><i class="bi bi-sun me-1"></i>Brightness</div>
                 </div>
               </div>
               <div class="col-6 col-md-3">
-                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-3 rounded border text-center panel-bg">
                   <div class="fs-2 fw-bold text-primary" id="score-noise">—</div>
                   <div class="small text-muted"><i class="bi bi-reception-4 me-1"></i>Noise Level</div>
                 </div>
               </div>
               <div class="col-6 col-md-3">
-                <div class="p-3 rounded border text-center" style="background:var(--light-bg);">
+                <div class="p-3 rounded border text-center panel-bg">
                   <div class="fs-2 fw-bold text-primary" id="score-contrast">—</div>
                   <div class="small text-muted"><i class="bi bi-circle-half me-1"></i>Contrast</div>
                 </div>
               </div>
             </div>
             <!-- Overall Score Bar -->
-            <div class="mt-3 p-3 rounded border text-center" style="background:var(--light-bg);">
+            <div class="mt-3 p-3 rounded border text-center panel-bg">
               <div class="fw-bold mb-1">Overall Quality Score</div>
-              <div class="progress" style="height:24px;">
+              <div class="progress progress-lg">
                 <div class="progress-bar bg-primary fw-bold" id="overall-progress" role="progressbar" style="width:0%">0%</div>
               </div>
             </div>
@@ -234,19 +208,19 @@
           </div>
           <ul class="list-unstyled">
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--success-color);min-width:60px;">80–100</span>
+              <span class="badge me-2" class="grade-badge grade-badge-success">80–100</span>
               <span>Excellent</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--primary-color);min-width:60px;">60–79</span>
+              <span class="badge me-2" class="grade-badge grade-badge-primary">60–79</span>
               <span>Good</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--warning-color);color:#000;min-width:60px;">40–59</span>
+              <span class="badge me-2" class="grade-badge grade-badge-warning">40–59</span>
               <span>Average</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" style="background:var(--danger-color);min-width:60px;">0–39</span>
+              <span class="badge me-2" class="grade-badge grade-badge-danger">0–39</span>
               <span>Poor</span>
             </li>
           </ul>
@@ -290,7 +264,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Click "Analyse Quality"</h3>
@@ -301,7 +275,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Read the Four Metric Scores</h3>
@@ -312,7 +286,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Check the Overall Score Bar</h3>
@@ -323,7 +297,7 @@
         <div class="col-md-6">
           <div class="d-flex gap-3">
             <div class="flex-shrink-0">
-              <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+              <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
             </div>
             <div>
               <h3 class="h6 fw-bold mb-1">Act on the Brightness Note</h3>

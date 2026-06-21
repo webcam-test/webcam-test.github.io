@@ -16,123 +16,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.mirror-frame {
-      position: relative;
-      display: inline-block;
-    }
-.mirror-frame::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: #ffd700;
-      border-radius: 20px;
-      z-index: -1;
-      opacity: 0.3;
-    }
-.mirror-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-.mirror-overlay {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-size: 14px;
-      display: none;
-    }
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-.filter-controls {
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-.filter-buttons {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-.filter-btn {
-      padding: 0.5rem 1rem;
-      border: 2px solid var(--primary-color);
-      background: transparent;
-      color: var(--primary-color);
-      border-radius: 20px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-size: 0.875rem;
-    }
-.filter-btn:hover,
-    .filter-btn.active {
-      background: var(--primary-color);
-      color: white;
-      transform: translateY(-2px);
-    }
-.zoom-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1rem;
-      padding: 1rem;
-      background-color: var(--light-bg);
-      border-radius: 10px;
-    }
-.zoom-slider {
-      width: 200px;
-    }
-.zoom-value {
-      font-weight: 600;
-      color: var(--primary-color);
-      min-width: 50px;
-    }
-.filter-none { filter: none; }
-.filter-sepia { filter: sepia(100%); }
-.filter-grayscale { filter: grayscale(100%); }
-.filter-invert { filter: invert(100%); }
-.filter-vintage { filter: sepia(50%) contrast(1.2) brightness(0.9); }
-.filter-vivid { filter: contrast(1.4) saturate(1.5); }
-.filter-warm { filter: sepia(30%) saturate(1.2) hue-rotate(15deg); }
-.filter-cool { filter: saturate(1.1) hue-rotate(180deg); }
-@media (max-width: 768px) {
-.mirror-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-.mirror-controls .btn,
-      .mirror-controls .form-select {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-.filter-buttons {
-        justify-content: center;
-      }
-.zoom-controls {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-.zoom-slider {
-        width: 150px;
-      }
-}
-  </style>
 
 </head>
 
@@ -234,7 +117,7 @@
               <button class="btn btn-primary-custom btn-lg" id="mirror-button">
                 <i class="bi bi-mirror me-2"></i>Start Mirror
               </button>
-              <select class="form-select" disabled id="camera-select" style="max-width: 250px;">
+              <select class="form-select camera-select" disabled id="camera-select">
                 <option value="">Select camera</option>
               </select>
             </div>

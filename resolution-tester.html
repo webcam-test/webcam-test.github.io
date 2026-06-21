@@ -18,142 +18,6 @@
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-.resolution-info {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: rgba(0,0,0,0.9);
-      color: #ffffff;
-      padding: 15px 20px;
-      border-radius: 15px;
-      font-family: 'Courier New', monospace;
-      font-size: 18px;
-      font-weight: bold;
-      border: 2px solid rgba(255,255,255,0.3);
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-.resolution-controls {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-.resolution-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-.resolution-card {
-      background-color: var(--light-bg);
-      border: 2px solid var(--border-color);
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-.resolution-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-.resolution-card.supported {
-      border-color: var(--success-color);
-      background-color: rgba(40, 167, 69, 0.1);
-    }
-.resolution-card.unsupported {
-      border-color: var(--danger-color);
-      background-color: rgba(220, 53, 69, 0.1);
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-.resolution-card.testing {
-      border-color: var(--warning-color);
-      background-color: rgba(255, 193, 7, 0.1);
-      animation: pulse 1.5s infinite;
-    }
-.resolution-card.active {
-      border-color: var(--primary-color);
-      background-color: var(--color-primary-tint);
-      box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
-    }
-.resolution-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: var(--text-dark);
-    }
-.resolution-dimensions {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 5px;
-    }
-.resolution-aspect {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-.resolution-status {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #666;
-    }
-.resolution-status.supported {
-      background: var(--success-color);
-      box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
-    }
-.resolution-status.unsupported {
-      background: var(--danger-color);
-    }
-.resolution-status.testing {
-      background: var(--warning-color);
-      animation: blink 1s infinite;
-    }
-@keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0.3; }
-    }
-.status-active {
-      background-color: var(--color-success-soft);
-      color: var(--success-color);
-      border-color: var(--color-success);
-    }
-.current-resolution {
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      margin-top: 15px;
-      font-family: 'Courier New', monospace;
-      text-align: center;
-    }
-@media (max-width: 768px) {
-.resolution-info {
-        font-size: 14px;
-        padding: 10px 15px;
-      }
-.resolution-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 0.5rem;
-      }
-.resolution-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-.resolution-controls .btn,
-      .resolution-controls .form-select {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-}
-  </style>
 </head>
 
 <body>
@@ -254,7 +118,7 @@
               <button class="btn btn-primary-custom btn-lg" id="resolution-button">
                 <i class="bi bi-play me-2"></i>Start Resolution Test
               </button>
-              <select class="form-select" style="max-width: 250px;" disabled id="camera-select">
+              <select class="form-select camera-select" disabled id="camera-select">
                 <option value="">Select camera</option>
               </select>
               <button class="btn btn-outline-primary-custom" id="test-all-button" style="display: none;">
@@ -481,7 +345,7 @@
           <div class="col-md-6">
             <div class="d-flex gap-3">
               <div class="flex-shrink-0">
-                <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">1</span>
+                <span class="badge bg-primary rounded-circle p-2 step-badge">1</span>
               </div>
               <div>
                 <h3 class="h6 fw-bold mb-1">Click "Start Resolution Test"</h3>
@@ -492,7 +356,7 @@
           <div class="col-md-6">
             <div class="d-flex gap-3">
               <div class="flex-shrink-0">
-                <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">2</span>
+                <span class="badge bg-primary rounded-circle p-2 step-badge">2</span>
               </div>
               <div>
                 <h3 class="h6 fw-bold mb-1">Click "Test All Resolutions"</h3>
@@ -503,7 +367,7 @@
           <div class="col-md-6">
             <div class="d-flex gap-3">
               <div class="flex-shrink-0">
-                <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">3</span>
+                <span class="badge bg-primary rounded-circle p-2 step-badge">3</span>
               </div>
               <div>
                 <h3 class="h6 fw-bold mb-1">Review Supported Resolutions</h3>
@@ -514,7 +378,7 @@
           <div class="col-md-6">
             <div class="d-flex gap-3">
               <div class="flex-shrink-0">
-                <span class="badge bg-primary rounded-circle p-2" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;">4</span>
+                <span class="badge bg-primary rounded-circle p-2 step-badge">4</span>
               </div>
               <div>
                 <h3 class="h6 fw-bold mb-1">Switch Cameras (Optional)</h3>
@@ -545,37 +409,37 @@
         <p>Webcams are sold at a range of resolution tiers. Understanding what each tier means helps you choose the right camera for your use case and interpret your <strong>camera resolution test</strong> results accurately.</p>
         <div class="row g-3 mt-1">
           <div class="col-md-6 col-lg-4">
-            <div class="p-3 rounded border h-100" style="background-color: var(--light-bg);">
+            <div class="p-3 rounded border h-100 panel-bg">
               <h3 class="h6 fw-bold mb-1">4K Ultra HD — 3840×2160</h3>
               <p class="mb-0 small text-muted">The highest mainstream webcam resolution. Delivers exceptional sharpness for professional broadcasts, content creation, and high-end video production. Requires USB 3.0 and a capable system to run at full quality.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="p-3 rounded border h-100" style="background-color: var(--light-bg);">
+            <div class="p-3 rounded border h-100 panel-bg">
               <h3 class="h6 fw-bold mb-1">2K QHD — 2560×1440</h3>
               <p class="mb-0 small text-muted">A step below 4K, found in premium USB webcams. Great for streamers and presenters who want crisp video without the bandwidth demands of full 4K. Increasingly common on newer laptop built-in cameras.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="p-3 rounded border h-100" style="background-color: var(--light-bg);">
+            <div class="p-3 rounded border h-100 panel-bg">
               <h3 class="h6 fw-bold mb-1">Full HD — 1920×1080</h3>
               <p class="mb-0 small text-muted">The current standard for professional video calls on Zoom, Microsoft Teams, and Google Meet. Produces clear, sharp video on most modern broadband connections and is supported by the majority of mid-range webcams.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="p-3 rounded border h-100" style="background-color: var(--light-bg);">
+            <div class="p-3 rounded border h-100 panel-bg">
               <h3 class="h6 fw-bold mb-1">HD — 1280×720</h3>
               <p class="mb-0 small text-muted">The minimum acceptable resolution for video calls today. Common in most budget and mid-range webcams. Sufficient for casual calls, online learning, and everyday video chat without demanding too much bandwidth.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="p-3 rounded border h-100" style="background-color: var(--light-bg);">
+            <div class="p-3 rounded border h-100 panel-bg">
               <h3 class="h6 fw-bold mb-1">VGA / SD — 640×480</h3>
               <p class="mb-0 small text-muted">Standard Definition, common in older and very basic cameras. Still usable for voice-over video calls in low-bandwidth environments but noticeably blurry by modern standards. Many webcams support this as a low-power fallback mode.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="p-3 rounded border h-100" style="background-color: var(--light-bg);">
+            <div class="p-3 rounded border h-100 panel-bg">
               <h3 class="h6 fw-bold mb-1">QVGA and Below — 320×240</h3>
               <p class="mb-0 small text-muted">Very low resolution found on older mobile front cameras and basic embedded sensors. Supported by nearly all webcams as a minimum fallback mode. Used mainly in narrow-bandwidth security and remote monitoring applications.</p>
             </div>
