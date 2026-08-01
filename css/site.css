@@ -600,6 +600,19 @@ section.bg-light {
 }
 
 /* ================================================================
+   AdSense units — display type is fixed by ad format, not runtime state
+   ================================================================ */
+.ad-auto {
+  display: block;
+}
+
+.ad-rectangle {
+  display: inline-block;
+  width: 300px;
+  height: 250px;
+}
+
+/* ================================================================
    Ad cards
    ================================================================ */
 .ad-card {
@@ -708,7 +721,7 @@ section.bg-light {
   margin-top: 4rem;
 }
 
-.footer h5 {
+.footer h4 {
   color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
@@ -937,6 +950,14 @@ section.bg-light {
    Thumbnail strip
    ================================================================ */
 .thumbnail-strip { max-height: 100px; }
+
+.thumbnail-img {
+  width: 40px;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
 
 /* ================================================================
    Zoom range input

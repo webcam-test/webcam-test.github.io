@@ -75,6 +75,8 @@
     </div>
   </nav>
 
+  <main>
+
 <!-- Main Tool Section -->
 <section class="hero">
     <div class="container text-center">
@@ -114,10 +116,10 @@
           <div class="status-indicator status-inactive d-none" id="tool-status"></div>
 
           <div class="tool-controls mb-3">
-            <button class="btn btn-primary-custom btn-lg" id="quality-button">
+            <button type="button" class="btn btn-primary-custom btn-lg" id="quality-button">
               <i class="bi bi-search me-2"></i>Analyse Quality
             </button>
-            <select class="form-select camera-select" disabled id="camera-select">
+            <select aria-label="Select camera" class="form-select camera-select" disabled id="camera-select">
               <option value="">Select camera</option>
             </select>
           </div>
@@ -165,8 +167,7 @@
         </div>
 
         <div class="text-center mt-3">
-          <ins class="adsbygoogle"
-               style="display:block"
+          <ins class="adsbygoogle ad-auto"
                data-ad-client="ca-pub-5426315045205785"
                data-ad-slot="6837554954"
                data-ad-format="auto"
@@ -208,19 +209,19 @@
           </div>
           <ul class="list-unstyled">
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" class="grade-badge grade-badge-success">80–100</span>
+              <span class="badge me-2 grade-badge grade-badge-success">80–100</span>
               <span>Excellent</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" class="grade-badge grade-badge-primary">60–79</span>
+              <span class="badge me-2 grade-badge grade-badge-primary">60–79</span>
               <span>Good</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" class="grade-badge grade-badge-warning">40–59</span>
+              <span class="badge me-2 grade-badge grade-badge-warning">40–59</span>
               <span>Average</span>
             </li>
             <li class="mb-2 d-flex align-items-center">
-              <span class="badge me-2" class="grade-badge grade-badge-danger">0–39</span>
+              <span class="badge me-2 grade-badge grade-badge-danger">0–39</span>
               <span>Poor</span>
             </li>
           </ul>
@@ -473,8 +474,7 @@
 
 <aside class="py-3" role="complementary">
   <div class="container text-center">
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:250px"
+    <ins class="adsbygoogle ad-rectangle"
          data-ad-client="ca-pub-5426315045205785"
          data-ad-slot="5068825756"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -495,18 +495,21 @@
 </section>
 
   <!-- Footer -->
+  
+  </main>
+
   <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">
+          <h4 class="mb-3">
             <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-          </h5>
+          </h4>
           <p class="mb-2">Free online webcam testing tools for every device and browser.</p>
           <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. All rights reserved.</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">Capture &amp; Creative</h5>
+          <h4 class="mb-3">Capture &amp; Creative</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/webcam-recorder" class="text-white text-decoration-none"><i class="bi bi-record-circle me-1"></i>Webcam Recorder</a>
             <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
@@ -517,7 +520,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">Test &amp; Measure</h5>
+          <h4 class="mb-3">Test &amp; Measure</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
             <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
@@ -529,14 +532,14 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center text-md-start">
-          <h5 class="mb-3">Device &amp; Setup</h5>
+          <h4 class="mb-3">Device &amp; Setup</h4>
           <div class="d-flex flex-column gap-1 mb-3">
             <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
             <a href="/camera-comparison" class="text-white text-decoration-none"><i class="bi bi-layout-split me-1"></i>Camera Comparison</a>
             <a href="/webcam-lighting-test" class="text-white text-decoration-none"><i class="bi bi-brightness-high me-1"></i>Lighting Test</a>
             <a href="/webcam-grid-overlay" class="text-white text-decoration-none"><i class="bi bi-grid-3x3 me-1"></i>Grid Overlay</a>
           </div>
-          <h5 class="mb-2">Info</h5>
+          <h4 class="mb-2">Info</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
             <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>

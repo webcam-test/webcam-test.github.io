@@ -73,6 +73,8 @@
     </div>
   </nav>
 
+  <main>
+
   <!-- Main Section -->
   <section class="hero">
     <div class="container text-center">
@@ -241,7 +243,7 @@
                     Is my camera data secure?
                   </button>
                 </h5>
-                <div class="accordion-collapse collapse show" aria-labelledby="faq1-heading" data-bs-parent="#faqAccordion" id="faq1">
+                <div class="accordion-collapse collapse" aria-labelledby="faq1-heading" data-bs-parent="#faqAccordion" id="faq1">
                   <div class="accordion-body">
                     Yes, absolutely. All video processing happens locally in your browser. No video data is transmitted to our servers, and nothing is recorded or stored.
                   </div>
@@ -254,7 +256,7 @@
                     Why do I need to allow camera access?
                   </button>
                 </h5>
-                <div class="accordion-collapse collapse show" aria-labelledby="faq2-heading" data-bs-parent="#faqAccordion" id="faq2">
+                <div class="accordion-collapse collapse" aria-labelledby="faq2-heading" data-bs-parent="#faqAccordion" id="faq2">
                   <div class="accordion-body">
                     Browser security requires explicit permission to access your camera. This permission is only used for testing and can be revoked at any time through your browser settings.
                   </div>
@@ -267,7 +269,7 @@
                     Does this work on mobile devices?
                   </button>
                 </h5>
-                <div class="accordion-collapse collapse show" aria-labelledby="faq3-heading" data-bs-parent="#faqAccordion" id="faq3">
+                <div class="accordion-collapse collapse" aria-labelledby="faq3-heading" data-bs-parent="#faqAccordion" id="faq3">
                   <div class="accordion-body">
                     Yes! WebcamTest works on smartphones and tablets with both front-facing and rear cameras. Simply use your mobile browser to access the test.
                   </div>
@@ -280,7 +282,7 @@
                     What if my camera isn't detected?
                   </button>
                 </h5>
-                <div class="accordion-collapse collapse show" aria-labelledby="faq4-heading" data-bs-parent="#faqAccordion" id="faq4">
+                <div class="accordion-collapse collapse" aria-labelledby="faq4-heading" data-bs-parent="#faqAccordion" id="faq4">
                   <div class="accordion-body">
                     Check that your camera is properly connected, not being used by another application, and that you've granted browser permission. Try refreshing the page or restarting your browser.
                   </div>
@@ -301,18 +303,21 @@
   </section>
 
   <!-- Footer -->
+  
+  </main>
+
   <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">
+          <h4 class="mb-3">
             <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-          </h5>
+          </h4>
           <p class="mb-2">Free online webcam testing tools for every device and browser.</p>
           <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. All rights reserved.</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">Capture &amp; Creative</h5>
+          <h4 class="mb-3">Capture &amp; Creative</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/webcam-recorder" class="text-white text-decoration-none"><i class="bi bi-record-circle me-1"></i>Webcam Recorder</a>
             <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
@@ -323,7 +328,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">Test &amp; Measure</h5>
+          <h4 class="mb-3">Test &amp; Measure</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
             <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
@@ -335,14 +340,14 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center text-md-start">
-          <h5 class="mb-3">Device &amp; Setup</h5>
+          <h4 class="mb-3">Device &amp; Setup</h4>
           <div class="d-flex flex-column gap-1 mb-3">
             <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
             <a href="/camera-comparison" class="text-white text-decoration-none"><i class="bi bi-layout-split me-1"></i>Camera Comparison</a>
             <a href="/webcam-lighting-test" class="text-white text-decoration-none"><i class="bi bi-brightness-high me-1"></i>Lighting Test</a>
             <a href="/webcam-grid-overlay" class="text-white text-decoration-none"><i class="bi bi-grid-3x3 me-1"></i>Grid Overlay</a>
           </div>
-          <h5 class="mb-2">Info</h5>
+          <h4 class="mb-2">Info</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
             <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
@@ -352,8 +357,6 @@
       </div>
     </div>
   </footer>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     (function () {
       var path = window.location.pathname.replace(/\/$/, '') || '/';

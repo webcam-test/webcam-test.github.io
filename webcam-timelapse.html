@@ -75,6 +75,8 @@
     </div>
   </nav>
 
+  <main>
+
 <!-- Main Tool Section -->
 <section class="hero">
     <div class="container text-center">
@@ -117,13 +119,13 @@
           </div>
 
           <div class="tool-controls mb-3">
-            <button class="btn btn-primary-custom btn-lg" id="timelapse-button">
+            <button type="button" class="btn btn-primary-custom btn-lg" id="timelapse-button">
               <i class="bi bi-play-circle me-2"></i>Start Timelapse
             </button>
-            <select class="form-select camera-select" id="camera-select">
+            <select aria-label="Select camera" class="form-select camera-select" id="camera-select">
               <option value="">Select camera</option>
             </select>
-            <select class="form-select camera-select-sm" id="interval-select">
+            <select aria-label="Capture interval" class="form-select camera-select-sm" id="interval-select">
               <option value="1000">Every 1s</option>
               <option value="2000" selected>Every 2s</option>
               <option value="5000">Every 5s</option>
@@ -137,15 +139,15 @@
           <!-- Stats row -->
           <div class="d-none mt-3" id="timelapse-stats">
             <div class="d-flex gap-3 justify-content-center flex-wrap">
-              <div class="p-3 rounded border text-center" class="timelapse-stat panel-bg">
+              <div class="p-3 rounded border text-center timelapse-stat panel-bg">
                 <div class="fs-3 fw-bold text-primary" id="frame-counter">0</div>
                 <div class="small text-muted">Frames Captured</div>
               </div>
-              <div class="p-3 rounded border text-center" class="timelapse-stat panel-bg">
+              <div class="p-3 rounded border text-center timelapse-stat panel-bg">
                 <div class="fs-3 fw-bold text-primary" id="elapsed-time">0s</div>
                 <div class="small text-muted">Elapsed Time</div>
               </div>
-              <div class="p-3 rounded border text-center" class="timelapse-stat panel-bg">
+              <div class="p-3 rounded border text-center timelapse-stat panel-bg">
                 <div class="fs-3 fw-bold text-primary" id="estimated-duration">0s</div>
                 <div class="small text-muted">At 10fps Playback</div>
               </div>
@@ -154,11 +156,11 @@
 
           <!-- Thumbnail strip -->
           <div class="d-none mt-3" id="thumbnail-strip">
-            <div class="d-flex gap-2 overflow-auto pb-2" id="thumbnail-container" class="thumbnail-strip"></div>
+            <div class="d-flex gap-2 overflow-auto pb-2 thumbnail-strip" id="thumbnail-container"></div>
           </div>
 
           <!-- Download button -->
-          <button class="btn btn-success btn-lg mt-3 d-none" id="download-frames">
+          <button type="button" class="btn btn-success btn-lg mt-3 d-none" id="download-frames">
             <i class="bi bi-download me-2"></i>Download Frames (ZIP)
           </button>
 
@@ -166,8 +168,7 @@
         </div>
 
         <div class="text-center mt-3">
-          <ins class="adsbygoogle"
-               style="display:block"
+          <ins class="adsbygoogle ad-auto"
                data-ad-client="ca-pub-5426315045205785"
                data-ad-slot="6837554954"
                data-ad-format="auto"
@@ -478,8 +479,7 @@
 
 <aside class="py-3" role="complementary">
   <div class="container text-center">
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:250px"
+    <ins class="adsbygoogle ad-rectangle"
          data-ad-client="ca-pub-5426315045205785"
          data-ad-slot="5068825756"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -500,18 +500,21 @@
 </section>
 
   <!-- Footer -->
+  
+  </main>
+
   <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">
+          <h4 class="mb-3">
             <i class="bi bi-camera-video-fill me-2"></i>WebcamTest
-          </h5>
+          </h4>
           <p class="mb-2">Free online webcam testing tools for every device and browser.</p>
           <p>&copy; 2025<script>document.write('-' + new Date().getFullYear())</script> WebcamTest. All rights reserved.</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">Capture &amp; Creative</h5>
+          <h4 class="mb-3">Capture &amp; Creative</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/webcam-recorder" class="text-white text-decoration-none"><i class="bi bi-record-circle me-1"></i>Webcam Recorder</a>
             <a href="/take-photo" class="text-white text-decoration-none"><i class="bi bi-camera me-1"></i>Take Photo</a>
@@ -522,7 +525,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
-          <h5 class="mb-3">Test &amp; Measure</h5>
+          <h4 class="mb-3">Test &amp; Measure</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/" class="text-white text-decoration-none"><i class="bi bi-camera-video me-1"></i>Webcam Test</a>
             <a href="/fps-checker" class="text-white text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>FPS Checker</a>
@@ -534,14 +537,14 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center text-md-start">
-          <h5 class="mb-3">Device &amp; Setup</h5>
+          <h4 class="mb-3">Device &amp; Setup</h4>
           <div class="d-flex flex-column gap-1 mb-3">
             <a href="/show-webcam" class="text-white text-decoration-none"><i class="bi bi-info-circle me-1"></i>Show My Webcam</a>
             <a href="/camera-comparison" class="text-white text-decoration-none"><i class="bi bi-layout-split me-1"></i>Camera Comparison</a>
             <a href="/webcam-lighting-test" class="text-white text-decoration-none"><i class="bi bi-brightness-high me-1"></i>Lighting Test</a>
             <a href="/webcam-grid-overlay" class="text-white text-decoration-none"><i class="bi bi-grid-3x3 me-1"></i>Grid Overlay</a>
           </div>
-          <h5 class="mb-2">Info</h5>
+          <h4 class="mb-2">Info</h4>
           <div class="d-flex flex-column gap-1">
             <a href="/about" class="text-white text-decoration-none"><i class="bi bi-info-circle-fill me-1"></i>About</a>
             <a href="/contact" class="text-white text-decoration-none"><i class="bi bi-envelope-fill me-1"></i>Contact</a>
@@ -647,11 +650,7 @@
       // Add thumbnail
       const img = document.createElement('img');
       img.src = dataUrl;
-      img.style.width = '40px';
-      img.style.height = 'auto';
-      img.style.borderRadius = '4px';
-      img.style.border = '1px solid var(--border-color)';
-      img.style.flexShrink = '0';
+      img.className = 'thumbnail-img';
       thumbnailContainer.appendChild(img);
       thumbnailContainer.scrollLeft = thumbnailContainer.scrollWidth;
 
