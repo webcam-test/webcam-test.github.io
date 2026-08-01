@@ -330,6 +330,23 @@ The script uses `(heading_tag, heading_text_fragment)` to locate injection point
 
 ---
 
+## Content Database (`utilities/content_export/`)
+
+`content-db.json` is a generated, read-only snapshot of every page's long-form content, keyed by URL slug (e.g. `"/fps-checker"`). Mirrors the same tool built for mic-tests.github.io, adapted to this site's `<section>`-based page structure. Each page entry is a flat, ordered list of `{level, heading, content}` blocks, one per H2–H6 heading — including FAQ accordion headers (`<h3 class="accordion-header">` wrapping a `<button class="accordion-button">`), since the `accordion-body` text that follows becomes that heading's content automatically. `content` is plain text — tags stripped, entities decoded, with list items flattened to `- item` lines, definition-list pairs to `Term: Definition`, and table rows to `cell | cell | cell`.
+
+Deliberately excluded from every page — identified by isolating each page's top-level `<section>` children inside `<main>` and dropping:
+- `<section class="hero">` — the `<h1>` and its lead/intro paragraph
+- any section containing `<video>`/`<canvas>` — the interactive tool itself, its live results/spec panel (e.g. `show-webcam.html`'s "Camera Information" readout), and any sidebar testimonials that sit alongside it
+- the section embedding `<comentario-comments>` — the Comments widget
+
+Regenerate after editing any page's content:
+```bash
+python3 utilities/content_export/export_content_db.py
+```
+The generator (`export_content_db.py`) is dependency-free (stdlib `html.parser` only) — no relation to the webpack build.
+
+---
+
 ## W3 HTML Validator — Pending
 
 All pages should be validated using live URLs via the Nu HTML Checker:
