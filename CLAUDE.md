@@ -189,9 +189,22 @@ Two independent pillar clusters — Camera and Audio — covering all 44 tools:
 
 Per cluster: pillar → 1 rotating link down to a sub-silo; sub-silos → up/left/right/down links;
 supporting pages → up to their sub-silo + prev/next in a chain that bridges linearly across the
-cluster's supporting groups (no wraparound). Anchor text is always the target page's fixed primary
-keyword; only the surrounding sentence (2 families — `live_test`/`guide`) rotates monthly via an
-MD5-seeded deterministic shuffle (same month always produces the same output).
+cluster's supporting groups (no wraparound).
+
+**Anchor text rotates too, not just the sentence.** `ANCHOR_VARIANTS` gives each of the 44 tools 4
+hand-picked phrases — the primary keyword itself, a free/online long-tail variation, a secondary/
+related phrasing, and a contextual/LSI term grounded in what that specific tool actually measures —
+mirroring `passwordhive`'s own `ANCHOR_VARIANTS` pattern (in that project's
+`coffee_can_checker_tools_project` monorepo). Unlike passwordhive's mechanical suffix-detection
+generator (its keyword vocabulary — "X generator"/"X checker"/"X calculator" — is regular enough
+for a formula), camera/audio keywords are too irregular for one blind template (several are
+already question-form, e.g. "is my camera on", "what camera do i have" — "free is my camera on"
+reads as broken English), so these are hand-picked per tool instead. The variant is chosen per
+`(source page, slot)`, same as passwordhive, so the same target page can get a different variant
+depending on which page happens to link to it that month — deterministic per month, still varies
+across different linking pages. The surrounding sentence (2 families — `live_test`/`guide`) rotates
+separately, keyed by family rather than by the literal anchor string (since the anchor itself now
+varies) via the same MD5-seeded deterministic shuffle (same month always produces the same output).
 
 Injection targets are computed **per tool**, not hardcoded — every tool-panel header inside the
 card is itself an `<h2>` (e.g. "Live Camera Preview"), so a flat h2-index would land inside the tool
@@ -214,6 +227,27 @@ commit updates the *committed* `public/` (useful for local preview/history) but 
 trigger a live redeploy. `deploy.yml` recomputes the current month's rotation itself as its own last
 build step whenever *it* runs, so the live site catches up automatically on the next `src/**` change
 or manual `workflow_dispatch` — same accepted behavior as `mic-tests.github.io`'s identical setup.
+
+## Content Authoring
+
+`camera-and-audio-test-tools-specification.xlsx` — the original 44-tool spec (Purpose/How To
+Build/JavaScript Considerations/API Browser Risk columns per tool) this site was planned from.
+Read it before writing a new tool.
+
+`utilities/tool_buildout/write_<slug>.py` — one throwaway authoring script per built tool: builds
+that tool's `src/content/<slug>.json` dict in plain Python (HTML/JS as ordinary triple-quoted
+strings) and `json.dump()`s it out. Author new tools this way, not by hand-writing JSON —
+hand-escaping multi-line HTML/JS inside a JSON string is exactly the kind of mechanical work that
+introduces silent syntax errors. Keep the script after running it so the tool's content stays easy
+to revise without re-deriving the HTML/JS from scratch. `progress.json` tracks each tool's build
+status; `ui_layout_audit.json` is a one-time layout audit snapshot.
+
+These both predate this repo — recovered from `coffee_can_checker_tools_project`'s git history
+(commit `d4d8fef`) after that monorepo's own cleanup commit removed its now-superseded webcamtest
+copy; they hadn't made the first copy-over into this repo. `utilities/google_ads_keyword_research/`
+— the script + real output spreadsheet the 44 tools' primary keywords (used as both silo-link
+anchor text and `/sitemap` link text — see "Silo Linking" above) come from — was recovered the same
+way.
 
 ## Legacy Site
 
