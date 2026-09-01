@@ -1,379 +1,236 @@
 #!/usr/bin/env python3
 """
-Monthly silo link rotation for webcam-test.github.io.
+Monthly silo link rotation for webcamtest.
 
-Full rotation each month:
-  - Pillar rotates which hub it links to (deterministic shuffle, pick index 0).
-  - Each hub's "down" link rotates to whichever supporter is first in that
-    silo's shuffled chain for the month.
-  - Supporter prev/next/bridge links update to match the shuffled order.
+Standalone port — same self-contained, no-shared-core-module shape as
+mic-tests.github.io's own utilities/silo_linking/generate_silo_rotation.py
+(no `sites/` subfolder, no import of a shared engine module). This replaces
+the version that used to live in the coffee_can_checker_tools_project
+monorepo at utilities/silo_linking/sites/webcamtest.py (which imported a
+shared core.py used by several other sites in that monorepo) — this site is
+moving to its own standalone repo (webcam-test.github.io), so it needs its
+own copy of whatever engine logic it actually uses, same as mic-tests.
+
+Two independent pillar clusters — Camera and Audio — covering all 44 tools.
+Per cluster:
+  Pillar     -> 1 page        slot_a: single link down, rotated monthly
+                               among its sub-silos (hoards authority via
+                               exactly one outbound link)
+  Sub-silos  -> up to 5 pages slot_a: up to pillar
+                               slot_b/c: horizontal neighbor sub-silos
+                                         (order shuffled monthly)
+                               slot_d: down to its own chain's first
+                                       supporting page
+  Supporting -> rest          slot_a: up to its sub-silo
+                               slot_b/c: prev/next in its own chain —
+                                         chains bridge into each other
+                                         linearly within the cluster (last
+                                         chain does NOT wrap back to the
+                                         first)
+
+Anchor text is always the target page's own primary keyword, fixed (not
+rotated across variants). Sentence templates (6 per family) are grouped into
+exactly two families: "live_test" for the 37 tools that acquire a real
+camera/mic via getUserMedia, and "guide" for the 7 reference/how-to pages
+that don't touch a device.
 
 HTML files are patched in-place using comment markers:
   <!-- SILO_START:slot_a -->sentence with link<!-- SILO_END:slot_a -->
 
-Run via GitHub Actions on the 1st of each month, or manually:
+Run this AFTER the site's own build step (build_data.py + generate.py),
+never before — the build has no knowledge of the SILO_START/SILO_END
+markers this script injects and will silently wipe them if run afterward.
+
+Run standalone from the repo root:
   python3 utilities/silo_linking/generate_silo_rotation.py
   python3 utilities/silo_linking/generate_silo_rotation.py --dry-run
-  python3 utilities/silo_linking/generate_silo_rotation.py --date=2026-05
+  python3 utilities/silo_linking/generate_silo_rotation.py --date=2026-09
 """
 
 import datetime
 import hashlib
 import html as html_lib
+import json
 import os
 import random
 import re
 import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PAGES_DIR = os.path.join(REPO_ROOT, "public")
+CONTENT_DIR = os.path.join(REPO_ROOT, "src", "content")
 
 # ---------------------------------------------------------------------------
-# Silo structure
+# Cluster structure: 2 independent pillar/sub-silo/supporting silos
 # ---------------------------------------------------------------------------
 
-HUBS = ["webcam-recorder.html", "fps-checker.html", "show-webcam.html"]
-
-HUB_ANCHORS = {
-    "webcam-recorder.html": "webcam recorder",
-    "fps-checker.html":     "webcam fps checker",
-    "show-webcam.html":     "webcam viewer",
-}
-HUB_URLS = {
-    "webcam-recorder.html": "/webcam-recorder",
-    "fps-checker.html":     "/fps-checker",
-    "show-webcam.html":     "/show-webcam",
-}
-
-# Supporter pages in each silo. "anchor" = keyword used when linking TO this page.
-SILO_SUPPORTERS = {
-    "webcam-recorder.html": [        # Silo A — 5 pages
-        {"file": "take-photo.html",        "anchor": "webcam photo",           "url": "/take-photo"},
-        {"file": "mirror.html",            "anchor": "webcam mirror",          "url": "/mirror"},
-        {"file": "webcam-effects.html",    "anchor": "webcam effects online",  "url": "/webcam-effects"},
-        {"file": "webcam-gif.html",        "anchor": "webcam gif maker",       "url": "/webcam-gif"},
-        {"file": "webcam-timelapse.html",  "anchor": "webcam timelapse online","url": "/webcam-timelapse"},
-    ],
-    "fps-checker.html": [            # Silo B — 5 pages
-        {"file": "resolution-tester.html",      "anchor": "webcam resolution test", "url": "/resolution-tester"},
-        {"file": "webcam-quality-test.html",    "anchor": "webcam quality test",    "url": "/webcam-quality-test"},
-        {"file": "webcam-zoom-test.html",       "anchor": "webcam zoom test",       "url": "/webcam-zoom-test"},
-        {"file": "webcam-brightness-test.html", "anchor": "webcam brightness test", "url": "/webcam-brightness-test"},
-        {"file": "webcam-color-test.html",      "anchor": "webcam color test",      "url": "/webcam-color-test"},
-    ],
-    "show-webcam.html": [            # Silo C — 3 pages
-        {"file": "camera-comparison.html",   "anchor": "webcam comparison tool", "url": "/camera-comparison"},
-        {"file": "webcam-lighting-test.html","anchor": "webcam lighting test",   "url": "/webcam-lighting-test"},
-        {"file": "webcam-grid-overlay.html", "anchor": "webcam grid overlay",    "url": "/webcam-grid-overlay"},
-    ],
-}
-
-# ---------------------------------------------------------------------------
-# Injection targets: physical HTML location for each slot (first run only).
-# (heading_tag, heading_text_fragment) — None = first <p> after <h1>.
-# ---------------------------------------------------------------------------
-
-INJECTION_TARGETS = {
-    "index.html": {
-        "slot_a": ("h1", None),
+CLUSTERS = [
+    {
+        "id": 1,  # Camera
+        "pillar": {"file": "index.html", "anchor": "webcam test", "url": "/"},
+        "subsilos": [
+            {"file": "webcam-live-filter-preview.html", "anchor": "webcam filters", "url": "/webcam-live-filter-preview"},
+            {"file": "use-phone-as-webcam-guide.html", "anchor": "use phone as webcam", "url": "/use-phone-as-webcam-guide"},
+            {"file": "webcam-video-recorder-online.html", "anchor": "webcam video recorder", "url": "/webcam-video-recorder-online"},
+            {"file": "front-camera-test-online.html", "anchor": "front camera test", "url": "/front-camera-test-online"},
+            {"file": "webcam-mirror-vs-natural-view-test.html", "anchor": "webcam mirror test", "url": "/webcam-mirror-vs-natural-view-test"},
+        ],
+        "groups": [
+            [
+                {"file": "webcam-rule-of-thirds-composition-grid.html", "anchor": "rule of thirds grid", "url": "/webcam-rule-of-thirds-composition-grid"},
+                {"file": "webcam-autofocus-test.html", "anchor": "webcam autofocus test", "url": "/webcam-autofocus-test"},
+                {"file": "webcam-sharpness-focus-test.html", "anchor": "webcam focus test", "url": "/webcam-sharpness-focus-test"},
+                {"file": "webcam-lighting-exposure-test.html", "anchor": "webcam lighting test", "url": "/webcam-lighting-exposure-test"},
+                {"file": "webcam-low-light-noise-test.html", "anchor": "webcam low light test", "url": "/webcam-low-light-noise-test"},
+                {"file": "webcam-color-accuracy-test.html", "anchor": "webcam color test", "url": "/webcam-color-accuracy-test"},
+            ],
+            [
+                {"file": "camera-permissions-guide-windows-mac-android-ios.html", "anchor": "camera permissions", "url": "/camera-permissions-guide-windows-mac-android-ios"},
+                {"file": "webcam-not-working-troubleshooting-guide.html", "anchor": "webcam not working", "url": "/webcam-not-working-troubleshooting-guide"},
+                {"file": "webcam-resolution-standards-reference.html", "anchor": "webcam resolution chart", "url": "/webcam-resolution-standards-reference"},
+                {"file": "webcam-specs-comparison-database.html", "anchor": "webcam specs comparison", "url": "/webcam-specs-comparison-database"},
+                {"file": "camera-test-vs-webcam-test-explained.html", "anchor": "camera test vs webcam test", "url": "/camera-test-vs-webcam-test-explained"},
+            ],
+            [
+                {"file": "webcam-photo-capture-online.html", "anchor": "webcam photo capture", "url": "/webcam-photo-capture-online"},
+            ],
+            [
+                {"file": "phone-camera-resolution-checker.html", "anchor": "phone camera resolution", "url": "/phone-camera-resolution-checker"},
+                {"file": "mobile-camera-test-online.html", "anchor": "mobile camera test", "url": "/mobile-camera-test-online"},
+                {"file": "rear-camera-test-online.html", "anchor": "rear camera test", "url": "/rear-camera-test-online"},
+                {"file": "phone-camera-zoom-test.html", "anchor": "phone camera zoom test", "url": "/phone-camera-zoom-test"},
+                {"file": "phone-camera-flash-torch-test.html", "anchor": "phone flashlight test", "url": "/phone-camera-flash-torch-test"},
+                {"file": "phone-camera-orientation-test.html", "anchor": "phone camera orientation test", "url": "/phone-camera-orientation-test"},
+                {"file": "used-phone-camera-inspection-checklist.html", "anchor": "check used phone camera", "url": "/used-phone-camera-inspection-checklist"},
+            ],
+            [
+                {"file": "webcam-side-by-side-comparison.html", "anchor": "webcam comparison", "url": "/webcam-side-by-side-comparison"},
+                {"file": "is-my-camera-being-used-check.html", "anchor": "is my camera on", "url": "/is-my-camera-being-used-check"},
+                {"file": "webcam-fullscreen-viewer.html", "anchor": "webcam fullscreen", "url": "/webcam-fullscreen-viewer"},
+                {"file": "webcam-camera-information-report.html", "anchor": "what camera do i have", "url": "/webcam-camera-information-report"},
+                {"file": "webcam-fps-frame-rate-checker.html", "anchor": "webcam fps test", "url": "/webcam-fps-frame-rate-checker"},
+                {"file": "webcam-maximum-resolution-detector.html", "anchor": "webcam max resolution", "url": "/webcam-maximum-resolution-detector"},
+                {"file": "webcam-latency-delay-test.html", "anchor": "webcam latency test", "url": "/webcam-latency-delay-test"},
+            ],
+        ],
     },
-    # --- Hubs (4 slots each) ---
-    "webcam-recorder.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What the Webcam Recorder Captures"),
-        "slot_c": ("h2", "Webcam Recording Quality"),
-        "slot_d": ("h2", "Who Uses an Online Webcam Recorder"),
+    {
+        "id": 2,  # Audio
+        "pillar": {"file": "microphone-test-online.html", "anchor": "microphone test", "url": "/microphone-test-online"},
+        "subsilos": [
+            {"file": "speaker-test-online.html", "anchor": "speaker test", "url": "/speaker-test-online"},
+            {"file": "online-hearing-frequency-test.html", "anchor": "hearing test online", "url": "/online-hearing-frequency-test"},
+            {"file": "microphone-record-playback-test.html", "anchor": "microphone record test", "url": "/microphone-record-playback-test"},
+        ],
+        "groups": [
+            [
+                {"file": "left-right-stereo-channel-test.html", "anchor": "stereo left right test", "url": "/left-right-stereo-channel-test"},
+                {"file": "speaker-polarity-phase-test.html", "anchor": "speaker polarity test", "url": "/speaker-polarity-phase-test"},
+                {"file": "subwoofer-bass-test-online.html", "anchor": "subwoofer test", "url": "/subwoofer-bass-test-online"},
+            ],
+            [
+                {"file": "audio-latency-delay-test.html", "anchor": "audio latency test", "url": "/audio-latency-delay-test"},
+                {"file": "audio-frequency-sweep-20hz-20khz.html", "anchor": "frequency sweep test", "url": "/audio-frequency-sweep-20hz-20khz"},
+            ],
+            [
+                {"file": "microphone-echo-test.html", "anchor": "mic echo test", "url": "/microphone-echo-test"},
+                {"file": "microphone-quality-spectrum-analyzer.html", "anchor": "microphone spectrum analyzer", "url": "/microphone-quality-spectrum-analyzer"},
+                {"file": "microphone-input-level-meter.html", "anchor": "mic level meter", "url": "/microphone-input-level-meter"},
+            ],
+        ],
     },
-    "fps-checker.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What Does FPS Mean for Your Webcam"),
-        "slot_c": ("h2", "Why Your Webcam FPS Matters"),
-        "slot_d": ("h2", "How to Improve Your Webcam FPS"),
-    },
-    "show-webcam.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "How to Use the Webcam Viewer"),
-        "slot_c": ("h2", "Why Check Your Webcam Specifications"),
-        "slot_d": ("h2", "What Your Webcam Details Actually Tell You"),
-    },
-    # --- Silo A supporters (3 slots each) ---
-    "take-photo.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "How to Take a Webcam Photo Online"),
-        "slot_c": ("h2", "What Can You Use a Webcam Photo For"),
-    },
-    "mirror.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "How to Use the Webcam Mirror Online"),
-        "slot_c": ("h2", "Mirror View vs. Natural View"),
-    },
-    "webcam-effects.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "Creative Filters and Effects for Your Camera"),
-        "slot_c": ("h2", "How Live Camera Filters Work in a Browser"),
-    },
-    "webcam-gif.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "Tips for Making Better Webcam GIFs"),
-        "slot_c": ("h2", "What to Use Webcam GIFs For"),
-    },
-    "webcam-timelapse.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "Capture Interval"),
-        "slot_c": ("h2", "What to Capture — Webcam Timelapse Subject Ideas"),
-    },
-    # --- Silo B supporters (3 slots each) ---
-    "resolution-tester.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What Is Webcam Resolution"),
-        "slot_c": ("h2", "What Webcam Resolution Do You Actually Need"),
-    },
-    "webcam-quality-test.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What the Quality Metrics Measure"),
-        "slot_c": ("h2", "Troubleshooting a Low Webcam Quality Score"),
-    },
-    "webcam-zoom-test.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "Understanding Digital Zoom Quality"),
-        "slot_c": ("h2", "Practical Use Cases for Webcam Digital Zoom"),
-    },
-    "webcam-brightness-test.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What Does Webcam Brightness Mean"),
-        "slot_c": ("h2", "Why Webcam Brightness Matters"),
-    },
-    "webcam-color-test.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "Understanding Colour Casts and White Balance"),
-        "slot_c": ("h2", "How Lighting Affects Your Webcam"),
-    },
-    # --- Silo C supporters (3 slots each) ---
-    "camera-comparison.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What Can You Compare with Two Webcams"),
-        "slot_c": ("h2", "When to Use the Webcam Comparison Tool"),
-    },
-    "webcam-lighting-test.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "What the Lighting Metrics Measure"),
-        "slot_c": ("h2", "Natural vs. Artificial Light"),
-    },
-    "webcam-grid-overlay.html": {
-        "slot_a": ("h1", None),
-        "slot_b": ("h2", "The Three Overlays"),
-        "slot_c": ("h2", "Who Uses a Webcam Grid Overlay"),
-    },
-}
-
-# ---------------------------------------------------------------------------
-# Sentence templates — 6 per anchor keyword, {link} replaced at render time.
-# ---------------------------------------------------------------------------
-
-# Long-tail anchor variants used for the hub → pillar (slot_a) link.
-# Rotated monthly per hub page so each hub uses a different variant.
-HUB_UP_ANCHORS = [
-    "webcam test",
-    "online webcam test",
-    "free webcam test",
-    "test my webcam",
-    "webcam check online",
-    "test your webcam online",
 ]
 
+# ---------------------------------------------------------------------------
+# Injection targets — positional, computed per tool rather than hardcoded.
+# template.html renders {{TOOL_CARD_BODY}} BEFORE {{MAIN_SECTIONS}}
+# (content_html), and every tool-panel header inside the card is itself an
+# <h2> (e.g. "Live Camera Preview", "Recording") — so a flat h2-index of
+# 0/1/2 would land inside the TOOL CARD on any page whose card has >=1 panel
+# heading, not in the article prose. Real per-tool card <h2> counts range
+# from 1 to 3 (checked across all 44 content/<slug>.json's own
+# card.fields_html) — there's no fixed offset that works for every page.
+#
+# slot_a lands on the subtitle paragraph (<h1> immediately followed by
+# <p class="subtitle">). slot_b/c/d target the 1st/2nd/3rd REAL content <h2>
+# — i.e. heading_index = that tool's own card <h2> count, +0/+1/+2 —
+# computed per tool below by reading its own content/<slug>.json.
+# ---------------------------------------------------------------------------
 
-def pick_hub_up_anchor(hub_file: str, today: datetime.date) -> str:
-    key = f"{today.year}-M{today.month:02d}-{hub_file}-slot_a"
-    idx = int(hashlib.md5(key.encode()).hexdigest(), 16) % len(HUB_UP_ANCHORS)
-    return HUB_UP_ANCHORS[idx]
+
+def _file_to_slug(file: str) -> str:
+    return "webcam-test-online" if file == "index.html" else file[:-len(".html")]
 
 
-SENTENCES = {
-    # --- Hub up anchors (hub → pillar) ---
-    "webcam test": [
-        "Run a {link} first to confirm your camera is working before diving in.",
-        "A quick {link} confirms your camera is active and accessible in your browser.",
-        "The {link} checks resolution, frame rate, and device access in one step.",
-        "Before any recording or call, a {link} rules out camera permission issues instantly.",
-        "Use the {link} to verify your camera feed is live and your device is recognised.",
-        "The free {link} runs entirely in your browser — no download or account needed.",
+def _card_h2_count(slug: str) -> int:
+    path = os.path.join(CONTENT_DIR, f"{slug}.json")
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    return data.get("card", {}).get("fields_html", "").count("<h2")
+
+
+_ALL_TOOLS = []
+for _cluster in CLUSTERS:
+    _ALL_TOOLS.append(_cluster["pillar"])
+    _ALL_TOOLS.extend(_cluster["subsilos"])
+    for _group in _cluster["groups"]:
+        _ALL_TOOLS.extend(_group)
+
+INJECTION_TARGETS: dict = {}
+for _t in _ALL_TOOLS:
+    _n = _card_h2_count(_file_to_slug(_t["file"]))
+    INJECTION_TARGETS[_t["file"]] = {
+        "slot_a": ("h1", None, 0, 0),
+        "slot_b": ("h2", None, 0, _n),
+        "slot_c": ("h2", None, 0, _n + 1),
+        "slot_d": ("h2", None, 0, _n + 2),
+    }
+
+# ---------------------------------------------------------------------------
+# Sentence templates — 2 families, 6 variants each. Anchor text is always
+# the target's own fixed keyword — only the surrounding sentence rotates
+# monthly.
+# ---------------------------------------------------------------------------
+
+_GUIDE_ANCHORS = {
+    "use phone as webcam",
+    "camera permissions",
+    "webcam not working",
+    "webcam resolution chart",
+    "webcam specs comparison",
+    "camera test vs webcam test",
+    "check used phone camera",
+}
+
+_SENTENCE_FAMILIES = {
+    "live_test": [
+        "Run the {link} directly in your browser — it uses your camera or microphone live, and nothing you capture is ever uploaded.",
+        "The {link} works entirely client-side, so you get an instant result without installing an app or creating an account.",
+        "Use the {link} to check your hardware is actually working the way you expect, right from this page.",
+        "The {link} needs a quick permission prompt the first time you run it, then gives you a live read-out in seconds.",
+        "Nothing you do in the {link} ever leaves your device — the whole test runs locally in your browser tab.",
+        "The {link} is free to use with no sign-up, and works on both desktop and mobile browsers.",
     ],
-    "online webcam test": [
-        "Run an {link} to confirm your camera works before your next call or recording.",
-        "An {link} checks your camera feed, resolution, and frame rate in seconds.",
-        "Use an {link} to diagnose why your camera isn't showing up in video apps.",
-        "An {link} confirms your device is accessible and your browser permission is granted.",
-        "The free {link} measures live camera output with no software to install.",
-        "Before a streaming session, an {link} ensures your setup is working correctly.",
-    ],
-    "free webcam test": [
-        "Run a {link} in your browser to confirm your camera is ready before you start.",
-        "The {link} checks your live feed, resolution, and FPS with nothing to install.",
-        "A {link} catches camera access problems before they interrupt a meeting or call.",
-        "Use the {link} to verify your camera's output and browser permission status instantly.",
-        "The {link} works with any browser-accessible camera and runs entirely locally.",
-        "Before any recording session, a {link} confirms your camera is delivering clean video.",
-    ],
-    "test my webcam": [
-        "To {link} quickly, the tool runs in your browser and shows results in seconds.",
-        "Use this page to {link} — it displays your live feed, resolution, and device name.",
-        "The fastest way to {link} is to open this tool and check the live camera output.",
-        "You can {link} without any downloads — it uses your browser's WebRTC API directly.",
-        "To {link} before a call, click Allow and watch the live preview load instantly.",
-        "This tool lets you {link} and get immediate feedback on frame rate and video quality.",
-    ],
-    "webcam check online": [
-        "Do a {link} before your next video call to confirm your camera is ready.",
-        "The {link} shows your live feed and confirms your camera permission is granted.",
-        "A {link} catches device conflicts and driver issues before they affect a meeting.",
-        "Use the {link} to verify your camera output and identify the active device.",
-        "The free {link} runs in your browser with no software or account required.",
-        "Before any recording, a {link} confirms your camera is detected and streaming correctly.",
-    ],
-    "test your webcam online": [
-        "You can {link} in seconds — the tool shows your live feed and camera specs instantly.",
-        "The easiest way to {link} is to open the page, click Allow, and read the results.",
-        "Use this tool to {link} and confirm your resolution, FPS, and device name are correct.",
-        "To {link} before a meeting, the browser-based tool needs no installation or sign-up.",
-        "The free option to {link} runs entirely locally — your video never leaves your device.",
-        "Before streaming or recording, {link} to rule out camera access or permission issues.",
-    ],
-    # --- Hub anchors (supporter → hub, and pillar → hub) ---
-    "webcam recorder": [
-        "Use the {link} to capture and download video directly from your camera in one click.",
-        "The {link} records your webcam feed as a WebM file with no upload required.",
-        "For full-length video capture, the {link} saves directly to your device after recording.",
-        "The free {link} works in any modern browser and requires no account or installation.",
-        "Try the {link} to record a test clip and check your video quality before an important call.",
-        "The {link} captures both video and audio simultaneously and downloads automatically when you stop.",
-    ],
-    "webcam fps checker": [
-        "Use the {link} to measure your camera's exact frame rate at any resolution.",
-        "The {link} shows your live frames-per-second count and how it varies under load.",
-        "Run the {link} to find out whether your camera hits 30fps or drops below it.",
-        "The free {link} measures actual FPS delivered to the browser — not the rated spec.",
-        "Before a streaming session, the {link} confirms your camera is delivering smooth frame output.",
-        "The {link} lets you compare FPS at different resolutions to find the best balance.",
-    ],
-    "webcam viewer": [
-        "Open the {link} to see your camera's full technical specs in one detailed panel.",
-        "The {link} displays resolution, frame rate, device name, and autofocus mode live.",
-        "Use the {link} to check your camera's facing direction, aspect ratio, and device ID.",
-        "The free {link} reads your live camera stream and surfaces hardware capability data instantly.",
-        "For a complete camera spec readout, the {link} is faster than any system settings menu.",
-        "The {link} confirms your device name and supported resolutions directly from the browser API.",
-    ],
-    # --- Silo A supporter anchors ---
-    "webcam photo": [
-        "Use the {link} tool to capture a still image from your camera and download it in PNG.",
-        "The {link} captures a high-resolution still from your live camera feed in one click.",
-        "For a quick snapshot without any software, the {link} saves directly to your device.",
-        "The free {link} works on any camera-equipped device in Chrome, Firefox, or Safari.",
-        "Take a {link} to check framing, lighting, and focus before your next video call.",
-        "The {link} lets you preview and download a full-resolution picture from your webcam instantly.",
-    ],
-    "webcam mirror": [
-        "Use the {link} to see your live camera feed mirrored in real time, just like a physical mirror.",
-        "The {link} shows your real-time reflection in a browser tab with no software needed.",
-        "Check your appearance and framing with the {link} before going live or joining a call.",
-        "The free {link} works on front and rear cameras and lets you apply basic visual filters.",
-        "For a quick appearance check, the {link} runs entirely in your browser with no delay.",
-        "The {link} is the fastest way to see how you look on camera before a recording session.",
-    ],
-    "webcam effects online": [
-        "Apply grayscale, sepia, or blur to your live feed with the {link} tool.",
-        "The {link} lets you preview camera filters in real time before any call or recording.",
-        "Use {link} to see how your camera looks with different visual effects applied live.",
-        "The free {link} processes filters locally — your video is never uploaded anywhere.",
-        "Try {link} to find the filter that works best under your current lighting conditions.",
-        "The {link} runs canvas-based filters on your live feed at your camera's native frame rate.",
-    ],
-    "webcam gif maker": [
-        "Capture a short looping animation with the {link} and download it instantly.",
-        "The {link} records a 1–5 second clip from your camera and encodes it as an animated GIF.",
-        "Use the {link} to create a reaction GIF or animated avatar from your live camera feed.",
-        "The free {link} runs entirely in your browser — no upload, no account, no watermark.",
-        "For a quick looping clip, the {link} encodes and downloads your GIF in seconds.",
-        "The {link} is the fastest way to turn a webcam moment into a shareable animated GIF.",
-    ],
-    "webcam timelapse online": [
-        "Create a timelapse from your live camera with the {link} tool — set an interval and record.",
-        "The {link} captures frames at regular intervals and lets you preview the sequence before downloading.",
-        "Use the {link} to document a slow process — plant growth, weather changes, or workspace setup.",
-        "The free {link} runs entirely in your browser and saves your frames as a ZIP download.",
-        "For time-based camera projects, the {link} automates frame capture at any interval you choose.",
-        "The {link} builds a timelapse from your webcam feed with no software or upload required.",
-    ],
-    # --- Silo B supporter anchors ---
-    "webcam resolution test": [
-        "Run a {link} to find out the maximum pixel dimensions your camera can deliver.",
-        "The {link} checks every resolution from 480p to 4K and shows which your camera supports.",
-        "Use the {link} to confirm whether your webcam can reach 1080p or is capped at 720p.",
-        "The free {link} iterates through all standard resolutions and reports which ones succeed.",
-        "Before a recording session, a {link} confirms your camera is streaming at full quality.",
-        "The {link} shows your supported resolutions with aspect ratios and pixel dimensions for each.",
-    ],
-    "webcam quality test": [
-        "Run the {link} to get a scored breakdown of sharpness, brightness, noise, and contrast.",
-        "The {link} analyses your live feed and returns an overall image quality score instantly.",
-        "Use the {link} to find out whether poor lighting or lens quality is limiting your video.",
-        "The free {link} measures pixel-level metrics from your camera without any upload.",
-        "The {link} gives you specific improvement tips based on your camera's actual performance data.",
-        "Before a recording session, the {link} confirms your image quality meets your requirements.",
-    ],
-    "webcam zoom test": [
-        "Use the {link} to preview digital zoom levels from 1× to 5× on your live camera feed.",
-        "The {link} shows exactly how image quality degrades as you increase digital zoom.",
-        "Run the {link} to find the highest zoom level that still delivers acceptable sharpness.",
-        "The free {link} applies canvas-based zoom to your live feed with no quality data uploaded.",
-        "The {link} helps you decide which zoom level is usable for your streaming or recording setup.",
-        "Use the {link} to compare native resolution detail against the cropped zoom output side by side.",
-    ],
-    "webcam brightness test": [
-        "Run the {link} to measure your camera's brightness score and see if your setup is well-lit.",
-        "The {link} reads pixel luminance from your live feed and rates your lighting as dark, good, or overexposed.",
-        "Use the {link} to check whether your current lighting is optimised for video calls or recording.",
-        "The free {link} shows a live brightness histogram and gives specific lighting improvement tips.",
-        "Before a call or stream, the {link} confirms your exposure is in the optimal range.",
-        "The {link} measures brightness in real time so you can adjust your lighting and see instant feedback.",
-    ],
-    "webcam color test": [
-        "Use the {link} to check your camera's colour balance and detect white balance issues.",
-        "The {link} samples your live feed and measures red, green, and blue channel levels in real time.",
-        "Run the {link} to find out whether your camera has a warm, cool, or neutral colour cast.",
-        "The free {link} analyses colour accuracy from your live camera feed without any upload.",
-        "The {link} shows RGB channel readings that reveal colour temperature issues in your current lighting.",
-        "Use the {link} to compare colour output before and after changing your lighting or camera settings.",
-    ],
-    # --- Silo C supporter anchors ---
-    "webcam comparison tool": [
-        "Use the {link} to view two cameras side by side and compare video quality directly.",
-        "The {link} streams two cameras simultaneously so you can compare resolution, colour, and exposure.",
-        "Run the {link} to find out whether your built-in or external webcam delivers better quality.",
-        "The free {link} works with any two browser-accessible cameras and processes all streams locally.",
-        "For a side-by-side camera evaluation, the {link} is the fastest way to see real differences.",
-        "The {link} lets you compare frame rate, colour accuracy, and low-light performance between two cameras.",
-    ],
-    "webcam lighting test": [
-        "Run the {link} to measure your lighting quality and get a scored assessment of your setup.",
-        "The {link} analyses brightness uniformity and exposure from your live camera feed.",
-        "Use the {link} to find out whether your current lighting is rated Excellent, Good, or Poor.",
-        "The free {link} gives specific tips for improving your lighting based on live camera measurements.",
-        "Before a recording session, the {link} confirms your lighting conditions are optimised for video.",
-        "The {link} detects uneven lighting, underexposure, and overexposure from your camera feed instantly.",
-    ],
-    "webcam grid overlay": [
-        "Use the {link} to add a rule-of-thirds grid, crosshair, or face guide to your live camera feed.",
-        "The {link} renders framing overlays directly on your live webcam feed in your browser.",
-        "Toggle the {link} on to check your camera position, eye level, and subject framing before recording.",
-        "The free {link} lets you switch between grid, crosshair, and face guide overlays independently.",
-        "For better video composition, the {link} shows exactly where to position yourself in the frame.",
-        "The {link} is the fastest way to apply rule-of-thirds framing to your webcam without any software.",
+    "guide": [
+        "The {link} walks through the exact steps in plain language, with no camera or microphone access required to read it.",
+        "Check the {link} if you want the background explanation before running a live test elsewhere on this site.",
+        "The {link} is kept up to date and free to read, with no account or sign-up needed.",
+        "Read the {link} for a clear breakdown you can refer back to whenever the same issue comes up again.",
+        "The {link} covers the common cases in one place, so you don't have to piece the answer together from forum threads.",
+        "Use the {link} as a quick reference — it's written to be skimmed, not read start to finish.",
     ],
 }
+
+SENTENCES: dict = {}
+for _t in _ALL_TOOLS:
+    _kw = _t["anchor"]
+    _family = "guide" if _kw in _GUIDE_ANCHORS else "live_test"
+    SENTENCES[_kw] = _SENTENCE_FAMILIES[_family]
 
 # ---------------------------------------------------------------------------
 # Rotation helpers
 # ---------------------------------------------------------------------------
+
 
 def monthly_shuffle(items: list, seed_key: str, today: datetime.date) -> list:
     seed = int(hashlib.md5(f"{today.year}-M{today.month:02d}-{seed_key}".encode()).hexdigest(), 16)
@@ -382,151 +239,143 @@ def monthly_shuffle(items: list, seed_key: str, today: datetime.date) -> list:
     return items
 
 
+def pick_from_list(items: list, seed_key: str, today: datetime.date):
+    key = f"{today.year}-M{today.month:02d}-{seed_key}"
+    idx = int(hashlib.md5(key.encode()).hexdigest(), 16) % len(items)
+    return items[idx]
+
+
 def pick_sentence(source_file: str, anchor: str, today: datetime.date) -> str:
     key = f"{today.year}-M{today.month:02d}-{source_file}-{anchor}"
     idx = int(hashlib.md5(key.encode()).hexdigest(), 16) % 6
     return SENTENCES[anchor][idx]
 
 
-def generate_silo_links(today: datetime.date) -> dict:
-    """Return SILO_LINKS dict for the given month via deterministic shuffle.
+def make_sentence_html(template: str, url: str, anchor: str) -> str:
+    return template.replace("{link}", f'<a href="{url}">{anchor}</a>')
 
-    Hub slot convention:
-      slot_a = up to pillar (long-tail webcam test variant — rotates monthly per hub)
-      slot_b = LEFT hub neighbour (None/empty if this hub is first in shuffled order)
-      slot_c = RIGHT hub neighbour (None/empty if this hub is last in shuffled order)
-      slot_d = DOWN to first supporter in this hub's shuffled chain (rotates monthly)
-    """
 
-    shuffled_hubs = monthly_shuffle(HUBS, "pillar", today)
-    pillar_hub    = shuffled_hubs[0]
+# ---------------------------------------------------------------------------
+# Link generation
+# ---------------------------------------------------------------------------
 
-    silo_supporters = {
-        hub: monthly_shuffle(SILO_SUPPORTERS[hub], f"silo_{i}", today)
-        for i, hub in enumerate(HUBS)
-    }
 
+def _group_links(pages: list, subsilo: dict, seed_prefix: str, today: datetime.date,
+                  prev_bridge, next_bridge) -> dict:
+    shuffled = monthly_shuffle(pages, seed_prefix, today)
+    page_links: dict = {}
+
+    for pos, page in enumerate(shuffled):
+        left = shuffled[pos - 1] if pos > 0 else prev_bridge
+        right = shuffled[pos + 1] if pos < len(shuffled) - 1 else next_bridge
+
+        links = [
+            {"slot": "slot_a", "anchor": subsilo["anchor"], "url": subsilo["url"]},
+        ]
+        if left:
+            links.append({"slot": "slot_b", "anchor": left["anchor"], "url": left["url"]})
+        else:
+            links.append({"slot": "slot_b", "anchor": None, "url": None})
+        if right:
+            links.append({"slot": "slot_c", "anchor": right["anchor"], "url": right["url"]})
+        else:
+            links.append({"slot": "slot_c", "anchor": None, "url": None})
+
+        page_links[page["file"]] = links
+
+    return page_links
+
+
+def generate_links(today: datetime.date) -> dict:
     links: dict = {}
 
-    # --- Pillar: 1 outgoing link to whichever hub is first this month ---
-    links["index.html"] = [
-        {"slot": "slot_a", "anchor": HUB_ANCHORS[pillar_hub], "url": HUB_URLS[pillar_hub]},
-    ]
+    for cluster in CLUSTERS:
+        cid = cluster["id"]
+        pillar = cluster["pillar"]
+        subsilos = cluster["subsilos"]
+        groups = cluster["groups"]
 
-    # --- Hub pages: slot_b=left, slot_c=right, slot_d=down ---
-    for pos, hub_file in enumerate(shuffled_hubs):
-        is_first_hub = (pos == 0)
-        is_last_hub  = (pos == len(shuffled_hubs) - 1)
-        supporters   = silo_supporters[hub_file]
-        left_hub     = shuffled_hubs[pos - 1] if not is_first_hub else None
-        right_hub    = shuffled_hubs[pos + 1] if not is_last_hub  else None
+        # Pillar: rotate its single outbound link among its sub-silos monthly.
+        chosen = pick_from_list(subsilos, f"wc_c{cid}_pillar", today) if subsilos else None
+        if chosen:
+            links[pillar["file"]] = [
+                {"slot": "slot_a", "anchor": chosen["anchor"], "url": chosen["url"]},
+            ]
 
-        links[hub_file] = [
-            {"slot": "slot_a", "anchor": pick_hub_up_anchor(hub_file, today), "url": "/"},
-            {"slot": "slot_b",
-             "anchor": HUB_ANCHORS[left_hub]  if left_hub  else None,
-             "url":    HUB_URLS[left_hub]     if left_hub  else None},
-            {"slot": "slot_c",
-             "anchor": HUB_ANCHORS[right_hub] if right_hub else None,
-             "url":    HUB_URLS[right_hub]    if right_hub else None},
-            {"slot": "slot_d",
-             "anchor": supporters[0]["anchor"], "url": supporters[0]["url"]},
-        ]
+        # Pre-shuffle each sub-silo's own supporting group (for slot_d + bridge wiring).
+        group_shuffles = [monthly_shuffle(g, f"wc_c{cid}_group{i}", today) for i, g in enumerate(groups)]
+        group_first = [gs[0] if gs else None for gs in group_shuffles]
 
-    # Pull per-silo shuffled lists for use in the supporter section below
-    silo_a = silo_supporters["webcam-recorder.html"]
-    silo_b = silo_supporters["fps-checker.html"]
-    silo_c = silo_supporters["show-webcam.html"]
+        # Sub-silos: shuffle order monthly for horizontal-neighbor variety;
+        # slot_d (down) always follows the sub-silo's own original index.
+        order = monthly_shuffle(list(range(len(subsilos))), f"wc_c{cid}_subsilo_order", today)
+        for pos, ss_i in enumerate(order):
+            ss = subsilos[ss_i]
+            left_ss = subsilos[order[pos - 1]] if pos > 0 else None
+            right_ss = subsilos[order[pos + 1]] if pos < len(order) - 1 else None
+            down = group_first[ss_i]
 
-    # --- Supporter pages ---
-    silos = [
-        ("webcam-recorder.html", silo_a, 0),  # Silo A
-        ("fps-checker.html",     silo_b, 1),  # Silo B
-        ("show-webcam.html",     silo_c, 2),  # Silo C
-    ]
-
-    for hub_file, supporters, silo_idx in silos:
-        n          = len(supporters)
-        hub_anchor = HUB_ANCHORS[hub_file]
-        hub_url    = HUB_URLS[hub_file]
-
-        for i, page in enumerate(supporters):
-            is_first = (i == 0)
-            is_last  = (i == n - 1)
-
-            slot_a_def = {"slot": "slot_a", "anchor": hub_anchor, "url": hub_url}
-
-            if is_first:
-                next_page  = supporters[1]
-                slot_b_def = {"slot": "slot_b",
-                              "anchor": next_page["anchor"], "url": next_page["url"]}
-
-                if silo_idx == 0:
-                    # Silo A first — no backward bridge (A is the first silo)
-                    slot_c_def = {"slot": "slot_c", "anchor": None, "url": None}
-                else:
-                    # Backward bridge: link to last of the previous silo
-                    prev_silo  = [silo_a, silo_b][silo_idx - 1]
-                    last_prev  = prev_silo[-1]
-                    slot_c_def = {"slot": "slot_c",
-                                  "anchor": last_prev["anchor"], "url": last_prev["url"]}
-
-            elif is_last:
-                prev_page  = supporters[i - 1]
-                slot_b_def = {"slot": "slot_b",
-                              "anchor": prev_page["anchor"], "url": prev_page["url"]}
-
-                if silo_idx == 2:
-                    # Silo C last — no forward bridge (C is the last silo)
-                    slot_c_def = {"slot": "slot_c", "anchor": None, "url": None}
-                else:
-                    # Forward bridge: link to first of the next silo
-                    next_silo  = [silo_b, silo_c][silo_idx]
-                    first_next = next_silo[0]
-                    slot_c_def = {"slot": "slot_c",
-                                  "anchor": first_next["anchor"], "url": first_next["url"]}
-
+            page_links = [
+                {"slot": "slot_a", "anchor": pillar["anchor"], "url": pillar["url"]},
+            ]
+            if left_ss:
+                page_links.append({"slot": "slot_b", "anchor": left_ss["anchor"], "url": left_ss["url"]})
             else:
-                # Middle of chain
-                prev_page  = supporters[i - 1]
-                next_page  = supporters[i + 1]
-                slot_b_def = {"slot": "slot_b",
-                              "anchor": prev_page["anchor"], "url": prev_page["url"]}
-                slot_c_def = {"slot": "slot_c",
-                              "anchor": next_page["anchor"], "url": next_page["url"]}
+                page_links.append({"slot": "slot_b", "anchor": None, "url": None})
+            if right_ss:
+                page_links.append({"slot": "slot_c", "anchor": right_ss["anchor"], "url": right_ss["url"]})
+            else:
+                page_links.append({"slot": "slot_c", "anchor": None, "url": None})
+            if down:
+                page_links.append({"slot": "slot_d", "anchor": down["anchor"], "url": down["url"]})
+            links[ss["file"]] = page_links
 
-            links[page["file"]] = [slot_a_def, slot_b_def, slot_c_def]
+        # Supporting groups, bridged linearly within this cluster only
+        # (group 0 -> group 1 -> ... -> last group, no wraparound).
+        nonempty = [i for i, g in enumerate(groups) if g]
+        for pos, i in enumerate(nonempty):
+            g = groups[i]
+            prev_i = nonempty[pos - 1] if pos > 0 else None
+            next_i = nonempty[pos + 1] if pos < len(nonempty) - 1 else None
+            prev_bridge = group_shuffles[prev_i][-1] if prev_i is not None else None
+            next_bridge = group_shuffles[next_i][0] if next_i is not None else None
+            links.update(_group_links(g, subsilos[i], f"wc_c{cid}_group{i}", today,
+                                       prev_bridge=prev_bridge, next_bridge=next_bridge))
 
     return links
 
+
 # ---------------------------------------------------------------------------
-# Core HTML helpers
+# Core HTML helpers — the heading_index-aware variant this site needs (a
+# tool page's first real content <h2> isn't always the first <h2> on the
+# page, since every tool-panel header inside the card is itself an <h2> —
+# see the INJECTION_TARGETS comment above).
 # ---------------------------------------------------------------------------
+
 
 def _strip_tags(s: str) -> str:
     return html_lib.unescape(re.sub(r"<[^>]+>", "", s)).strip()
 
 
-def make_sentence_html(template: str, url: str, anchor: str) -> str:
-    link = f'<a href="{url}">{anchor}</a>'
-    return template.replace("{link}", link)
-
-
-def update_markers(html: str, slot: str, sentence_html: str) -> str:
-    start   = f"<!-- SILO_START:{slot} -->"
-    end     = f"<!-- SILO_END:{slot} -->"
+def _update_markers(html: str, slot: str, sentence_html: str) -> str:
+    start = f"<!-- SILO_START:{slot} -->"
+    end = f"<!-- SILO_END:{slot} -->"
     pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.S)
-    return pattern.sub(start + sentence_html + end, html)
+    # Replacement passed as a callable, not a string — a string replacement is
+    # scanned by re for backreferences/escapes (\1, \g<name>, ...), and
+    # sentence_html can legitimately contain a literal backslash.
+    return pattern.sub(lambda m: start + sentence_html + end, html)
 
 
-def find_paragraph_end(html: str, heading_tag: str, heading_text: str | None) -> int | None:
-    """Return position just before </p> to inject into, based on the given heading."""
+def _find_paragraph_end(html: str, heading_tag: str, heading_text, para_index: int = 0, heading_index: int = 0):
     if heading_text is None:
-        m = re.search(r"</h1>", html)
-        if not m:
+        pattern = re.compile(f"</{re.escape(heading_tag)}>", re.I)
+        matches = list(pattern.finditer(html))
+        if heading_index >= len(matches):
             return None
-        search_from = m.end()
+        search_from = matches[heading_index].end()
     else:
+        search_from = None
         for m in re.finditer(
             r"<" + heading_tag + r"[^>]*>(.*?)</" + heading_tag + r">",
             html, re.S
@@ -534,65 +383,72 @@ def find_paragraph_end(html: str, heading_tag: str, heading_text: str | None) ->
             if heading_text in _strip_tags(m.group(1)):
                 search_from = m.end()
                 break
-        else:
+        if search_from is None:
             return None
 
-    p_end = re.search(r"</p>", html[search_from:])
-    if not p_end:
-        return None
-    return search_from + p_end.start()
+    offset = search_from
+    p_end = None
+    for i in range(para_index + 1):
+        p_end = re.search(r"</p>", html[offset:])
+        if not p_end:
+            return None
+        if i < para_index:
+            offset += p_end.end()
+
+    return offset + p_end.start()
 
 
-def insert_markers(html: str, slot: str, sentence_html: str,
-                   heading_tag: str, heading_text: str | None) -> str:
-    pos = find_paragraph_end(html, heading_tag, heading_text)
+def _insert_markers(html: str, slot: str, sentence_html: str,
+                     heading_tag: str, heading_text, para_index: int = 0, heading_index: int = 0) -> str:
+    pos = _find_paragraph_end(html, heading_tag, heading_text, para_index, heading_index)
     if pos is None:
         return html
-    start     = f"<!-- SILO_START:{slot} -->"
-    end       = f"<!-- SILO_END:{slot} -->"
+    start = f"<!-- SILO_START:{slot} -->"
+    end = f"<!-- SILO_END:{slot} -->"
     injection = f" {start}{sentence_html}{end}"
     return html[:pos] + injection + html[pos:]
+
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
-def run(today: datetime.date, dry_run: bool = False) -> None:
-    silo_links = generate_silo_links(today)
-    errors: list[str] = []
+
+def run(today: datetime.date, dry_run: bool = False) -> list:
+    silo_links = generate_links(today)
+    errors: list = []
 
     for page_file, link_defs in silo_links.items():
-        filepath = os.path.join(REPO_ROOT, page_file)
+        filepath = os.path.join(PAGES_DIR, page_file)
         if not os.path.exists(filepath):
             errors.append(f"MISSING FILE: {page_file}")
             continue
 
-        html     = open(filepath, encoding="utf-8").read()
+        html = open(filepath, encoding="utf-8").read()
         original = html
 
         for link_def in link_defs:
-            slot   = link_def["slot"]
+            slot = link_def["slot"]
             anchor = link_def["anchor"]
-            url    = link_def["url"]
+            url = link_def["url"]
 
             marker_start = f"<!-- SILO_START:{slot} -->"
+            target = INJECTION_TARGETS[page_file][slot]
+            tag, text = target[0], target[1]
+            para_idx = target[2] if len(target) > 2 else 0
+            h_idx = target[3] if len(target) > 3 else 0
 
             if anchor is None:
-                # Empty slot — clear any existing content, or insert empty markers
                 if marker_start in html:
-                    html = update_markers(html, slot, "")
+                    html = _update_markers(html, slot, "")
                 else:
-                    tag, text = INJECTION_TARGETS[page_file][slot]
-                    html = insert_markers(html, slot, "", tag, text)
+                    html = _insert_markers(html, slot, "", tag, text, para_idx, h_idx)
             else:
-                sentence_html = make_sentence_html(
-                    pick_sentence(page_file, anchor, today), url, anchor
-                )
+                sentence_html = make_sentence_html(pick_sentence(page_file, anchor, today), url, anchor)
                 if marker_start in html:
-                    html = update_markers(html, slot, sentence_html)
+                    html = _update_markers(html, slot, sentence_html)
                 else:
-                    tag, text = INJECTION_TARGETS[page_file][slot]
-                    new_html  = insert_markers(html, slot, sentence_html, tag, text)
+                    new_html = _insert_markers(html, slot, sentence_html, tag, text, para_idx, h_idx)
                     if new_html == html:
                         errors.append(f"INJECT FAILED: {page_file}/{slot} — heading not found")
                     html = new_html
@@ -606,11 +462,7 @@ def run(today: datetime.date, dry_run: bool = False) -> None:
         else:
             print(f"No change: {page_file}")
 
-    if errors:
-        print("\nErrors:", file=sys.stderr)
-        for e in errors:
-            print(f"  {e}", file=sys.stderr)
-        sys.exit(1)
+    return errors
 
 
 if __name__ == "__main__":
@@ -618,8 +470,8 @@ if __name__ == "__main__":
 
     today = datetime.date.today()
     for arg in sys.argv[1:]:
-        if arg.startswith("--date=") or (arg == "--date" and sys.argv.index(arg) + 1 < len(sys.argv)):
-            raw = arg.split("=", 1)[1] if "=" in arg else sys.argv[sys.argv.index(arg) + 1]
+        if arg.startswith("--date="):
+            raw = arg.split("=", 1)[1]
             try:
                 year, month = map(int, raw.split("-"))
                 today = datetime.date(year, month, 1)
@@ -627,7 +479,11 @@ if __name__ == "__main__":
                 print(f"Invalid --date value {raw!r}. Expected YYYY-MM.", file=sys.stderr)
                 sys.exit(1)
 
-    print(f"Silo rotation — {today.year}-M{today.month:02d}"
-          + (" [DRY RUN]" if dry_run else ""))
-    run(today, dry_run=dry_run)
+    print(f"Silo rotation — webcamtest — {today.year}-M{today.month:02d}" + (" [DRY RUN]" if dry_run else ""))
+    errs = run(today, dry_run=dry_run)
+    if errs:
+        print("\nErrors:", file=sys.stderr)
+        for e in errs:
+            print(f"  {e}", file=sys.stderr)
+        sys.exit(1)
     print("Done.")

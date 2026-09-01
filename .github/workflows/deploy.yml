@@ -1,0 +1,77 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'utilities/silo_linking/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; let an in-flight run finish rather than
+# canceling it mid-publish.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # generate.py's critical-CSS step (build_critical_css()) needs a real
+      # Chrome/Chromium — unlike mic-tests.github.io's own deploy.yml, this
+      # site's build isn't pure-Python: it also minifies HTML/CSS and
+      # extracts per-page critical CSS via the `critical` npm package, same
+      # toolchain as passwordhive/hexcalculator's own generate.py. Points
+      # PUPPETEER_EXECUTABLE_PATH at the installed binary — see
+      # find_chrome_executable() in src/generate.py.
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
+      # Always builds fresh from src/content/ — never depends on whatever's
+      # already committed under public/, so a human forgetting a build-order
+      # step locally can never leave the live site stale or half-built. See
+      # this project's CLAUDE.md "Build order matters" note for why these
+      # run in this exact order.
+      - name: Build data (src/content/*.json -> src/data/*.json)
+        run: python3 src/build_data.py
+
+      - name: Generate pages (src/data + templates -> public/, minified + critical CSS)
+        run: python3 src/generate.py
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+
+      - name: Rotate silo links (patches public/*.html in place)
+        run: python3 utilities/silo_linking/generate_silo_rotation.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

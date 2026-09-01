@@ -1,0 +1,115 @@
+{
+  "site_name": "WebcamTest",
+  "domain": "webcam-test.github.io",
+  "home_slug": "webcam-test-online",
+  "contact_email": "vinithablog@gmail.com",
+  "footer_tagline": "Free camera and audio testing tools that run entirely in your browser. Nothing you record or capture is ever uploaded.",
+  "nav_groups": [
+    {
+      "key": "camera-core",
+      "label": "Camera Core",
+      "short_label": "Camera",
+      "cluster": "camera-core",
+      "tagline": "Test your webcam's resolution, frame rate, focus, exposure and colour accuracy.",
+      "slugs": [
+        "webcam-test-online",
+        "webcam-camera-information-report",
+        "webcam-maximum-resolution-detector",
+        "webcam-fps-frame-rate-checker",
+        "webcam-fullscreen-viewer",
+        "webcam-photo-capture-online",
+        "webcam-video-recorder-online",
+        "webcam-mirror-vs-natural-view-test",
+        "webcam-side-by-side-comparison",
+        "webcam-sharpness-focus-test",
+        "webcam-lighting-exposure-test",
+        "is-my-camera-being-used-check",
+        "webcam-rule-of-thirds-composition-grid",
+        "webcam-live-filter-preview",
+        "webcam-low-light-noise-test",
+        "webcam-color-accuracy-test",
+        "webcam-autofocus-test",
+        "webcam-latency-delay-test"
+      ],
+      "tools": []
+    },
+    {
+      "key": "camera-mobile",
+      "label": "Camera Mobile",
+      "short_label": "Mobile",
+      "cluster": "camera-mobile",
+      "tagline": "Front/rear lens tests, resolution checks and a used-phone camera inspection built mobile-first.",
+      "slugs": [
+        "mobile-camera-test-online",
+        "front-camera-test-online",
+        "rear-camera-test-online",
+        "phone-camera-resolution-checker",
+        "used-phone-camera-inspection-checklist",
+        "phone-camera-flash-torch-test",
+        "phone-camera-zoom-test",
+        "phone-camera-orientation-test"
+      ],
+      "tools": []
+    },
+    {
+      "key": "camera-reference",
+      "label": "Camera Reference",
+      "short_label": "Guides",
+      "cluster": "camera-reference",
+      "tagline": "Resolution standards, spec comparisons, troubleshooting and permissions guides.",
+      "slugs": [
+        "webcam-not-working-troubleshooting-guide",
+        "camera-permissions-guide-windows-mac-android-ios",
+        "webcam-resolution-standards-reference",
+        "camera-test-vs-webcam-test-explained",
+        "webcam-specs-comparison-database",
+        "use-phone-as-webcam-guide"
+      ],
+      "tools": []
+    },
+    {
+      "key": "audio",
+      "label": "Audio",
+      "short_label": "Audio",
+      "cluster": "audio",
+      "tagline": "Microphone, speaker, stereo, latency and hearing tests, all running locally in your browser.",
+      "slugs": [
+        "microphone-test-online",
+        "speaker-test-online",
+        "microphone-input-level-meter",
+        "microphone-record-playback-test",
+        "left-right-stereo-channel-test",
+        "microphone-quality-spectrum-analyzer",
+        "audio-frequency-sweep-20hz-20khz",
+        "online-hearing-frequency-test",
+        "speaker-polarity-phase-test",
+        "subwoofer-bass-test-online",
+        "audio-latency-delay-test",
+        "microphone-echo-test"
+      ],
+      "tools": []
+    }
+  ],
+  "company_links": [
+    {
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    },
+    {
+      "label": "Sitemap",
+      "href": "/sitemap"
+    },
+    {
+      "label": "Privacy Policy",
+      "href": "/privacy-policy"
+    },
+    {
+      "label": "Terms of Service",
+      "href": "/terms"
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The page you're looking for doesn't exist on {{SITE_NAME}}. Browse our full list of camera and audio testing tools instead.">
+    <meta name="author" content="{{SITE_NAME}}">
+    <meta name="robots" content="noindex, follow">
+    <title>Page Not Found</title>
+
+
+    <!-- Self-hosted DM Sans/JetBrains Mono — see the matching comment in
+         template.html and "Font loading" in hexcalculator's CLAUDE.md, which
+         this project's font setup was ported from. -->
+    <link rel="preload" href="/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrains-mono-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="icon" href="/favicon.ico">
+    <meta name="theme-color" content="#f7f7fb">
+
+    <!-- No critical-CSS extraction pass of its own — this page reuses the
+         info-page critical CSS (page_critical_css in generate.py), since its
+         above-the-fold shape (header + centered hero) is the same as every
+         template-page.html page. The full stylesheets below load async via
+         the preload+swap trick so they don't block first paint; <noscript>
+         covers the no-JS case. -->
+    <style>{{CRITICAL_CSS}}</style>
+    <link rel="preload" href="/typography.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/typography.min.css">
+        <link rel="stylesheet" href="/styles.min.css">
+    </noscript>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<header>
+    <nav class="top-nav" aria-label="Primary navigation">
+        <a href="/" class="logo">
+            <span class="logo-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </span>
+            <span>{{SITE_NAME}}</span>
+        </a>
+        <div class="category-strip" aria-label="Tool categories">
+            {{CATEGORY_DROPDOWNS}}{{MORE_MENU}}
+        </div>
+        <button type="button" class="nav-hamburger" id="navHamburgerBtn" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">{{HAMBURGER_ICON}}</button>
+    </nav>
+</header>
+{{MOBILE_DRAWER}}
+
+<main id="main-content">
+    <section class="hero page-hero error-hero">
+        <div class="error-code" aria-hidden="true">404</div>
+        <h1>Page Not Found</h1>
+        <p class="subtitle">The page you're looking for doesn't exist, may have been renamed, or the link is out of date.</p>
+        <div class="error-actions">
+            <a href="/" class="btn-primary">Back to Home</a>
+            <a href="/#all-tools" class="btn-secondary">Browse All Tools</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand-row">
+            <a href="/" class="footer-logo">
+                <span class="logo-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </span>
+                <span>{{SITE_NAME}}</span>
+            </a>
+            <p class="footer-tagline">{{FOOTER_TAGLINE}}</p>
+        </div>
+        <nav class="footer-mega" id="all-tools" aria-label="Site map">
+            {{FOOTER_MEGA}}
+        </nav>
+        <div class="footer-bottom">
+            <p>&copy; {{YEAR}} {{SITE_NAME}}. All rights reserved.</p>
+            <nav aria-label="Footer links">
+                <div class="footer-legal-links">
+                    {{FOOTER_COMPANY}}
+                </div>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<script>
+  function initCategoryDropdowns() {
+    var buttons = document.querySelectorAll('.cat-menu-btn');
+    function closeAll(except) {
+      buttons.forEach(function (b) {
+        if (b === except) return;
+        b.setAttribute('aria-expanded', 'false');
+        var menu = document.getElementById(b.getAttribute('aria-controls'));
+        if (menu) menu.classList.remove('open');
+      });
+    }
+    function positionMenu(b, menu) {
+      var rect = b.getBoundingClientRect();
+      menu.style.top = (rect.bottom + 8) + 'px';
+      menu.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - menu.offsetWidth - 8)) + 'px';
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var expanded = b.getAttribute('aria-expanded') === 'true';
+        closeAll();
+        var menu = document.getElementById(b.getAttribute('aria-controls'));
+        if (!expanded && menu) {
+          menu.classList.add('open');
+          positionMenu(b, menu);
+          b.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    document.addEventListener('click', function () { closeAll(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+    // .tools-menu is position:fixed, positioned once (via getBoundingClientRect())
+    // at click time -- it doesn't track the button on scroll, and the header
+    // isn't sticky, so without this the open menu stays glued to its original
+    // spot on screen while the button scrolls away underneath it. Closing on
+    // scroll is simpler and cheaper than repositioning on every scroll event.
+    window.addEventListener('scroll', function () { closeAll(); }, { passive: true });
+    return closeAll;
+  }
+  // Below the 860px hamburger breakpoint (styles.css), .category-strip
+  // itself is display:none, so this collapse-into-"More" math never
+  // actually gets a chance to show "More" in practice at today's item
+  // count/label lengths (there's headroom above 860px). Left in place as
+  // a defensive fallback for a future longer SITE_NAME or an added nav
+  // group, not dead code to remove.
+  function initPriorityNav(closeAll) {
+    // Priority+ pattern: every .cat-menu-item[data-cat-key] in .category-strip
+    // (rendered by render_category_dropdowns() in generate.py) is a candidate
+    // to hide; whichever ones don't fit this viewport's width get display:none
+    // and their matching .more-menu-section (rendered by render_more_menu(),
+    // same data-cat-key) is revealed inside the trailing "More" dropdown
+    // instead. Runs identically at every width (mobile included, now that the
+    // strip shares .top-nav's row with the logo) rather than branching on a
+    // breakpoint — replaced an earlier horizontal-scroll version of this same
+    // strip, which had no affordance signaling there was more content
+    // off-screen.
+    var strip = document.querySelector('.category-strip');
+    var moreItem = document.getElementById('moreMenuItem');
+    if (!strip || !moreItem) return;
+    var items = Array.prototype.slice.call(strip.querySelectorAll('.cat-menu-item[data-cat-key]'));
+    var sections = document.querySelectorAll('.more-menu-section');
+    function layout() {
+      items.forEach(function (item) { item.style.removeProperty('display'); });
+      sections.forEach(function (s) { s.classList.remove('cat-visible'); });
+      moreItem.style.display = 'flex';
+
+      var available = strip.clientWidth;
+      var gap = parseFloat(getComputedStyle(strip).columnGap) || 0;
+      var fixedWidth = 0;
+      Array.prototype.forEach.call(strip.children, function (el) {
+        if (el !== moreItem && items.indexOf(el) === -1) {
+          fixedWidth += el.getBoundingClientRect().width + gap;
+        }
+      });
+      var moreWidth = moreItem.getBoundingClientRect().width + gap;
+      var itemWidths = items.map(function (it) { return it.getBoundingClientRect().width + gap; });
+      var total = itemWidths.reduce(function (a, b) { return a + b; }, fixedWidth);
+
+      if (total <= available) {
+        moreItem.style.display = 'none';
+        return;
+      }
+
+      var used = fixedWidth;
+      var visibleCount = 0;
+      for (var i = 0; i < itemWidths.length; i++) {
+        if (used + itemWidths[i] + moreWidth > available) break;
+        used += itemWidths[i];
+        visibleCount++;
+      }
+
+      items.forEach(function (item, idx) {
+        if (idx >= visibleCount) {
+          item.style.display = 'none';
+          var section = document.querySelector('.more-menu-section[data-cat-key="' + item.getAttribute('data-cat-key') + '"]');
+          if (section) section.classList.add('cat-visible');
+        }
+      });
+    }
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      closeAll();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(layout, 100);
+    });
+    layout();
+    // Safety re-run once every stylesheet has actually applied (styles.min.css
+    // loads via the preload+swap trick in <head>, so at DOMContentLoaded time
+    // — especially in the --no-minify dev build, which ships no critical CSS
+    // — .category-strip's flex layout may not be active yet, making the
+    // measurement above see unstyled (full-width) items and over-collapse
+    // into "More". layout() is idempotent, so re-running it here just
+    // self-corrects once real widths are available.
+    window.addEventListener('load', layout);
+    // Second, separate safety re-run: DM Sans loads via font-display:swap, so
+    // on a genuine first visit (nothing cached yet) the very first layout()
+    // call above measures each button's width using the metrics-matched
+    // fallback font, not the real one -- and window's own 'load' event does
+    // NOT wait for that font swap (font-display:swap is deliberately
+    // non-render-blocking), so the 'load' re-run above can still be measuring
+    // the fallback font too. Without this, the strip only ever gets the
+    // correct item count after something else happens to trigger a resize
+    // (e.g. a manual reload, where the font is already warm). document.fonts
+    // .ready resolves once the real font has actually swapped in, so this is
+    // the one re-run that's guaranteed to see final metrics.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(layout);
+    }
+  }
+  function initMobileDrawer() {
+    var hamburger = document.getElementById('navHamburgerBtn');
+    var drawer = document.getElementById('navDrawer');
+    var backdrop = document.getElementById('navDrawerBackdrop');
+    var closeBtn = document.getElementById('navDrawerClose');
+    if (!hamburger || !drawer || !backdrop) return;
+    var sectionButtons = drawer.querySelectorAll('.drawer-section-btn');
+    function isOpen() { return drawer.classList.contains('open'); }
+    function openDrawer() {
+      drawer.hidden = false;
+      backdrop.hidden = false;
+      setTimeout(function () {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+      }, 10);
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('drawer-open');
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('drawer-open');
+      setTimeout(function () {
+        if (!isOpen()) { drawer.hidden = true; backdrop.hidden = true; }
+      }, 220);
+    }
+    hamburger.addEventListener('click', function () { isOpen() ? closeDrawer() : openDrawer(); });
+    closeBtn.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) closeDrawer(); });
+    sectionButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        if (panel) panel.classList.toggle('open', !expanded);
+      });
+    });
+    var mq = window.matchMedia('(min-width:861px)');
+    var mqHandler = function (e) { if (e.matches && isOpen()) closeDrawer(); };
+    if (mq.addEventListener) mq.addEventListener('change', mqHandler);
+    else mq.addListener(mqHandler);
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var closeAll = initCategoryDropdowns();
+    initPriorityNav(closeAll);
+    initMobileDrawer();
+  });
+</script>
+</body>
+</html>

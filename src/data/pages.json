@@ -1,0 +1,220 @@
+[
+  {
+    "slug": "about",
+    "meta_description": "WebcamTest is a free collection of browser-based camera and microphone testing tools. Nothing you record is ever uploaded \u2014 it all runs locally on your device.",
+    "h1": "About WebcamTest",
+    "subtitle": "Camera and audio diagnostics that never leave your browser.",
+    "sections": [
+      {
+        "heading": "Hi, I'm Vinitha!",
+        "paragraphs": [
+          "I'm a designer and developer from Palakkad, Kerala, India. I studied Textile &amp; Apparel Design and later transitioned into digital design and web development \u2014 a path that gave me a unique eye for both aesthetics and usability.",
+          "I build free online tools that solve everyday problems I've personally faced. WebcamTest started with a familiar frustration \u2014 joining a call and not knowing whether the problem was my camera, my microphone, or the app itself, with no quick way to check."
+        ]
+      },
+      {
+        "heading": "What WebcamTest does",
+        "paragraphs": [
+          "WebcamTest is a growing collection of free tools for testing webcams, phone cameras, microphones and speakers directly in your browser. Every tool uses the standard <code>getUserMedia</code>/Web Audio browser APIs to talk to your hardware \u2014 there is no app to install, no account to create, and no upload step.",
+          "The site is split into four groups: camera tools for laptops and external webcams, a mobile-first set of camera tools built specifically for phones (not a desktop tool that happens to load on one), a reference section explaining what the numbers mean and how to fix common problems, and an audio half covering microphones and speakers."
+        ]
+      },
+      {
+        "heading": "Why nothing is uploaded",
+        "paragraphs": [
+          "Every camera frame, audio sample and captured photo or recording is processed with JavaScript running in your own browser tab. None of it is ever sent to a server. When you close a tool's page or click its Stop control, the underlying camera and microphone tracks are released \u2014 this matters most on a privacy-positioned tool like this one, where leaving a camera indicator light on after you've left the page would be the single worst thing the site could do."
+        ]
+      },
+      {
+        "heading": "What we're honest about",
+        "paragraphs": [
+          "Some of these tests have real limits that are worth stating plainly rather than glossing over: a browser can only reach the resolution the operating system's camera driver exposes to it, which is usually far below a phone's advertised megapixel count; some browsers (notably Safari on iOS) don't expose capabilities like torch or zoom to web pages at all; and a few measurements \u2014 audio latency, hearing thresholds \u2014 depend heavily on your own hardware and can only ever be reported as an estimate, never an exact number. Each tool says so directly in its own results rather than in a footnote."
+        ]
+      },
+      {
+        "heading": "Contact Information",
+        "paragraphs": [
+          "<a href=\"mailto:vinithablog@gmail.com\">vinithablog@gmail.com</a>",
+          "Palakkad, Kerala, India"
+        ]
+      },
+      {
+        "heading": "Connect With Me",
+        "paragraphs": [
+          "<a href=\"https://www.behance.net/vinithapu\" target=\"_blank\" rel=\"noopener\">Behance Portfolio</a>",
+          "<a href=\"mailto:vinithablog@gmail.com\">Send an Email</a>"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "contact",
+    "meta_description": "Get in touch with the WebcamTest team.",
+    "h1": "Contact",
+    "subtitle": "Questions, bug reports and tool requests are all welcome.",
+    "sections": [
+      {
+        "heading": "Say Hello!",
+        "paragraphs": [
+          "Got a question, spotted an error, or just want to share something? I'd genuinely love to hear from you \u2014 drop me a message and I'll get back to you as soon as I can."
+        ]
+      },
+      {
+        "heading": "Ways You Can Help",
+        "paragraphs": [
+          "Every suggestion makes this better for everyone. Even a quick note saying something is wrong is incredibly helpful!"
+        ],
+        "list": [
+          "Report a tool that's not detecting your camera or microphone correctly",
+          "Share which browser or device gave you a confusing or wrong result",
+          "Suggest a new camera or audio test you'd find useful",
+          "Recommend features that would make these tools more useful"
+        ]
+      },
+      {
+        "heading": "Contact Information",
+        "paragraphs": [
+          "<a href=\"mailto:vinithablog@gmail.com\">vinithablog@gmail.com</a>",
+          "Palakkad, Kerala, India"
+        ]
+      },
+      {
+        "heading": "Connect With Me",
+        "paragraphs": [
+          "<a href=\"https://www.behance.net/vinithapu\" target=\"_blank\" rel=\"noopener\">Behance Portfolio</a>",
+          "<a href=\"mailto:vinithablog@gmail.com\">Send an Email</a>"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "sitemap",
+    "meta_description": "Every WebcamTest tool and page, organized by category, in one place.",
+    "h1": "Sitemap",
+    "subtitle": "Every tool on WebcamTest, grouped the same way the nav menu groups them.",
+    "sections": [
+      {
+        "heading": "Camera Core",
+        "paragraphs": [
+          "Test your webcam's resolution, frame rate, focus, exposure and colour accuracy."
+        ],
+        "list": [
+          "<a href=\"/\">Webcam Test</a>",
+          "<a href=\"/webcam-camera-information-report\">Camera Information Report</a>",
+          "<a href=\"/webcam-maximum-resolution-detector\">Max Resolution Detector</a>",
+          "<a href=\"/webcam-fps-frame-rate-checker\">FPS &amp; Frame Rate Checker</a>",
+          "<a href=\"/webcam-fullscreen-viewer\">Fullscreen Camera Viewer</a>",
+          "<a href=\"/webcam-photo-capture-online\">Photo Capture</a>",
+          "<a href=\"/webcam-video-recorder-online\">Video Recorder</a>",
+          "<a href=\"/webcam-mirror-vs-natural-view-test\">Mirror vs Natural View</a>",
+          "<a href=\"/webcam-side-by-side-comparison\">Side-by-Side Comparison</a>",
+          "<a href=\"/webcam-sharpness-focus-test\">Sharpness &amp; Focus Test</a>",
+          "<a href=\"/webcam-lighting-exposure-test\">Lighting &amp; Exposure Test</a>",
+          "<a href=\"/is-my-camera-being-used-check\">Is My Camera Being Used?</a>",
+          "<a href=\"/webcam-rule-of-thirds-composition-grid\">Composition Grid</a>",
+          "<a href=\"/webcam-live-filter-preview\">Live Filter Preview</a>",
+          "<a href=\"/webcam-low-light-noise-test\">Low-Light Noise Test</a>",
+          "<a href=\"/webcam-color-accuracy-test\">Colour Accuracy Test</a>",
+          "<a href=\"/webcam-autofocus-test\">Autofocus Test</a>",
+          "<a href=\"/webcam-latency-delay-test\">Camera Latency Test</a>"
+        ]
+      },
+      {
+        "heading": "Camera Mobile",
+        "paragraphs": [
+          "Front/rear lens tests, resolution checks and a used-phone camera inspection built mobile-first."
+        ],
+        "list": [
+          "<a href=\"/mobile-camera-test-online\">Mobile Camera Test</a>",
+          "<a href=\"/front-camera-test-online\">Mobile Front Camera Test</a>",
+          "<a href=\"/rear-camera-test-online\">Mobile Rear Camera Test</a>",
+          "<a href=\"/phone-camera-resolution-checker\">Mobile Phone Camera Resolution Checker</a>",
+          "<a href=\"/used-phone-camera-inspection-checklist\">Used Mobile Phone Camera Inspection</a>",
+          "<a href=\"/phone-camera-flash-torch-test\">Mobile Flash &amp; Torch Test</a>",
+          "<a href=\"/phone-camera-zoom-test\">Mobile Camera Zoom Test</a>",
+          "<a href=\"/phone-camera-orientation-test\">Mobile Camera Orientation Test</a>"
+        ]
+      },
+      {
+        "heading": "Camera Reference",
+        "paragraphs": [
+          "Resolution standards, spec comparisons, troubleshooting and permissions guides."
+        ],
+        "list": [
+          "<a href=\"/webcam-not-working-troubleshooting-guide\">Webcam Troubleshooting Guide</a>",
+          "<a href=\"/camera-permissions-guide-windows-mac-android-ios\">Camera Permissions Guide</a>",
+          "<a href=\"/webcam-resolution-standards-reference\">Resolution Standards Reference</a>",
+          "<a href=\"/camera-test-vs-webcam-test-explained\">Camera Test vs Webcam Test</a>",
+          "<a href=\"/webcam-specs-comparison-database\">Webcam Specs Comparison</a>",
+          "<a href=\"/use-phone-as-webcam-guide\">Use Your Phone as a Webcam</a>"
+        ]
+      },
+      {
+        "heading": "Audio",
+        "paragraphs": [
+          "Microphone, speaker, stereo, latency and hearing tests, all running locally in your browser."
+        ],
+        "list": [
+          "<a href=\"/microphone-test-online\">Microphone Test</a>",
+          "<a href=\"/speaker-test-online\">Speaker Test</a>",
+          "<a href=\"/microphone-input-level-meter\">Microphone Level Meter</a>",
+          "<a href=\"/microphone-record-playback-test\">Microphone Record &amp; Playback</a>",
+          "<a href=\"/left-right-stereo-channel-test\">Left &amp; Right Stereo Test</a>",
+          "<a href=\"/microphone-quality-spectrum-analyzer\">Microphone Quality &amp; Spectrum</a>",
+          "<a href=\"/audio-frequency-sweep-20hz-20khz\">Frequency Sweep Test</a>",
+          "<a href=\"/online-hearing-frequency-test\">Online Hearing Test</a>",
+          "<a href=\"/speaker-polarity-phase-test\">Speaker Polarity &amp; Phase Test</a>",
+          "<a href=\"/subwoofer-bass-test-online\">Subwoofer &amp; Bass Test</a>",
+          "<a href=\"/audio-latency-delay-test\">Audio Latency Test</a>",
+          "<a href=\"/microphone-echo-test\">Microphone Echo Test</a>"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "privacy-policy",
+    "meta_description": "WebcamTest's privacy policy: what data we collect (very little), and why our tools never see the camera footage, photos, or audio you test with.",
+    "h1": "Privacy Policy",
+    "subtitle": "What we collect, what we don't, and why.",
+    "sections": [
+      {
+        "heading": "Your camera and microphone data",
+        "paragraphs": [
+          "Every tool on this site accesses your camera and/or microphone using your browser's own permission prompt. Once granted, video frames and audio samples are processed entirely inside your browser tab using JavaScript \u2014 none of it is transmitted to WebcamTest or to any third party. Photos you capture and clips you record stay in your browser's memory until you download them or navigate away; they are never uploaded."
+        ]
+      },
+      {
+        "heading": "Analytics",
+        "paragraphs": [
+          "This site does not currently run any analytics or advertising scripts. If that changes, this page will be updated to say exactly what is collected and why."
+        ]
+      },
+      {
+        "heading": "Changes to this policy",
+        "paragraphs": [
+          "If this policy changes, the update will be reflected on this page with a new effective date."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "terms",
+    "meta_description": "Terms of service for using WebcamTest's free camera and audio testing tools.",
+    "h1": "Terms of Service",
+    "subtitle": "The short version: these tools are free, provided as-is, and not a substitute for professional diagnosis.",
+    "sections": [
+      {
+        "heading": "Use of this site",
+        "paragraphs": [
+          "WebcamTest's tools are provided free of charge, as-is, with no warranty of any kind. Hardware measurements (resolution, frame rate, latency, hearing thresholds, and similar) are estimates produced by browser APIs and should not be treated as certified or medical-grade results \u2014 the hearing test in particular is explicitly not a medical hearing test."
+        ]
+      },
+      {
+        "heading": "No liability",
+        "paragraphs": [
+          "WebcamTest is not liable for decisions made based on these tools' results, including purchasing or diagnostic decisions. Audio playback tools include volume warnings where relevant hardware damage or hearing damage is a real risk (sustained high-level low frequencies, high-level frequency sweeps) \u2014 read them before raising your volume."
+        ]
+      }
+    ]
+  }
+]
