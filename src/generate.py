@@ -189,6 +189,23 @@ def split_content_by_h2(content_html):
     return parts
 
 
+def render_comments_section(alt):
+    """Comentario embedded comment widget (https://comentario.app) — a
+    self-hosted third-party comment system the legacy site carried on 17 of
+    its tool pages (never on the 5 info pages), loaded from the same
+    still-live comments.tickspike.com instance. Applied to all 44 tool
+    pages in this pipeline. Placed after the footer ad, mirroring the
+    legacy site's Ad -> Comments -> </main> order (see
+    legacy-bootstrap-site/index.html)."""
+    return (
+        '<section class="block%s"><div class="block-inner"><div class="content-card"><div class="article">'
+        "<h2>Comments &amp; Feedback</h2>"
+        '<script defer src="https://comments.tickspike.com/comentario.js"></script>'
+        '<comentario-comments theme="light"></comentario-comments>'
+        "</div></div></div></section>"
+    ) % (" alt" if alt else "")
+
+
 def render_faq_section(tool, alt):
     if not tool.get("faq"):
         return None
@@ -215,7 +232,10 @@ def render_main_sections(tool):
     tool's <h2> (in the same section, not a section of its own — splitting
     chunks[0] apart at its own <h2> with H2_SPLIT_RE, splicing the ad in
     between, then rendering the whole thing as one section like any other
-    chunk), footer sits unconditionally at the very end, after FAQ."""
+    chunk), footer sits unconditionally at the very end, after FAQ. The
+    Comentario comments widget (see render_comments_section()) renders
+    unconditionally after that, matching the legacy site's own
+    Ad -> Comments order."""
     parts = []
     section_count = 0
     if tool.get("content_html"):
@@ -237,7 +257,9 @@ def render_main_sections(tool):
     faq_section = render_faq_section(tool, alt=(section_count % 2 == 1))
     if faq_section:
         parts.append(faq_section)
+        section_count += 1
     parts.append(render_adsense_footer())
+    parts.append(render_comments_section(alt=(section_count % 2 == 1)))
     return "\n".join(parts)
 
 
