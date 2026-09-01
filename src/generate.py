@@ -83,6 +83,26 @@ ADSENSE_SLOTS = {
 }
 
 
+GA_MEASUREMENT_ID = "G-VBX83N9QR8"
+
+
+def render_ga_snippet():
+    """Google tag (gtag.js) — on every page, unlike AdSense (tool pages
+    only): analytics should track all traffic, ads only make sense where a
+    unit is actually placed."""
+    return (
+        "<!-- Google tag (gtag.js) -->"
+        '<script async src="https://www.googletagmanager.com/gtag/js?id=%s"></script>'
+        "<script>"
+        "window.dataLayer = window.dataLayer || [];"
+        "function gtag(){dataLayer.push(arguments);}"
+        "gtag('js', new Date());"
+        "gtag('config', '%s');"
+        "</script>"
+        % (GA_MEASUREMENT_ID, GA_MEASUREMENT_ID)
+    )
+
+
 def render_adsense_loader():
     return (
         '<script async crossorigin="anonymous" '
@@ -501,6 +521,7 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "WEBSITE_JSONLD": website_jsonld(site) if tool["slug"] == site["home_slug"] else "",
         "FAQ_JSONLD": faq_jsonld(tool.get("faq", [])),
         "CRITICAL_CSS": critical_css,
+        "GA_SNIPPET": render_ga_snippet(),
         "ADSENSE_LOADER": render_adsense_loader(),
         "ADSENSE_HEADER": render_adsense_header(),
         "CATEGORY_DROPDOWNS": render_category_dropdowns(site, by_slug),
@@ -537,6 +558,7 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
         "CANONICAL_URL": canonical,
         "META_TITLE": html.escape(page["h1"]),
         "CRITICAL_CSS": critical_css,
+        "GA_SNIPPET": render_ga_snippet(),
         "CATEGORY_DROPDOWNS": render_category_dropdowns(site, by_slug),
         "MORE_MENU": render_more_menu(site, by_slug),
         "MOBILE_DRAWER": render_mobile_drawer(site, by_slug),
@@ -557,6 +579,7 @@ def render_404_page(site, by_slug, template_404, critical_css=""):
     tokens = {
         "SITE_NAME": site["site_name"],
         "CRITICAL_CSS": critical_css,
+        "GA_SNIPPET": render_ga_snippet(),
         "CATEGORY_DROPDOWNS": render_category_dropdowns(site, by_slug),
         "MORE_MENU": render_more_menu(site, by_slug),
         "MOBILE_DRAWER": render_mobile_drawer(site, by_slug),
