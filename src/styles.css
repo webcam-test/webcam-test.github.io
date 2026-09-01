@@ -118,10 +118,7 @@ nav.top-nav{max-width:1280px;margin:0 auto;padding:1rem 1.5rem;display:flex;alig
 .tools-menu{position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);min-width:200px;padding:.85rem;display:none;z-index:100}
 .tools-menu.open{display:block}
 /* Mega-menu: a colored header (cluster icon + label + tagline, from
-   CATEGORY_GROUPS) sits above the 2-column link list — the same
-   icon/tint pattern as .tool-link-card's per-cluster badges (see
-   render_home_tool_grid()), reused here so the nav reads as the same
-   design system rather than a bare list of text links. */
+   CATEGORY_GROUPS) sits above the 2-column link list. */
 .cat-menu{max-width:min(460px,90vw)}
 .menu-panel-header{display:flex;align-items:flex-start;gap:.7rem;padding:.15rem .4rem .75rem;margin-bottom:.6rem;border-bottom:1px solid var(--border)}
 .menu-panel-icon{flex:none;width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent-light)}
@@ -449,25 +446,6 @@ section.block.alt{background:var(--bg-alt)}
 .article tbody tr:nth-child(even){background:var(--bg-alt)}
 .article tbody tr:hover td{background:var(--accent-softer)}
 
-/* ---------- Homepage: hero tool + linked tool-card grid ---------- */
-/* Rendered only for site["home_slug"] (see render_home_extra_sections() in
-   generate.py, {{HOME_TOOL_GRID}} token) — a grid of every OTHER built
-   tool, category-accented icon badges, modeled directly on soundtest.io's
-   homepage layout (hero interactive card + smaller linked tool cards). */
-.home-tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;max-width:1280px;margin:2rem auto 0;padding:0 1.5rem}
-.tool-link-card{display:flex;flex-direction:column;gap:.6rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.4rem;transition:border-color .15s,transform .15s}
-.tool-link-card:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
-.tool-link-card .card-icon{width:38px;height:38px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent-light)}
-.tool-link-card .card-icon svg{width:19px;height:19px}
-.tool-link-card h3{font-size:.98rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem}
-.tool-link-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.55}
-.tool-link-card .card-cluster{font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;font-weight:700;color:var(--text-muted)}
-/* Per-cluster icon-badge tint, matched to CATEGORY_GROUPS keys in build_data.py */
-.tool-link-card[data-cluster="camera-core"] .card-icon{background:rgba(124,92,255,.16);color:var(--cluster-camera-core)}
-.tool-link-card[data-cluster="camera-mobile"] .card-icon{background:rgba(34,195,238,.16);color:var(--cluster-camera-mobile)}
-.tool-link-card[data-cluster="camera-reference"] .card-icon{background:rgba(148,163,184,.16);color:var(--cluster-camera-reference)}
-.tool-link-card[data-cluster="audio"] .card-icon{background:rgba(251,146,60,.16);color:var(--cluster-audio)}
-
 /* ---------- What it does (split layout) ---------- */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;max-width:1280px;margin:0 auto;padding:0 1.5rem}
 .split .pill-label{margin-bottom:.9rem}
@@ -569,10 +547,6 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
   .section-header,.split,.steps-grid,.article,.icon-card-grid,.faq-list{padding:0 1rem}
   .block-inner{padding:0 .75rem}
   .content-card{padding:1.1rem}
-  .home-tool-grid{padding:0 .75rem;grid-template-columns:1fr 1fr}
-}
-@media (max-width:480px){
-  .home-tool-grid{grid-template-columns:1fr}
 }
 @media (max-width:600px){
   /* Two buttons plus a device-select rarely fit one row once a tool-panel's

@@ -253,38 +253,6 @@ def render_info_content(page):
 
 
 # ---------------------------------------------------------------------------
-# Homepage-only tool grid (see {{HOME_TOOL_GRID}} in template.html) — a grid
-# of every OTHER built tool, modeled on soundtest.io's homepage layout (hero
-# interactive card + smaller linked tool cards). Renders nothing on non-home
-# pages.
-# ---------------------------------------------------------------------------
-
-def render_home_tool_grid(tool, site, tools):
-    if tool["slug"] != site["home_slug"]:
-        return ""
-    others = [t for t in tools if t["slug"] != site["home_slug"]]
-    if not others:
-        return ""
-    cards = []
-    for t in others:
-        url = "/%s" % t["slug"]
-        icon = CLUSTER_ICONS.get(t.get("cluster", "camera-core"), CLUSTER_ICONS["camera-core"])
-        cluster_label = next((g["short_label"] for g in site["nav_groups"] if g["cluster"] == t.get("cluster")), "")
-        cards.append(
-            '<a href="%s" class="tool-link-card" data-cluster="%s">'
-            '<span class="card-icon">%s</span>'
-            '<span class="card-cluster">%s</span>'
-            '<h3>%s</h3><p>%s</p></a>'
-            % (url, t.get("cluster", ""), icon, html.escape(cluster_label), html.escape(t["nav_name"]), html.escape(t.get("meta_description", "")))
-        )
-    return (
-        '<section class="block"><div class="section-header"><span class="pill-label">Explore</span>'
-        '<h2>More camera &amp; audio tools</h2><p>Every tool runs locally in your browser — nothing you test is ever uploaded.</p></div>'
-        '<div class="home-tool-grid">%s</div></section>' % "".join(cards)
-    )
-
-
-# ---------------------------------------------------------------------------
 # Nav (header dropdowns + mobile "More" menu) and footer — same Priority+
 # pattern as passwordhive's own render_category_dropdowns()/render_more_menu().
 # ---------------------------------------------------------------------------
@@ -539,7 +507,6 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "TOOL_EXTRA_SCRIPTS": extra_scripts,
         "TOOL_SCRIPT": tool.get("script", ""),
         "CODE_SNIPPET": code_snippet,
-        "HOME_TOOL_GRID": render_home_tool_grid(tool, site, tools),
         "MAIN_SECTIONS": render_main_sections(tool),
         "FOOTER_TAGLINE": site["footer_tagline"],
         "FOOTER_MEGA": render_footer_mega(site, by_slug),
