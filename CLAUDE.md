@@ -2,357 +2,241 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Commands
+## Project Overview
+
+**WebcamTest** is a static website served from `webcam-test.github.io` (no custom domain — see
+"Domain" below). It provides 44 browser-based camera and audio testing tools (webcam test,
+microphone test, resolution/FPS checkers, phone-camera tools, hearing test, etc.) using
+`getUserMedia`/`MediaRecorder`/Web Audio APIs.
+
+As of 2026-09-01 the site runs on a **JSON-driven build pipeline** (`src/` → `public/`), replacing
+the old hand-authored site (Bootstrap 5.3.3 + Webpack, 19 tool/info pages). The old site is
+preserved read-only in `legacy-bootstrap-site/`; it is **not** served and should not be edited.
+
+This migration follows the same path `mic-tests.github.io` took to become `mictest.dev` — same
+JSON pipeline shape, same "archive the old site, add a GitHub Actions Pages-deploy workflow"
+approach. The pipeline itself was originally built and verified as
+`individual_websites/webcamtest/` inside a separate monorepo
+(`coffee_can_checker_tools_project`), then copied into this repo as a one-time migration. **This
+repo is now the source of truth** — future edits (new tools, content changes, template changes)
+happen here, not back-ported from that monorepo.
+
+## Domain
+
+Unlike `mic-tests.github.io` → `mictest.dev`, this site is **not** moving to a custom domain — it
+stays at `webcam-test.github.io`. `DOMAIN` in `src/build_data.py` is the real, final domain, not a
+placeholder; canonical URLs, JSON-LD, `robots.txt`, and `sitemap.xml` all use it as-is. There is no
+`CNAME` file and none should be added.
+
+## Deployment
+
+This is a static site with a Python + Node build step (see "Build toolchain" below).
+
+**Build order matters.** Run all three, in this order, whenever `src/content/*.json` changes:
 
 ```bash
-npm start        # Start dev server (auto-opens browser, live reload)
-npm run build    # Build for production to ./dist/
+python3 src/build_data.py                                   # (re)writes src/data/{tools,pages,site}.json from src/content/
+python3 src/generate.py                                      # renders src/template*.html + src/data/*.json -> public/ (minified)
+python3 utilities/silo_linking/generate_silo_rotation.py     # patches this month's silo links into public/*.html (last step)
 ```
 
-There are no tests configured (`npm test` will error).
+`generate_silo_rotation.py` must run **after** `generate.py`, not before — it patches the
+already-rendered `public/*.html` files in place via comment markers, and never touches
+`src/content/`. Running `generate.py` again without re-running the rotation script afterward will
+silently wipe the current month's rotation.
+
+Then commit the changes under `public/` (and `src/data/*.json` if `build_data.py` changed them) and
+push to `main`. Committing `public/` is still good practice — it's what
+`cd public && python3 -m http.server` serves for local preview (see Local Development below) — but
+as of the deploy workflow below, it's no longer what's actually live: the production site never
+depends on whatever happens to be committed there.
+
+**GitHub Pages deploy — `.github/workflows/deploy.yml`.** On every push to `main` that touches
+`src/**`, `utilities/silo_linking/**`, or the workflow file itself (or via manual
+`workflow_dispatch`), the workflow runs the exact three-step build order above from scratch on a
+clean runner, then publishes the freshly generated `public/` via `actions/deploy-pages`. Because it
+always rebuilds from `src/content/` itself rather than trusting the committed `public/` snapshot, a
+human forgetting a build-order step locally can no longer leave the *live* site stale.
+
+**⚠️ One-time manual step required, not done yet:** the workflow only takes effect once Pages'
+source is switched to "GitHub Actions" in the repo's Settings → Pages — this can't be done via the
+API/CLI available in this environment and must be flipped by a repo admin in the GitHub UI. Until
+that switch is flipped, check the actual GitHub Pages source setting before assuming what's serving
+the production site.
+
+**⚠️ Untested end-to-end in CI.** Unlike `mic-tests.github.io`'s own `deploy.yml` (pure Python, no
+extra toolchain), this site's `generate.py` also needs Node + a real Chrome (see "Build toolchain"
+below) — `deploy.yml` installs both via `actions/setup-node` and `browser-actions/setup-chrome`, but
+the very first run in Actions hasn't been observed yet. Check the Actions tab after the first push
+that touches `src/**`.
+
+### Build toolchain
+
+`src/generate.py` minifies HTML/CSS and extracts per-page critical CSS via `critical` (which drives
+a real headless Chrome) — the same toolchain as `passwordhive`/`hexcalculator`'s own `generate.py`
+in the `coffee_can_checker_tools_project` monorepo (`html-minifier-terser@7.2.0`,
+`clean-css-cli@5.6.3`, `tailwindcss@3.4.19` + `@tailwindcss/typography@0.5.20`, `critical@8.0.0`).
+Requires Node/`npx`/`npm` on `PATH` and a local Chrome/Chromium install (or
+`PUPPETEER_EXECUTABLE_PATH` pointed at one). `python3 src/generate.py --no-minify` skips all of this
+for fast local iteration — never commit/deploy that output; it ships an empty critical-CSS block and
+an empty `typography.min.css` placeholder (see `coffee_can_checker_tools_project`'s own webcamtest
+CLAUDE.md for what shipping that unminified build to production actually breaks).
+
+`getUserMedia`/`AudioContext` both work over plain `http://localhost` — browsers treat localhost as
+a secure context — so local testing needs no HTTPS setup. Production (GitHub Pages) is HTTPS by
+default.
+
+## Local Development
+
+Serve locally with any HTTP server, pointed at `public/` — not the repo root:
+
+```bash
+cd public
+python3 -m http.server 8811
+```
+
+Extensionless routes (`/microphone-test-online` etc.) only resolve automatically under GitHub
+Pages, not under a plain local file server — append `.html` when testing locally (e.g.
+`http://localhost:8811/microphone-test-online.html`).
+
+There are no linters or test suites configured.
 
 ## Architecture
 
-Static webcam testing utility hosted on GitHub Pages. No backend, no runtime dependencies — all functionality uses native browser WebRTC APIs.
-
-**Build pipeline**: Webpack bundles `./js/app.js` (intentionally empty — all page logic lives as inline `<script>` in each HTML file) → `./dist/`. Production build uses HtmlWebpackPlugin for `index.html` and CopyPlugin for static assets. **Important**: non-index HTML pages are NOT automatically copied — each must be explicitly added to the `CopyPlugin` patterns in `webpack.config.prod.js`.
-
-**Page structure**: Each HTML file is a standalone page (no routing framework). Pages are self-contained with inline styles and inline JS. Bootstrap 5.3.3 + Bootstrap Icons 1.11.1 loaded from CDN. The pages are:
-- `index.html` — homepage/landing
-- `show-webcam.html` — detailed camera info
-- `take-photo.html` — photo capture
-- `mirror.html` — webcam mirror/stream viewer
-- `fps-checker.html` — frame rate testing
-- `resolution-tester.html` — resolution testing
-- `webcam-recorder.html` — record webcam video (Hub A)
-- `webcam-effects.html` — live camera filters
-- `webcam-gif.html` — animated GIF maker
-- `webcam-timelapse.html` — timelapse capture
-- `webcam-quality-test.html` — image quality analysis
-- `webcam-zoom-test.html` — digital zoom test
-- `webcam-brightness-test.html` — brightness/exposure test
-- `webcam-color-test.html` — colour accuracy test
-- `camera-comparison.html` — side-by-side camera comparison
-- `webcam-lighting-test.html` — lighting conditions test
-- `webcam-grid-overlay.html` — rule-of-thirds grid, crosshair and face guide overlay
-- `about.html` — about page
-- `contact.html` — contact page
-- `404.html` — error page (copied via CopyPlugin)
-
-**Adding a new page**: (1) create the HTML file, (2) add a `{ from: 'page.html', to: 'page.html' }` entry in `webpack.config.prod.js` CopyPlugin patterns, (3) update `sitemap.xml`.
-
-**External dependencies (CDN only)**:
-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.1
-- Google AdSense (`ca-pub-5426315045205785`) — present on all feature pages
-
-**Webpack configs**: `webpack.common.js` (shared), `webpack.config.dev.js` (dev server), `webpack.config.prod.js` (production).
-
-**Editor conventions**: 2-space indents, LF line endings, UTF-8 (enforced by `.editorconfig`).
-
-## Keyword Research (Google Ads — 2026-03-26)
-
-Data source: Google Ads `GenerateKeywordHistoricalMetrics` API, global (no geo filter), English.
-
-### Existing Pages — Primary + Secondary Keywords
-
-| Page | File | Primary Keyword | Vol/mo | Secondary Keywords (also target on same page) | Vol/mo |
-|------|------|-----------------|--------|-----------------------------------------------|--------|
-| Webcam Test (Home) | `index.html` | webcam test | 368,000 | camera test | 246,000 |
-| | | | | online camera | 90,500 |
-| | | | | webcam online | 40,500 |
-| | | | | camera test online | 14,800 |
-| | | | | webcam test online | 14,800 |
-| | | | | test my webcam | 14,800 |
-| | | | | camera checker | 14,800 |
-| | | | | webcam checker | 12,100 |
-| | | | | test my camera | 8,100 |
-| | | | | camera check online | 2,400 |
-| Webcam Mirror | `mirror.html` | webcam mirror | 6,600 | camera mirror | 4,400 |
-| | | | | camera mirror online | 2,400 |
-| | | | | webcam mirror online | 880 |
-| Take Webcam Photo | `take-photo.html` | webcam photo | 8,100 | take photo webcam | 260 |
-| | | | | webcam snapshot | 110 |
-| | | | | camera snapshot online | 10 |
-| Show My Webcam | `show-webcam.html` | webcam viewer | 2,400 | show my webcam | 260 |
-| | | | | webcam viewer online | 210 |
-| | | | | webcam details | 30 |
-| | | | | what webcam do i have | 20 |
-| | | | | webcam diagnostic | 10 |
-| Webcam Resolution Tester | `resolution-tester.html` | webcam resolution test | 110 | camera resolution test | 40 |
-| Webcam FPS Checker | `fps-checker.html` | webcam fps checker | 40 | webcam fps test | 20 |
-| | | | | camera fps test | 20 |
-
-### New Tool Ideas
-
-Potential new pages using the same `getUserMedia` + Canvas browser APIs. All LOW competition.
-
-| Tool | Primary Keyword | Vol/mo | Secondary Keywords | Vol/mo | Implementation |
-|------|-----------------|--------|--------------------|--------|----------------|
-| **Webcam Recorder** | webcam recorder | 14,800 | webcam video recorder | 2,900 | MediaRecorder API — record + download WebM/MP4 |
-| | | | webcam recorder online | 390 | |
-| **Webcam Effects/Filters** | webcam effects online | 1,600 | webcam filters online | 480 | Canvas + CSS filters (grayscale, sepia, blur, contrast) on live feed |
-| | | | blur webcam background | 50 | |
-| **Barcode Scanner** | barcode scanner webcam | 1,000 | — | — | Camera feed + JS barcode library (QuaggaJS / ZXing) |
-| **QR Code Scanner** | qr code scanner webcam | 170 | — | — | Camera feed + JS QR library (jsQR) |
-| **Webcam Quality Test** | webcam quality test | 50 | — | — | Analyze sharpness, noise, color accuracy from canvas pixels |
-| **Webcam GIF Maker** | webcam gif maker | 20 | — | — | Capture frames → gif.js to encode animated GIF |
-| **Webcam Zoom Test** | webcam zoom test | 10 | — | — | Test digital zoom on live feed |
-
-### Low Volume — Still Worth Building (topical authority)
-
-These have <10/mo volume individually but strengthen the site's topical coverage for "webcam" as a whole. Each page deepens the silo it belongs to and passes topical authority up to its hub.
-
-| Tool | File | Keyword | Implementation |
-|------|------|---------|----------------|
-| Camera Comparison | `camera-comparison.html` | webcam comparison tool | Side-by-side split view of two cameras |
-| Webcam Lighting Test | `webcam-lighting-test.html` | webcam lighting test | Analyse brightness/exposure from canvas |
-| Webcam Grid Overlay | `webcam-grid-overlay.html` | webcam grid overlay | Rule-of-thirds grid, crosshair and face guide on live feed |
-| Webcam Color Test | `webcam-color-test.html` | webcam color test | Color accuracy analysis from canvas |
-| Webcam Timelapse | `webcam-timelapse.html` | webcam timelapse online | Capture frames at intervals → download video |
-| Webcam Brightness Test | `webcam-brightness-test.html` | webcam brightness test | Measure and adjust brightness/contrast |
-
-Rotate webcam (170/mo)
-
----
-
-## Internal Linking Strategy — Advanced Silo
-
-**Status: LIVE as of 2026-04-21.** Script, GitHub Actions workflow, and HTML markers all deployed. First rotation applied for April 2026. Subsequent rotations run automatically on days 1–3 of each month.
-
-Three-level authority silo matching the same architecture used in mic-tests.github.io. Body content links only — nav, footer, and sidebar links are navigational and do not count toward silo structure.
-
----
-
-### Silo Structure
-
-#### Pillar Page
-
-`index.html` — **"webcam test"** (368,000/mo)
-
-- 1 outgoing body link per month → rotates between the 3 hubs monthly
-- All 3 hubs always link **up** to the pillar; anchor rotates monthly among 6 long-tail variants
-- The pillar never links directly to supporting pages
-
-**Pillar anchor variants** (used by hub slot_a links pointing up):
-`"webcam test"`, `"online webcam test"`, `"free webcam test"`, `"test my webcam"`, `"webcam check online"`, `"test your webcam online"`
-
----
-
-#### Sub-Silo Hubs (3 hubs)
-
-Each hub has **4 body content slots**:
-
-| Slot | Role | Rotates? |
-|------|------|----------|
-| `slot_a` | Up to pillar — anchor from 6 long-tail variants | Yes (anchor + sentence) |
-| `slot_b` | Left hub neighbour — empty when first in monthly order | Yes |
-| `slot_c` | Right hub neighbour — empty when last in monthly order | Yes |
-| `slot_d` | Down to first page in this hub's shuffled supporter chain | Yes |
-
-| Hub | File | Primary Keyword | Vol/mo | Status |
-|-----|------|----------------|--------|--------|
-| **A — Webcam Recorder** | `webcam-recorder.html` | "webcam recorder" | 14,800 | Built — silo markers live |
-| **B — FPS Checker** | `fps-checker.html` | "webcam fps checker" | 40 | Built — silo markers live |
-| **C — Show My Webcam** | `show-webcam.html` | "webcam viewer" | 2,400 | Built — silo markers live |
-
----
-
-#### Supporting Pages
-
-Each supporting page has **3 body content slots**:
-
-| Slot | Role | Rotates? |
-|------|------|----------|
-| `slot_a` | Up to this page's hub — anchor = hub's primary keyword | No (anchor fixed; sentence variant rotates) |
-| `slot_b` | prev / next / bridge — depends on position in chain | Yes |
-| `slot_c` | next / bridge / empty — depends on position in chain | Yes |
-
-**slot_b / slot_c content by position:**
-
-| Position | slot_b | slot_c |
-|----------|--------|--------|
-| First in Silo A | next in chain | **empty** (Silo A has no backward bridge) |
-| First in Silo B or C | next in chain | backward bridge → last of previous silo |
-| Middle | prev in chain | next in chain |
-| Last in Silo A or B | prev in chain | forward bridge → first of next silo |
-| Last in Silo C | prev in chain | **empty** (Silo C has no forward bridge) |
-
----
-
-##### Silo A — Capture & Creative Tools (hub: `webcam-recorder.html`)
-
-*Hub keyword: "webcam recorder"*
-
-| # | Page | File | Primary Keyword | Vol/mo | Status |
-|---|------|------|----------------|--------|--------|
-| 1 | Take Webcam Photo | `take-photo.html` | "webcam photo" | 8,100 | Existing |
-| 2 | Webcam Mirror | `mirror.html` | "webcam mirror" | 6,600 | Existing |
-| 3 | Webcam Effects | `webcam-effects.html` | "webcam effects online" | 1,600 | Built |
-| 4 | Webcam GIF Maker | `webcam-gif.html` | "webcam gif maker" | 20 | Built |
-| 5 | Webcam Timelapse | `webcam-timelapse.html` | "webcam timelapse online" | <10 | Built |
-
----
-
-##### Silo B — Performance & Technical Testing (hub: `fps-checker.html`)
-
-*Hub keyword: "webcam fps checker"*
-
-| # | Page | File | Primary Keyword | Vol/mo | Status |
-|---|------|------|----------------|--------|--------|
-| 1 | Resolution Tester | `resolution-tester.html` | "webcam resolution test" | 110 | Existing |
-| 2 | Webcam Quality Test | `webcam-quality-test.html` | "webcam quality test" | 50 | Built |
-| 3 | Webcam Zoom Test | `webcam-zoom-test.html` | "webcam zoom test" | 10 | Built |
-| 4 | Webcam Brightness Test | `webcam-brightness-test.html` | "webcam brightness test" | <10 | Built |
-| 5 | Webcam Color Test | `webcam-color-test.html` | "webcam color test" | <10 | Built |
-
----
-
-##### Silo C — Device Info & Scanning (hub: `show-webcam.html`)
-
-*Hub keyword: "webcam viewer"*
-
-| # | Page | File | Primary Keyword | Vol/mo | Status |
-|---|------|------|----------------|--------|--------|
-| 1 | Camera Comparison | `camera-comparison.html` | "webcam comparison tool" | <10 | Built |
-| 2 | Webcam Lighting Test | `webcam-lighting-test.html` | "webcam lighting test" | <10 | Built |
-| 3 | Webcam Grid Overlay | `webcam-grid-overlay.html` | "webcam grid overlay" | <10 | Built |
-
----
-
-#### Bridges Between Silos
-
-Bidirectional. Bridge targets change monthly as the supporter shuffle changes which pages land in first/last positions.
-
-| Bridge | Direction | Notes |
-|--------|-----------|-------|
-| Silo A ↔ Silo B | last of shuffled A ↔ first of shuffled B | anchor = target page's primary keyword |
-| Silo B ↔ Silo C | last of shuffled B ↔ first of shuffled C | anchor = target page's primary keyword |
-| Silo C → (none) | last of shuffled C has no forward bridge | Silo C is the final silo |
-
----
-
-### Page Build Priority Order
-
-All pages are built and silo markers are live. Content writing is next.
-
-| Page | File | Status |
-|------|------|--------|
-| Webcam Recorder (Hub A) | `webcam-recorder.html` | Built — silo live — content pending |
-| Webcam Effects | `webcam-effects.html` | Built — silo live — content pending |
-| Webcam GIF Maker | `webcam-gif.html` | Built — silo live — content pending |
-| Webcam Timelapse | `webcam-timelapse.html` | Built — silo live — content pending |
-| Webcam Quality Test | `webcam-quality-test.html` | Built — silo live — content pending |
-| Webcam Zoom Test | `webcam-zoom-test.html` | Built — silo live — content pending |
-| Webcam Brightness Test | `webcam-brightness-test.html` | Built — silo live — content pending |
-| Webcam Color Test | `webcam-color-test.html` | Built — silo live — content pending |
-| Camera Comparison | `camera-comparison.html` | Built — silo live — content pending |
-| Webcam Lighting Test | `webcam-lighting-test.html` | Built — silo live — content pending |
-| Webcam Grid Overlay | `webcam-grid-overlay.html` | Built — silo live — content pending |
-
----
-
-### Monthly Rotation System — LIVE
-
-Implemented 2026-04-21. Mirrors the system built for mic-tests.github.io.
-
-#### Script
-
-**File:** `utilities/silo_linking/generate_silo_rotation.py`
-
+### JSON-Driven Build Pipeline
+
+Single source of truth per tool, modeled on the `passwordhive`/`hexcalculator` pattern:
+
+- **`src/content/<slug>.json`** — one tool page's *entire* content: `meta_description`, `h1`/
+  `subtitle`, the tool card's own interactive markup (`card.fields_html` — every tool uses the
+  "raw" card layout, i.e. this field is the tool's entire card grid, not a typed sub-layout),
+  `content_html`, `faq`, and that tool's own fully self-contained JS (the `script` field — no
+  shared runtime file; every tool's script duplicates whatever device-acquisition/teardown logic
+  it needs).
+- **`src/content/pages/`** — none currently; the 5 info pages (about/contact/privacy/terms/sitemap)
+  are driven by `src/data/pages.json`, itself built from constants in `build_data.py`, not
+  individual JSON files.
+- **`src/template.html`** — shared template for the 44 tool pages.
+- **`src/template-page.html`** — shared template for the 5 info pages.
+- **`src/template-404.html`** — the 404 page template.
+- **`src/static/`** — binary/opaque assets that can't be derived from `site.json`: currently just
+  `googlecb346f17d96186ee.html`, the Google Search Console verification file carried over from the
+  old site — **do not modify its contents**, it proves domain ownership. Copied verbatim into
+  `public/` by `generate.py` on every build.
+- **`src/build_data.py`** — assembles `src/data/{tools,pages,site}.json` from `src/content/`.
+  Site-wide constants (`SITE_NAME`, `DOMAIN`, `HOME_SLUG`, `CONTACT_EMAIL`, `OWNER_NAME`, ...) live
+  at the top of this file.
+- **`src/generate.py`** — renders `src/data/*.json` + the three templates into `public/*.html`,
+  plus generates `public/robots.txt`, `public/sitemap.xml`, and `public/ads.txt` (all derived from
+  `site.json`/`ADSENSE_CLIENT`, never hand-edited).
+- **`public/`** — generated output, committed. Never hand-edit anything here — edit
+  `src/content/<slug>.json` (or the template/generator) and rerun the build.
+
+### Card layout: "raw" only
+
+Every tool uses the "raw" card layout — `card["fields_html"]` in that tool's own
+`content/<slug>.json` is its **entire** card grid (hero panel + supporting panels). Almost every
+tool has a genuinely distinct interactive shape (live video + overlay grid, split-view comparison,
+spectrum analyzer, resolution-probe ladder), so there is exactly one Python-side render branch
+(`render_tool_card_body()`) to maintain regardless of tool count.
+
+### No shared JS runtime file (deliberate)
+
+Every tool's `script` field is a complete, self-contained IIFE that duplicates whatever it needs
+(device acquisition/enumeration/teardown, canvas analysis, tone generation, FFT). A future fix to
+teardown/error-mapping logic has to be reapplied in every tool's own `script` field that copied it —
+`webcam-test-online.json` is the reference implementation every other camera tool's script copies
+its acquisition/enumeration/teardown/error-mapping pattern from; `microphone-test-online.json` or
+`speaker-test-online.json` are the equivalent reference for audio tools.
+
+## AdSense
+
+Real ad units carried over from the old `legacy-bootstrap-site/` (client `ca-pub-5426315045205785`,
+already an approved, live-serving account for this exact domain — not a fresh unapproved account
+like `mictest.dev`'s, so ads are **enabled**, not disabled-pending-approval). Placement logic is
+ported from `passwordhive`'s own `render_adsense_*()` functions
+(`coffee_can_checker_tools_project/individual_websites/passwordhive/src/generate.py`):
+
+- **Loader** (`render_adsense_loader()`) — in `<head>`, preconnected to
+  `pagead2.googlesyndication.com`.
+- **Header** (`render_adsense_header()`, slot `6562139351`) — responsive leaderboard between the
+  hero and the tool card: 728×90 at ≥768px, 300×100 below that, resized via inline JS.
+- **Body** (`render_adsense_body()`, slot `6837554954`) — spliced before a tool's first `<h2>`,
+  full-width responsive (`data-ad-format="auto"`), matching how this real unit is already
+  configured.
+- **Footer** (`render_adsense_footer()`, slot `5068825756`) — fixed 300×250, unconditionally after
+  the FAQ section (even on a tool with no `content_html`).
+
+Only 3 real ad units exist for this property (unlike passwordhive's 4) — there's no "body2" slot.
+Ads render only on tool pages (via `render_page()`), never on the 5 info pages or 404 (matching
+passwordhive's own behavior). `ads.txt` is generated from `ADSENSE_CLIENT` in `generate.py`, not
+hand-maintained — it will never drift from the loader/ad-unit markup.
+
+## Silo Linking
+
+`utilities/silo_linking/generate_silo_rotation.py` — a **fully self-contained script**, same
+no-shared-core-module shape as `mic-tests.github.io`'s own script (this repo does not import a
+shared engine from the `coffee_can_checker_tools_project` monorepo, since it's no longer part of
+that monorepo's build).
+
+Two independent pillar clusters — Camera and Audio — covering all 44 tools:
+
+- **Camera** — pillar `webcam-test-online` (`index.html`), 5 sub-silos: `webcam-live-filter-preview`,
+  `use-phone-as-webcam-guide`, `webcam-video-recorder-online`, `front-camera-test-online`,
+  `webcam-mirror-vs-natural-view-test`.
+- **Audio** — pillar `microphone-test-online`, 3 sub-silos: `speaker-test-online`,
+  `online-hearing-frequency-test`, `microphone-record-playback-test`.
+
+Per cluster: pillar → 1 rotating link down to a sub-silo; sub-silos → up/left/right/down links;
+supporting pages → up to their sub-silo + prev/next in a chain that bridges linearly across the
+cluster's supporting groups (no wraparound). Anchor text is always the target page's fixed primary
+keyword; only the surrounding sentence (2 families — `live_test`/`guide`) rotates monthly via an
+MD5-seeded deterministic shuffle (same month always produces the same output).
+
+Injection targets are computed **per tool**, not hardcoded — every tool-panel header inside the
+card is itself an `<h2>` (e.g. "Live Camera Preview"), so a flat h2-index would land inside the tool
+card on any page whose card has ≥1 panel heading. The script reads each tool's own
+`content/<slug>.json` at load time to count its card's `<h2>`s and computes `heading_index` offsets
+from that, so `slot_b`/`slot_c`/`slot_d` always land in the article prose, never inside the card.
+
+Run standalone from the repo root:
 ```bash
-python3 utilities/silo_linking/generate_silo_rotation.py            # apply current month
-python3 utilities/silo_linking/generate_silo_rotation.py --dry-run  # preview without writing
-python3 utilities/silo_linking/generate_silo_rotation.py --date=2026-06  # apply specific month
+python3 utilities/silo_linking/generate_silo_rotation.py
+python3 utilities/silo_linking/generate_silo_rotation.py --dry-run
+python3 utilities/silo_linking/generate_silo_rotation.py --date=2026-09
 ```
 
-- Deterministic shuffles via `random.Random(MD5-seed)` — same month always produces same output
-- Hub order shuffles monthly → pillar link + hub left/right neighbours rotate
-- Supporter order shuffles per silo → prev/next chain + bridge endpoints rotate
-- Hub `slot_a` anchor rotates among 6 long-tail "webcam test" variants per hub per month
-- 6 sentence templates per anchor keyword (132 sentences total across 22 anchor keywords)
-- Script detects first-run (no markers) vs. subsequent runs (update existing markers)
+**GitHub Actions Workflow — `.github/workflows/silo-rotation.yml`.** Cron `0 16 1-3 * *` (midnight
+SGT on the 1st–3rd of each month), plus `workflow_dispatch` with an optional `date` override.
+Commits and pushes `public/*.html` directly if the rotation changed anything. Note: this workflow's
+own push only touches `public/**`, which is **not** in `deploy.yml`'s trigger paths — so a rotation
+commit updates the *committed* `public/` (useful for local preview/history) but doesn't by itself
+trigger a live redeploy. `deploy.yml` recomputes the current month's rotation itself as its own last
+build step whenever *it* runs, so the live site catches up automatically on the next `src/**` change
+or manual `workflow_dispatch` — same accepted behavior as `mic-tests.github.io`'s identical setup.
 
-#### GitHub Actions Workflow
+## Legacy Site
 
-**File:** `.github/workflows/silo-rotation.yml`
+`legacy-bootstrap-site/` — a frozen, read-only snapshot of the pre-migration hand-authored site: the
+original 19 tool/info pages, `css/`, `js/`, `img/`, and the old root-level `ads.txt`/`robots.txt`/
+`sitemap.xml`/`site.webmanifest`/`favicon.ico`/`icon.png`/`icon.svg`, plus the old Webpack tooling
+(`webpack.*.js`, `package.json`). Kept for reference/history only — it is not linked from the build,
+not served, and should not be edited.
 
-- Cron: `0 16 1-3 * *` — midnight SGT on days 1, 2, and 3 of each month
-- Days 2 and 3 are retry safety nets; idempotent — no diff = no commit
-- `workflow_dispatch` with optional `date` input (YYYY-MM) for manual override
-- Uses built-in `GITHUB_TOKEN` — no PAT required
-- View runs: GitHub → Actions → "Monthly Silo Link Rotation"
+## Known Gaps
 
-#### HTML Comment Markers
-
-Each silo link injected as:
-```html
-<!-- SILO_START:slot_a -->sentence with <a href="/url">anchor</a><!-- SILO_END:slot_a -->
-```
-
-Empty slots (e.g. no left/right hub neighbour) render as `<!-- SILO_START:slot_b --><!-- SILO_END:slot_b -->`.
-
-Inserted after the first `</p>` following the designated heading. All internal links use clean URLs (no `.html`).
-
-#### Injection Target Headings (per page)
-
-The script uses `(heading_tag, heading_text_fragment)` to locate injection points. `None` = first `<p>` after `<h1>`.
-
-| Page | slot_a | slot_b | slot_c | slot_d |
-|------|--------|--------|--------|--------|
-| `index.html` | after h1 | — | — | — |
-| `webcam-recorder.html` | after h1 | "What the Webcam Recorder Captures" | "Webcam Recording Quality" | "Who Uses an Online Webcam Recorder" |
-| `fps-checker.html` | after h1 | "What Does FPS Mean for Your Webcam" | "Why Your Webcam FPS Matters" | "How to Improve Your Webcam FPS" |
-| `show-webcam.html` | after h1 | "How to Use the Webcam Viewer" | "Why Check Your Webcam Specifications" | "What Your Webcam Details Actually Tell You" |
-| `take-photo.html` | after h1 | "How to Take a Webcam Photo Online" | "What Can You Use a Webcam Photo For" | — |
-| `mirror.html` | after h1 | "How to Use the Webcam Mirror Online" | "Mirror View vs. Natural View" | — |
-| `webcam-effects.html` | after h1 | "Creative Filters and Effects for Your Camera" | "How Live Camera Filters Work in a Browser" | — |
-| `webcam-gif.html` | after h1 | "Tips for Making Better Webcam GIFs" | "What to Use Webcam GIFs For" | — |
-| `webcam-timelapse.html` | after h1 | "Capture Interval" | "What to Capture — Webcam Timelapse Subject Ideas" | — |
-| `resolution-tester.html` | after h1 | "What Is Webcam Resolution" | "What Webcam Resolution Do You Actually Need" | — |
-| `webcam-quality-test.html` | after h1 | "What the Quality Metrics Measure" | "Troubleshooting a Low Webcam Quality Score" | — |
-| `webcam-zoom-test.html` | after h1 | "Understanding Digital Zoom Quality" | "Practical Use Cases for Webcam Digital Zoom" | — |
-| `webcam-brightness-test.html` | after h1 | "What Does Webcam Brightness Mean" | "Why Webcam Brightness Matters" | — |
-| `webcam-color-test.html` | after h1 | "Understanding Colour Casts and White Balance" | "How Lighting Affects Your Webcam" | — |
-| `camera-comparison.html` | after h1 | "What Can You Compare with Two Webcams" | "When to Use the Webcam Comparison Tool" | — |
-| `webcam-lighting-test.html` | after h1 | "What the Lighting Metrics Measure" | "Natural vs. Artificial Light" | — |
-| `webcam-grid-overlay.html` | after h1 | "The Three Overlays" | "Who Uses a Webcam Grid Overlay" | — |
-
-#### Rotation Algorithm
-
-1. **Hub slot_a anchor** — each hub independently picks 1 of 6 long-tail pillar variants per month via `MD5(year-month-hub_file-slot_a) % 6`
-2. **Hub order shuffle** — `random.Random(MD5(year-month-pillar)).shuffle(HUBS)` → determines pillar link + hub left/right neighbours
-3. **Supporter shuffle per silo** — `random.Random(MD5(year-month-silo_N)).shuffle(supporters)` → determines hub down-link + supporter chain order + bridge endpoints
-4. **Sentence selection** — `MD5(year-month-source_file-anchor) % 6` → picks 1 of 6 sentence templates
-
-#### Pillar Anchor Variants (hub slot_a pointing up to index.html)
-
-`"webcam test"`, `"online webcam test"`, `"free webcam test"`, `"test my webcam"`, `"webcam check online"`, `"test your webcam online"`
-
----
-
-## Content Database (`utilities/content_export/`)
-
-`content-db.json` is a generated, read-only snapshot of every page's long-form content, keyed by URL slug (e.g. `"/fps-checker"`). Mirrors the same tool built for mic-tests.github.io, adapted to this site's `<section>`-based page structure. Each page entry is a flat, ordered list of `{level, heading, content}` blocks, one per H2–H6 heading — including FAQ accordion headers (`<h3 class="accordion-header">` wrapping a `<button class="accordion-button">`), since the `accordion-body` text that follows becomes that heading's content automatically. `content` is plain text — tags stripped, entities decoded, with list items flattened to `- item` lines, definition-list pairs to `Term: Definition`, and table rows to `cell | cell | cell`.
-
-Deliberately excluded from every page — identified by isolating each page's top-level `<section>` children inside `<main>` and dropping:
-- `<section class="hero">` — the `<h1>` and its lead/intro paragraph
-- any section containing `<video>`/`<canvas>` — the interactive tool itself, its live results/spec panel (e.g. `show-webcam.html`'s "Camera Information" readout), and any sidebar testimonials that sit alongside it
-- the section embedding `<comentario-comments>` — the Comments widget
-
-Regenerate after editing any page's content:
-```bash
-python3 utilities/content_export/export_content_db.py
-```
-The generator (`export_content_db.py`) is dependency-free (stdlib `html.parser` only) — no relation to the webpack build.
-
----
+- **GitHub Pages source not yet switched to "GitHub Actions"** — see Deployment above. The live
+  site will keep serving whatever it served before this migration until a repo admin flips that
+  setting.
+- **`deploy.yml`'s Node/Chrome setup is unverified in CI** — see "Build toolchain" above.
+- **`site.webmanifest` was archived, not re-added** — the old one was mostly empty placeholder
+  fields (`short_name`/`name` both `""`); this pipeline has no PWA manifest support. Low priority to
+  restore unless there's an actual PWA/install-prompt need.
 
 ## W3 HTML Validator — Pending
 
-All pages should be validated using live URLs via the Nu HTML Checker:
+All pages should be validated using live URLs via the Nu HTML Checker, once GitHub Pages is
+actually serving the new pipeline's output:
 `https://validator.w3.org/nu/?doc=https://webcam-test.github.io/<page-path>`
 
-Example:
-- `https://validator.w3.org/nu/?doc=https://webcam-test.github.io/`
-
-No pages have been validated yet. After each deploy, re-run the validator on changed pages to catch any new issues.
+No pages have been validated yet.
