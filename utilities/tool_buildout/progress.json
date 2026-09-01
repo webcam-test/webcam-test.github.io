@@ -1,0 +1,67 @@
+{
+  "_readme": "One entry per tool from camera-and-audio-test-tools-specification.xlsx's 'Tool Specification' sheet, grouped by that sheet's own cluster column. status: not_started -> built (card+script written, wired into build_data.py's TOOL_SLUGS/CATEGORY_GROUPS, build succeeds) -> verified (browser-tested via claude-in-chrome: controls work, no console errors, camera/mic teardown confirmed) -> done (committed). phase is the spec's own 'Build Phase' column (1-5). See this project's own CLAUDE.md for the resume process.",
+  "camera-core": {
+    "category_label": "A. Camera Core",
+    "tools": [
+      {"slug": "webcam-test-online", "name": "Webcam Test", "phase": 1, "status": "verified"},
+      {"slug": "webcam-camera-information-report", "name": "Camera Information Report", "phase": 1, "status": "verified"},
+      {"slug": "webcam-maximum-resolution-detector", "name": "Maximum Resolution Detector", "phase": 1, "status": "verified"},
+      {"slug": "webcam-fps-frame-rate-checker", "name": "FPS and Frame Rate Checker", "phase": 2, "status": "verified"},
+      {"slug": "webcam-fullscreen-viewer", "name": "Fullscreen Camera Viewer", "phase": 2, "status": "verified"},
+      {"slug": "webcam-photo-capture-online", "name": "Photo Capture", "phase": 2, "status": "verified"},
+      {"slug": "webcam-video-recorder-online", "name": "Video Recorder", "phase": 2, "status": "verified"},
+      {"slug": "webcam-mirror-vs-natural-view-test", "name": "Mirror vs Natural View Test", "phase": 3, "status": "verified"},
+      {"slug": "webcam-sharpness-focus-test", "name": "Sharpness and Focus Test", "phase": 3, "status": "verified"},
+      {"slug": "webcam-lighting-exposure-test", "name": "Lighting and Exposure Test", "phase": 3, "status": "verified"},
+      {"slug": "webcam-side-by-side-comparison", "name": "Side-by-Side Camera Comparison", "phase": 3, "status": "verified"},
+      {"slug": "webcam-rule-of-thirds-composition-grid", "name": "Composition Grid", "phase": 4, "status": "verified"},
+      {"slug": "webcam-live-filter-preview", "name": "Live Filter Preview", "phase": 4, "status": "verified"},
+      {"slug": "webcam-low-light-noise-test", "name": "Low-Light Noise Test", "phase": 4, "status": "verified"},
+      {"slug": "webcam-color-accuracy-test", "name": "Colour Accuracy Test", "phase": 4, "status": "verified"},
+      {"slug": "webcam-autofocus-test", "name": "Autofocus Test", "phase": 4, "status": "verified"},
+      {"slug": "is-my-camera-being-used-check", "name": "Camera In-Use Privacy Check", "phase": 3, "status": "verified"},
+      {"slug": "webcam-latency-delay-test", "name": "Camera Latency Test", "phase": 5, "status": "verified"}
+    ]
+  },
+  "camera-mobile": {
+    "category_label": "B. Camera Mobile",
+    "tools": [
+      {"slug": "mobile-camera-test-online", "name": "Mobile Camera Test", "phase": 1, "status": "verified", "note": "Ships capture (photo) but not inline video recording -- see this project's CLAUDE.md for why that was scoped out of the phase-1 build."},
+      {"slug": "front-camera-test-online", "name": "Front Camera Test", "phase": 2, "status": "verified"},
+      {"slug": "rear-camera-test-online", "name": "Rear Camera Test", "phase": 2, "status": "verified"},
+      {"slug": "phone-camera-resolution-checker", "name": "Phone Camera Resolution Checker", "phase": 2, "status": "verified"},
+      {"slug": "used-phone-camera-inspection-checklist", "name": "Used Phone Camera Inspection", "phase": 3, "status": "verified"},
+      {"slug": "phone-camera-flash-torch-test", "name": "Flash and Torch Test", "phase": 3, "status": "verified"},
+      {"slug": "phone-camera-zoom-test", "name": "Camera Zoom Test", "phase": 4, "status": "verified"},
+      {"slug": "phone-camera-orientation-test", "name": "Camera Orientation Test", "phase": 4, "status": "verified"}
+    ]
+  },
+  "camera-reference": {
+    "category_label": "C. Camera Reference",
+    "tools": [
+      {"slug": "webcam-not-working-troubleshooting-guide", "name": "Webcam Troubleshooting Guide", "phase": 2, "status": "verified"},
+      {"slug": "camera-permissions-guide-windows-mac-android-ios", "name": "Camera Permissions Guide", "phase": 2, "status": "verified"},
+      {"slug": "webcam-resolution-standards-reference", "name": "Webcam Resolution Standards Reference", "phase": 3, "status": "verified"},
+      {"slug": "camera-test-vs-webcam-test-explained", "name": "Camera Test vs Webcam Test Explained", "phase": 4, "status": "verified"},
+      {"slug": "webcam-specs-comparison-database", "name": "Webcam Specs Comparison", "phase": 4, "status": "verified"},
+      {"slug": "use-phone-as-webcam-guide", "name": "Use Your Phone as a Webcam", "phase": 4, "status": "verified"}
+    ]
+  },
+  "audio": {
+    "category_label": "D. Audio",
+    "tools": [
+      {"slug": "microphone-test-online", "name": "Microphone Test", "phase": 1, "status": "verified"},
+      {"slug": "speaker-test-online", "name": "Speaker Test", "phase": 1, "status": "verified"},
+      {"slug": "microphone-input-level-meter", "name": "Microphone Level Meter", "phase": 2, "status": "verified"},
+      {"slug": "microphone-record-playback-test", "name": "Microphone Record and Playback", "phase": 2, "status": "verified"},
+      {"slug": "left-right-stereo-channel-test", "name": "Left and Right Stereo Test", "phase": 2, "status": "verified"},
+      {"slug": "microphone-quality-spectrum-analyzer", "name": "Microphone Quality and Spectrum", "phase": 3, "status": "verified"},
+      {"slug": "audio-frequency-sweep-20hz-20khz", "name": "Frequency Sweep Test", "phase": 3, "status": "verified"},
+      {"slug": "online-hearing-frequency-test", "name": "Online Hearing Test", "phase": 3, "status": "verified"},
+      {"slug": "speaker-polarity-phase-test", "name": "Speaker Polarity and Phase Test", "phase": 4, "status": "verified"},
+      {"slug": "subwoofer-bass-test-online", "name": "Subwoofer and Bass Test", "phase": 4, "status": "verified"},
+      {"slug": "audio-latency-delay-test", "name": "Audio Latency Test", "phase": 4, "status": "verified"},
+      {"slug": "microphone-echo-test", "name": "Microphone Echo Test", "phase": 4, "status": "verified"}
+    ]
+  }
+}

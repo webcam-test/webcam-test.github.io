@@ -187,9 +187,77 @@ for _t in _ALL_TOOLS:
     }
 
 # ---------------------------------------------------------------------------
-# Sentence templates — 2 families, 6 variants each. Anchor text is always
-# the target's own fixed keyword — only the surrounding sentence rotates
-# monthly.
+# Anchor-text variant pools — one pool per tool's primary keyword, mirroring
+# passwordhive.py's own ANCHOR_VARIANTS (individual_websites/passwordhive/
+# utilities/silo_linking sibling in the coffee_can_checker_tools_project
+# monorepo this pipeline was originally built in). Unlike passwordhive's
+# mechanical suffix-detection generator (its keyword vocabulary — "X
+# generator"/"X checker"/"X calculator" — is regular enough for a formula),
+# camera/audio keywords are too irregular for one blind template ("is my
+# camera on", "what camera do i have" are already question-form; "free is
+# my camera on" or "is my camera on online" would read as broken English) —
+# so these are hand-picked per tool instead: the primary keyword itself,
+# one free/online long-tail variation, one secondary/related phrasing, and
+# one contextual/LSI term pulled from what that specific tool actually
+# measures or does (grounded in each tool's own content_html/faq, not
+# generic filler).
+ANCHOR_VARIANTS: dict = {
+    # --- Camera Core ---
+    "webcam test": ["webcam test", "free webcam test online", "test my webcam", "check webcam resolution and specs"],
+    "what camera do i have": ["what camera do i have", "check what camera do i have", "find out what camera do i have", "webcam device information lookup"],
+    "webcam max resolution": ["webcam max resolution", "webcam maximum resolution detector", "find your webcam's highest resolution", "webcam native resolution check"],
+    "webcam fps test": ["webcam fps test", "webcam frame rate checker", "check webcam fps online", "webcam frames per second test"],
+    "webcam fullscreen": ["webcam fullscreen", "webcam fullscreen viewer", "view webcam in fullscreen mode", "full screen camera preview"],
+    "webcam photo capture": ["webcam photo capture", "take a photo with your webcam", "webcam snapshot tool", "capture webcam image online"],
+    "webcam video recorder": ["webcam video recorder", "record webcam video online", "free webcam recording tool", "record video from your camera"],
+    "webcam mirror test": ["webcam mirror test", "mirrored vs natural webcam view", "webcam mirror mode checker", "flip webcam image test"],
+    "webcam comparison": ["webcam comparison", "side-by-side webcam comparison tool", "compare two cameras online", "webcam vs webcam test"],
+    "webcam focus test": ["webcam focus test", "webcam sharpness test", "check webcam focus quality", "camera blur and sharpness checker"],
+    "webcam lighting test": ["webcam lighting test", "webcam exposure test", "check webcam brightness and lighting", "camera lighting conditions checker"],
+    "is my camera on": ["is my camera on", "check if my camera is being used", "camera in use detector", "is my webcam active right now"],
+    "rule of thirds grid": ["rule of thirds grid", "webcam composition grid overlay", "camera framing grid tool", "rule of thirds camera overlay"],
+    "webcam filters": ["webcam filters", "live webcam filter preview", "webcam effects and filters online", "apply filters to webcam feed"],
+    "webcam low light test": ["webcam low light test", "webcam low light noise test", "check webcam performance in low light", "camera noise in dim lighting checker"],
+    "webcam color test": ["webcam color test", "webcam colour accuracy test", "check webcam color reproduction", "camera white balance and color checker"],
+    "webcam autofocus test": ["webcam autofocus test", "check webcam autofocus speed", "camera autofocus lag test", "webcam focus hunting checker"],
+    "webcam latency test": ["webcam latency test", "webcam delay test", "check webcam video lag", "camera latency and delay checker"],
+    # --- Camera Mobile ---
+    "front camera test": ["front camera test", "test your phone's front camera", "selfie camera test online", "front facing camera checker"],
+    "rear camera test": ["rear camera test", "test your phone's rear camera", "main camera test online", "back camera checker"],
+    "mobile camera test": ["mobile camera test", "test your phone camera online", "smartphone camera test", "mobile device camera checker"],
+    "phone camera resolution": ["phone camera resolution", "phone camera resolution checker", "check your phone's actual camera resolution", "smartphone megapixel checker"],
+    "phone camera zoom test": ["phone camera zoom test", "test your phone's digital zoom", "phone camera zoom quality checker", "check phone zoom performance"],
+    "phone flashlight test": ["phone flashlight test", "phone camera flash torch test", "test your phone's camera flash", "check phone torch and flash"],
+    "phone camera orientation test": ["phone camera orientation test", "check phone camera rotation", "camera orientation and rotation checker", "phone camera landscape portrait test"],
+    "check used phone camera": ["check used phone camera", "used phone camera inspection checklist", "inspect a secondhand phone's camera", "buying a used phone camera checklist"],
+    # --- Camera Reference ---
+    "use phone as webcam": ["use phone as webcam", "turn your phone into a webcam", "how to use phone as webcam guide", "phone as webcam setup guide"],
+    "camera permissions": ["camera permissions", "camera permissions guide", "fix blocked camera permissions", "camera and microphone permissions guide"],
+    "webcam not working": ["webcam not working", "webcam not working troubleshooting guide", "fix webcam not working issues", "camera troubleshooting guide"],
+    "webcam resolution chart": ["webcam resolution chart", "webcam resolution standards reference", "video resolution comparison chart", "camera resolution standards guide"],
+    "webcam specs comparison": ["webcam specs comparison", "webcam specs comparison database", "compare webcam specifications", "camera specs reference database"],
+    "camera test vs webcam test": ["camera test vs webcam test", "camera test vs webcam test explained", "difference between camera test and webcam test", "camera testing terminology explained"],
+    # --- Audio ---
+    "microphone test": ["microphone test", "free microphone test online", "test my microphone", "check microphone input levels"],
+    "speaker test": ["speaker test", "free speaker test online", "test your speakers", "check speaker output quality"],
+    "hearing test online": ["hearing test online", "online hearing frequency test", "free hearing test", "check your hearing range"],
+    "microphone record test": ["microphone record test", "microphone record and playback test", "record and play back your mic", "test mic recording quality"],
+    "stereo left right test": ["stereo left right test", "left and right stereo channel test", "check stereo channel balance", "test left right speaker channels"],
+    "speaker polarity test": ["speaker polarity test", "speaker polarity and phase test", "check speaker phase alignment", "speaker wiring polarity checker"],
+    "subwoofer test": ["subwoofer test", "subwoofer bass test online", "test your subwoofer bass response", "check subwoofer low frequency output"],
+    "audio latency test": ["audio latency test", "audio latency and delay test", "check your audio system latency", "measure audio round trip delay"],
+    "frequency sweep test": ["frequency sweep test", "audio frequency sweep 20hz to 20khz", "test speaker frequency range", "full range frequency sweep tool"],
+    "mic echo test": ["mic echo test", "microphone echo test", "check for microphone echo", "test mic feedback and echo"],
+    "microphone spectrum analyzer": ["microphone spectrum analyzer", "microphone quality spectrum analyzer", "analyze microphone frequency response", "check mic spectral quality"],
+    "mic level meter": ["mic level meter", "microphone input level meter", "check microphone input gain", "test mic volume levels"],
+}
+
+# ---------------------------------------------------------------------------
+# Sentence templates — 2 families, 6 variants each. Keyed by family, not by
+# anchor text, since the anchor text itself now rotates among
+# ANCHOR_VARIANTS — a sentence template only needs to know whether the
+# target is a live device test or a no-device reference guide, not which
+# specific variant phrase was chosen for it this month.
 # ---------------------------------------------------------------------------
 
 _GUIDE_ANCHORS = {
@@ -221,11 +289,9 @@ _SENTENCE_FAMILIES = {
     ],
 }
 
-SENTENCES: dict = {}
-for _t in _ALL_TOOLS:
-    _kw = _t["anchor"]
-    _family = "guide" if _kw in _GUIDE_ANCHORS else "live_test"
-    SENTENCES[_kw] = _SENTENCE_FAMILIES[_family]
+
+def _family_for(primary_kw: str) -> str:
+    return "guide" if primary_kw in _GUIDE_ANCHORS else "live_test"
 
 # ---------------------------------------------------------------------------
 # Rotation helpers
@@ -245,14 +311,18 @@ def pick_from_list(items: list, seed_key: str, today: datetime.date):
     return items[idx]
 
 
-def pick_sentence(source_file: str, anchor: str, today: datetime.date) -> str:
-    key = f"{today.year}-M{today.month:02d}-{source_file}-{anchor}"
+def pick_sentence(source_file: str, family: str, today: datetime.date) -> str:
+    key = f"{today.year}-M{today.month:02d}-{source_file}-{family}"
     idx = int(hashlib.md5(key.encode()).hexdigest(), 16) % 6
-    return SENTENCES[anchor][idx]
+    return _SENTENCE_FAMILIES[family][idx]
 
 
 def make_sentence_html(template: str, url: str, anchor: str) -> str:
     return template.replace("{link}", f'<a href="{url}">{anchor}</a>')
+
+
+def _pick_anchor(primary_kw: str, seed_key: str, today: datetime.date) -> str:
+    return pick_from_list(ANCHOR_VARIANTS[primary_kw], seed_key, today)
 
 
 # ---------------------------------------------------------------------------
@@ -268,18 +338,22 @@ def _group_links(pages: list, subsilo: dict, seed_prefix: str, today: datetime.d
     for pos, page in enumerate(shuffled):
         left = shuffled[pos - 1] if pos > 0 else prev_bridge
         right = shuffled[pos + 1] if pos < len(shuffled) - 1 else next_bridge
+        src = page["file"]
 
         links = [
-            {"slot": "slot_a", "anchor": subsilo["anchor"], "url": subsilo["url"]},
+            {"slot": "slot_a", "family": _family_for(subsilo["anchor"]),
+             "anchor": _pick_anchor(subsilo["anchor"], f"{src}_up", today), "url": subsilo["url"]},
         ]
         if left:
-            links.append({"slot": "slot_b", "anchor": left["anchor"], "url": left["url"]})
+            links.append({"slot": "slot_b", "family": _family_for(left["anchor"]),
+                           "anchor": _pick_anchor(left["anchor"], f"{src}_left", today), "url": left["url"]})
         else:
-            links.append({"slot": "slot_b", "anchor": None, "url": None})
+            links.append({"slot": "slot_b", "family": None, "anchor": None, "url": None})
         if right:
-            links.append({"slot": "slot_c", "anchor": right["anchor"], "url": right["url"]})
+            links.append({"slot": "slot_c", "family": _family_for(right["anchor"]),
+                           "anchor": _pick_anchor(right["anchor"], f"{src}_right", today), "url": right["url"]})
         else:
-            links.append({"slot": "slot_c", "anchor": None, "url": None})
+            links.append({"slot": "slot_c", "family": None, "anchor": None, "url": None})
 
         page_links[page["file"]] = links
 
@@ -299,7 +373,8 @@ def generate_links(today: datetime.date) -> dict:
         chosen = pick_from_list(subsilos, f"wc_c{cid}_pillar", today) if subsilos else None
         if chosen:
             links[pillar["file"]] = [
-                {"slot": "slot_a", "anchor": chosen["anchor"], "url": chosen["url"]},
+                {"slot": "slot_a", "family": _family_for(chosen["anchor"]),
+                 "anchor": _pick_anchor(chosen["anchor"], f"{pillar['file']}_down", today), "url": chosen["url"]},
             ]
 
         # Pre-shuffle each sub-silo's own supporting group (for slot_d + bridge wiring).
@@ -314,20 +389,25 @@ def generate_links(today: datetime.date) -> dict:
             left_ss = subsilos[order[pos - 1]] if pos > 0 else None
             right_ss = subsilos[order[pos + 1]] if pos < len(order) - 1 else None
             down = group_first[ss_i]
+            src = ss["file"]
 
             page_links = [
-                {"slot": "slot_a", "anchor": pillar["anchor"], "url": pillar["url"]},
+                {"slot": "slot_a", "family": _family_for(pillar["anchor"]),
+                 "anchor": _pick_anchor(pillar["anchor"], f"{src}_up", today), "url": pillar["url"]},
             ]
             if left_ss:
-                page_links.append({"slot": "slot_b", "anchor": left_ss["anchor"], "url": left_ss["url"]})
+                page_links.append({"slot": "slot_b", "family": _family_for(left_ss["anchor"]),
+                                    "anchor": _pick_anchor(left_ss["anchor"], f"{src}_left", today), "url": left_ss["url"]})
             else:
-                page_links.append({"slot": "slot_b", "anchor": None, "url": None})
+                page_links.append({"slot": "slot_b", "family": None, "anchor": None, "url": None})
             if right_ss:
-                page_links.append({"slot": "slot_c", "anchor": right_ss["anchor"], "url": right_ss["url"]})
+                page_links.append({"slot": "slot_c", "family": _family_for(right_ss["anchor"]),
+                                    "anchor": _pick_anchor(right_ss["anchor"], f"{src}_right", today), "url": right_ss["url"]})
             else:
-                page_links.append({"slot": "slot_c", "anchor": None, "url": None})
+                page_links.append({"slot": "slot_c", "family": None, "anchor": None, "url": None})
             if down:
-                page_links.append({"slot": "slot_d", "anchor": down["anchor"], "url": down["url"]})
+                page_links.append({"slot": "slot_d", "family": _family_for(down["anchor"]),
+                                    "anchor": _pick_anchor(down["anchor"], f"{src}_down", today), "url": down["url"]})
             links[ss["file"]] = page_links
 
         # Supporting groups, bridged linearly within this cluster only
@@ -444,7 +524,7 @@ def run(today: datetime.date, dry_run: bool = False) -> list:
                 else:
                     html = _insert_markers(html, slot, "", tag, text, para_idx, h_idx)
             else:
-                sentence_html = make_sentence_html(pick_sentence(page_file, anchor, today), url, anchor)
+                sentence_html = make_sentence_html(pick_sentence(page_file, link_def["family"], today), url, anchor)
                 if marker_start in html:
                     html = _update_markers(html, slot, sentence_html)
                 else:
