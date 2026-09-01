@@ -43,7 +43,7 @@
   --text:#16161f;
   --text-alt:#26262f;
   --text-secondary:#5b5b6b;
-  --text-muted:#84869b;
+  --text-muted:#6a6c81;
   --accent:#7c5cff;
   --accent-dark:#6244e0;
   --accent-darker:#4c34b8;
@@ -279,11 +279,12 @@ body.drawer-open{overflow:hidden}
 .tool-error{display:none;color:var(--danger);background:var(--danger-bg);border:1px solid rgba(248,113,113,.35);border-radius:var(--radius-sm);padding:.6rem .8rem;font-size:.85rem;margin-bottom:1rem}
 .tool-error.show{display:block}
 .field-note{font-size:.82rem;color:var(--text-muted);margin:.4rem 0 1rem}
+.field-note a{text-decoration:underline;text-underline-offset:2px}
 .tool-options{display:flex;flex-wrap:wrap;gap:1rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--text-secondary)}
 .tool-options label{display:flex;align-items:center;gap:.4rem;cursor:pointer}
 .code-snippet{max-width:1280px;margin:1.5rem auto 0;background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem 1.5rem;overflow-x:auto}
 .code-snippet pre{margin:0;font-family:var(--font-mono);font-size:.85rem;line-height:1.6;color:var(--code-text);white-space:pre-wrap;word-break:break-all}
-.code-snippet .code-label{display:block;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.6rem}
+.code-snippet .code-label{display:block;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:#9496ab;margin-bottom:.6rem}
 
 /* ---------- Slider (volume/gain/frequency/delay controls) ---------- */
 .slider-field .slider-row{display:flex;align-items:center;gap:.9rem}
