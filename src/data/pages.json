@@ -99,24 +99,24 @@
           "Test your webcam's resolution, frame rate, focus, exposure and colour accuracy."
         ],
         "list": [
-          "<a href=\"/\">Webcam Test</a>",
-          "<a href=\"/webcam-camera-information-report\">Camera Information Report</a>",
-          "<a href=\"/webcam-maximum-resolution-detector\">Max Resolution Detector</a>",
-          "<a href=\"/webcam-fps-frame-rate-checker\">FPS &amp; Frame Rate Checker</a>",
-          "<a href=\"/webcam-fullscreen-viewer\">Fullscreen Camera Viewer</a>",
-          "<a href=\"/webcam-photo-capture-online\">Photo Capture</a>",
-          "<a href=\"/webcam-video-recorder-online\">Video Recorder</a>",
-          "<a href=\"/webcam-mirror-vs-natural-view-test\">Mirror vs Natural View</a>",
-          "<a href=\"/webcam-side-by-side-comparison\">Side-by-Side Comparison</a>",
-          "<a href=\"/webcam-sharpness-focus-test\">Sharpness &amp; Focus Test</a>",
-          "<a href=\"/webcam-lighting-exposure-test\">Lighting &amp; Exposure Test</a>",
-          "<a href=\"/is-my-camera-being-used-check\">Is My Camera Being Used?</a>",
-          "<a href=\"/webcam-rule-of-thirds-composition-grid\">Composition Grid</a>",
-          "<a href=\"/webcam-live-filter-preview\">Live Filter Preview</a>",
-          "<a href=\"/webcam-low-light-noise-test\">Low-Light Noise Test</a>",
-          "<a href=\"/webcam-color-accuracy-test\">Colour Accuracy Test</a>",
-          "<a href=\"/webcam-autofocus-test\">Autofocus Test</a>",
-          "<a href=\"/webcam-latency-delay-test\">Camera Latency Test</a>"
+          "<a href=\"/\">webcam test</a>",
+          "<a href=\"/webcam-camera-information-report\">what camera do i have</a>",
+          "<a href=\"/webcam-maximum-resolution-detector\">webcam max resolution</a>",
+          "<a href=\"/webcam-fps-frame-rate-checker\">webcam fps test</a>",
+          "<a href=\"/webcam-fullscreen-viewer\">webcam fullscreen</a>",
+          "<a href=\"/webcam-photo-capture-online\">webcam photo capture</a>",
+          "<a href=\"/webcam-video-recorder-online\">webcam video recorder</a>",
+          "<a href=\"/webcam-mirror-vs-natural-view-test\">webcam mirror test</a>",
+          "<a href=\"/webcam-side-by-side-comparison\">webcam comparison</a>",
+          "<a href=\"/webcam-sharpness-focus-test\">webcam focus test</a>",
+          "<a href=\"/webcam-lighting-exposure-test\">webcam lighting test</a>",
+          "<a href=\"/is-my-camera-being-used-check\">is my camera on</a>",
+          "<a href=\"/webcam-rule-of-thirds-composition-grid\">rule of thirds grid</a>",
+          "<a href=\"/webcam-live-filter-preview\">webcam filters</a>",
+          "<a href=\"/webcam-low-light-noise-test\">webcam low light test</a>",
+          "<a href=\"/webcam-color-accuracy-test\">webcam color test</a>",
+          "<a href=\"/webcam-autofocus-test\">webcam autofocus test</a>",
+          "<a href=\"/webcam-latency-delay-test\">webcam latency test</a>"
         ]
       },
       {
@@ -125,14 +125,14 @@
           "Front/rear lens tests, resolution checks and a used-phone camera inspection built mobile-first."
         ],
         "list": [
-          "<a href=\"/mobile-camera-test-online\">Mobile Camera Test</a>",
-          "<a href=\"/front-camera-test-online\">Mobile Front Camera Test</a>",
-          "<a href=\"/rear-camera-test-online\">Mobile Rear Camera Test</a>",
-          "<a href=\"/phone-camera-resolution-checker\">Mobile Phone Camera Resolution Checker</a>",
-          "<a href=\"/used-phone-camera-inspection-checklist\">Used Mobile Phone Camera Inspection</a>",
-          "<a href=\"/phone-camera-flash-torch-test\">Mobile Flash &amp; Torch Test</a>",
-          "<a href=\"/phone-camera-zoom-test\">Mobile Camera Zoom Test</a>",
-          "<a href=\"/phone-camera-orientation-test\">Mobile Camera Orientation Test</a>"
+          "<a href=\"/mobile-camera-test-online\">mobile camera test</a>",
+          "<a href=\"/front-camera-test-online\">front camera test</a>",
+          "<a href=\"/rear-camera-test-online\">rear camera test</a>",
+          "<a href=\"/phone-camera-resolution-checker\">phone camera resolution</a>",
+          "<a href=\"/used-phone-camera-inspection-checklist\">check used phone camera</a>",
+          "<a href=\"/phone-camera-flash-torch-test\">phone flashlight test</a>",
+          "<a href=\"/phone-camera-zoom-test\">phone camera zoom test</a>",
+          "<a href=\"/phone-camera-orientation-test\">phone camera orientation test</a>"
         ]
       },
       {
@@ -141,12 +141,12 @@
           "Resolution standards, spec comparisons, troubleshooting and permissions guides."
         ],
         "list": [
-          "<a href=\"/webcam-not-working-troubleshooting-guide\">Webcam Troubleshooting Guide</a>",
-          "<a href=\"/camera-permissions-guide-windows-mac-android-ios\">Camera Permissions Guide</a>",
-          "<a href=\"/webcam-resolution-standards-reference\">Resolution Standards Reference</a>",
-          "<a href=\"/camera-test-vs-webcam-test-explained\">Camera Test vs Webcam Test</a>",
-          "<a href=\"/webcam-specs-comparison-database\">Webcam Specs Comparison</a>",
-          "<a href=\"/use-phone-as-webcam-guide\">Use Your Phone as a Webcam</a>"
+          "<a href=\"/webcam-not-working-troubleshooting-guide\">webcam not working</a>",
+          "<a href=\"/camera-permissions-guide-windows-mac-android-ios\">camera permissions</a>",
+          "<a href=\"/webcam-resolution-standards-reference\">webcam resolution chart</a>",
+          "<a href=\"/camera-test-vs-webcam-test-explained\">camera test vs webcam test</a>",
+          "<a href=\"/webcam-specs-comparison-database\">webcam specs comparison</a>",
+          "<a href=\"/use-phone-as-webcam-guide\">use phone as webcam</a>"
         ]
       },
       {
@@ -155,18 +155,18 @@
           "Microphone, speaker, stereo, latency and hearing tests, all running locally in your browser."
         ],
         "list": [
-          "<a href=\"/microphone-test-online\">Microphone Test</a>",
-          "<a href=\"/speaker-test-online\">Speaker Test</a>",
-          "<a href=\"/microphone-input-level-meter\">Microphone Level Meter</a>",
-          "<a href=\"/microphone-record-playback-test\">Microphone Record &amp; Playback</a>",
-          "<a href=\"/left-right-stereo-channel-test\">Left &amp; Right Stereo Test</a>",
-          "<a href=\"/microphone-quality-spectrum-analyzer\">Microphone Quality &amp; Spectrum</a>",
-          "<a href=\"/audio-frequency-sweep-20hz-20khz\">Frequency Sweep Test</a>",
-          "<a href=\"/online-hearing-frequency-test\">Online Hearing Test</a>",
-          "<a href=\"/speaker-polarity-phase-test\">Speaker Polarity &amp; Phase Test</a>",
-          "<a href=\"/subwoofer-bass-test-online\">Subwoofer &amp; Bass Test</a>",
-          "<a href=\"/audio-latency-delay-test\">Audio Latency Test</a>",
-          "<a href=\"/microphone-echo-test\">Microphone Echo Test</a>"
+          "<a href=\"/microphone-test-online\">microphone test</a>",
+          "<a href=\"/speaker-test-online\">speaker test</a>",
+          "<a href=\"/microphone-input-level-meter\">mic level meter</a>",
+          "<a href=\"/microphone-record-playback-test\">microphone record test</a>",
+          "<a href=\"/left-right-stereo-channel-test\">stereo left right test</a>",
+          "<a href=\"/microphone-quality-spectrum-analyzer\">microphone spectrum analyzer</a>",
+          "<a href=\"/audio-frequency-sweep-20hz-20khz\">frequency sweep test</a>",
+          "<a href=\"/online-hearing-frequency-test\">hearing test online</a>",
+          "<a href=\"/speaker-polarity-phase-test\">speaker polarity test</a>",
+          "<a href=\"/subwoofer-bass-test-online\">subwoofer test</a>",
+          "<a href=\"/audio-latency-delay-test\">audio latency test</a>",
+          "<a href=\"/microphone-echo-test\">mic echo test</a>"
         ]
       }
     ]

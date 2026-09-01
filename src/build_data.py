@@ -294,17 +294,78 @@ def build_site(tools):
 # (+list) shape render_info_content() in generate.py expects.
 # ---------------------------------------------------------------------------
 
+# /sitemap's own link text per tool — deliberately NOT nav_name (used in the
+# header dropdowns/mobile drawer) or footer_anchor (used in the footer
+# mega-menu): reusing either here would mean two, sometimes three, identical
+# on-page anchors pointing at the same URL. These are the same real,
+# search-volume-ranked primary keywords utilities/silo_linking/
+# generate_silo_rotation.py already uses as in-body silo-link anchor text
+# for each tool (see that script's own CLUSTERS) — reused here rather than
+# hand-authoring a fourth distinct phrase per tool from scratch, since
+# they're already a genuinely different register (short, lowercase keyword
+# phrases) from nav_name's Title Case labels and footer_anchor's full CTA
+# sentences.
+SITEMAP_ANCHORS = {
+    "webcam-test-online": "webcam test",
+    "webcam-live-filter-preview": "webcam filters",
+    "use-phone-as-webcam-guide": "use phone as webcam",
+    "webcam-video-recorder-online": "webcam video recorder",
+    "front-camera-test-online": "front camera test",
+    "webcam-mirror-vs-natural-view-test": "webcam mirror test",
+    "webcam-rule-of-thirds-composition-grid": "rule of thirds grid",
+    "webcam-autofocus-test": "webcam autofocus test",
+    "webcam-sharpness-focus-test": "webcam focus test",
+    "webcam-lighting-exposure-test": "webcam lighting test",
+    "webcam-low-light-noise-test": "webcam low light test",
+    "webcam-color-accuracy-test": "webcam color test",
+    "camera-permissions-guide-windows-mac-android-ios": "camera permissions",
+    "webcam-not-working-troubleshooting-guide": "webcam not working",
+    "webcam-resolution-standards-reference": "webcam resolution chart",
+    "webcam-specs-comparison-database": "webcam specs comparison",
+    "camera-test-vs-webcam-test-explained": "camera test vs webcam test",
+    "webcam-photo-capture-online": "webcam photo capture",
+    "phone-camera-resolution-checker": "phone camera resolution",
+    "mobile-camera-test-online": "mobile camera test",
+    "rear-camera-test-online": "rear camera test",
+    "phone-camera-zoom-test": "phone camera zoom test",
+    "phone-camera-flash-torch-test": "phone flashlight test",
+    "phone-camera-orientation-test": "phone camera orientation test",
+    "used-phone-camera-inspection-checklist": "check used phone camera",
+    "webcam-side-by-side-comparison": "webcam comparison",
+    "is-my-camera-being-used-check": "is my camera on",
+    "webcam-fullscreen-viewer": "webcam fullscreen",
+    "webcam-camera-information-report": "what camera do i have",
+    "webcam-fps-frame-rate-checker": "webcam fps test",
+    "webcam-maximum-resolution-detector": "webcam max resolution",
+    "webcam-latency-delay-test": "webcam latency test",
+    "microphone-test-online": "microphone test",
+    "speaker-test-online": "speaker test",
+    "online-hearing-frequency-test": "hearing test online",
+    "microphone-record-playback-test": "microphone record test",
+    "left-right-stereo-channel-test": "stereo left right test",
+    "speaker-polarity-phase-test": "speaker polarity test",
+    "subwoofer-bass-test-online": "subwoofer test",
+    "audio-latency-delay-test": "audio latency test",
+    "audio-frequency-sweep-20hz-20khz": "frequency sweep test",
+    "microphone-echo-test": "mic echo test",
+    "microphone-quality-spectrum-analyzer": "microphone spectrum analyzer",
+    "microphone-input-level-meter": "mic level meter",
+}
+
+
 def build_sitemap_sections(tools):
     """Builds /sitemap's sections straight from CATEGORY_GROUPS/TOOL_SLUGS
     rather than hand-authoring it, so it can never drift out of sync as
-    tools are added — same reasoning as passwordhive's own build_sitemap_sections()."""
+    tools are added — same reasoning as passwordhive's own build_sitemap_sections().
+    Link text is SITEMAP_ANCHORS, not nav_name — see that dict's own comment."""
     by_slug = {t["slug"]: t for t in tools}
     sections = []
     for group in CATEGORY_GROUPS:
         items = []
         for slug in group.get("slugs", []):
             url = "/" if slug == HOME_SLUG else "/%s" % slug
-            items.append('<a href="%s">%s</a>' % (url, html.escape(by_slug[slug]["nav_name"])))
+            anchor = SITEMAP_ANCHORS.get(slug, by_slug[slug]["nav_name"])
+            items.append('<a href="%s">%s</a>' % (url, html.escape(anchor)))
         for t in group.get("tools", []):
             items.append(html.escape(t["name"]) + " (coming soon)")
         sections.append({"heading": group["label"], "paragraphs": [group["tagline"]], "list": items})

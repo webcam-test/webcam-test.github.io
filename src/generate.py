@@ -96,7 +96,7 @@ def render_adsense_header():
     render_adsense_header(): 728x90 at >=768px, 300x100 below that, resized
     via inline JS since the unit isn't configured with data-ad-format="auto"."""
     return (
-        '<aside class="ad-slot ad-slot-header" aria-label="Advertisement"><ins class="adsbygoogle" id="adsense-header" '
+        '<aside class="ad-slot ad-slot-header" aria-label="Advertisement (top)"><ins class="adsbygoogle" id="adsense-header" '
         'data-ad-client="%s" data-ad-slot="%s"></ins>'
         "<script>(function(){"
         'var ins=document.getElementById("adsense-header");'
@@ -114,7 +114,7 @@ def render_adsense_body():
     real ad unit is already configured on the live site (not a fixed
     300x250 like passwordhive's body units)."""
     return (
-        '<aside class="ad-slot" aria-label="Advertisement"><ins class="adsbygoogle ad-auto" style="display:block" '
+        '<aside class="ad-slot" aria-label="Advertisement (in-article)"><ins class="adsbygoogle ad-auto" style="display:block" '
         'data-ad-client="%s" data-ad-slot="%s" data-ad-format="auto" data-full-width-responsive="true"></ins>'
         '<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></aside>'
         % (ADSENSE_CLIENT, ADSENSE_SLOTS["body"])
@@ -126,7 +126,7 @@ def render_adsense_footer():
     unconditional placement as passwordhive's "footer" slot, present even on
     a tool with no content_html."""
     return (
-        '<aside class="ad-slot" aria-label="Advertisement"><ins class="adsbygoogle ad-rectangle" style="display:inline-block;width:300px;height:250px" '
+        '<aside class="ad-slot" aria-label="Advertisement (end of article)"><ins class="adsbygoogle ad-rectangle" style="display:inline-block;width:300px;height:250px" '
         'data-ad-client="%s" data-ad-slot="%s"></ins>'
         '<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></aside>'
         % (ADSENSE_CLIENT, ADSENSE_SLOTS["footer"])
@@ -594,6 +594,7 @@ def minify_html_dir(src_dir, dst_dir):
         "--output-dir", dst_dir,
         "--file-ext", "html",
         "--collapse-whitespace",
+        "--collapse-boolean-attributes",
         "--remove-comments",
         "--minify-css", "true",
         "--minify-js", "true",
