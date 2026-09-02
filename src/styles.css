@@ -192,7 +192,7 @@ body.drawer-open{overflow:hidden}
 .breadcrumbs li[aria-current="page"]{color:var(--text-secondary);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw}
 
 /* ---------- Hero ---------- */
-.hero{max-width:1280px;margin:0 auto;padding:1.1rem 1.5rem 1.25rem;text-align:center}
+.hero{max-width:1280px;margin:0 auto;padding:1.1rem 1.5rem .5rem;text-align:center}
 .page-hero{max-width:1280px}
 .hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.15}
 .hero .subtitle{font-size:1.1rem;color:var(--text-secondary);margin:0 auto 1.25rem}
@@ -538,7 +538,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
 @media (max-width:768px){
   nav.top-nav{padding:.6rem 1rem;gap:.75rem}
   .breadcrumbs{padding:.6rem 1rem 0;font-size:.78rem}
-  .hero{padding:1.25rem .25rem .75rem}
+  .hero{padding:1.25rem .25rem .375rem}
   .hero h1{font-size:1.7rem;margin-bottom:.5rem}
   .hero .subtitle{font-size:.95rem;margin-bottom:1rem}
   .tool-section{padding:0 .75rem 1.5rem}
