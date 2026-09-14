@@ -169,6 +169,13 @@ def _card_h2_count(slug: str) -> int:
     return data.get("card", {}).get("fields_html", "").count("<h2")
 
 
+def _content_h2_count(slug: str) -> int:
+    path = os.path.join(CONTENT_DIR, f"{slug}.json")
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    return (data.get("content_html") or "").count("<h2")
+
+
 _ALL_TOOLS = []
 for _cluster in CLUSTERS:
     _ALL_TOOLS.append(_cluster["pillar"])
@@ -178,12 +185,33 @@ for _cluster in CLUSTERS:
 
 INJECTION_TARGETS: dict = {}
 for _t in _ALL_TOOLS:
-    _n = _card_h2_count(_file_to_slug(_t["file"]))
+    _slug = _file_to_slug(_t["file"])
+    _n = _card_h2_count(_slug)
+    _content_h2 = _content_h2_count(_slug)
+    # slot_d's default target is the 3rd real content <h2> (_n+2). A few
+    # tools' content_html only has 2 real <h2> sections — that heading
+    # doesn't exist, and unlike slot_b/slot_c (which "not this hub's turn"
+    # rotation can legitimately leave empty), slot_d is a hub's fixed link
+    # down to its first supporter and always needs a real landing spot.
+    # Before this fallback, the paragraph search for a nonexistent heading
+    # index used to silently walk past the FAQ (rendered as <dl>, no <p>
+    # tags) into the shared <footer>'s own paragraph, corrupting it on
+    # every other page (see the <footer>-boundary guard in
+    # _find_paragraph_end below). Rather than just refusing to inject (safe,
+    # but leaves the link permanently missing), fall back to the same
+    # heading slot_c already targets — the last real content <h2> — at the
+    # paragraph *after* slot_c's (para_index=1, not 0), so the two slots
+    # land in different paragraphs of genuine article content instead of
+    # colliding or reaching for a heading that isn't there.
+    if _content_h2 >= 3:
+        _d_index, _d_para = _n + 2, 0
+    else:
+        _d_index, _d_para = _n + max(_content_h2 - 1, 0), 1
     INJECTION_TARGETS[_t["file"]] = {
         "slot_a": ("h1", None, 0, 0),
         "slot_b": ("h2", None, 0, _n),
         "slot_c": ("h2", None, 0, _n + 1),
-        "slot_d": ("h2", None, 0, _n + 2),
+        "slot_d": ("h2", None, _d_para, _d_index),
     }
 
 # ---------------------------------------------------------------------------
