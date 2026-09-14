@@ -575,8 +575,27 @@ if __name__ == "__main__":
     print(f"Silo rotation — webcamtest — {today.year}-M{today.month:02d}" + (" [DRY RUN]" if dry_run else ""))
     errs = run(today, dry_run=dry_run)
     if errs:
-        print("\nErrors:", file=sys.stderr)
-        for e in errs:
-            print(f"  {e}", file=sys.stderr)
-        sys.exit(1)
+        # "INJECT FAILED ... heading not found" is a *permanent* structural
+        # fact for a handful of hub pages whose content_html doesn't have
+        # enough real <h2> sections for slot_d's computed heading_index to
+        # land in (see _find_paragraph_end's <footer> boundary above — before
+        # that boundary existed, this same shortfall silently mis-injected
+        # the link into the shared footer instead of failing loudly, which
+        # is worse). It will recur every month for the same page/slot until
+        # that tool's content_html grows a 3rd <h2> section — that's a
+        # content fix, not something this script can self-heal, so it's a
+        # warning rather than a build-breaking error. MISSING FILE (a
+        # genuine misconfiguration — a page in silo_config that doesn't
+        # exist in PAGES_DIR) stays fatal.
+        fatal = [e for e in errs if not e.startswith("INJECT FAILED")]
+        warnings = [e for e in errs if e.startswith("INJECT FAILED")]
+        if warnings:
+            print("\nWarnings (slot skipped — no heading target found; safe, doesn't fail the build):", file=sys.stderr)
+            for w in warnings:
+                print(f"  {w}", file=sys.stderr)
+        if fatal:
+            print("\nErrors:", file=sys.stderr)
+            for e in fatal:
+                print(f"  {e}", file=sys.stderr)
+            sys.exit(1)
     print("Done.")
