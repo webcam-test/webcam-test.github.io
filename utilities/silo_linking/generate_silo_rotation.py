@@ -448,9 +448,22 @@ def _update_markers(html: str, slot: str, sentence_html: str) -> str:
 
 
 def _find_paragraph_end(html: str, heading_tag: str, heading_text, para_index: int = 0, heading_index: int = 0):
+    # Bound the search to content before <footer> — a heading_index computed
+    # from a tool's own card <h2> count (see INJECTION_TARGETS above) can
+    # legitimately overshoot past that tool's real content_html <h2>s into
+    # the page's FAQ heading (rendered as <dl>/<dt>/<dd>, no <p> tags at
+    # all), so an unbounded forward </p> search silently walks straight
+    # through the FAQ and comments sections into the shared footer's own
+    # <p class="footer-tagline">, corrupting it with a page-specific link on
+    # that one page. Bounding the haystack makes that case behave the same
+    # as "not enough headings" below: no target found, injection skipped for
+    # this slot this month, rather than landing somewhere unintended.
+    footer_start = html.find("<footer")
+    haystack = html if footer_start == -1 else html[:footer_start]
+
     if heading_text is None:
         pattern = re.compile(f"</{re.escape(heading_tag)}>", re.I)
-        matches = list(pattern.finditer(html))
+        matches = list(pattern.finditer(haystack))
         if heading_index >= len(matches):
             return None
         search_from = matches[heading_index].end()
@@ -458,7 +471,7 @@ def _find_paragraph_end(html: str, heading_tag: str, heading_text, para_index: i
         search_from = None
         for m in re.finditer(
             r"<" + heading_tag + r"[^>]*>(.*?)</" + heading_tag + r">",
-            html, re.S
+            haystack, re.S
         ):
             if heading_text in _strip_tags(m.group(1)):
                 search_from = m.end()
@@ -469,7 +482,7 @@ def _find_paragraph_end(html: str, heading_tag: str, heading_text, para_index: i
     offset = search_from
     p_end = None
     for i in range(para_index + 1):
-        p_end = re.search(r"</p>", html[offset:])
+        p_end = re.search(r"</p>", haystack[offset:])
         if not p_end:
             return None
         if i < para_index:
