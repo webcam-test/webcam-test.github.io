@@ -134,7 +134,7 @@ def render_adsense_body():
     real ad unit is already configured on the live site (not a fixed
     300x250 like passwordhive's body units)."""
     return (
-        '<aside class="ad-slot" aria-label="Advertisement (in-article)"><ins class="adsbygoogle ad-auto" style="display:block" '
+        '<aside class="ad-slot" aria-label="Advertisement (in-article)"><ins class="adsbygoogle ad-auto" '
         'data-ad-client="%s" data-ad-slot="%s" data-ad-format="auto" data-full-width-responsive="true"></ins>'
         '<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></aside>'
         % (ADSENSE_CLIENT, ADSENSE_SLOTS["body"])
@@ -146,7 +146,7 @@ def render_adsense_footer():
     unconditional placement as passwordhive's "footer" slot, present even on
     a tool with no content_html."""
     return (
-        '<aside class="ad-slot" aria-label="Advertisement (end of article)"><ins class="adsbygoogle ad-rectangle" style="display:inline-block;width:300px;height:250px" '
+        '<aside class="ad-slot" aria-label="Advertisement (end of article)"><ins class="adsbygoogle ad-rectangle" '
         'data-ad-client="%s" data-ad-slot="%s"></ins>'
         '<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></aside>'
         % (ADSENSE_CLIENT, ADSENSE_SLOTS["footer"])
@@ -336,7 +336,7 @@ def render_more_menu(site, by_slug):
             '</div>' % (group["key"], icon, html.escape(group["label"]), links)
         )
     return (
-        '<div class="cat-menu-item" id="moreMenuItem" style="display:none">'
+        '<div class="cat-menu-item" id="moreMenuItem">'
         '<button type="button" class="cat-menu-btn" id="moreMenuBtn" aria-expanded="false" aria-controls="moreMenuPanel">More%s</button>'
         '<div class="tools-menu more-menu" id="moreMenuPanel">%s</div>'
         '</div>' % (CHEVRON_SVG, "".join(sections))

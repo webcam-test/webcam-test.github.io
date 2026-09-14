@@ -145,6 +145,12 @@ nav.top-nav{max-width:1280px;margin:0 auto;padding:1rem 1.5rem;display:flex;alig
 .more-menu-section[data-cat-key="camera-reference"] .more-menu-icon{background:rgba(148,163,184,.16);color:var(--cluster-camera-reference)}
 .more-menu-section[data-cat-key="audio"] .more-menu-icon{background:rgba(251,146,60,.16);color:var(--cluster-audio)}
 
+/* Priority+ "More" item's pre-JS state -- initPriorityNav()'s layout() (see
+   template.html) always sets moreItem.style.display itself on first run
+   ('none' or 'flex'), so this is purely the before-JS-runs fallback to avoid
+   a flash of the button before it's measured. */
+#moreMenuItem{display:none}
+
 /* Hamburger trigger — hidden on desktop, swapped in for .category-strip
    below the nav-drawer breakpoint (see media query at the bottom of this
    file). Kept as a real <button> outside .category-strip so it isn't part
@@ -193,7 +199,7 @@ body.drawer-open{overflow:hidden}
 
 /* ---------- Hero ---------- */
 .hero{max-width:1280px;margin:0 auto;padding:1.1rem 1.5rem .5rem;text-align:center}
-.page-hero{max-width:1280px}
+.page-hero{max-width:1280px;padding-bottom:0}
 .hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.15}
 .hero .subtitle{font-size:1.1rem;color:var(--text-secondary);margin:0 auto 1.25rem}
 .hero .subtitle a{text-decoration:underline;text-underline-offset:2px}
@@ -209,6 +215,8 @@ body.drawer-open{overflow:hidden}
 .ad-slot{margin:.75rem auto;text-align:center;max-width:100%;min-height:250px}
 .ad-slot ins{max-width:100%}
 .ad-slot-header{min-height:100px}
+.ad-auto{display:block}
+.ad-rectangle{display:inline-block;width:300px;height:250px}
 @media(min-width:768px){.ad-slot-header{min-height:90px}}
 
 /* ---------- 404 page ---------- */
@@ -302,6 +310,9 @@ body.drawer-open{overflow:hidden}
 .info-row:nth-child(even){background:var(--bg-alt)}
 .info-row .info-label{color:var(--text-secondary)}
 .info-row .info-value{font-family:var(--font-mono);color:var(--text);font-weight:600;text-align:right}
+/* Section label above a JS-templated step list (permissions-guide platform
+   panels). */
+.guide-label{font-weight:700;color:var(--text);margin:0 0 .5rem}
 
 /* ---------- Data table (multi-column sortable reference tables) ---------- */
 .data-table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-md)}
@@ -312,6 +323,9 @@ body.drawer-open{overflow:hidden}
 .data-row:last-child{border-bottom:none}
 .data-row:nth-child(even){background:var(--bg-alt)}
 .data-row.highlight{background:var(--accent-softer);border-color:var(--accent)}
+/* 6-column variant (webcam-specs-comparison-database has one extra column
+   vs. the 5-column default above). */
+.data-table.cols-6 .data-table-head,.data-table.cols-6 .data-row{grid-template-columns:1.3fr .8fr .7fr .8fr .9fr .9fr}
 .data-row .data-name{font-weight:600;color:var(--text)}
 .data-row .data-dims,.data-row .data-mp,.data-row .data-aspect{font-family:var(--font-mono);color:var(--text-secondary)}
 .info-row .info-value.unsupported{color:var(--text-muted);font-weight:400;font-style:italic}
@@ -396,6 +410,7 @@ body.drawer-open{overflow:hidden}
 .ladder-item.current{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
 .ladder-item .ladder-name{font-weight:600;color:var(--text)}
 .ladder-item .ladder-dims{font-family:var(--font-mono);color:var(--text-secondary)}
+.ladder-item.clickable{cursor:pointer}
 
 /* ---------- Trust badges / chips ---------- */
 .trust-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
@@ -558,3 +573,133 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
   .media-controls{flex-direction:column;align-items:stretch}
   .media-controls>*{width:100%}
 }
+
+/* ---------- Utility helpers (migrated from inline style="" attributes) ----------
+   A small, closed set of single-purpose classes for the recurring one-off
+   spacing/display/sizing tweaks that used to live as inline style="" in
+   content/<slug>.json (every tool authored its own card markup, so the same
+   "space above this block" need kept recurring as ad hoc inline styles
+   instead of a shared class). Kept separate from the component classes
+   above/below -- this is spacing/display/text atoms only, not a general
+   utility framework. */
+.mt-0{margin-top:0}
+.mt-05{margin-top:.5rem}
+.mt-06{margin-top:.6rem}
+.mt-075{margin-top:.75rem}
+.mt-1{margin-top:1rem}
+.mt-125{margin-top:1.25rem}
+.mb-0{margin-bottom:0}
+.mb-05{margin-bottom:.5rem}
+.mb-1{margin-bottom:1rem}
+.mb-125{margin-bottom:1.25rem}
+.py-05{padding:.5rem 0}
+.w-100{width:100%}
+.w-0{width:0%}
+.h-90{height:90px}
+.h-140{height:140px}
+.h-180{height:180px}
+.pos-left-0{left:0%}
+.mw-150{max-width:150px}
+.mw-160{max-width:160px}
+.mw-170{max-width:170px}
+.jc-center{justify-content:center}
+.ta-center{text-align:center}
+.fs-085{font-size:.85rem}
+.fs-095{font-size:.95rem}
+.fs-082{font-size:.82rem}
+.c-muted{color:var(--text-muted)}
+.no-underline{text-decoration:none}
+.u-hidden{display:none}
+.img-contain{width:100%;height:100%;object-fit:contain}
+.text-break-sm{font-size:.75rem;word-break:break-word}
+.text-break-sm2{font-size:.78rem;word-break:break-word}
+.text-break-xs{font-size:.72rem;word-break:break-all}
+.text-break-xs-wrap{font-size:.72rem;word-break:break-word}
+
+/* Comparison/recommendation info-rows ("which tool should I use?") -- a
+   distinct .info-row variant from the plain key/value spec rows: the label
+   is a full question/sentence (needs a max-width so the value can sit
+   opposite it) and the value is a link, not a mono readout. */
+.info-label-60{max-width:60%}
+.info-label-45{max-width:45%}
+.link-row-left{text-align:left;font-weight:400;font-family:inherit}
+.link-row-right{text-align:right;font-family:inherit;font-weight:600}
+.link-row-right-light{text-align:right;font-family:inherit;font-weight:400}
+.info-row .info-value.value-normal-case{font-weight:400;text-transform:none;letter-spacing:0}
+
+/* .info-row highlight state (matches .stat-tile.highlight/.data-row.highlight/
+   .ladder-item.best -- same "this is the relevant one" treatment, ported to
+   .info-row for the age-comparison / result-highlight rows). */
+.info-row.highlight{background:var(--accent-softer);border-color:var(--accent)}
+
+/* Big centered mono readout (frequency sweep Hz, latency ms, hearing-test
+   age band, subwoofer Hz) -- one shared shell + value, sized/toned per tool
+   via modifiers rather than four near-duplicate inline blobs. */
+.readout-wrap{text-align:center;padding:1.5rem 0}
+.readout-wrap.pad-sm{padding:1rem 0}
+.readout-value{font-family:var(--font-mono);font-weight:700}
+.readout-value.size-sm{font-size:1.3rem}
+.readout-value.size-lg{font-size:2rem}
+.readout-value.size-md2{font-size:1.8rem}
+.readout-value.size-xl{font-size:2.4rem}
+.readout-value.tone-accent{color:var(--accent-light)}
+.readout-value.tone-muted{color:var(--text-secondary)}
+
+/* Textual (non-numeric) stat-tile value -- smaller + breakable, for method
+   names / ranges rather than a short mono number. */
+.stat-tile .stat-value.text-value{font-size:.95rem;word-break:break-word}
+
+/* Mono, secondary-colored inline label (device id / duration readouts next
+   to a control, not inside a .stat-tile). */
+.mono-secondary{font-family:var(--font-mono);font-size:.85rem;color:var(--text-secondary)}
+
+/* Inline checkbox/toggle label with an icon-less leading gap (peak-hold /
+   auto-detect style options placed directly under a control, distinct from
+   .tool-options which is a full toolbar row). */
+.inline-check-label{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--text-secondary)}
+
+/* Full-width, larger "kill switch" danger button variant of .btn-primary +
+   .btn-danger (echo-test's STOP/MUTE control). */
+.btn-danger-lg{font-size:1.1rem;padding:1.1rem;background:var(--danger)}
+
+/* Spectrum-analyzer frequency scale row (labels under the canvas). */
+.scale-labels-row{display:flex;justify-content:space-between;font-size:.68rem;color:var(--text-muted);font-family:var(--font-mono);margin-top:.3rem}
+
+/* .media-preview aspect-ratio modifiers for non-16:9 comparison photo frames
+   (grey-card / focus-chart / before-after panels). */
+.media-preview.ratio-4-3{aspect-ratio:4/3}
+.media-preview.ratio-3-4{aspect-ratio:3/4}
+
+/* Comparison/reference <img> that mirrors .media-preview img's own object-fit
+   but sits outside a .media-preview wrapper (printable chart/card preview). */
+.chart-preview-img{width:100%;height:100%;object-fit:contain;background:#fff;border-radius:var(--radius-sm)}
+
+/* Small bordered canvas used as a live mini-graph under a meter/reading
+   (autofocus trend, lighting histogram) -- height set per tool via modifier. */
+.mini-graph-canvas{width:100%;margin-top:1rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-alt)}
+.mini-graph-canvas.h-70{height:70px}
+.mini-graph-canvas.h-90{height:90px}
+
+/* Hidden-until-captured framed preview (photo/video), revealed via JS once a
+   capture exists -- inline style="display:none" on these used to be paired
+   with ad hoc framing; both now live in one class. */
+.captured-photo-frame{width:100%;border-radius:var(--radius-sm);margin-bottom:1rem;border:1px solid var(--border)}
+.recorded-video-frame{width:100%;border-radius:var(--radius-md);background:#000;margin-bottom:.75rem}
+
+/* Neutral colour-accuracy swatch box. */
+.color-swatch{height:48px;border-radius:var(--radius-sm);border:1px solid var(--border)}
+
+/* Latency/delay flash-detection box (webcam-latency-delay-test) -- a plain
+   bordered square that flips to a solid colour the instant a flash is
+   detected on camera, timed against the flash trigger. */
+.latency-flash-box{width:100%;aspect-ratio:16/9;border-radius:var(--radius-md);background:var(--bg-alt);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-weight:700;font-size:1.3rem;margin-bottom:1rem;transition:background-color .1s,color .1s}
+
+/* Fullscreen torch/flash overlay (phone-camera-flash-torch-test) -- a plain
+   white full-viewport panel used as a photography light source, with its
+   close button pinned to the corner. */
+.torch-fullscreen-overlay{position:fixed;inset:0;z-index:9999;background:#fff;aspect-ratio:auto;border-radius:0;align-items:center;justify-content:center}
+.torch-fullscreen-close{position:absolute;top:1.5rem;right:1.5rem;z-index:2}
+
+/* .device-select reused as a plain text search input (webcam-resolution-
+   standards-reference) -- same field chrome, no dropdown-arrow background. */
+.device-select.device-select-text{cursor:text;background-image:none;padding-right:.9rem}
