@@ -1,0 +1,58 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle4 svgDesc4">
+  <title id="svgTitle4">Webcam brightness gauge: too dark, balanced, too bright</title>
+  <desc id="svgDesc4">Semi-circle gauge showing the three brightness zones a webcam color test reports -- too dark, balanced exposure, and too bright -- with a needle marking a sample reading.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam brightness gauge: too dark, balanced, too bright</dc:title>
+        <dc:description>Semi-circle gauge showing the three brightness zones a webcam color test reports -- too dark, balanced exposure, and too bright -- with a needle marking a sample reading.</dc:description>
+        <dc:subject><rdf:Bag>
+          <rdf:li>brightness</rdf:li>
+          <rdf:li>exposure</rdf:li>
+          <rdf:li>low light</rdf:li>
+          <rdf:li>backlighting</rdf:li>
+          <rdf:li>webcam color test</rdf:li>
+        </rdf:Bag></dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-color-accuracy-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="520" fill="#fcfcfb"/>
+  <text x="450" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="middle">Reading the brightness score</text>
+
+  <!-- gauge arc: three status-colored segments -->
+  <!-- center (450, 380), radius 260, semicircle from 180deg to 0deg -->
+  <g stroke-width="46" fill="none">
+    <!-- Too dark: 180deg -> 120deg -->
+    <path d="M 190 380 A 260 260 0 0 1 320 154" stroke="#ec835a" stroke-linecap="butt"/>
+    <!-- Balanced: 120deg -> 60deg -->
+    <path d="M 320 154 A 260 260 0 0 1 580 154" stroke="#0ca30c" stroke-linecap="butt"/>
+    <!-- Too bright: 60deg -> 0deg -->
+    <path d="M 580 154 A 260 260 0 0 1 710 380" stroke="#fab219" stroke-linecap="butt"/>
+  </g>
+
+  <!-- needle pointing into "balanced" zone at ~72 score -->
+  <g>
+    <line x1="450" y1="380" x2="360" y2="200" stroke="#0b0b0b" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="450" cy="380" r="16" fill="#0b0b0b"/>
+  </g>
+
+  <!-- labels -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" text-anchor="middle">
+    <text x="235" y="140" font-size="16" font-weight="700" fill="#0b0b0b">Too dark</text>
+    <text x="235" y="160" font-size="12.5" fill="#52514e">0 - 30</text>
+
+    <text x="450" y="100" font-size="16" font-weight="700" fill="#0b0b0b">Balanced</text>
+    <text x="450" y="120" font-size="12.5" fill="#52514e">31 - 75</text>
+
+    <text x="665" y="140" font-size="16" font-weight="700" fill="#0b0b0b">Too bright</text>
+    <text x="665" y="160" font-size="12.5" fill="#52514e">76 - 100</text>
+  </g>
+
+  <text x="450" y="440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#0b0b0b" text-anchor="middle">72 / 100</text>
+  <text x="450" y="466" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e" text-anchor="middle">Sample reading -- within the balanced range</text>
+
+  <text x="450" y="500" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781" text-anchor="middle">A score near either end usually means backlighting or too little front light, not a faulty camera.</text>
+</svg>

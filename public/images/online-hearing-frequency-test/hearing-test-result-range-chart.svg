@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 460" style="width:100%;height:auto" role="img" aria-labelledby="httl-title httl-desc">
+  <title id="httl-title">Hearing test result range from good hearing to significant hearing loss</title>
+  <desc id="httl-desc">Segmented bar chart showing the four result categories an online hearing test typically reports: good hearing, mild hearing loss, moderate hearing loss, and significant hearing loss, with a marker indicating where a sample result falls.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Hearing test result range chart</dc:title>
+        <dc:description>Segmented bar chart showing the four result categories an online hearing test typically reports: good hearing, mild hearing loss, moderate hearing loss, and significant hearing loss, with a marker indicating where a sample result falls.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>hearing test online</rdf:li>
+            <rdf:li>online hearing test</rdf:li>
+            <rdf:li>hearing loss</rdf:li>
+            <rdf:li>hearing test results</rdf:li>
+            <rdf:li>mild hearing loss</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/online-hearing-frequency-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="460" fill="#fcfcfb"/>
+  <text x="40" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">How online hearing test results are categorized</text>
+  <text x="40" y="78" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Every result lands somewhere on this scale, from good hearing to significant hearing loss.</text>
+
+  <!-- segmented bar -->
+  <g transform="translate(40,150)">
+    <!-- track -->
+    <rect x="0" y="0" width="920" height="64" rx="32" fill="none" stroke="#c3c2b7" stroke-width="1.5"/>
+    <!-- segments with 2px surface gaps -->
+    <rect x="2" y="2" width="219" height="60" rx="30" fill="#0ca30c"/>
+    <rect x="231" y="2" width="219" height="60" fill="#fab219"/>
+    <rect x="460" y="2" width="219" height="60" fill="#ec835a"/>
+    <path d="M 689 2 H 886 A 30 30 0 0 1 886 62 H 689 Z" fill="#d03b3b"/>
+
+    <!-- marker for sample result -->
+    <g transform="translate(345,0)">
+      <polygon points="0,-22 -12,-40 12,-40" fill="#0b0b0b"/>
+      <text x="0" y="-48" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b" text-anchor="middle">Sample result: 22 dB</text>
+    </g>
+
+    <!-- category labels -->
+    <text x="110" y="100" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">Good hearing</text>
+    <text x="110" y="120" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">0&#8211;20 dB</text>
+
+    <text x="345" y="100" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">Mild hearing loss</text>
+    <text x="345" y="120" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">21&#8211;40 dB</text>
+
+    <text x="570" y="100" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">Moderate hearing loss</text>
+    <text x="570" y="120" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">41&#8211;60 dB</text>
+
+    <text x="787" y="100" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">Significant hearing loss</text>
+    <text x="787" y="120" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">61+ dB</text>
+  </g>
+
+  <text x="40" y="360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">A result in the orange, salmon, or red zones is the point most online hearing tests recommend</text>
+  <text x="40" y="382" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">following up with a hearing care professional for an in-person test.</text>
+
+  <g transform="translate(40,410)">
+    <rect x="0" y="0" width="14" height="14" fill="#0ca30c" rx="3"/>
+    <text x="20" y="12" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Good</text>
+    <rect x="90" y="0" width="14" height="14" fill="#fab219" rx="3"/>
+    <text x="110" y="12" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Mild</text>
+    <rect x="170" y="0" width="14" height="14" fill="#ec835a" rx="3"/>
+    <text x="190" y="12" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Moderate</text>
+    <rect x="280" y="0" width="14" height="14" fill="#d03b3b" rx="3"/>
+    <text x="300" y="12" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Significant</text>
+  </g>
+</svg>

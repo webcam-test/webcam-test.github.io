@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="wat-gauge-title wat-gauge-desc">
+<title id="wat-gauge-title">Autofocus sharpness score gauge from Poor to Excellent</title>
+<desc id="wat-gauge-desc">A semicircular gauge dividing the webcam autofocus test's sharpness score into four bands — Poor, Fair, Good, and Excellent — with an example needle reading of 78 landing in the Good band.</desc>
+<metadata>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+    <rdf:Description rdf:about="">
+      <dc:title>Autofocus sharpness score meter</dc:title>
+      <dc:description>A semicircular gauge dividing the webcam autofocus test's sharpness score into four bands — Poor, Fair, Good, and Excellent — with an example needle reading of 78 landing in the Good band.</dc:description>
+      <dc:subject>
+        <rdf:Bag>
+          <rdf:li>webcam autofocus test</rdf:li>
+          <rdf:li>image sharpness</rdf:li>
+          <rdf:li>autofocus performance</rdf:li>
+          <rdf:li>autofocus accuracy</rdf:li>
+        </rdf:Bag>
+      </dc:subject>
+      <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+    <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-autofocus-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+  </rdf:RDF>
+</metadata>
+<rect x="0" y="0" width="1000" height="560" fill="#fcfcfb"/>
+<text x="500" y="48" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="middle">Autofocus Sharpness Score</text>
+
+<!-- Poor band -->
+<path d="M 280,340 A 220,220 0 0,1 344.4,184.4 L 393.9,233.9 A 150,150 0 0,0 350,340 Z" fill="#d03b3b"/>
+<!-- Fair band -->
+<path d="M 344.4,184.4 A 220,220 0 0,1 500,120 L 500,190 A 150,150 0 0,0 393.9,233.9 Z" fill="#ec835a"/>
+<!-- Good band -->
+<path d="M 500,120 A 220,220 0 0,1 655.6,184.4 L 606.1,233.9 A 150,150 0 0,0 500,190 Z" fill="#fab219"/>
+<!-- Excellent band -->
+<path d="M 655.6,184.4 A 220,220 0 0,1 720,340 L 650,340 A 150,150 0 0,0 606.1,233.9 Z" fill="#0ca30c"/>
+
+<!-- Needle: pointing into the Good band at an example reading of 78 -->
+<circle cx="500" cy="340" r="14" fill="#0b0b0b"/>
+<line x1="500" y1="340" x2="572.7" y2="164.5" stroke="#0b0b0b" stroke-width="4" stroke-linecap="round"/>
+
+<text x="500" y="410" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="40" font-weight="700" fill="#0b0b0b" text-anchor="middle">78</text>
+<text x="500" y="438" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e" text-anchor="middle">example sharpness score</text>
+
+<!-- Legend row -->
+<circle cx="270" cy="490" r="8" fill="#d03b3b"/>
+<text x="286" y="495" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">Poor</text>
+
+<circle cx="400" cy="490" r="8" fill="#ec835a"/>
+<text x="416" y="495" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">Fair</text>
+
+<circle cx="520" cy="490" r="8" fill="#fab219"/>
+<text x="536" y="495" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">Good</text>
+
+<circle cx="650" cy="490" r="8" fill="#0ca30c"/>
+<text x="666" y="495" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">Excellent</text>
+
+<text x="500" y="535" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#898781" text-anchor="middle">Your webcam autofocus test score lands in one of these four bands based on edge sharpness and lock speed.</text>
+</svg>

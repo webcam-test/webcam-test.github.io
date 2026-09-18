@@ -1,0 +1,82 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle svgDesc" style="width:100%;height:auto">
+  <title id="svgTitle">Audio signal chain latency diagram</title>
+  <desc id="svgDesc">Diagram showing the four stages where an audio latency test accumulates delay: the app, the operating system's audio stack, the DAC or wireless codec, and the speaker or headphone driver.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Audio signal chain latency diagram</dc:title>
+        <dc:description>Diagram showing where audio latency accumulates through the signal chain from app to speaker or headphone driver.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>audio latency test</rdf:li>
+            <rdf:li>output latency</rdf:li>
+            <rdf:li>audio stack</rdf:li>
+            <rdf:li>dac</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/audio-latency-delay-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="420" fill="#fcfcfb"/>
+  <text x="450" y="42" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="600" fill="#0b0b0b">Where audio latency test delay actually accumulates</text>
+  <text x="450" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Every stage between the trigger and your ear adds to the total delay a latency test measures</text>
+
+  <!-- Stage boxes -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- Stage 1: App -->
+    <rect x="40" y="150" width="170" height="110" rx="10" fill="#fcfcfb" stroke="#2a78d6" stroke-width="2"/>
+    <circle cx="125" cy="188" r="16" fill="#2a78d6"/>
+    <text x="125" y="193" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">1</text>
+    <text x="125" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#0b0b0b">App</text>
+    <text x="125" y="242" text-anchor="middle" font-size="12" fill="#52514e">Triggers the sound</text>
+
+    <!-- arrow 1 -->
+    <line x1="212" y1="205" x2="270" y2="205" stroke="#c3c2b7" stroke-width="2"/>
+    <path d="M 270 205 L 260 199 L 260 211 Z" fill="#c3c2b7"/>
+
+    <!-- Stage 2: OS Audio Stack -->
+    <rect x="272" y="150" width="170" height="110" rx="10" fill="#fcfcfb" stroke="#1baf7a" stroke-width="2"/>
+    <circle cx="357" cy="188" r="16" fill="#1baf7a"/>
+    <text x="357" y="193" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">2</text>
+    <text x="357" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#0b0b0b">OS audio stack</text>
+    <text x="357" y="242" text-anchor="middle" font-size="12" fill="#52514e">Buffers and schedules</text>
+
+    <!-- arrow 2 -->
+    <line x1="444" y1="205" x2="502" y2="205" stroke="#c3c2b7" stroke-width="2"/>
+    <path d="M 502 205 L 492 199 L 492 211 Z" fill="#c3c2b7"/>
+
+    <!-- Stage 3: DAC / Codec -->
+    <rect x="504" y="150" width="170" height="110" rx="10" fill="#fcfcfb" stroke="#eda100" stroke-width="2"/>
+    <circle cx="589" cy="188" r="16" fill="#eda100"/>
+    <text x="589" y="193" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">3</text>
+    <text x="589" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#0b0b0b">DAC / codec</text>
+    <text x="589" y="242" text-anchor="middle" font-size="12" fill="#52514e">Wired or Bluetooth</text>
+
+    <!-- arrow 3 -->
+    <line x1="676" y1="205" x2="734" y2="205" stroke="#c3c2b7" stroke-width="2"/>
+    <path d="M 734 205 L 724 199 L 724 211 Z" fill="#c3c2b7"/>
+
+    <!-- Stage 4: Driver -->
+    <rect x="736" y="150" width="170" height="110" rx="10" fill="#fcfcfb" stroke="#e34948" stroke-width="2"/>
+    <circle cx="821" cy="188" r="16" fill="#e34948"/>
+    <text x="821" y="193" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">4</text>
+    <text x="821" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#0b0b0b">Driver</text>
+    <text x="821" y="242" text-anchor="middle" font-size="12" fill="#52514e">Speaker or headphone</text>
+  </g>
+
+  <!-- Cumulative delay bar -->
+  <line x1="40" y1="320" x2="906" y2="320" stroke="#e1e0d9" stroke-width="2"/>
+  <rect x="40" y="312" width="866" height="16" rx="4" fill="#e1e0d9"/>
+  <rect x="40" y="312" width="866" height="16" rx="4" fill="none" stroke="#c3c2b7" stroke-width="1"/>
+  <path d="M40 312 L906 328" stroke="none"/>
+  <rect x="40" y="312" width="200" height="16" rx="4" fill="#2a78d6"/>
+  <rect x="244" y="312" width="200" height="16" fill="#1baf7a"/>
+  <rect x="448" y="312" width="200" height="16" fill="#eda100"/>
+  <rect x="652" y="312" width="254" height="16" rx="4" fill="#e34948"/>
+  <text x="473" y="360" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Cumulative delay grows left to right — the reading an audio latency test reports is the sum of all four stages, not just one</text>
+
+  <text x="450" y="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">A wired chain stays under 20 ms end to end; a Bluetooth chain adds encode, transmit, and decode time on top</text>
+</svg>

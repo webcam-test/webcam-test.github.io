@@ -1,0 +1,86 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <title>Correct vs incorrect webcam light placement, top-down view</title>
+  <desc>A bird's-eye diagram comparing two webcam lighting test setups: a front-facing light source that avoids backlighting on the left, and a window or lamp placed behind the subject that causes backlighting on the right.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Correct vs incorrect webcam light placement, top-down view</dc:title>
+        <dc:description>A bird's-eye diagram comparing two webcam lighting test setups: a front-facing light source that avoids backlighting on the left, and a window or lamp placed behind the subject that causes backlighting on the right.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam lighting test</rdf:li>
+            <rdf:li>backlighting</rdf:li>
+            <rdf:li>front light</rdf:li>
+            <rdf:li>window behind you</rdf:li>
+            <rdf:li>eye level</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-lighting-exposure-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="560" fill="#fcfcfb"/>
+  <text x="450" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">Where to Put Your Light</text>
+
+  <!-- divider -->
+  <line x1="450" y1="80" x2="450" y2="520" stroke="#e1e0d9" stroke-width="2"/>
+
+  <!-- LEFT: correct -->
+  <g transform="translate(0,0)">
+    <rect x="40" y="80" width="380" height="34" rx="8" fill="#0ca30c"/>
+    <text x="230" y="103" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#ffffff">Good - light faces you</text>
+
+    <!-- person -->
+    <circle cx="230" cy="330" r="34" fill="#2a78d6"/>
+    <text x="230" y="336" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">You</text>
+
+    <!-- camera/laptop in front -->
+    <rect x="205" y="230" width="50" height="34" rx="6" fill="#52514e"/>
+    <text x="230" y="252" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="11" fill="#ffffff">Cam</text>
+    <line x1="230" y1="264" x2="230" y2="296" stroke="#898781" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- light source in front -->
+    <circle cx="120" cy="180" r="22" fill="#eda100"/>
+    <text x="120" y="185" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#ffffff">*</text>
+    <text x="120" y="220" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Lamp / window</text>
+    <line x1="140" y1="195" x2="215" y2="310" stroke="#eda100" stroke-width="3" stroke-linecap="round"/>
+
+    <text x="230" y="430" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Light source in front, at eye</text>
+    <text x="230" y="450" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">level - your face reads bright</text>
+    <text x="230" y="470" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">and clear on the brightness test.</text>
+  </g>
+
+  <!-- RIGHT: incorrect -->
+  <g transform="translate(450,0)">
+    <rect x="40" y="80" width="380" height="34" rx="8" fill="#d03b3b"/>
+    <text x="230" y="103" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#ffffff">Avoid - light behind you</text>
+
+    <!-- window behind -->
+    <rect x="180" y="150" width="100" height="70" fill="#cde2fb" stroke="#2a78d6" stroke-width="3"/>
+    <line x1="230" y1="150" x2="230" y2="220" stroke="#2a78d6" stroke-width="2"/>
+    <line x1="180" y1="185" x2="280" y2="185" stroke="#2a78d6" stroke-width="2"/>
+    <text x="230" y="242" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Bright window</text>
+
+    <!-- person, silhouette dark -->
+    <circle cx="230" cy="330" r="34" fill="#383835"/>
+    <text x="230" y="336" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">You</text>
+
+    <!-- camera in front -->
+    <rect x="205" y="390" width="50" height="34" rx="6" fill="#52514e"/>
+    <text x="230" y="412" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="11" fill="#ffffff">Cam</text>
+    <line x1="230" y1="364" x2="230" y2="388" stroke="#898781" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- X mark -->
+    <g transform="translate(340,180)">
+      <circle r="20" fill="#d03b3b"/>
+      <line x1="-9" y1="-9" x2="9" y2="9" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      <line x1="9" y1="-9" x2="-9" y2="9" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <text x="230" y="470" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Backlighting darkens your face -</text>
+    <text x="230" y="490" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">face the window instead, or close</text>
+    <text x="230" y="510" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">the blinds and add a front light.</text>
+  </g>
+</svg>

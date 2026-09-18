@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="wat-pdaf-title wat-pdaf-desc">
+<title id="wat-pdaf-title">Phase-detection versus contrast-detection autofocus comparison</title>
+<desc id="wat-pdaf-desc">Side-by-side comparison panel of phase-detection autofocus (PDAF), which locks focus almost instantly with little hunting, against contrast-detection autofocus, which searches back and forth before settling and hunts more visibly in low light.</desc>
+<metadata>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+    <rdf:Description rdf:about="">
+      <dc:title>Phase-detection vs. contrast-detection autofocus comparison</dc:title>
+      <dc:description>Side-by-side comparison panel of phase-detection autofocus (PDAF), which locks focus almost instantly with little hunting, against contrast-detection autofocus, which searches back and forth before settling and hunts more visibly in low light.</dc:description>
+      <dc:subject>
+        <rdf:Bag>
+          <rdf:li>phase detection</rdf:li>
+          <rdf:li>pdaf</rdf:li>
+          <rdf:li>autofocus technology</rdf:li>
+          <rdf:li>autofocus mechanism</rdf:li>
+          <rdf:li>webcam autofocus</rdf:li>
+        </rdf:Bag>
+      </dc:subject>
+      <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+    <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-autofocus-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+  </rdf:RDF>
+</metadata>
+<rect x="0" y="0" width="1000" height="560" fill="#fcfcfb"/>
+<text x="500" y="48" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="middle">Phase-Detection AF vs. Contrast-Detection AF</text>
+
+<!-- Left panel: PDAF -->
+<rect x="50" y="90" width="430" height="430" rx="12" fill="#ffffff" stroke="#2a78d6" stroke-width="2"/>
+<rect x="50" y="90" width="430" height="56" rx="12" fill="#2a78d6"/>
+<rect x="50" y="122" width="430" height="24" fill="#2a78d6"/>
+<text x="265" y="126" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">Phase-Detection AF (PDAF)</text>
+
+<circle cx="90" cy="185" r="6" fill="#2a78d6"/>
+<text x="112" y="191" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Locks focus almost instantly</text>
+
+<circle cx="90" cy="225" r="6" fill="#2a78d6"/>
+<text x="112" y="231" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Little to no visible hunting</text>
+
+<circle cx="90" cy="265" r="6" fill="#2a78d6"/>
+<text x="112" y="271" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Tracks a moving subject well</text>
+
+<circle cx="90" cy="305" r="6" fill="#2a78d6"/>
+<text x="112" y="311" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Handles held-up objects</text>
+<text x="112" y="333" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">during demos and reviews</text>
+
+<circle cx="90" cy="373" r="6" fill="#2a78d6"/>
+<text x="112" y="379" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Common on premium 4K</text>
+<text x="112" y="401" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">webcams with dual sensors</text>
+
+<!-- Right panel: Contrast detection -->
+<rect x="520" y="90" width="430" height="430" rx="12" fill="#ffffff" stroke="#eb6834" stroke-width="2"/>
+<rect x="520" y="90" width="430" height="56" rx="12" fill="#eb6834"/>
+<rect x="520" y="122" width="430" height="24" fill="#eb6834"/>
+<text x="735" y="126" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">Contrast-Detection AF</text>
+
+<circle cx="560" cy="185" r="6" fill="#eb6834"/>
+<text x="582" y="191" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Searches back and forth to find focus</text>
+
+<circle cx="560" cy="225" r="6" fill="#eb6834"/>
+<text x="582" y="231" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Visible "hunting" in low light</text>
+
+<circle cx="560" cy="265" r="6" fill="#eb6834"/>
+<text x="582" y="271" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Slower to settle on movement</text>
+
+<circle cx="560" cy="305" r="6" fill="#eb6834"/>
+<text x="582" y="311" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Can struggle with flat, low-</text>
+<text x="582" y="333" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">contrast backgrounds</text>
+
+<circle cx="560" cy="373" r="6" fill="#eb6834"/>
+<text x="582" y="379" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Common on budget and</text>
+<text x="582" y="401" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">built-in laptop webcams</text>
+
+<text x="500" y="545" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#898781" text-anchor="middle">A webcam autofocus test makes the difference between these two systems immediately visible.</text>
+</svg>

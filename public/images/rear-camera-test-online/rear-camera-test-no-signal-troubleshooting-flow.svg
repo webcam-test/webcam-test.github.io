@@ -1,0 +1,71 @@
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle svgDesc">
+  <title id="svgTitle">Rear camera test no-signal troubleshooting flow</title>
+  <desc id="svgDesc">Flowchart showing four checks to run in order when a rear camera test shows no signal: browser permission, secure HTTPS origin, OS-level camera privacy, and a conflicting app holding the camera - ending in a live preview once the block is cleared.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Rear camera test no-signal troubleshooting flow</dc:title>
+        <dc:description>Flowchart showing four checks to run in order when a rear camera test shows no signal: browser permission, secure HTTPS origin, OS-level camera privacy, and a conflicting app holding the camera - ending in a live preview once the block is cleared.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>rear camera test</rdf:li>
+            <rdf:li>no signal</rdf:li>
+            <rdf:li>browser permission</rdf:li>
+            <rdf:li>camera permission</rdf:li>
+            <rdf:li>secure origin</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/rear-camera-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="620" fill="#fcfcfb"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">Rear camera test shows "no signal"? Check in this order</text>
+
+  <!-- Step 1 -->
+  <rect x="60" y="90" width="360" height="110" rx="10" fill="#2a78d6"/>
+  <text x="90" y="128" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">1. Browser permission</text>
+  <text x="90" y="154" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Click the camera icon in the address bar</text>
+  <text x="90" y="174" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">and set Site settings &#8594; Camera to Allow.</text>
+
+  <!-- Step 2 -->
+  <rect x="480" y="90" width="360" height="110" rx="10" fill="#1baf7a"/>
+  <text x="510" y="128" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">2. Secure origin (HTTPS)</text>
+  <text x="510" y="154" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Browsers expose the camera API only</text>
+  <text x="510" y="174" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">over https:// - plain HTTP returns no stream.</text>
+
+  <!-- arrow 1->3 -->
+  <path d="M240 200 L240 250 L240 296" stroke="#898781" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M660 200 L660 250 L660 296" stroke="#898781" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Step 3 -->
+  <rect x="60" y="300" width="360" height="110" rx="10" fill="#eda100"/>
+  <text x="90" y="338" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0b0b0b">3. OS-level camera privacy</text>
+  <text x="90" y="364" font-family="system-ui, sans-serif" font-size="14" fill="#0b0b0b">macOS, Windows, and Linux each gate the</text>
+  <text x="90" y="384" font-family="system-ui, sans-serif" font-size="14" fill="#0b0b0b">camera above the browser - check that switch too.</text>
+
+  <!-- Step 4 -->
+  <rect x="480" y="300" width="360" height="110" rx="10" fill="#e34948"/>
+  <text x="510" y="338" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">4. A conflicting app</text>
+  <text x="510" y="364" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Zoom, Teams, or OBS can hold the camera</text>
+  <text x="510" y="384" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">open - quit them and reload the test.</text>
+
+  <!-- arrows down to result -->
+  <path d="M240 410 L240 450 L440 480" stroke="#898781" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M660 410 L660 450 L460 480" stroke="#898781" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Result -->
+  <rect x="270" y="490" width="360" height="90" rx="10" fill="#0ca30c"/>
+  <circle cx="310" cy="535" r="16" fill="#ffffff"/>
+  <path d="M302 535 l6 7 l12 -16" stroke="#0ca30c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="340" y="528" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Live preview appears</text>
+  <text x="340" y="550" font-family="system-ui, sans-serif" font-size="13" fill="#ffffff">Resolution reads out next to the image.</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6" fill="#898781"/>
+    </marker>
+  </defs>
+</svg>

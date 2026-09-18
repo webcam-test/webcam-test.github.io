@@ -1,0 +1,102 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wlt-pipeline-title wlt-pipeline-desc" style="width:100%;height:auto">
+  <title id="wlt-pipeline-title">Webcam latency test measurement pipeline</title>
+  <desc id="wlt-pipeline-desc">Diagram of the five stages a frame passes through during a webcam latency test, from the real-world event to the moment it appears on screen, with the total end-to-end latency marked underneath.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam latency test measurement pipeline</dc:title>
+        <dc:description>Diagram of the five stages a frame passes through during a webcam latency test, from the real-world event to the moment it appears on screen, with the total end-to-end latency marked underneath.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam latency test</rdf:li>
+            <rdf:li>latency measurement</rdf:li>
+            <rdf:li>frame analysis</rdf:li>
+            <rdf:li>real-time</rdf:li>
+            <rdf:li>webcam lag</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-latency-delay-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <style>
+    .stage-box { fill: #fcfcfb; stroke: #c3c2b7; stroke-width: 2; }
+    .stage-label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 20px; font-weight: 600; fill: #0b0b0b; text-anchor: middle; }
+    .stage-sub { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; fill: #52514e; text-anchor: middle; }
+    .time-tag { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 14px; fill: #898781; text-anchor: middle; }
+    .arrow { stroke: #2a78d6; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+    .heading { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 26px; font-weight: 700; fill: #0b0b0b; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2a78d6"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="600" fill="#f9f9f7"/>
+  <text x="40" y="55" class="heading">Where webcam latency actually comes from</text>
+
+  <!-- 5 stages -->
+  <g>
+    <rect x="30" y="110" width="160" height="110" rx="10" class="stage-box"/>
+    <text x="110" y="155" class="stage-label">Real event</text>
+    <text x="110" y="180" class="stage-sub">flash / motion</text>
+    <text x="110" y="200" class="stage-sub">t&#8320; = 0 ms</text>
+  </g>
+
+  <path class="arrow" d="M190,165 L230,165"/>
+
+  <g>
+    <rect x="230" y="110" width="160" height="110" rx="10" class="stage-box"/>
+    <text x="310" y="150" class="stage-label">Sensor</text>
+    <text x="310" y="175" class="stage-sub">capture &amp; readout</text>
+    <text x="310" y="195" class="stage-sub">frame analysis</text>
+  </g>
+
+  <path class="arrow" d="M390,165 L430,165"/>
+
+  <g>
+    <rect x="430" y="110" width="160" height="110" rx="10" class="stage-box"/>
+    <text x="510" y="150" class="stage-label">Encode</text>
+    <text x="510" y="175" class="stage-sub">codec / driver</text>
+    <text x="510" y="195" class="stage-sub">USB transfer</text>
+  </g>
+
+  <path class="arrow" d="M590,165 L630,165"/>
+
+  <g>
+    <rect x="630" y="110" width="160" height="110" rx="10" class="stage-box"/>
+    <text x="710" y="150" class="stage-label">Buffer</text>
+    <text x="710" y="175" class="stage-sub">app / browser</text>
+    <text x="710" y="195" class="stage-sub">render queue</text>
+  </g>
+
+  <path class="arrow" d="M790,165 L830,165"/>
+
+  <g>
+    <rect x="830" y="110" width="140" height="110" rx="10" class="stage-box" stroke="#eb6834"/>
+    <text x="900" y="150" class="stage-label">Display</text>
+    <text x="900" y="175" class="stage-sub">on screen</text>
+    <text x="900" y="195" class="stage-sub">t&#8321; = lag</text>
+  </g>
+
+  <!-- total latency bracket -->
+  <line x1="110" y1="270" x2="900" y2="270" stroke="#898781" stroke-width="2"/>
+  <line x1="110" y1="260" x2="110" y2="280" stroke="#898781" stroke-width="2"/>
+  <line x1="900" y1="260" x2="900" y2="280" stroke="#898781" stroke-width="2"/>
+  <text x="505" y="310" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#eb6834">Total end-to-end latency (t&#8321; − t&#8320;) in milliseconds</text>
+  <text x="505" y="345" text-anchor="middle" class="stage-sub">This is the number a webcam latency test reports</text>
+
+  <!-- context notes -->
+  <g>
+    <rect x="30" y="400" width="940" height="160" rx="10" fill="#fcfcfb" stroke="#e1e0d9" stroke-width="1"/>
+    <text x="60" y="435" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#0b0b0b">Where time is typically added</text>
+    <text x="60" y="465" class="stage-sub" text-anchor="start">Sensor readout: rolling shutter and exposure time before a frame leaves the chip</text>
+    <text x="60" y="490" class="stage-sub" text-anchor="start">Codec &amp; USB: compression and transfer across the bus to the host driver</text>
+    <text x="60" y="515" class="stage-sub" text-anchor="start">Render buffer: the app or browser holding a frame before it paints to the screen</text>
+    <text x="60" y="540" class="stage-sub" text-anchor="start">Lower latency at every stage means less delay between real-world action and what you see</text>
+  </g>
+</svg>

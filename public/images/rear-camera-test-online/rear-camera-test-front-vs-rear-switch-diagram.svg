@@ -1,0 +1,61 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle2 svgDesc2">
+  <title id="svgTitle2">Front camera vs rear camera switch diagram</title>
+  <desc id="svgDesc2">Side-by-side diagram comparing a phone's front and rear camera during a camera test, showing the switch-camera control between them and the typical resolution and use-case differences between the two lenses.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Front camera vs rear camera switch diagram</dc:title>
+        <dc:description>Side-by-side diagram comparing a phone's front and rear camera during a camera test, showing the switch-camera control between them and the typical resolution and use-case differences between the two lenses.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>rear camera</rdf:li>
+            <rdf:li>front camera</rdf:li>
+            <rdf:li>switch camera</rdf:li>
+            <rdf:li>camera resolution</rdf:li>
+            <rdf:li>camera test</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/rear-camera-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="560" fill="#fcfcfb"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">Switching lenses during a camera test</text>
+
+  <!-- Front camera card -->
+  <rect x="60" y="90" width="330" height="400" rx="14" fill="#2a78d6"/>
+  <text x="225" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Front camera</text>
+  <circle cx="225" cy="200" r="34" fill="#ffffff"/>
+  <circle cx="225" cy="200" r="16" fill="#2a78d6"/>
+  <text x="90" y="270" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Default lens the test opens first</text>
+  <text x="90" y="296" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">on most phones</text>
+  <text x="90" y="336" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Typical use: video calls, selfies</text>
+  <text x="90" y="376" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Resolution: usually the lower</text>
+  <text x="90" y="396" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">of the two negotiated modes</text>
+  <text x="90" y="436" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Preview: mirrored by default</text>
+  <text x="90" y="456" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">so text on screen reads backwards</text>
+
+  <!-- Switch control -->
+  <circle cx="450" cy="290" r="46" fill="#eda100"/>
+  <path d="M424 278 a26 26 0 1 1 0 24" stroke="#0b0b0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M420 270 l4 12 l12 -4" stroke="#0b0b0b" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="450" y="356" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Switch camera</text>
+  <text x="450" y="376" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#52514e">tap once to flip lenses</text>
+
+  <!-- Rear camera card -->
+  <rect x="510" y="90" width="330" height="400" rx="14" fill="#1baf7a"/>
+  <text x="675" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Rear camera</text>
+  <circle cx="675" cy="200" r="34" fill="#ffffff"/>
+  <circle cx="675" cy="200" r="16" fill="#1baf7a"/>
+  <text x="540" y="270" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Opens after the switch-camera</text>
+  <text x="540" y="296" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">control is tapped</text>
+  <text x="540" y="336" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Typical use: photos, no-signal checks</text>
+  <text x="540" y="376" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Resolution: usually the higher</text>
+  <text x="540" y="396" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">of the two negotiated modes</text>
+  <text x="540" y="436" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Preview: not mirrored - matches</text>
+  <text x="540" y="456" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">the raw sensor frame</text>
+
+  <text x="450" y="530" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#898781">A lower reading after switching lenses is expected, not a fault - each lens negotiates its own resolution.</text>
+</svg>

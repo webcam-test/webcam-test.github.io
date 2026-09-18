@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" style="width:100%;height:auto" role="img" aria-labelledby="fctResTitle fctResDesc">
+  <title id="fctResTitle">Common front camera resolutions compared by megapixels</title>
+  <desc id="fctResDesc">Bar chart comparing three common front camera resolutions — 720p HD, 1080p FHD, and 4K UHD — by their approximate megapixel count, to help you interpret your own front camera test result.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Common front camera resolutions compared by megapixels</dc:title>
+        <dc:description>Bar chart comparing three common front camera resolutions — 720p HD, 1080p FHD, and 4K UHD — by their approximate megapixel count, to help you interpret your own front camera test result.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>front camera test</rdf:li>
+            <rdf:li>resolution</rdf:li>
+            <rdf:li>megapixels</rdf:li>
+            <rdf:li>webcam test</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/front-camera-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="560" fill="#fcfcfb"/>
+  <text x="40" y="46" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#0b0b0b">How your resolution compares</text>
+  <text x="40" y="70" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Approximate megapixels by common front camera resolution</text>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- gridlines -->
+    <line x1="120" y1="460" x2="820" y2="460" stroke="#c3c2b7" stroke-width="2"/>
+    <line x1="120" y1="375.6" x2="820" y2="375.6" stroke="#e1e0d9" stroke-width="1"/>
+    <line x1="120" y1="291.2" x2="820" y2="291.2" stroke="#e1e0d9" stroke-width="1"/>
+    <line x1="120" y1="206.8" x2="820" y2="206.8" stroke="#e1e0d9" stroke-width="1"/>
+    <line x1="120" y1="122.4" x2="820" y2="122.4" stroke="#e1e0d9" stroke-width="1"/>
+
+    <text x="110" y="464" font-size="13" fill="#898781" text-anchor="end">0 MP</text>
+    <text x="110" y="379.6" font-size="13" fill="#898781" text-anchor="end">2 MP</text>
+    <text x="110" y="295.2" font-size="13" fill="#898781" text-anchor="end">4 MP</text>
+    <text x="110" y="210.8" font-size="13" fill="#898781" text-anchor="end">6 MP</text>
+    <text x="110" y="126.4" font-size="13" fill="#898781" text-anchor="end">8 MP</text>
+
+    <!-- bars -->
+    <rect x="170" y="422" width="160" height="38" rx="4" fill="#2a78d6"/>
+    <text x="250" y="410" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="middle">0.9 MP</text>
+    <text x="250" y="490" font-size="14" fill="#0b0b0b" text-anchor="middle">720p HD</text>
+    <text x="250" y="508" font-size="12" fill="#898781" text-anchor="middle">1280×720</text>
+
+    <rect x="420" y="372.6" width="160" height="87.4" rx="4" fill="#2a78d6"/>
+    <text x="500" y="360.6" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="middle">2.07 MP</text>
+    <text x="500" y="490" font-size="14" fill="#0b0b0b" text-anchor="middle">1080p FHD</text>
+    <text x="500" y="508" font-size="12" fill="#898781" text-anchor="middle">1920×1080</text>
+
+    <rect x="670" y="109.7" width="160" height="350.3" rx="4" fill="#2a78d6"/>
+    <text x="750" y="97.7" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="middle">8.3 MP</text>
+    <text x="750" y="490" font-size="14" fill="#0b0b0b" text-anchor="middle">4K UHD</text>
+    <text x="750" y="508" font-size="12" fill="#898781" text-anchor="middle">3840×2160</text>
+  </g>
+
+  <text x="40" y="540" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">Most laptop and phone front cameras test at 720p or 1080p — 4K front cameras are still uncommon.</text>
+</svg>

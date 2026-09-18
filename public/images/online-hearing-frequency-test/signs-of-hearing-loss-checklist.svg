@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" style="width:100%;height:auto" role="img" aria-labelledby="signs-title signs-desc">
+  <title id="signs-title">Six common signs of hearing loss to check before taking a hearing test</title>
+  <desc id="signs-desc">Grid of six common early signs of hearing loss: frequently asking people to repeat themselves, raising the TV volume, struggling in social settings, feeling like people are mumbling, trouble with phone conversations, and fatigue from concentrating to listen.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Common signs of hearing loss checklist</dc:title>
+        <dc:description>Grid of six common early signs of hearing loss: frequently asking people to repeat themselves, raising the TV volume, struggling in social settings, feeling like people are mumbling, trouble with phone conversations, and fatigue from concentrating to listen.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>signs of hearing loss</rdf:li>
+            <rdf:li>hearing loss</rdf:li>
+            <rdf:li>TV volume</rdf:li>
+            <rdf:li>mumbling</rdf:li>
+            <rdf:li>social settings</rdf:li>
+            <rdf:li>repeat themselves</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/online-hearing-frequency-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="480" fill="#fcfcfb"/>
+  <text x="40" y="48" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">Six early signs of hearing loss</text>
+  <text x="40" y="76" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Notice more than one of these regularly? That's a good reason to take a hearing test.</text>
+
+  <!-- 3x2 grid of cards -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- card template positions -->
+    <g transform="translate(40,110)">
+      <rect width="290" height="150" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="18" fill="#2a78d6"/>
+      <text x="40" y="46" font-size="18" fill="#ffffff" text-anchor="middle">1</text>
+      <text x="24" y="86" font-size="15" font-weight="600" fill="#0b0b0b">Asking people to</text>
+      <text x="24" y="106" font-size="15" font-weight="600" fill="#0b0b0b">repeat themselves</text>
+      <text x="24" y="128" font-size="13" fill="#52514e">Often, in normal conversation</text>
+    </g>
+
+    <g transform="translate(355,110)">
+      <rect width="290" height="150" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="18" fill="#1baf7a"/>
+      <text x="40" y="46" font-size="18" fill="#ffffff" text-anchor="middle">2</text>
+      <text x="24" y="86" font-size="15" font-weight="600" fill="#0b0b0b">Raising the TV</text>
+      <text x="24" y="106" font-size="15" font-weight="600" fill="#0b0b0b">volume higher</text>
+      <text x="24" y="128" font-size="13" fill="#52514e">Above what others find comfortable</text>
+    </g>
+
+    <g transform="translate(670,110)">
+      <rect width="290" height="150" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="18" fill="#eda100"/>
+      <text x="40" y="46" font-size="18" fill="#ffffff" text-anchor="middle">3</text>
+      <text x="24" y="86" font-size="15" font-weight="600" fill="#0b0b0b">Struggling in</text>
+      <text x="24" y="106" font-size="15" font-weight="600" fill="#0b0b0b">social settings</text>
+      <text x="24" y="128" font-size="13" fill="#52514e">Group chats and busy rooms</text>
+    </g>
+
+    <g transform="translate(40,280)">
+      <rect width="290" height="150" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="18" fill="#e87ba4"/>
+      <text x="40" y="46" font-size="18" fill="#ffffff" text-anchor="middle">4</text>
+      <text x="24" y="86" font-size="15" font-weight="600" fill="#0b0b0b">Feeling like people</text>
+      <text x="24" y="106" font-size="15" font-weight="600" fill="#0b0b0b">are mumbling</text>
+      <text x="24" y="128" font-size="13" fill="#52514e">Speech sounds unclear, not quiet</text>
+    </g>
+
+    <g transform="translate(355,280)">
+      <rect width="290" height="150" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="18" fill="#4a3aa7"/>
+      <text x="40" y="46" font-size="18" fill="#ffffff" text-anchor="middle">5</text>
+      <text x="24" y="86" font-size="15" font-weight="600" fill="#0b0b0b">Trouble on</text>
+      <text x="24" y="106" font-size="15" font-weight="600" fill="#0b0b0b">phone calls</text>
+      <text x="24" y="128" font-size="13" fill="#52514e">Especially without video cues</text>
+    </g>
+
+    <g transform="translate(670,280)">
+      <rect width="290" height="150" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="18" fill="#e34948"/>
+      <text x="40" y="46" font-size="18" fill="#ffffff" text-anchor="middle">6</text>
+      <text x="24" y="86" font-size="15" font-weight="600" fill="#0b0b0b">Feeling tired from</text>
+      <text x="24" y="106" font-size="15" font-weight="600" fill="#0b0b0b">concentrating to listen</text>
+      <text x="24" y="128" font-size="13" fill="#52514e">Mental fatigue after conversations</text>
+    </g>
+  </g>
+</svg>

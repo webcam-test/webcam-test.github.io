@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 560" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle2 svgDesc2">
+  <title id="svgTitle2">Four camera orientation states compared</title>
+  <desc id="svgDesc2">Comparison of a photo displayed correctly at 0 degrees against the same photo mis-rotated to 90, 180 and 270 degrees when EXIF orientation data is missing.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Four camera orientation states compared</dc:title>
+        <dc:description>Comparison of a photo displayed correctly at 0 degrees against the same photo mis-rotated to 90, 180 and 270 degrees when EXIF orientation data is missing.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>camera orientation test</rdf:li>
+            <rdf:li>EXIF orientation</rdf:li>
+            <rdf:li>portrait mode</rdf:li>
+            <rdf:li>landscape</rdf:li>
+            <rdf:li>image orientation</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/phone-camera-orientation-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="560" fill="#fcfcfb"/>
+  <text x="500" y="44" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#0b0b0b">What a mis-rotated capture looks like</text>
+  <text x="500" y="70" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">The same photo at each of the four EXIF orientation states a phone camera can record</text>
+
+  <defs>
+    <g id="photoOk">
+      <rect x="-60" y="-80" width="120" height="160" rx="6" fill="#cde2fb" stroke="#2a78d6" stroke-width="2"/>
+      <polygon points="-40,60 -10,10 20,40 40,24 40,60" fill="#86b6ef"/>
+      <circle cx="30" cy="-52" r="11" fill="#eda100"/>
+    </g>
+    <g id="photoBad">
+      <rect x="-60" y="-80" width="120" height="160" rx="6" fill="#f6d9c9" stroke="#e34948" stroke-width="2"/>
+      <polygon points="-40,60 -10,10 20,40 40,24 40,60" fill="#f3b7a3"/>
+      <circle cx="30" cy="-52" r="11" fill="#eda100"/>
+    </g>
+  </defs>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- Panel 1: 0 deg, correct -->
+    <g transform="translate(60,110)">
+      <rect x="0" y="0" width="200" height="280" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <use xlink:href="#photoOk" transform="translate(100,120) rotate(0)"/>
+      <circle cx="100" cy="248" r="15" fill="#0ca30c"/>
+      <path d="M93,248 l5,6 l10,-12" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="100" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#0b0b0b">0° — correct</text>
+    </g>
+
+    <!-- Panel 2: 90 deg -->
+    <g transform="translate(300,110)">
+      <rect x="0" y="0" width="200" height="280" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <use xlink:href="#photoBad" transform="translate(100,120) rotate(90)"/>
+      <circle cx="100" cy="248" r="15" fill="#d03b3b"/>
+      <path d="M92,240 l16,16 M108,240 l-16,16" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      <text x="100" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#0b0b0b">90° — sideways</text>
+    </g>
+
+    <!-- Panel 3: 180 deg -->
+    <g transform="translate(540,110)">
+      <rect x="0" y="0" width="200" height="280" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <use xlink:href="#photoBad" transform="translate(100,120) rotate(180)"/>
+      <circle cx="100" cy="248" r="15" fill="#d03b3b"/>
+      <path d="M92,240 l16,16 M108,240 l-16,16" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      <text x="100" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#0b0b0b">180° — upside down</text>
+    </g>
+
+    <!-- Panel 4: 270 deg -->
+    <g transform="translate(780,110)">
+      <rect x="0" y="0" width="200" height="280" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+      <use xlink:href="#photoBad" transform="translate(100,120) rotate(270)"/>
+      <circle cx="100" cy="248" r="15" fill="#d03b3b"/>
+      <path d="M92,240 l16,16 M108,240 l-16,16" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      <text x="100" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#0b0b0b">270° — sideways</text>
+    </g>
+  </g>
+
+  <rect x="60" y="430" width="920" height="96" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="1"/>
+  <text x="90" y="460" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Only the 0° panel is how the photo was actually framed. The other three happen when the browser or CMS strips the</text>
+  <text x="90" y="480" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">EXIF orientation tag a phone camera writes on capture, so it falls back to assuming every image is landscape.</text>
+  <text x="90" y="504" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">A phone camera orientation test checks that this tag is read correctly before you trust an upload.</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="wat-fix-title wat-fix-desc">
+<title id="wat-fix-title">Common webcam autofocus problems mapped to fixes</title>
+<desc id="wat-fix-desc">Five common causes of a webcam autofocus test failing or the image staying blurry, each paired with the specific fix: browser permission denied, camera used by another app, camera disabled in system settings, outdated drivers, and a faulty autofocus mechanism.</desc>
+<metadata>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+    <rdf:Description rdf:about="">
+      <dc:title>Webcam autofocus problems and fixes</dc:title>
+      <dc:description>Five common causes of a webcam autofocus test failing or the image staying blurry, each paired with the specific fix: browser permission denied, camera used by another app, camera disabled in system settings, outdated drivers, and a faulty autofocus mechanism.</dc:description>
+      <dc:subject>
+        <rdf:Bag>
+          <rdf:li>troubleshooting</rdf:li>
+          <rdf:li>webcam not autofocusing</rdf:li>
+          <rdf:li>camera permission</rdf:li>
+          <rdf:li>browser permission</rdf:li>
+          <rdf:li>driver</rdf:li>
+          <rdf:li>autofocus mechanism</rdf:li>
+        </rdf:Bag>
+      </dc:subject>
+      <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+    <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-autofocus-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+  </rdf:RDF>
+</metadata>
+<rect x="0" y="0" width="1000" height="540" fill="#fcfcfb"/>
+<text x="500" y="46" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="middle">Webcam Autofocus Not Working? Common Causes and Fixes</text>
+
+<text x="90" y="86" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#898781">CAUSE</text>
+<text x="560" y="86" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#898781">FIX</text>
+<line x1="60" y1="98" x2="940" y2="98" stroke="#e1e0d9" stroke-width="1"/>
+
+<!-- Row 1 -->
+<circle cx="70" cy="130" r="7" fill="#d03b3b"/>
+<text x="90" y="136" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Browser permission denied</text>
+<path d="M 500,130 l 20,0 l -8,-6 m 8,6 l -8,6" fill="none" stroke="#898781" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="560" y="136" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Click "Allow" when the browser prompts for camera access</text>
+<line x1="60" y1="158" x2="940" y2="158" stroke="#e1e0d9" stroke-width="1"/>
+
+<!-- Row 2 -->
+<circle cx="70" cy="190" r="7" fill="#d03b3b"/>
+<text x="90" y="196" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Camera used by another app</text>
+<path d="M 500,190 l 20,0 l -8,-6 m 8,6 l -8,6" fill="none" stroke="#898781" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="560" y="196" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Close Zoom, Teams, or any other app using the camera</text>
+<line x1="60" y1="218" x2="940" y2="218" stroke="#e1e0d9" stroke-width="1"/>
+
+<!-- Row 3 -->
+<circle cx="70" cy="250" r="7" fill="#d03b3b"/>
+<text x="90" y="256" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Disabled in system settings</text>
+<path d="M 500,250 l 20,0 l -8,-6 m 8,6 l -8,6" fill="none" stroke="#898781" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="560" y="256" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Enable camera access in Windows, macOS, or Linux privacy settings</text>
+<line x1="60" y1="278" x2="940" y2="278" stroke="#e1e0d9" stroke-width="1"/>
+
+<!-- Row 4 -->
+<circle cx="70" cy="310" r="7" fill="#d03b3b"/>
+<text x="90" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Outdated or missing drivers</text>
+<path d="M 500,310 l 20,0 l -8,-6 m 8,6 l -8,6" fill="none" stroke="#898781" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="560" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Update the webcam driver through Device Manager or the maker's site</text>
+<line x1="60" y1="338" x2="940" y2="338" stroke="#e1e0d9" stroke-width="1"/>
+
+<!-- Row 5 -->
+<circle cx="70" cy="370" r="7" fill="#d03b3b"/>
+<text x="90" y="376" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#0b0b0b">Faulty autofocus mechanism</text>
+<path d="M 500,370 l 20,0 l -8,-6 m 8,6 l -8,6" fill="none" stroke="#898781" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="560" y="376" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Re-run the test on another computer to confirm a hardware fault</text>
+
+<rect x="60" y="430" width="880" height="60" rx="8" fill="#f0efec"/>
+<text x="500" y="466" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b" text-anchor="middle">Work through these in order — most webcam autofocus test failures trace back to permissions, not hardware.</text>
+</svg>

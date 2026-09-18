@@ -1,0 +1,57 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="wmrTitle wmrDesc">
+  <title id="wmrTitle">Bar chart comparing webcam resolution standards by megapixel</title>
+  <desc id="wmrDesc">Horizontal bar chart comparing VGA, 720p HD, 1080p Full HD, and 4K Ultra HD webcam resolutions by megapixel count, showing how dramatically pixel count increases from VGA to 4K.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Bar chart comparing webcam resolution standards by megapixel</dc:title>
+        <dc:description>Horizontal bar chart comparing VGA, 720p HD, 1080p Full HD, and 4K Ultra HD webcam resolutions by megapixel count, showing how dramatically pixel count increases from VGA to 4K.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam max resolution</rdf:li>
+            <rdf:li>4K webcam</rdf:li>
+            <rdf:li>1080p webcam</rdf:li>
+            <rdf:li>megapixels</rdf:li>
+            <rdf:li>resolution standards</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-maximum-resolution-detector</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="600" fill="#fcfcfb"/>
+
+  <text x="60" y="60" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">Webcam Resolution Standards, by Megapixel</text>
+  <text x="60" y="88" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Total captured pixels at each common webcam resolution ceiling</text>
+
+  <!-- baseline -->
+  <line x1="270" y1="140" x2="270" y2="500" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- Row 1: VGA -->
+  <text x="260" y="175" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">VGA</text>
+  <text x="260" y="195" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">640 × 480 px</text>
+  <rect x="270" y="160" width="19" height="36" rx="4" fill="#2a78d6"/>
+  <text x="299" y="184" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">0.3 MP</text>
+
+  <!-- Row 2: 720p HD -->
+  <text x="260" y="265" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">720p HD</text>
+  <text x="260" y="285" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">1280 × 720 px</text>
+  <rect x="270" y="250" width="56" height="36" rx="4" fill="#2a78d6"/>
+  <text x="336" y="274" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">0.9 MP</text>
+
+  <!-- Row 3: 1080p Full HD -->
+  <text x="260" y="355" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">1080p Full HD</text>
+  <text x="260" y="375" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">1920 × 1080 px</text>
+  <rect x="270" y="340" width="132" height="36" rx="4" fill="#2a78d6"/>
+  <text x="412" y="364" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">2.1 MP</text>
+
+  <!-- Row 4: 4K Ultra HD -->
+  <text x="260" y="445" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">4K Ultra HD</text>
+  <text x="260" y="465" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">3840 × 2160 px</text>
+  <rect x="270" y="430" width="520" height="36" rx="4" fill="#2a78d6"/>
+  <text x="800" y="454" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">8.3 MP</text>
+
+  <text x="60" y="550" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">Bar length is proportional to total megapixels captured at each resolution ceiling.</text>
+</svg>

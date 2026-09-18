@@ -1,0 +1,128 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <title>In-phase vs out-of-phase speaker waveform comparison</title>
+  <desc>Diagram comparing two speakers wired in phase, whose sound waves reinforce into deeper bass at the listening position, against two speakers wired out of phase, whose waves cancel into a weak, hollow sound.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>In-phase vs out-of-phase speaker waveform comparison</dc:title>
+        <dc:description>Diagram comparing two speakers wired in phase, whose sound waves reinforce into deeper bass at the listening position, against two speakers wired out of phase, whose waves cancel into a weak, hollow sound.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>speaker polarity test</rdf:li>
+            <rdf:li>in phase</rdf:li>
+            <rdf:li>out of phase</rdf:li>
+            <rdf:li>bass</rdf:li>
+            <rdf:li>hollow</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/speaker-polarity-phase-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="1000" height="700" fill="#fcfcfb" />
+
+  <!-- Divider -->
+  <line x1="500" y1="40" x2="500" y2="660" stroke="#e1e0d9" stroke-width="2" />
+
+  <!-- ===================== LEFT PANEL: IN PHASE ===================== -->
+  <g>
+    <circle cx="70" cy="60" r="12" fill="#0ca30c" />
+    <path d="M64,60 L69,66 L77,52" stroke="#fcfcfb" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="95" y="68" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#0b0b0b">In Phase</text>
+    <text x="70" y="98" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Waves reinforce &#8594; deeper, focused bass</text>
+
+    <!-- Speaker A -->
+    <g transform="translate(60,140)">
+      <rect x="0" y="0" width="70" height="100" rx="6" fill="#334155" />
+      <circle cx="35" cy="35" r="16" fill="#0f172a" />
+      <circle cx="35" cy="75" r="22" fill="#0f172a" />
+      <text x="35" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Speaker A</text>
+    </g>
+    <!-- Speaker B -->
+    <g transform="translate(310,140)">
+      <rect x="0" y="0" width="70" height="100" rx="6" fill="#334155" />
+      <circle cx="35" cy="35" r="16" fill="#0f172a" />
+      <circle cx="35" cy="75" r="22" fill="#0f172a" />
+      <text x="35" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Speaker B</text>
+    </g>
+
+    <!-- In-phase waveform A -->
+    <path d="M 150 190 Q 175 165 200 190 Q 225 215 250 190 Q 275 165 300 190"
+          fill="none" stroke="#2a78d6" stroke-width="3" opacity="0.85" />
+    <!-- In-phase waveform B (same direction) -->
+    <path d="M 150 200 Q 175 175 200 200 Q 225 225 250 200 Q 275 175 300 200"
+          fill="none" stroke="#1baf7a" stroke-width="3" opacity="0.85" />
+
+    <text x="225" y="255" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#898781">both cones move outward together</text>
+
+    <!-- Combined reinforced wave at listening position -->
+    <g transform="translate(70,320)">
+      <text x="0" y="-16" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">At the listening position</text>
+      <line x1="0" y1="60" x2="360" y2="60" stroke="#c3c2b7" stroke-width="1" />
+      <path d="M 0 60 Q 30 -10 60 60 Q 90 130 120 60 Q 150 -10 180 60 Q 210 130 240 60 Q 270 -10 300 60 Q 330 130 360 60"
+            fill="none" stroke="#0ca30c" stroke-width="4" stroke-linecap="round" />
+      <text x="180" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#0ca30c" font-weight="600">large amplitude &#8594; strong bass</text>
+    </g>
+
+    <g transform="translate(60,470)">
+      <rect x="0" y="0" width="380" height="150" rx="8" fill="#ffffff" stroke="#e1e0d9" stroke-width="2" />
+      <text x="20" y="30" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0b0b0b">Correct wiring</text>
+      <text x="20" y="58" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Positive (+) to positive,</text>
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">negative (&#8722;) to negative,</text>
+      <text x="20" y="102" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">on every speaker in the pair.</text>
+      <text x="20" y="130" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#0ca30c">Sound stays focused and centered.</text>
+    </g>
+  </g>
+
+  <!-- ===================== RIGHT PANEL: OUT OF PHASE ===================== -->
+  <g transform="translate(500,0)">
+    <circle cx="70" cy="60" r="12" fill="#d03b3b" />
+    <path d="M64,54 L76,66 M76,54 L64,66" stroke="#fcfcfb" stroke-width="3" stroke-linecap="round" />
+    <text x="95" y="68" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#0b0b0b">Out of Phase</text>
+    <text x="70" y="98" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">Waves cancel &#8594; weak, hollow sound</text>
+
+    <!-- Speaker A -->
+    <g transform="translate(60,140)">
+      <rect x="0" y="0" width="70" height="100" rx="6" fill="#334155" />
+      <circle cx="35" cy="35" r="16" fill="#0f172a" />
+      <circle cx="35" cy="75" r="22" fill="#0f172a" />
+      <text x="35" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Speaker A</text>
+    </g>
+    <!-- Speaker B (reversed wiring) -->
+    <g transform="translate(310,140)">
+      <rect x="0" y="0" width="70" height="100" rx="6" fill="#334155" />
+      <circle cx="35" cy="35" r="16" fill="#0f172a" />
+      <circle cx="35" cy="75" r="22" fill="#0f172a" />
+      <text x="35" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Speaker B</text>
+    </g>
+
+    <!-- Out-of-phase waveform A -->
+    <path d="M 150 190 Q 175 165 200 190 Q 225 215 250 190 Q 275 165 300 190"
+          fill="none" stroke="#2a78d6" stroke-width="3" opacity="0.85" />
+    <!-- Out-of-phase waveform B (inverted) -->
+    <path d="M 150 190 Q 175 215 200 190 Q 225 165 250 190 Q 275 215 300 190"
+          fill="none" stroke="#eb6834" stroke-width="3" opacity="0.85" />
+
+    <text x="225" y="255" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#898781">one cone moves out while the other moves in</text>
+
+    <!-- Combined cancelled wave at listening position -->
+    <g transform="translate(70,320)">
+      <text x="0" y="-16" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">At the listening position</text>
+      <line x1="0" y1="60" x2="360" y2="60" stroke="#c3c2b7" stroke-width="1" />
+      <path d="M 0 60 Q 30 48 60 60 Q 90 72 120 60 Q 150 48 180 60 Q 210 72 240 60 Q 270 48 300 60 Q 330 72 360 60"
+            fill="none" stroke="#d03b3b" stroke-width="4" stroke-linecap="round" />
+      <text x="180" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#d03b3b" font-weight="600">flattened amplitude &#8594; lost bass</text>
+    </g>
+
+    <g transform="translate(60,470)">
+      <rect x="0" y="0" width="380" height="150" rx="8" fill="#ffffff" stroke="#e1e0d9" stroke-width="2" />
+      <text x="20" y="30" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0b0b0b">Reversed wiring</text>
+      <text x="20" y="58" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">One speaker has positive (+)</text>
+      <text x="20" y="80" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">and negative (&#8722;) swapped</text>
+      <text x="20" y="102" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">relative to the other.</text>
+      <text x="20" y="130" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#d03b3b">Flip one speaker's wires to fix it.</text>
+    </g>
+  </g>
+</svg>

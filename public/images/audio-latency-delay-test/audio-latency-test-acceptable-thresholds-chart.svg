@@ -1,0 +1,65 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle3 svgDesc3" style="width:100%;height:auto">
+  <title id="svgTitle3">Acceptable audio latency by use case</title>
+  <desc id="svgDesc3">Horizontal chart showing the maximum acceptable audio latency in milliseconds for live instrument monitoring, gaming, video, and casual music listening.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Acceptable audio latency by use case</dc:title>
+        <dc:description>How much latency is acceptable depends on the task — live instrument monitoring needs under 20 ms while casual music listening tolerates up to 200 ms.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>audio latency test</rdf:li>
+            <rdf:li>milliseconds</rdf:li>
+            <rdf:li>gaming</rdf:li>
+            <rdf:li>live performance</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/audio-latency-delay-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="420" fill="#fcfcfb"/>
+  <text x="450" y="42" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="600" fill="#0b0b0b">How much latency is acceptable, by task</text>
+  <text x="450" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Maximum latency before the delay becomes noticeable or disruptive</text>
+
+  <g stroke="#e1e0d9" stroke-width="1">
+    <line x1="320" y1="100" x2="320" y2="360"/>
+    <line x1="480" y1="100" x2="480" y2="360"/>
+    <line x1="640" y1="100" x2="640" y2="360"/>
+    <line x1="800" y1="100" x2="800" y2="360"/>
+  </g>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">
+    <text x="160" y="378" text-anchor="middle">0 ms</text>
+    <text x="320" y="378" text-anchor="middle">50 ms</text>
+    <text x="480" y="378" text-anchor="middle">100 ms</text>
+    <text x="640" y="378" text-anchor="middle">150 ms</text>
+    <text x="800" y="378" text-anchor="middle">200 ms</text>
+  </g>
+  <line x1="160" y1="100" x2="160" y2="360" stroke="#c3c2b7" stroke-width="2"/>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- Live instrument / singing <20ms, strictest, darkest -->
+    <text x="152" y="130" text-anchor="end" font-size="14" fill="#0b0b0b">Live instrument / singing</text>
+    <rect x="160" y="118" width="64" height="24" rx="4" fill="#1c5cab"/>
+    <text x="232" y="135" font-size="13" fill="#52514e">under 20 ms</text>
+
+    <!-- Gaming <60ms -->
+    <text x="152" y="180" text-anchor="end" font-size="14" fill="#0b0b0b">Gaming</text>
+    <rect x="160" y="168" width="192" height="24" rx="4" fill="#2a78d6"/>
+    <text x="360" y="185" font-size="13" fill="#52514e">under 60 ms</text>
+
+    <!-- Video lip-sync 80-100ms -->
+    <text x="152" y="230" text-anchor="end" font-size="14" fill="#0b0b0b">Video / lip-sync</text>
+    <rect x="160" y="218" width="288" height="24" rx="4" fill="#5598e7"/>
+    <text x="456" y="235" font-size="13" fill="#52514e">80–100 ms</text>
+
+    <!-- Casual music listening ~200ms -->
+    <text x="152" y="280" text-anchor="end" font-size="14" fill="#0b0b0b">Casual music listening</text>
+    <rect x="160" y="268" width="640" height="24" rx="4" fill="#9ec5f4"/>
+    <text x="808" y="285" font-size="13" fill="#52514e">up to 200 ms</text>
+  </g>
+
+  <text x="450" y="340" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">Run an audio latency test against your own connection, then compare the reading to the task you actually care about</text>
+</svg>

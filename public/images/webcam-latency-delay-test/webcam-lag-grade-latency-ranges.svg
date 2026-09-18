@@ -1,0 +1,85 @@
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wlt-grades-title wlt-grades-desc" style="width:100%;height:auto">
+  <title id="wlt-grades-title">Webcam lag grade chart by latency range</title>
+  <desc id="wlt-grades-desc">Horizontal bar chart grading webcam latency test results from excellent under 20 milliseconds to poor over 150 milliseconds, each bar labeled with its grade and millisecond range.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam lag grade chart by latency range</dc:title>
+        <dc:description>Horizontal bar chart grading webcam latency test results from excellent under 20 milliseconds to poor over 150 milliseconds, each bar labeled with its grade and millisecond range.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam lag test</rdf:li>
+            <rdf:li>lag grade</rdf:li>
+            <rdf:li>milliseconds</rdf:li>
+            <rdf:li>stream quality</rdf:li>
+            <rdf:li>webcam latency test</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-latency-delay-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <style>
+    .heading { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 26px; font-weight: 700; fill: #0b0b0b; }
+    .sub { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; fill: #52514e; }
+    .grade-label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 18px; font-weight: 700; fill: #0b0b0b; }
+    .range-label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; fill: #fcfcfb; font-weight: 600; }
+    .axis { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; fill: #898781; }
+  </style>
+
+  <rect x="0" y="0" width="900" height="620" fill="#f9f9f7"/>
+  <text x="40" y="50" class="heading">How your webcam lag score is graded</text>
+  <text x="40" y="76" class="sub">Milliseconds of end-to-end delay measured during the test</text>
+
+  <!-- bars: track 0-180ms mapped to x=220..860 (width 640) -->
+  <!-- Excellent A+  0-20ms -->
+  <g>
+    <text x="40" y="148" class="grade-label" fill="#0ca30c">A+</text>
+    <rect x="220" y="120" width="71" height="46" rx="6" fill="#0ca30c"/>
+    <text x="255" y="148" text-anchor="middle" class="range-label">0–20ms</text>
+    <text x="905" y="0" class="axis" visibility="hidden"></text>
+    <text x="300" y="148" class="sub" text-anchor="start">Excellent — imperceptible, ideal for gaming and motion capture</text>
+  </g>
+
+  <!-- Good B  20-50ms -->
+  <g>
+    <text x="40" y="228" class="grade-label" fill="#008300">B</text>
+    <rect x="220" y="200" width="107" height="46" rx="6" fill="#008300"/>
+    <text x="273" y="228" text-anchor="middle" class="range-label">20–50ms</text>
+    <text x="345" y="228" class="sub" text-anchor="start">Good — smooth for live streaming and video conferencing</text>
+  </g>
+
+  <!-- Fair C 50-100ms -->
+  <g>
+    <text x="40" y="308" class="grade-label" fill="#fab219">C</text>
+    <rect x="220" y="280" width="178" height="46" rx="6" fill="#fab219"/>
+    <text x="309" y="308" text-anchor="middle" class="range-label" fill="#0b0b0b">50–100ms</text>
+    <text x="415" y="308" class="sub" text-anchor="start">Fair — noticeable pauses in fast back-and-forth conversation</text>
+  </g>
+
+  <!-- Weak D 100-150ms -->
+  <g>
+    <text x="40" y="388" class="grade-label" fill="#ec835a">D</text>
+    <rect x="220" y="360" width="178" height="46" rx="6" fill="#ec835a"/>
+    <text x="309" y="388" text-anchor="middle" class="range-label">100–150ms</text>
+    <text x="415" y="388" class="sub" text-anchor="start">Weak — visible mouth/audio mismatch on calls</text>
+  </g>
+
+  <!-- Poor F 150ms+ -->
+  <g>
+    <text x="40" y="468" class="grade-label" fill="#d03b3b">F</text>
+    <rect x="220" y="440" width="213" height="46" rx="6" fill="#d03b3b"/>
+    <text x="326" y="468" text-anchor="middle" class="range-label">150ms+</text>
+    <text x="450" y="468" class="sub" text-anchor="start">Poor — distracting lag, driver or USB bandwidth issue likely</text>
+  </g>
+
+  <!-- axis line -->
+  <line x1="220" y1="510" x2="860" y2="510" stroke="#c3c2b7" stroke-width="1"/>
+  <text x="220" y="530" class="axis">0ms</text>
+  <text x="540" y="530" class="axis">75ms</text>
+  <text x="845" y="530" class="axis">150ms+</text>
+
+  <text x="40" y="580" class="sub">Grades reflect current-lag and average-lag readings from a real-time flash test</text>
+</svg>

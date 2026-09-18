@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif">
+  <title>Live filter comparison grid for webcam photo capture</title>
+  <desc>Grid comparing four live filters applied to a webcam photo capture preview: normal, black and white, sepia, and vintage, shown side by side with mirror mode noted.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Live filter comparison grid for webcam photo capture</dc:title>
+        <dc:description>Grid comparing four live filters applied to a webcam photo capture preview: normal, black and white, sepia, and vintage, shown side by side with mirror mode noted.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>filters</rdf:li>
+            <rdf:li>mirror mode</rdf:li>
+            <rdf:li>sepia</rdf:li>
+            <rdf:li>vintage</rdf:li>
+            <rdf:li>black and white</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-photo-capture-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="560" fill="#fcfcfb"/>
+  <text x="500" y="46" text-anchor="middle" fill="#0b0b0b" font-size="24" font-weight="bold">Live filters, compared side by side</text>
+
+  <!-- Tile 1: Normal -->
+  <g>
+    <rect x="60" y="90" width="400" height="190" rx="8" fill="#d8d6cd"/>
+    <circle cx="260" cy="150" r="42" fill="#c3c2b7"/>
+    <rect x="215" y="192" width="90" height="80" rx="16" fill="#c3c2b7"/>
+    <rect x="60" y="90" width="400" height="190" rx="8" fill="none" stroke="#2a78d6" stroke-width="3"/>
+    <text x="260" y="305" text-anchor="middle" fill="#0b0b0b" font-size="17" font-weight="bold">Normal</text>
+  </g>
+
+  <!-- Tile 2: Black and white -->
+  <g>
+    <rect x="540" y="90" width="400" height="190" rx="8" fill="#bdbdbd"/>
+    <circle cx="740" cy="150" r="42" fill="#8c8c8c"/>
+    <rect x="695" y="192" width="90" height="80" rx="16" fill="#8c8c8c"/>
+    <rect x="540" y="90" width="400" height="190" rx="8" fill="none" stroke="#eb6834" stroke-width="3"/>
+    <text x="740" y="305" text-anchor="middle" fill="#0b0b0b" font-size="17" font-weight="bold">Black &amp; white</text>
+  </g>
+
+  <!-- Tile 3: Sepia -->
+  <g>
+    <rect x="60" y="330" width="400" height="190" rx="8" fill="#d8c4a0"/>
+    <circle cx="260" cy="390" r="42" fill="#b89468"/>
+    <rect x="215" y="432" width="90" height="80" rx="16" fill="#b89468"/>
+    <rect x="60" y="330" width="400" height="190" rx="8" fill="none" stroke="#1baf7a" stroke-width="3"/>
+    <text x="260" y="545" text-anchor="middle" fill="#0b0b0b" font-size="17" font-weight="bold">Sepia</text>
+  </g>
+
+  <!-- Tile 4: Vintage -->
+  <g>
+    <rect x="540" y="330" width="400" height="190" rx="8" fill="#e0c9b8"/>
+    <circle cx="740" cy="390" r="42" fill="#c99a7a"/>
+    <rect x="695" y="432" width="90" height="80" rx="16" fill="#c99a7a"/>
+    <rect x="540" y="330" width="400" height="190" rx="8" fill="none" stroke="#4a3aa7" stroke-width="3"/>
+    <text x="740" y="545" text-anchor="middle" fill="#0b0b0b" font-size="17" font-weight="bold">Vintage</text>
+  </g>
+</svg>

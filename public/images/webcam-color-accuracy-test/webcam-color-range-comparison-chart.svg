@@ -1,0 +1,56 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle3 svgDesc3">
+  <title id="svgTitle3">Typical color count by webcam color mode</title>
+  <desc id="svgDesc3">Bar chart comparing the approximate number of distinct colors a webcam test detects in grayscale mode, reduced-palette mode, and full color mode.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Typical color count by webcam color mode</dc:title>
+        <dc:description>Bar chart comparing the approximate number of distinct colors a webcam test detects in grayscale mode, reduced-palette mode, and full color mode.</dc:description>
+        <dc:subject><rdf:Bag>
+          <rdf:li>number of colors</rdf:li>
+          <rdf:li>grayscale mode</rdf:li>
+          <rdf:li>color reproduction</rdf:li>
+          <rdf:li>webcam color test</rdf:li>
+        </rdf:Bag></dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-color-accuracy-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="560" fill="#fcfcfb"/>
+  <text x="40" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#0b0b0b">How many colors should the test detect?</text>
+  <text x="40" y="76" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Approximate distinct-color counts sampled from one frame, by mode</text>
+
+  <!-- gridlines -->
+  <g stroke="#e1e0d9" stroke-width="1">
+    <line x1="220" y1="450" x2="820" y2="450"/>
+    <line x1="220" y1="360" x2="820" y2="360"/>
+    <line x1="220" y1="270" x2="820" y2="270"/>
+    <line x1="220" y1="180" x2="820" y2="180"/>
+    <line x1="220" y1="120" x2="820" y2="120"/>
+  </g>
+  <line x1="220" y1="120" x2="220" y2="450" stroke="#c3c2b7" stroke-width="1.5"/>
+
+  <!-- Bars: horizontal, ordinal sequential blue ramp -->
+  <!-- Grayscale mode: short bar, lightest step -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="210" y="165" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="end">Grayscale mode</text>
+    <rect x="220" y="140" width="60" height="50" rx="4" fill="#86b6ef"/>
+    <text x="292" y="170" font-size="15" fill="#0b0b0b">~ 32 colors</text>
+
+    <text x="210" y="255" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="end">Reduced palette</text>
+    <rect x="220" y="230" width="280" height="50" rx="4" fill="#3987e5"/>
+    <text x="512" y="260" font-size="15" fill="#0b0b0b">~ 4,000 colors</text>
+
+    <text x="210" y="345" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="end">Full color mode</text>
+    <rect x="220" y="320" width="560" height="50" rx="4" fill="#1c5cab"/>
+    <text x="792" y="350" font-size="15" fill="#ffffff" text-anchor="end">~ 65,000+ colors</text>
+  </g>
+
+  <text x="40" y="420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781"></text>
+
+  <!-- legend / note -->
+  <rect x="220" y="480" width="600" height="1" fill="#e1e0d9"/>
+  <text x="220" y="510" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">A low reading in full color mode usually points to poor lighting or a compressed video driver, not a broken sensor.</text>
+</svg>

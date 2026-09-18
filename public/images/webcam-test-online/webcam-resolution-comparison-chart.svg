@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" style="width:100%;height:auto" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Common webcam resolutions compared by megapixel count</title>
+  <desc>Bar chart comparing five common webcam resolutions used in an online webcam test: QVGA, VGA, HD 720p, Full HD 1080p, and 4K UHD, ranked by total megapixel count.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Common webcam resolutions compared by megapixel count</dc:title>
+        <dc:description>Bar chart comparing five common webcam resolutions used in an online webcam test: QVGA, VGA, HD 720p, Full HD 1080p, and 4K UHD, ranked by total megapixel count.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam resolution</rdf:li>
+            <rdf:li>webcam test online</rdf:li>
+            <rdf:li>resolution</rdf:li>
+            <rdf:li>megapixels</rdf:li>
+            <rdf:li>aspect ratio</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="560" fill="#fcfcfb"/>
+  <text x="40" y="50" font-size="24" font-weight="600" fill="#0b0b0b">Webcam resolutions, by megapixel count</text>
+  <text x="40" y="76" font-size="14" fill="#52514e">What a webcam test online reports as your camera's detected resolution</text>
+
+  <!-- baseline -->
+  <line x1="260" y1="110" x2="260" y2="470" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- QVGA -->
+  <text x="250" y="140" font-size="14" fill="#0b0b0b" text-anchor="end">QVGA (320x240)</text>
+  <rect x="260" y="122" width="12" height="28" rx="4" fill="#cde2fb"/>
+  <text x="280" y="140" font-size="13" fill="#52514e">0.08 MP</text>
+
+  <!-- VGA -->
+  <text x="250" y="210" font-size="14" fill="#0b0b0b" text-anchor="end">VGA (640x480)</text>
+  <rect x="260" y="192" width="40" height="28" rx="4" fill="#9ec5f4"/>
+  <text x="310" y="210" font-size="13" fill="#52514e">0.31 MP</text>
+
+  <!-- HD 720p -->
+  <text x="250" y="280" font-size="14" fill="#0b0b0b" text-anchor="end">HD 720p (1280x720)</text>
+  <rect x="260" y="262" width="118" height="28" rx="4" fill="#5598e7"/>
+  <text x="388" y="280" font-size="13" fill="#52514e">0.92 MP</text>
+
+  <!-- FHD 1080p -->
+  <text x="250" y="350" font-size="14" fill="#0b0b0b" text-anchor="end">Full HD 1080p (1920x1080)</text>
+  <rect x="260" y="332" width="266" height="28" rx="4" fill="#256abf"/>
+  <text x="536" y="350" font-size="13" fill="#52514e">2.07 MP</text>
+
+  <!-- 4K UHD -->
+  <text x="250" y="420" font-size="14" fill="#0b0b0b" text-anchor="end">4K UHD (3840x2160)</text>
+  <rect x="260" y="402" width="650" height="28" rx="4" fill="#104281"/>
+  <text x="920" y="420" font-size="13" fill="#ffffff" text-anchor="end">8.29 MP</text>
+
+  <text x="260" y="500" font-size="12" fill="#898781">Bar length is proportional to total megapixels (width &#215; height &#247; 1,000,000)</text>
+</svg>

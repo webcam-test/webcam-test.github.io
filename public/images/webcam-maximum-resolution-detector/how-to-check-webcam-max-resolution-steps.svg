@@ -1,0 +1,59 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="stepTitle stepDesc">
+  <title id="stepTitle">Step flow diagram for checking a webcam's maximum supported resolution</title>
+  <desc id="stepDesc">Four-step flow diagram: grant camera access, run the resolution scan, review the list of supported resolutions, and identify the highest width by height value as the webcam's maximum resolution.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Step flow diagram for checking a webcam's maximum supported resolution</dc:title>
+        <dc:description>Four-step flow diagram: grant camera access, run the resolution scan, review the list of supported resolutions, and identify the highest width by height value as the webcam's maximum resolution.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam max resolution</rdf:li>
+            <rdf:li>webcam resolution test</rdf:li>
+            <rdf:li>camera permissions</rdf:li>
+            <rdf:li>supported resolutions</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-maximum-resolution-detector</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="420" fill="#fcfcfb"/>
+
+  <text x="60" y="55" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">How to Find Your Webcam's Max Resolution</text>
+
+  <!-- connecting line -->
+  <line x1="130" y1="220" x2="800" y2="220" stroke="#e1e0d9" stroke-width="3"/>
+
+  <!-- Step 1 -->
+  <circle cx="130" cy="220" r="34" fill="#2a78d6"/>
+  <text x="130" y="230" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#ffffff">1</text>
+  <text x="130" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Grant camera</text>
+  <text x="130" y="310" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">permissions</text>
+  <text x="130" y="335" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">Allow browser access</text>
+
+  <!-- Step 2 -->
+  <circle cx="353" cy="220" r="34" fill="#2a78d6"/>
+  <text x="353" y="230" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#ffffff">2</text>
+  <text x="353" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Run the</text>
+  <text x="353" y="310" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">resolution scan</text>
+  <text x="353" y="335" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">Tests each standard</text>
+
+  <!-- Step 3 -->
+  <circle cx="576" cy="220" r="34" fill="#2a78d6"/>
+  <text x="576" y="230" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#ffffff">3</text>
+  <text x="576" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Review supported</text>
+  <text x="576" y="310" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">resolutions</text>
+  <text x="576" y="335" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">Full list, low to high</text>
+
+  <!-- Step 4 -->
+  <circle cx="799" cy="220" r="34" fill="#1baf7a"/>
+  <text x="799" y="230" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#ffffff">4</text>
+  <text x="799" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Note the</text>
+  <text x="799" y="310" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">highest value</text>
+  <text x="799" y="335" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">That's your max resolution</text>
+
+  <text x="60" y="395" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">The largest width × height your browser reports as "Status: Supported" is your webcam's true ceiling.</text>
+</svg>

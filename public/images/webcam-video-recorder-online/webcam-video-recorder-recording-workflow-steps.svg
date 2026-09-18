@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 620" style="width:100%;height:auto" role="img" aria-labelledby="wf-title wf-desc">
+  <title id="wf-title">Webcam video recorder workflow: four steps from camera access to download</title>
+  <desc id="wf-desc">A four-step flow diagram showing how a webcam video recorder works in the browser: allow camera and microphone access, choose resolution and layout, start recording with a countdown, then review and download the finished clip.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam video recorder workflow: four steps from camera access to download</dc:title>
+        <dc:description>A four-step flow diagram showing how a webcam video recorder works in the browser: allow camera and microphone access, choose resolution and layout, start recording with a countdown, then review and download the finished clip.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam video recorder</rdf:li>
+            <rdf:li>webcam recorder</rdf:li>
+            <rdf:li>record video</rdf:li>
+            <rdf:li>start recording</rdf:li>
+            <rdf:li>camera and microphone</rdf:li>
+            <rdf:li>browser</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-video-recorder-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1200" height="620" fill="#fcfcfb"/>
+  <text x="600" y="56" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#0b0b0b">How a browser-based webcam video recorder works</text>
+
+  <!-- connecting line -->
+  <line x1="150" y1="330" x2="1050" y2="330" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- Step 1 -->
+  <g>
+    <circle cx="150" cy="330" r="54" fill="#2a78d6"/>
+    <path d="M126 318 h20 l6 -10 h20 l6 10 h20 v34 h-72 z" fill="none" stroke="#fcfcfb" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="162" cy="336" r="9" fill="none" stroke="#fcfcfb" stroke-width="4"/>
+    <rect x="112" y="410" width="76" height="4" fill="#2a78d6"/>
+    <text x="150" y="450" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#0b0b0b">1. Allow access</text>
+    <text x="150" y="476" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">
+      <tspan x="150" dy="0">Grant camera and</tspan>
+      <tspan x="150" dy="20">microphone permission</tspan>
+      <tspan x="150" dy="20">in the browser</tspan>
+    </text>
+  </g>
+
+  <!-- Step 2 -->
+  <g>
+    <circle cx="450" cy="330" r="54" fill="#eb6834"/>
+    <circle cx="450" cy="330" r="20" fill="none" stroke="#fcfcfb" stroke-width="4"/>
+    <circle cx="450" cy="330" r="6" fill="#fcfcfb"/>
+    <line x1="450" y1="304" x2="450" y2="296" stroke="#fcfcfb" stroke-width="4"/>
+    <line x1="450" y1="364" x2="450" y2="356" stroke="#fcfcfb" stroke-width="4"/>
+    <line x1="424" y1="330" x2="416" y2="330" stroke="#fcfcfb" stroke-width="4"/>
+    <line x1="484" y1="330" x2="476" y2="330" stroke="#fcfcfb" stroke-width="4"/>
+    <text x="450" y="450" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#0b0b0b">2. Choose settings</text>
+    <text x="450" y="476" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">
+      <tspan x="450" dy="0">Pick resolution, mirror</tspan>
+      <tspan x="450" dy="20">mode, and a layout for</tspan>
+      <tspan x="450" dy="20">webcam or screen</tspan>
+    </text>
+  </g>
+
+  <!-- Step 3 -->
+  <g>
+    <circle cx="750" cy="330" r="54" fill="#1baf7a"/>
+    <circle cx="750" cy="330" r="22" fill="#fcfcfb"/>
+    <circle cx="750" cy="330" r="14" fill="#e34948"/>
+    <text x="750" y="450" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#0b0b0b">3. Start recording</text>
+    <text x="750" y="476" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">
+      <tspan x="750" dy="0">A countdown runs, then</tspan>
+      <tspan x="750" dy="20">the recorder captures</tspan>
+      <tspan x="750" dy="20">video and audio live</tspan>
+    </text>
+  </g>
+
+  <!-- Step 4 -->
+  <g>
+    <circle cx="1050" cy="330" r="54" fill="#eda100"/>
+    <path d="M1050 306 v34 M1036 328 l14 14 l14 -14" fill="none" stroke="#fcfcfb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="1030" y1="356" x2="1070" y2="356" stroke="#fcfcfb" stroke-width="5" stroke-linecap="round"/>
+    <text x="1050" y="450" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#0b0b0b">4. Review &amp; download</text>
+    <text x="1050" y="476" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">
+      <tspan x="1050" dy="0">Play back the clip,</tspan>
+      <tspan x="1050" dy="20">retake if needed, then</tspan>
+      <tspan x="1050" dy="20">save the video file</tspan>
+    </text>
+  </g>
+
+  <text x="600" y="580" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">No installs and no uploads — every step runs locally in your browser tab</text>
+</svg>

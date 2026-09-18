@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 640" style="width:100%;height:auto" role="img" aria-labelledby="cmp-title cmp-desc">
+  <title id="cmp-title">Browser-based webcam recorder compared with downloaded desktop software</title>
+  <desc id="cmp-desc">A side-by-side comparison of a browser-based webcam video recorder and downloaded desktop recording software, across install requirements, whether files leave the device, cross-platform support, and setup time.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Browser-based webcam recorder compared with downloaded desktop software</dc:title>
+        <dc:description>A side-by-side comparison of a browser-based webcam video recorder and downloaded desktop recording software, across install requirements, whether files leave the device, cross-platform support, and setup time.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam video recorder</rdf:li>
+            <rdf:li>browser</rdf:li>
+            <rdf:li>no download</rdf:li>
+            <rdf:li>no install</rdf:li>
+            <rdf:li>privacy</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-video-recorder-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="640" fill="#fcfcfb"/>
+  <text x="500" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">Browser-based recorder vs. downloaded software</text>
+
+  <!-- column headers -->
+  <rect x="360" y="80" width="280" height="56" rx="8" fill="#2a78d6"/>
+  <text x="500" y="115" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#fcfcfb">Browser recorder</text>
+  <rect x="670" y="80" width="280" height="56" rx="8" fill="#eb6834"/>
+  <text x="810" y="115" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#fcfcfb">Downloaded software</text>
+
+  <!-- row helper macro via repeated groups -->
+  <!-- Row 1 -->
+  <line x1="20" y1="170" x2="980" y2="170" stroke="#e1e0d9" stroke-width="1"/>
+  <text x="30" y="205" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">Install required</text>
+  <circle cx="500" cy="200" r="16" fill="none" stroke="#0ca30c" stroke-width="3"/>
+  <path d="M492 200 l6 6 l12 -14" fill="none" stroke="#0ca30c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="530" y="205" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">No — opens straight in the tab</text>
+  <circle cx="810" cy="200" r="16" fill="none" stroke="#d03b3b" stroke-width="3"/>
+  <path d="M802 192 l16 16 M818 192 l-16 16" stroke="#d03b3b" stroke-width="3" stroke-linecap="round"/>
+  <text x="840" y="205" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Yes, before first use</text>
+
+  <!-- Row 2 -->
+  <line x1="20" y1="245" x2="980" y2="245" stroke="#e1e0d9" stroke-width="1"/>
+  <text x="30" y="280" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">Files leave your device</text>
+  <circle cx="500" cy="275" r="16" fill="none" stroke="#0ca30c" stroke-width="3"/>
+  <path d="M492 275 l6 6 l12 -14" fill="none" stroke="#0ca30c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="530" y="280" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">No — kept in browser memory</text>
+  <circle cx="810" cy="275" r="16" fill="none" stroke="#fab219" stroke-width="3"/>
+  <text x="810" y="281" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#fab219">?</text>
+  <text x="840" y="280" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Often auto-saved to disk</text>
+
+  <!-- Row 3 -->
+  <line x1="20" y1="320" x2="980" y2="320" stroke="#e1e0d9" stroke-width="1"/>
+  <text x="30" y="355" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">Works across operating systems</text>
+  <circle cx="500" cy="350" r="16" fill="none" stroke="#0ca30c" stroke-width="3"/>
+  <path d="M492 350 l6 6 l12 -14" fill="none" stroke="#0ca30c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="530" y="355" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Yes, any modern browser</text>
+  <circle cx="810" cy="350" r="16" fill="none" stroke="#fab219" stroke-width="3"/>
+  <text x="810" y="356" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#fab219">?</text>
+  <text x="840" y="355" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Depends on the build</text>
+
+  <!-- Row 4 -->
+  <line x1="20" y1="395" x2="980" y2="395" stroke="#e1e0d9" stroke-width="1"/>
+  <text x="30" y="430" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">Time to first recording</text>
+  <text x="500" y="435" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#2a78d6">Under a minute</text>
+  <text x="810" y="435" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#eb6834">Several minutes</text>
+
+  <line x1="20" y1="470" x2="980" y2="470" stroke="#e1e0d9" stroke-width="1"/>
+
+  <text x="500" y="590" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">A webcam video recorder that runs entirely in the browser skips the install step a desktop app requires</text>
+</svg>

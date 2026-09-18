@@ -1,0 +1,62 @@
+<svg viewBox="0 0 800 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <title>3-point lighting setup for a webcam, top-down diagram</title>
+  <desc>A top-down diagram showing a key light, fill light, and back light arranged around a webcam subject, the classic 3-point lighting layout used to pass a webcam lighting test with even, shadow-free exposure.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>3-point lighting setup for a webcam, top-down diagram</dc:title>
+        <dc:description>A top-down diagram showing a key light, fill light, and back light arranged around a webcam subject, the classic 3-point lighting layout used to pass a webcam lighting test with even, shadow-free exposure.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>3-point lighting</rdf:li>
+            <rdf:li>key light</rdf:li>
+            <rdf:li>fill light</rdf:li>
+            <rdf:li>webcam ring light</rdf:li>
+            <rdf:li>shadows</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-lighting-exposure-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="800" height="620" fill="#fcfcfb"/>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">3-Point Lighting for Video Calls</text>
+  <text x="400" y="78" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Top-down view</text>
+
+  <!-- subject center -->
+  <circle cx="400" cy="360" r="40" fill="#2a78d6"/>
+  <text x="400" y="367" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#ffffff">You</text>
+
+  <!-- camera in front -->
+  <rect x="374" y="450" width="52" height="36" rx="6" fill="#52514e"/>
+  <text x="400" y="473" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#ffffff">Camera</text>
+  <line x1="400" y1="450" x2="400" y2="400" stroke="#898781" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- key light: front-left, brightest -->
+  <circle cx="200" cy="240" r="26" fill="#eda100"/>
+  <text x="200" y="295" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Key light</text>
+  <text x="200" y="313" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">Main, brightest source</text>
+  <line x1="222" y1="256" x2="374" y2="342" stroke="#eda100" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- fill light: front-right, softer -->
+  <circle cx="600" cy="240" r="20" fill="#86b6ef"/>
+  <text x="600" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Fill light</text>
+  <text x="600" y="308" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">Softens key-light shadows</text>
+  <line x1="583" y1="253" x2="428" y2="342" stroke="#86b6ef" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- back light: behind subject -->
+  <circle cx="400" cy="150" r="18" fill="#4a3aa7"/>
+  <text x="400" y="118" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Back light</text>
+  <text x="400" y="100" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">Separates you from the background</text>
+  <line x1="400" y1="168" x2="400" y2="322" stroke="#4a3aa7" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 6"/>
+
+  <!-- legend -->
+  <g transform="translate(120,550)" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">
+    <circle cx="8" cy="0" r="7" fill="#eda100"/>
+    <text x="24" y="5">Key - 45 deg to your face, slightly above eye level</text>
+    <circle cx="330" cy="0" r="7" fill="#86b6ef"/>
+    <text x="346" y="5">Fill - opposite side, half the key's power</text>
+  </g>
+</svg>

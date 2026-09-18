@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1100 700" style="width:100%;height:auto" role="img" aria-labelledby="ctrl-title ctrl-desc">
+  <title id="ctrl-title">Labeled breakdown of on-screen webcam recorder controls</title>
+  <desc id="ctrl-desc">A labeled diagram of the typical control panel in a browser-based webcam video recorder: camera toggle, microphone toggle, mirror mode, backdrop, resolution and bitrate settings, and the record button.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Labeled breakdown of on-screen webcam recorder controls</dc:title>
+        <dc:description>A labeled diagram of the typical control panel in a browser-based webcam video recorder: camera toggle, microphone toggle, mirror mode, backdrop, resolution and bitrate settings, and the record button.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam video recorder</rdf:li>
+            <rdf:li>mirror mode</rdf:li>
+            <rdf:li>backdrop</rdf:li>
+            <rdf:li>bitrate</rdf:li>
+            <rdf:li>camera and microphone</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-video-recorder-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1100" height="700" fill="#fcfcfb"/>
+  <text x="550" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">What the recorder's control bar actually does</text>
+
+  <!-- preview frame -->
+  <rect x="350" y="90" width="400" height="240" rx="10" fill="#1a1a19" stroke="#1baf7a" stroke-width="3"/>
+  <circle cx="550" cy="200" r="55" fill="#383835"/>
+  <circle cx="550" cy="180" r="24" fill="#52514e"/>
+  <path d="M508 250 q42 -46 84 0 z" fill="#52514e"/>
+  <text x="550" y="345" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">live camera preview</text>
+
+  <!-- six control icons in a row -->
+  <!-- 1 Camera toggle -->
+  <g>
+    <circle cx="120" cy="470" r="34" fill="#2a78d6"/>
+    <rect x="104" y="460" width="24" height="18" rx="3" fill="none" stroke="#fcfcfb" stroke-width="3"/>
+    <path d="M128 465 l12 -6 v26 l-12 -6 z" fill="#fcfcfb"/>
+    <line x1="120" y1="504" x2="120" y2="540" stroke="#c3c2b7" stroke-width="2"/>
+    <text x="120" y="562" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Camera</text>
+    <text x="120" y="582" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">show/hide feed</text>
+  </g>
+  <!-- 2 Mic toggle -->
+  <g>
+    <circle cx="300" cy="470" r="34" fill="#eb6834"/>
+    <rect x="292" y="452" width="16" height="24" rx="8" fill="none" stroke="#fcfcfb" stroke-width="3"/>
+    <path d="M284 472 a16 16 0 0 0 32 0" fill="none" stroke="#fcfcfb" stroke-width="3"/>
+    <line x1="300" y1="488" x2="300" y2="494" stroke="#fcfcfb" stroke-width="3"/>
+    <line x1="300" y1="504" x2="300" y2="540" stroke="#c3c2b7" stroke-width="2"/>
+    <text x="300" y="562" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Microphone</text>
+    <text x="300" y="582" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">mute/unmute audio</text>
+  </g>
+  <!-- 3 Mirror mode -->
+  <g>
+    <circle cx="480" cy="470" r="34" fill="#1baf7a"/>
+    <line x1="480" y1="450" x2="480" y2="490" stroke="#fcfcfb" stroke-width="3"/>
+    <path d="M470 456 l-8 8 l8 8 M490 456 l8 8 l-8 8" fill="none" stroke="#fcfcfb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="480" y1="504" x2="480" y2="540" stroke="#c3c2b7" stroke-width="2"/>
+    <text x="480" y="562" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Mirror mode</text>
+    <text x="480" y="582" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">flip the preview</text>
+  </g>
+  <!-- 4 Backdrop -->
+  <g>
+    <circle cx="660" cy="470" r="34" fill="#eda100"/>
+    <rect x="644" y="458" width="32" height="22" rx="3" fill="none" stroke="#fcfcfb" stroke-width="3"/>
+    <circle cx="653" cy="466" r="3" fill="#fcfcfb"/>
+    <path d="M646 478 l10 -10 l8 8 l6 -6 l6 8" fill="none" stroke="#fcfcfb" stroke-width="2.5" stroke-linejoin="round"/>
+    <line x1="660" y1="504" x2="660" y2="540" stroke="#c3c2b7" stroke-width="2"/>
+    <text x="660" y="562" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Backdrop</text>
+    <text x="660" y="582" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">swap or blur background</text>
+  </g>
+  <!-- 5 Settings (resolution/bitrate) -->
+  <g>
+    <circle cx="840" cy="470" r="34" fill="#4a3aa7"/>
+    <circle cx="840" cy="470" r="12" fill="none" stroke="#fcfcfb" stroke-width="3"/>
+    <g stroke="#fcfcfb" stroke-width="3">
+      <line x1="840" y1="450" x2="840" y2="444"/>
+      <line x1="840" y1="490" x2="840" y2="496"/>
+      <line x1="820" y1="470" x2="814" y2="470"/>
+      <line x1="860" y1="470" x2="866" y2="470"/>
+      <line x1="826" y1="456" x2="822" y2="452"/>
+      <line x1="854" y1="484" x2="858" y2="488"/>
+      <line x1="826" y1="484" x2="822" y2="488"/>
+      <line x1="854" y1="456" x2="858" y2="452"/>
+    </g>
+    <line x1="840" y1="504" x2="840" y2="540" stroke="#c3c2b7" stroke-width="2"/>
+    <text x="840" y="562" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Settings</text>
+    <text x="840" y="582" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">resolution &amp; bitrate</text>
+  </g>
+  <!-- 6 Record button -->
+  <g>
+    <circle cx="1000" cy="470" r="34" fill="#e34948"/>
+    <circle cx="1000" cy="470" r="14" fill="#fcfcfb"/>
+    <line x1="1000" y1="504" x2="1000" y2="540" stroke="#c3c2b7" stroke-width="2"/>
+    <text x="1000" y="562" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">Record</text>
+    <text x="1000" y="582" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">start/stop capture</text>
+  </g>
+
+  <text x="550" y="650" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">Most browser-based recorders group these six controls around the live preview before you hit record</text>
+</svg>
