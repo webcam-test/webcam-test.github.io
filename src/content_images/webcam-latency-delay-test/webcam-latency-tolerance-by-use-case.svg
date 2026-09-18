@@ -1,0 +1,71 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wlt-usecase-title wlt-usecase-desc" style="width:100%;height:auto">
+  <title id="wlt-usecase-title">Acceptable webcam latency by use case</title>
+  <desc id="wlt-usecase-desc">Bar chart comparing the maximum webcam latency generally considered acceptable across four use cases: gaming and motion capture, live streaming, video conferencing, and security monitoring.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Acceptable webcam latency by use case</dc:title>
+        <dc:description>Bar chart comparing the maximum webcam latency generally considered acceptable across four use cases: gaming and motion capture, live streaming, video conferencing, and security monitoring.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam latency test</rdf:li>
+            <rdf:li>video conferencing</rdf:li>
+            <rdf:li>live streaming</rdf:li>
+            <rdf:li>motion capture</rdf:li>
+            <rdf:li>input lag</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-latency-delay-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <style>
+    .heading { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 26px; font-weight: 700; fill: #0b0b0b; }
+    .sub { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; fill: #52514e; }
+    .bar-label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; font-weight: 600; fill: #0b0b0b; text-anchor: middle; }
+    .bar-value { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 18px; font-weight: 700; fill: #0b0b0b; text-anchor: middle; }
+    .axis { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; fill: #898781; }
+  </style>
+
+  <rect x="0" y="0" width="900" height="560" fill="#f9f9f7"/>
+  <text x="40" y="50" class="heading">How much webcam lag is okay, by use case</text>
+  <text x="40" y="76" class="sub">Rough ceilings before the delay becomes noticeable</text>
+
+  <!-- baseline at y=460, scale: 300ms -> 320px tall, so 1.0667px/ms -->
+  <line x1="90" y1="460" x2="860" y2="460" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- Gaming / motion capture: 20ms -->
+  <g>
+    <rect x="130" y="439" width="120" height="21" rx="4" fill="#2a78d6"/>
+    <text x="190" y="425" class="bar-value">20ms</text>
+    <text x="190" y="490" class="bar-label">Gaming &amp;</text>
+    <text x="190" y="510" class="bar-label">motion capture</text>
+  </g>
+
+  <!-- Live streaming: 100ms -->
+  <g>
+    <rect x="320" y="353" width="120" height="107" rx="4" fill="#eb6834"/>
+    <text x="380" y="339" class="bar-value">100ms</text>
+    <text x="380" y="490" class="bar-label">Live streaming</text>
+  </g>
+
+  <!-- Video conferencing: 150ms -->
+  <g>
+    <rect x="510" y="299" width="120" height="161" rx="4" fill="#1baf7a"/>
+    <text x="570" y="285" class="bar-value">150ms</text>
+    <text x="570" y="490" class="bar-label">Video</text>
+    <text x="570" y="510" class="bar-label">conferencing</text>
+  </g>
+
+  <!-- Security monitoring: 300ms -->
+  <g>
+    <rect x="700" y="139" width="120" height="321" rx="4" fill="#eda100"/>
+    <text x="760" y="125" class="bar-value">300ms</text>
+    <text x="760" y="490" class="bar-label">Security</text>
+    <text x="760" y="510" class="bar-label">monitoring</text>
+  </g>
+
+  <text x="40" y="540" class="sub">Interactive, real-time uses need the lowest latency; passive monitoring tolerates the most</text>
+</svg>

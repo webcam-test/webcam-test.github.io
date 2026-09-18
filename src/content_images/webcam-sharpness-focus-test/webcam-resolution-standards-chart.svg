@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle3 svgDesc3">
+  <title id="svgTitle3">Common webcam resolution standards by pixel count</title>
+  <desc id="svgDesc3">Horizontal bar chart comparing four common webcam resolution standards — VGA, HD, Full HD, and 4K UHD — by total pixel count, showing how sharply pixel count increases at each step.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Common webcam resolution standards by pixel count</dc:title>
+        <dc:description>Horizontal bar chart comparing four common webcam resolution standards — VGA, HD, Full HD, and 4K UHD — by total pixel count, showing how sharply pixel count increases at each step.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam resolution</rdf:li>
+            <rdf:li>webcam resolution tester</rdf:li>
+            <rdf:li>megapixels</rdf:li>
+            <rdf:li>aspect ratio</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-sharpness-focus-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="560" fill="#fcfcfb"/>
+  <text x="500" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#0b0b0b">Common webcam resolution standards</text>
+  <text x="500" y="74" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Total pixel count at each resolution a webcam resolution tester can detect</text>
+
+  <!-- bars: baseline x=280, max width 620 for 8,294,400 px (4K) -->
+  <!-- scale: 620 / 8294400 = 0.0000748 px-per-pixel -->
+
+  <!-- VGA 640x480 = 307,200 -->
+  <text x="270" y="150" text-anchor="end" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">VGA</text>
+  <text x="270" y="168" text-anchor="end" font-family="system-ui, sans-serif" font-size="12" fill="#898781">640 × 480</text>
+  <rect x="280" y="130" width="23" height="36" rx="4" fill="#9ec5f4"/>
+  <text x="313" y="153" font-family="system-ui, sans-serif" font-size="13" fill="#52514e">0.31 MP</text>
+
+  <!-- HD 1280x720 = 921,600 -->
+  <text x="270" y="240" text-anchor="end" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">HD</text>
+  <text x="270" y="258" text-anchor="end" font-family="system-ui, sans-serif" font-size="12" fill="#898781">1280 × 720</text>
+  <rect x="280" y="220" width="69" height="36" rx="4" fill="#6da7ec"/>
+  <text x="359" y="243" font-family="system-ui, sans-serif" font-size="13" fill="#52514e">0.92 MP</text>
+
+  <!-- FHD 1920x1080 = 2,073,600 -->
+  <text x="270" y="330" text-anchor="end" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Full HD</text>
+  <text x="270" y="348" text-anchor="end" font-family="system-ui, sans-serif" font-size="12" fill="#898781">1920 × 1080</text>
+  <rect x="280" y="310" width="155" height="36" rx="4" fill="#2a78d6"/>
+  <text x="445" y="333" font-family="system-ui, sans-serif" font-size="13" fill="#52514e">2.07 MP</text>
+
+  <!-- 4K 3840x2160 = 8,294,400 -->
+  <text x="270" y="420" text-anchor="end" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">4K UHD</text>
+  <text x="270" y="438" text-anchor="end" font-family="system-ui, sans-serif" font-size="12" fill="#898781">3840 × 2160</text>
+  <rect x="280" y="400" width="620" height="36" rx="4" fill="#1c5cab"/>
+  <text x="910" y="423" font-family="system-ui, sans-serif" font-size="13" fill="#52514e">8.29 MP</text>
+
+  <line x1="280" y1="470" x2="280" y2="120" stroke="#c3c2b7" stroke-width="1"/>
+  <text x="500" y="510" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#898781">A webcam resolution tester scans which of these standards your camera actually supports.</text>
+</svg>

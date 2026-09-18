@@ -1,0 +1,90 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle svgDesc">
+  <title id="svgTitle">Correct vs. reversed left/right speaker channel wiring</title>
+  <desc id="svgDesc">Side-by-side diagram showing correctly wired stereo channels, where the left output feeds the left speaker and the right output feeds the right speaker, next to a reversed-wiring example where the channels are crossed.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Correct vs. reversed left/right speaker channel wiring</dc:title>
+        <dc:description>Side-by-side diagram showing correctly wired stereo channels, where the left output feeds the left speaker and the right output feeds the right speaker, next to a reversed-wiring example where the channels are crossed.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>left right stereo test</rdf:li>
+            <rdf:li>reversed wiring</rdf:li>
+            <rdf:li>speaker wiring</rdf:li>
+            <rdf:li>channels</rdf:li>
+            <rdf:li>stereo balance</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/left-right-stereo-channel-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="900" height="600" fill="#fcfcfb" />
+
+  <!-- Divider -->
+  <line x1="450" y1="40" x2="450" y2="560" stroke="#e1e0d9" stroke-width="2" />
+
+  <!-- LEFT PANEL: Correct wiring -->
+  <text x="225" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="700" fill="#0b0b0b" text-anchor="middle">Correct Wiring</text>
+
+  <!-- Amplifier / source -->
+  <rect x="165" y="270" width="120" height="70" rx="8" fill="#334155" />
+  <text x="225" y="312" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">Amplifier</text>
+
+  <!-- Left speaker box -->
+  <rect x="40" y="90" width="130" height="110" rx="8" fill="#1e293b" />
+  <circle cx="105" cy="145" r="34" fill="#475569" />
+  <circle cx="105" cy="145" r="16" fill="#0f172a" />
+  <text x="105" y="225" font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#0b0b0b" text-anchor="middle">Left Speaker</text>
+
+  <!-- Right speaker box -->
+  <rect x="280" y="90" width="130" height="110" rx="8" fill="#1e293b" />
+  <circle cx="345" cy="145" r="34" fill="#475569" />
+  <circle cx="345" cy="145" r="16" fill="#0f172a" />
+  <text x="345" y="225" font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#0b0b0b" text-anchor="middle">Right Speaker</text>
+
+  <!-- L wire (blue) -->
+  <path d="M195,270 C160,240 130,220 105,200" fill="none" stroke="#2a78d6" stroke-width="5" stroke-linecap="round" />
+  <text x="120" y="255" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#2a78d6">L</text>
+
+  <!-- R wire (orange) -->
+  <path d="M255,270 C290,240 320,220 345,200" fill="none" stroke="#eb6834" stroke-width="5" stroke-linecap="round" />
+  <text x="330" y="255" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#eb6834">R</text>
+
+  <!-- Good badge -->
+  <circle cx="225" cy="380" r="22" fill="#0ca30c" />
+  <path d="M214,380 L221,388 L237,368" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="225" y="425" font-family="system-ui, sans-serif" font-size="15" fill="#52514e" text-anchor="middle">Sound plays from the correct side</text>
+
+  <!-- RIGHT PANEL: Reversed wiring -->
+  <text x="675" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="700" fill="#0b0b0b" text-anchor="middle">Reversed Wiring</text>
+
+  <rect x="615" y="270" width="120" height="70" rx="8" fill="#334155" />
+  <text x="675" y="312" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">Amplifier</text>
+
+  <rect x="490" y="90" width="130" height="110" rx="8" fill="#1e293b" />
+  <circle cx="555" cy="145" r="34" fill="#475569" />
+  <circle cx="555" cy="145" r="16" fill="#0f172a" />
+  <text x="555" y="225" font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#0b0b0b" text-anchor="middle">Left Speaker</text>
+
+  <rect x="730" y="90" width="130" height="110" rx="8" fill="#1e293b" />
+  <circle cx="795" cy="145" r="34" fill="#475569" />
+  <circle cx="795" cy="145" r="16" fill="#0f172a" />
+  <text x="795" y="225" font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#0b0b0b" text-anchor="middle">Right Speaker</text>
+
+  <!-- Crossed wires: L -> right speaker, R -> left speaker -->
+  <path d="M645,270 C700,230 760,215 795,200" fill="none" stroke="#2a78d6" stroke-width="5" stroke-linecap="round" />
+  <text x="770" y="245" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#2a78d6">L</text>
+
+  <path d="M705,270 C650,230 590,215 555,200" fill="none" stroke="#eb6834" stroke-width="5" stroke-linecap="round" />
+  <text x="580" y="245" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#eb6834">R</text>
+
+  <!-- Bad badge -->
+  <circle cx="675" cy="380" r="22" fill="#d03b3b" />
+  <path d="M664,369 L686,391 M686,369 L664,391" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+  <text x="675" y="425" font-family="system-ui, sans-serif" font-size="15" fill="#52514e" text-anchor="middle">Channels are swapped left-to-right</text>
+
+  <text x="450" y="580" font-family="system-ui, sans-serif" font-size="14" fill="#898781" text-anchor="middle">Run the left/right stereo test to confirm which wiring your setup actually has</text>
+</svg>

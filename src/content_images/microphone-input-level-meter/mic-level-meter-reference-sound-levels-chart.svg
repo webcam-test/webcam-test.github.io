@@ -1,0 +1,74 @@
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <title>Reference sound levels chart in decibels</title>
+  <desc>Horizontal bar chart comparing approximate sound pressure levels, from a whisper at 30 dB up to a jet engine at takeoff at 130 dB, the same reference range a mic level meter reads against.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Reference sound levels chart in decibels</dc:title>
+        <dc:description>Horizontal bar chart comparing approximate sound pressure levels, from a whisper at 30 dB up to a jet engine at takeoff at 130 dB, the same reference range a mic level meter reads against.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>mic level meter</rdf:li>
+            <rdf:li>sound level meter</rdf:li>
+            <rdf:li>decibels</rdf:li>
+            <rdf:li>dB SPL</rdf:li>
+            <rdf:li>reference sound levels</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/microphone-input-level-meter</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="620" fill="#fcfcfb"/>
+  <text x="30" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#0b0b0b">Reference Sound Levels (Approx. dB SPL)</text>
+  <text x="30" y="64" font-family="Arial, sans-serif" font-size="14" fill="#52514e">What common sounds measure on a calibrated sound level meter</text>
+
+  <!-- axis -->
+  <line x1="260" y1="90" x2="260" y2="580" stroke="#c3c2b7" stroke-width="1"/>
+  <g font-family="Arial, sans-serif" font-size="12" fill="#8a8981">
+    <line x1="260" y1="580" x2="860" y2="580" stroke="#c3c2b7" stroke-width="1"/>
+    <text x="260" y="598" text-anchor="middle">0</text>
+    <text x="390" y="598" text-anchor="middle">30</text>
+    <text x="520" y="598" text-anchor="middle">60</text>
+    <text x="650" y="598" text-anchor="middle">90</text>
+    <text x="780" y="598" text-anchor="middle">120 dB</text>
+  </g>
+
+  <!-- bars: x = 260 + value*4.33 approx, scale 140dB -> 600px -->
+  <!-- Whisper 30dB -->
+  <rect x="260" y="100" width="130" height="48" rx="4" fill="#b7d3f6"/>
+  <text x="250" y="129" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Whisper</text>
+  <text x="400" y="129" font-family="Arial, sans-serif" font-size="13" fill="#0b0b0b" font-weight="bold">30 dB</text>
+
+  <!-- Quiet room 40dB -->
+  <rect x="260" y="168" width="173" height="48" rx="4" fill="#9ec5f4"/>
+  <text x="250" y="197" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Quiet room</text>
+  <text x="443" y="197" font-family="Arial, sans-serif" font-size="13" fill="#0b0b0b" font-weight="bold">40 dB</text>
+
+  <!-- Conversation 60dB -->
+  <rect x="260" y="236" width="260" height="48" rx="4" fill="#6da7ec"/>
+  <text x="250" y="265" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Conversation</text>
+  <text x="530" y="265" font-family="Arial, sans-serif" font-size="13" fill="#0b0b0b" font-weight="bold">60 dB</text>
+
+  <!-- Vacuum cleaner 75dB -->
+  <rect x="260" y="304" width="325" height="48" rx="4" fill="#3987e5"/>
+  <text x="250" y="333" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Vacuum cleaner</text>
+  <text x="595" y="333" font-family="Arial, sans-serif" font-size="13" fill="#0b0b0b" font-weight="bold">75 dB</text>
+
+  <!-- Heavy traffic 85dB -->
+  <rect x="260" y="372" width="368" height="48" rx="4" fill="#2a78d6"/>
+  <text x="250" y="401" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Heavy traffic</text>
+  <text x="638" y="401" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="bold">85 dB</text>
+
+  <!-- Rock concert 110dB -->
+  <rect x="260" y="440" width="477" height="48" rx="4" fill="#1c5cab"/>
+  <text x="250" y="469" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Rock concert</text>
+  <text x="697" y="469" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="bold">110 dB</text>
+
+  <!-- Jet takeoff 130dB -->
+  <rect x="260" y="508" width="564" height="48" rx="4" fill="#104281"/>
+  <text x="250" y="537" text-anchor="end" font-family="Arial, sans-serif" font-size="14" fill="#0b0b0b">Jet at takeoff</text>
+  <text x="784" y="537" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="bold">130 dB</text>
+</svg>

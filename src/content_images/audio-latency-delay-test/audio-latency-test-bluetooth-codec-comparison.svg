@@ -1,0 +1,75 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle2 svgDesc2" style="width:100%;height:auto">
+  <title id="svgTitle2">Bluetooth codec latency comparison chart</title>
+  <desc id="svgDesc2">Bar chart comparing typical audio latency in milliseconds across wired, aptX Adaptive, aptX, AAC, and SBC Bluetooth connections.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Bluetooth codec latency comparison chart</dc:title>
+        <dc:description>Typical audio latency test results vary widely by connection type, from wired under 20 ms to older SBC Bluetooth over 300 ms.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>bluetooth latency test</rdf:li>
+            <rdf:li>aptx</rdf:li>
+            <rdf:li>sbc</rdf:li>
+            <rdf:li>aac</rdf:li>
+            <rdf:li>codec</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/audio-latency-delay-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="480" fill="#fcfcfb"/>
+  <text x="450" y="42" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="600" fill="#0b0b0b">Typical audio latency test results by connection</text>
+  <text x="450" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Upper bound of the typical range, in milliseconds</text>
+
+  <!-- gridlines -->
+  <g stroke="#e1e0d9" stroke-width="1">
+    <line x1="260" y1="100" x2="260" y2="410"/>
+    <line x1="400" y1="100" x2="400" y2="410"/>
+    <line x1="540" y1="100" x2="540" y2="410"/>
+    <line x1="680" y1="100" x2="680" y2="410"/>
+    <line x1="820" y1="100" x2="820" y2="410"/>
+  </g>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">
+    <text x="120" y="425" text-anchor="middle">0 ms</text>
+    <text x="260" y="425" text-anchor="middle">75 ms</text>
+    <text x="400" y="425" text-anchor="middle">150 ms</text>
+    <text x="540" y="425" text-anchor="middle">225 ms</text>
+    <text x="680" y="425" text-anchor="middle">300 ms</text>
+    <text x="820" y="425" text-anchor="middle">375 ms</text>
+  </g>
+  <line x1="120" y1="100" x2="120" y2="410" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- bars: scale 1ms = 1.867px, base x=120 -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- Wired 5-20ms -->
+    <text x="112" y="130" text-anchor="end" font-size="14" fill="#0b0b0b">Wired</text>
+    <rect x="120" y="118" width="37" height="24" rx="4" fill="#2a78d6"/>
+    <text x="165" y="135" font-size="13" fill="#52514e">up to 20 ms</text>
+
+    <!-- aptX Adaptive/LE Audio 40-80ms -->
+    <text x="112" y="180" text-anchor="end" font-size="14" fill="#0b0b0b">aptX Adaptive / LE Audio</text>
+    <rect x="120" y="168" width="149" height="24" rx="4" fill="#1baf7a"/>
+    <text x="277" y="185" font-size="13" fill="#52514e">up to 80 ms</text>
+
+    <!-- aptX 60-120ms -->
+    <text x="112" y="230" text-anchor="end" font-size="14" fill="#0b0b0b">aptX</text>
+    <rect x="120" y="218" width="224" height="24" rx="4" fill="#eda100"/>
+    <text x="352" y="235" font-size="13" fill="#52514e">up to 120 ms</text>
+
+    <!-- AAC 100-200ms -->
+    <text x="112" y="280" text-anchor="end" font-size="14" fill="#0b0b0b">AAC (typical earbuds)</text>
+    <rect x="120" y="268" width="373" height="24" rx="4" fill="#e87ba4"/>
+    <text x="501" y="285" font-size="13" fill="#52514e">up to 200 ms</text>
+
+    <!-- SBC 150-300ms -->
+    <text x="112" y="330" text-anchor="end" font-size="14" fill="#0b0b0b">SBC (older Bluetooth)</text>
+    <rect x="120" y="318" width="560" height="24" rx="4" fill="#e34948"/>
+    <text x="688" y="335" font-size="13" fill="#52514e">up to 300 ms</text>
+  </g>
+
+  <text x="450" y="460" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">An audio latency test on wired output isolates your display/reaction baseline; the gap when you switch to Bluetooth is the wireless delay</text>
+</svg>

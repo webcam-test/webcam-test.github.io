@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 620" style="width:100%;height:auto" role="img" aria-labelledby="res-title res-desc">
+  <title id="res-title">Webcam recording resolution comparison: 480p, 720p, and 1080p</title>
+  <desc id="res-desc">A bar chart comparing three recording resolutions available in most webcam video recorders, showing pixel dimensions and typical use case for 480p, 720p, and 1080p.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam recording resolution comparison: 480p, 720p, and 1080p</dc:title>
+        <dc:description>A bar chart comparing three recording resolutions available in most webcam video recorders, showing pixel dimensions and typical use case for 480p, 720p, and 1080p.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam video recorder</rdf:li>
+            <rdf:li>resolution</rdf:li>
+            <rdf:li>1080p</rdf:li>
+            <rdf:li>480p</rdf:li>
+            <rdf:li>hd video</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-video-recorder-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="620" fill="#fcfcfb"/>
+  <text x="450" y="52" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">Recording resolution options, compared</text>
+
+  <!-- baseline -->
+  <line x1="120" y1="500" x2="780" y2="500" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- 480p bar -->
+  <rect x="190" y="331" width="120" height="169" rx="4" fill="#86b6ef"/>
+  <text x="250" y="316" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">480p</text>
+  <text x="250" y="528" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">854 × 480</text>
+  <text x="250" y="548" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">
+    <tspan x="250" dy="0">Smallest file size</tspan>
+    <tspan x="250" dy="18">slow connections</tspan>
+  </text>
+
+  <!-- 720p bar -->
+  <rect x="390" y="247" width="120" height="253" rx="4" fill="#3987e5"/>
+  <text x="450" y="232" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">720p</text>
+  <text x="450" y="528" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">1280 × 720</text>
+  <text x="450" y="548" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">
+    <tspan x="450" dy="0">Balanced HD video</tspan>
+    <tspan x="450" dy="18">for calls and clips</tspan>
+  </text>
+
+  <!-- 1080p bar -->
+  <rect x="590" y="120" width="120" height="380" rx="4" fill="#1c5cab"/>
+  <text x="650" y="105" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">1080p</text>
+  <text x="650" y="528" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">1920 × 1080</text>
+  <text x="650" y="548" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">
+    <tspan x="650" dy="0">Full HD, largest file,</tspan>
+    <tspan x="650" dy="18">best for sharp detail</tspan>
+  </text>
+
+  <text x="450" y="590" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">Bar height scaled to horizontal pixel count — higher resolution means a sharper but heavier recording</text>
+</svg>

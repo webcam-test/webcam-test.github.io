@@ -1,0 +1,66 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle2 svgDesc2">
+  <title id="svgTitle2">In phase vs out of phase speaker wiring comparison</title>
+  <desc id="svgDesc2">Side-by-side comparison of two aligned sound waves reinforcing each other when speakers are wired in phase, against two offset waves cancelling each other when one speaker is wired out of phase, producing thin, hollow bass.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>In phase vs out of phase speaker wiring comparison</dc:title>
+        <dc:description>Side-by-side comparison of two aligned sound waves reinforcing each other when speakers are wired in phase, against two offset waves cancelling each other when one speaker is wired out of phase, producing thin, hollow bass.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>speaker polarity</rdf:li>
+            <rdf:li>out of phase</rdf:li>
+            <rdf:li>in phase</rdf:li>
+            <rdf:li>bass</rdf:li>
+            <rdf:li>polarity</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/speaker-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="900" height="560" fill="#fcfcfb" />
+  <text x="450" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="bold" fill="#0b0b0b" text-anchor="middle">Speaker Polarity: In Phase vs. Out of Phase</text>
+
+  <!-- Left panel: In Phase -->
+  <g transform="translate(50,90)">
+    <rect x="0" y="0" width="380" height="420" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="2" />
+    <circle cx="34" cy="34" r="12" fill="#0ca30c" />
+    <path d="M28,34 L33,40 L41,26" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="56" y="40" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="19" font-weight="bold" fill="#0b0b0b">In Phase (correct)</text>
+
+    <!-- aligned waves -->
+    <path d="M30,160 Q65,110 100,160 T170,160 T240,160 T310,160 T350,160" fill="none" stroke="#2a78d6" stroke-width="3" />
+    <path d="M30,180 Q65,130 100,180 T170,180 T240,180 T310,180 T350,180" fill="none" stroke="#2a78d6" stroke-width="3" opacity="0.55" />
+
+    <!-- combined reinforced wave -->
+    <path d="M30,260 Q65,150 100,260 T170,260 T240,260 T310,260 T350,260" fill="none" stroke="#0ca30c" stroke-width="4" />
+    <text x="190" y="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e" text-anchor="middle">Waves add together — combined signal</text>
+
+    <text x="190" y="345" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b" text-anchor="middle" font-weight="bold">Sounds focused, centered bass</text>
+    <text x="190" y="370" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">Positive terminals both wired the same way</text>
+    <text x="190" y="390" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">Bass feels strong and present</text>
+  </g>
+
+  <!-- Right panel: Out of Phase -->
+  <g transform="translate(470,90)">
+    <rect x="0" y="0" width="380" height="420" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="2" />
+    <circle cx="34" cy="34" r="12" fill="#d03b3b" />
+    <path d="M27,27 L41,41 M41,27 L27,41" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <text x="56" y="40" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="19" font-weight="bold" fill="#0b0b0b">Out of Phase (reversed)</text>
+
+    <!-- offset waves -->
+    <path d="M30,160 Q65,110 100,160 T170,160 T240,160 T310,160 T350,160" fill="none" stroke="#2a78d6" stroke-width="3" />
+    <path d="M30,180 Q65,230 100,180 T170,180 T240,180 T310,180 T350,180" fill="none" stroke="#eb6834" stroke-width="3" opacity="0.7" />
+
+    <!-- combined cancelled wave -->
+    <path d="M30,260 L350,260" fill="none" stroke="#d03b3b" stroke-width="4" stroke-dasharray="2 6" />
+    <text x="190" y="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#525142" text-anchor="middle">Waves cancel — signal collapses toward zero</text>
+
+    <text x="190" y="345" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b" text-anchor="middle" font-weight="bold">Sounds wide, hollow, thin bass</text>
+    <text x="190" y="370" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">One speaker's positive/negative wires are swapped</text>
+    <text x="190" y="390" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">Bass feels weak or missing</text>
+  </g>
+</svg>

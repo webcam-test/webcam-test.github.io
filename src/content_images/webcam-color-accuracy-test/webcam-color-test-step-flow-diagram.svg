@@ -1,0 +1,75 @@
+<svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle2 svgDesc2">
+  <title id="svgTitle2">How the webcam color test works, step by step</title>
+  <desc id="svgDesc2">Four-step flow diagram: grant camera access, sample the video stream, measure color and brightness, then display the results.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>How the webcam color test works, step by step</dc:title>
+        <dc:description>Four-step flow diagram: grant camera access, sample the video stream, measure color and brightness, then display the results.</dc:description>
+        <dc:subject><rdf:Bag>
+          <rdf:li>webcam color test</rdf:li>
+          <rdf:li>camera permissions</rdf:li>
+          <rdf:li>video track</rdf:li>
+          <rdf:li>brightness</rdf:li>
+        </rdf:Bag></dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-color-accuracy-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="420" fill="#fcfcfb"/>
+  <text x="40" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#0b0b0b">How the test runs, start to finish</text>
+
+  <!-- connecting line -->
+  <line x1="130" y1="230" x2="870" y2="230" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- Step 1 -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <circle cx="130" cy="230" r="34" fill="#2a78d6"/>
+    <text x="130" y="238" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="130" y="300" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle">Grant access</text>
+    <foreignObject x="40" y="312" width="180" height="70">
+    </foreignObject>
+    <text x="130" y="322" font-size="12.5" fill="#52514e" text-anchor="middle">
+      <tspan x="130" dy="0">Browser asks permission</tspan>
+      <tspan x="130" dy="16">to use the camera device</tspan>
+    </text>
+
+    <!-- Step 2 -->
+    <circle cx="373" cy="230" r="34" fill="#eb6834"/>
+    <text x="373" y="238" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="373" y="300" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle">Stream sampled</text>
+    <text x="373" y="322" font-size="12.5" fill="#52514e" text-anchor="middle">
+      <tspan x="373" dy="0">Live video track is drawn</tspan>
+      <tspan x="373" dy="16">to a hidden canvas frame</tspan>
+    </text>
+
+    <!-- Step 3 -->
+    <circle cx="616" cy="230" r="34" fill="#1baf7a"/>
+    <text x="616" y="238" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="616" y="300" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle">Color measured</text>
+    <text x="616" y="322" font-size="12.5" fill="#52514e" text-anchor="middle">
+      <tspan x="616" dy="0">Pixels analyzed for hue,</tspan>
+      <tspan x="616" dy="16">saturation, and brightness</tspan>
+    </text>
+
+    <!-- Step 4 -->
+    <circle cx="870" cy="230" r="34" fill="#4a3aa7"/>
+    <text x="870" y="238" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="870" y="300" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle">Results shown</text>
+    <text x="870" y="322" font-size="12.5" fill="#52514e" text-anchor="middle">
+      <tspan x="870" dy="0">Readings appear in the</tspan>
+      <tspan x="870" dy="16">webcam information panel</tspan>
+    </text>
+  </g>
+
+  <!-- arrowheads between steps -->
+  <g fill="#898781">
+    <path d="M 245 230 l -10 -6 v 12 z"/>
+    <path d="M 488 230 l -10 -6 v 12 z"/>
+    <path d="M 731 230 l -10 -6 v 12 z"/>
+  </g>
+
+  <text x="500" y="390" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781" text-anchor="middle">The whole pass runs locally in the browser in under a second.</text>
+</svg>

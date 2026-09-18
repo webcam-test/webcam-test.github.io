@@ -1,0 +1,57 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <title>Before and after webcam exposure comparison</title>
+  <desc>Side-by-side comparison of a backlit, underexposed webcam frame scoring low on a lighting test versus a front-lit, well-exposed frame scoring in the ideal brightness range.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Before and after webcam exposure comparison</dc:title>
+        <dc:description>Side-by-side comparison of a backlit, underexposed webcam frame scoring low on a lighting test versus a front-lit, well-exposed frame scoring in the ideal brightness range.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam lighting test</rdf:li>
+            <rdf:li>backlit</rdf:li>
+            <rdf:li>exposure</rdf:li>
+            <rdf:li>video quality</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-lighting-exposure-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="480" fill="#fcfcfb"/>
+  <text x="450" y="48" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">Backlit vs. Well-Lit</text>
+
+  <!-- Frame 1: backlit -->
+  <g transform="translate(60,90)">
+    <rect x="0" y="0" width="360" height="270" rx="12" fill="#1a1a19"/>
+    <circle cx="180" cy="150" r="64" fill="#383835"/>
+    <circle cx="180" cy="150" r="64" fill="none" stroke="#d03b3b" stroke-width="3"/>
+    <rect x="0" y="0" width="360" height="270" rx="12" fill="none" stroke="#e1e0d9" stroke-width="1"/>
+    <rect x="16" y="16" width="120" height="30" rx="6" fill="#d03b3b"/>
+    <text x="76" y="37" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#ffffff">Score: 14/100</text>
+    <text x="180" y="312" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">Backlit</text>
+    <text x="180" y="334" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Window behind you, face in shadow</text>
+  </g>
+
+  <!-- arrow -->
+  <g transform="translate(450,225)">
+    <line x1="-20" y1="0" x2="20" y2="0" stroke="#898781" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="20,-10 40,0 20,10" fill="#898781"/>
+  </g>
+
+  <!-- Frame 2: well-lit -->
+  <g transform="translate(480,90)">
+    <rect x="0" y="0" width="360" height="270" rx="12" fill="#e9e6de"/>
+    <circle cx="180" cy="150" r="64" fill="#f0c896"/>
+    <circle cx="180" cy="150" r="64" fill="none" stroke="#0ca30c" stroke-width="3"/>
+    <rect x="0" y="0" width="360" height="270" rx="12" fill="none" stroke="#e1e0d9" stroke-width="1"/>
+    <rect x="16" y="16" width="120" height="30" rx="6" fill="#0ca30c"/>
+    <text x="76" y="37" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#ffffff">Score: 58/100</text>
+    <text x="180" y="312" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b">Front-Lit</text>
+    <text x="180" y="334" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Light source facing you, even exposure</text>
+  </g>
+
+  <text x="450" y="450" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Same room, same camera - only the light position changed.</text>
+</svg>

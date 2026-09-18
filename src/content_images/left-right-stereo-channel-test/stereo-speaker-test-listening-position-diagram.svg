@@ -1,0 +1,59 @@
+<svg viewBox="0 0 800 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle4 svgDesc4">
+  <title id="svgTitle4">Equilateral listening triangle for stereo speaker placement</title>
+  <desc id="svgDesc4">Overhead diagram of the equilateral listening triangle, with the left and right speakers equidistant from each other and from the listening position, tweeters angled inward toward the listener's ears.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Equilateral listening triangle for stereo speaker placement</dc:title>
+        <dc:description>Overhead diagram of the equilateral listening triangle, with the left and right speakers equidistant from each other and from the listening position, tweeters angled inward toward the listener's ears.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>stereo imaging</rdf:li>
+            <rdf:li>listening position</rdf:li>
+            <rdf:li>speaker placement</rdf:li>
+            <rdf:li>equal distance</rdf:li>
+            <rdf:li>tweeters</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/left-right-stereo-channel-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="800" height="620" fill="#fcfcfb" />
+  <text x="400" y="50" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#0b0b0b" text-anchor="middle">The Equilateral Listening Triangle</text>
+
+  <!-- Triangle guide lines -->
+  <path d="M150,150 L400,430 L650,150" fill="none" stroke="#c3c2b7" stroke-width="2" stroke-dasharray="6,6" />
+
+  <!-- Left speaker -->
+  <rect x="110" y="100" width="80" height="110" rx="6" fill="#1e293b" />
+  <circle cx="150" cy="140" r="20" fill="#475569" />
+  <circle cx="150" cy="140" r="9" fill="#0f172a" />
+  <text x="150" y="235" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#2a78d6" text-anchor="middle">Left Speaker</text>
+
+  <!-- Right speaker -->
+  <rect x="610" y="100" width="80" height="110" rx="6" fill="#1e293b" />
+  <circle cx="650" cy="140" r="20" fill="#475569" />
+  <circle cx="650" cy="140" r="9" fill="#0f172a" />
+  <text x="650" y="235" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#eb6834" text-anchor="middle">Right Speaker</text>
+
+  <!-- Inward angle indicators -->
+  <path d="M150,210 L360,410" fill="none" stroke="#2a78d6" stroke-width="2" stroke-dasharray="4,4" />
+  <path d="M650,210 L440,410" fill="none" stroke="#eb6834" stroke-width="2" stroke-dasharray="4,4" />
+
+  <!-- Listener -->
+  <circle cx="400" cy="440" r="26" fill="#1baf7a" />
+  <circle cx="400" cy="425" r="10" fill="#ffffff" />
+  <path d="M385,455 Q400,440 415,455 L415,470 L385,470 Z" fill="#ffffff" />
+  <text x="400" y="500" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#0b0b0b" text-anchor="middle">Listening Position</text>
+
+  <!-- Equal distance labels -->
+  <text x="255" y="300" font-family="system-ui, sans-serif" font-size="14" fill="#52514e" text-anchor="middle">equal distance</text>
+  <text x="545" y="300" font-family="system-ui, sans-serif" font-size="14" fill="#52514e" text-anchor="middle">equal distance</text>
+  <text x="400" y="170" font-family="system-ui, sans-serif" font-size="14" fill="#52514e" text-anchor="middle">equal distance apart</text>
+  <line x1="190" y1="145" x2="610" y2="145" stroke="#c3c2b7" stroke-width="2" />
+
+  <text x="400 " y="560" font-family="system-ui, sans-serif" font-size="14" fill="#898781" text-anchor="middle">Tweeters angled inward toward the ears sharpen the stereo image</text>
+</svg>

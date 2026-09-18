@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto" aria-labelledby="mct-res-title mct-res-desc">
+  <title id="mct-res-title">Camera test resolution quality tiers</title>
+  <desc id="mct-res-desc">A tiered bar chart showing four resolution readouts from a camera test: below 720p (fails the check), 720p HD, 1080p Full HD, and 4K UHD, each with what that reading means for video calls and photos.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Camera test resolution quality tiers</dc:title>
+        <dc:description>A tiered bar chart showing four resolution readouts from a camera test: below 720p (fails the check), 720p HD, 1080p Full HD, and 4K UHD, each with what that reading means for video calls and photos.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>camera resolution</rdf:li>
+            <rdf:li>resolution</rdf:li>
+            <rdf:li>camera test online</rdf:li>
+            <rdf:li>video quality</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/mobile-camera-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="420" fill="#fcfcfb"/>
+
+  <!-- Tier 1: Below 720p - critical -->
+  <rect x="220" y="30" width="150" height="70" rx="8" fill="#d03b3b"/>
+  <text x="235" y="58" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Below 720p</text>
+  <text x="235" y="78" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11.5" fill="#ffffff">Fails the check</text>
+  <text x="680" y="58" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#0b0b0b" font-weight="600">Fails the resolution check</text>
+  <text x="680" y="76" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" fill="#52514e"><tspan x="680" dy="0">Degraded sensor or another app</tspan><tspan x="680" dy="16">holding the high-res mode</tspan></text>
+
+  <!-- Tier 2: 720p HD -->
+  <rect x="220" y="120" width="250" height="70" rx="8" fill="#6da7ec"/>
+  <text x="235" y="148" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="15" font-weight="700" fill="#0b0b0b">720p HD</text>
+  <text x="235" y="168" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11.5" fill="#0b0b0b">1280x720</text>
+  <text x="680" y="148" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#0b0b0b" font-weight="600">Passes — usable for calls</text>
+  <text x="680" y="166" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" fill="#52514e"><tspan x="680" dy="0">The floor most video-call</tspan><tspan x="680" dy="16">apps expect</tspan></text>
+
+  <!-- Tier 3: 1080p Full HD -->
+  <rect x="220" y="210" width="350" height="70" rx="8" fill="#2a78d6"/>
+  <text x="235" y="238" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="15" font-weight="700" fill="#ffffff">1080p Full HD</text>
+  <text x="235" y="258" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11.5" fill="#ffffff">1920x1080</text>
+  <text x="680" y="238" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#0b0b0b" font-weight="600">Passes — sharp detail</text>
+  <text x="680" y="256" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" fill="#52514e"><tspan x="680" dy="0">Typical rear-lens capture</tspan><tspan x="680" dy="16">result</tspan></text>
+
+  <!-- Tier 4: 4K UHD -->
+  <rect x="220" y="300" width="430" height="70" rx="8" fill="#184f95"/>
+  <text x="235" y="328" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="15" font-weight="700" fill="#ffffff">4K UHD</text>
+  <text x="235" y="348" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11.5" fill="#ffffff">3840x2160</text>
+  <text x="680" y="328" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#0b0b0b" font-weight="600">Passes — maximum clarity</text>
+  <text x="680" y="346" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" fill="#52514e"><tspan x="680" dy="0">Flagship rear sensors</tspan></text>
+
+  <text x="220" y="405" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" fill="#898781">Bar length reflects relative pixel count, not to exact scale.</text>
+</svg>

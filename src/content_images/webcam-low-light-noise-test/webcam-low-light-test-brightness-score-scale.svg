@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 460" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle2 svgDesc2">
+  <title id="svgTitle2">Webcam brightness score scale from too dark to too bright</title>
+  <desc id="svgDesc2">A horizontal scale showing five brightness score bands a webcam low light test can return: too dark, dim, optimal, bright, and washed out, each with its exposure guidance.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam brightness score scale from too dark to too bright</dc:title>
+        <dc:description>A horizontal scale showing five brightness score bands a webcam low light test can return, from too dark to washed out.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam low light test</rdf:li>
+            <rdf:li>brightness score</rdf:li>
+            <rdf:li>exposure</rdf:li>
+            <rdf:li>washed out</rdf:li>
+            <rdf:li>dim rooms</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-low-light-noise-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="460" fill="#fcfcfb"/>
+  <text x="500" y="42" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">Webcam Brightness Score Scale</text>
+  <text x="500" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">What the score from a webcam low light test means, band by band</text>
+
+  <!-- scale bar: 5 segments -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- segment 1: too dark -->
+    <rect x="60" y="150" width="176" height="60" fill="#d03b3b"/>
+    <text x="148" y="145" text-anchor="middle" font-size="13" fill="#52514e">0-19</text>
+    <text x="148" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#0b0b0b">Too dark</text>
+    <text x="148" y="262" text-anchor="middle" font-size="12" fill="#52514e">Add a front-facing</text>
+    <text x="148" y="278" text-anchor="middle" font-size="12" fill="#52514e">light source</text>
+
+    <!-- segment 2: dim -->
+    <rect x="236" y="150" width="176" height="60" fill="#ec835a"/>
+    <text x="324" y="145" text-anchor="middle" font-size="13" fill="#52514e">20-39</text>
+    <text x="324" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#0b0b0b">Dim</text>
+    <text x="324" y="262" text-anchor="middle" font-size="12" fill="#52514e">Raise brightness or</text>
+    <text x="324" y="278" text-anchor="middle" font-size="12" fill="#52514e">move closer to light</text>
+
+    <!-- segment 3: optimal -->
+    <rect x="412" y="150" width="176" height="60" fill="#0ca30c"/>
+    <text x="500" y="145" text-anchor="middle" font-size="13" fill="#52514e">40-70</text>
+    <text x="500" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#0b0b0b">Optimal</text>
+    <text x="500" y="262" text-anchor="middle" font-size="12" fill="#52514e">Face exposed correctly,</text>
+    <text x="500" y="278" text-anchor="middle" font-size="12" fill="#52514e">no adjustment needed</text>
+
+    <!-- segment 4: bright -->
+    <rect x="588" y="150" width="176" height="60" fill="#fab219"/>
+    <text x="676" y="145" text-anchor="middle" font-size="13" fill="#52514e">71-85</text>
+    <text x="676" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#0b0b0b">Bright</text>
+    <text x="676" y="262" text-anchor="middle" font-size="12" fill="#52514e">Lower exposure or</text>
+    <text x="676" y="278" text-anchor="middle" font-size="12" fill="#52514e">step back from light</text>
+
+    <!-- segment 5: washed out -->
+    <rect x="764" y="150" width="176" height="60" fill="#d03b3b"/>
+    <text x="852" y="145" text-anchor="middle" font-size="13" fill="#52514e">86-100</text>
+    <text x="852" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#0b0b0b">Washed out</text>
+    <text x="852" y="262" text-anchor="middle" font-size="12" fill="#52514e">Reduce backlight,</text>
+    <text x="852" y="278" text-anchor="middle" font-size="12" fill="#52514e">soften the source</text>
+  </g>
+
+  <!-- separators between segments -->
+  <g stroke="#fcfcfb" stroke-width="4">
+    <line x1="236" y1="150" x2="236" y2="210"/>
+    <line x1="412" y1="150" x2="412" y2="210"/>
+    <line x1="588" y1="150" x2="588" y2="210"/>
+    <line x1="764" y1="150" x2="764" y2="210"/>
+  </g>
+  <rect x="60" y="150" width="880" height="60" fill="none" stroke="#0b0b0b" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- marker pointing to "optimal" as the target -->
+  <polygon points="500,120 488,140 512,140" fill="#0b0b0b"/>
+  <text x="500" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0b0b0b">Target range</text>
+
+  <text x="500" y="330" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#898781">Score bands are illustrative guidance for reading a brightness estimate, not a universal standard</text>
+</svg>

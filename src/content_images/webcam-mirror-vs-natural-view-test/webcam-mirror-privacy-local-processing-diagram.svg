@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle4 svgDesc4">
+  <title id="svgTitle4">How the webcam mirror keeps your video private</title>
+  <desc id="svgDesc4">A flow diagram showing the camera feed going straight from the webcam to the browser and screen for local display only, with an upload path to a remote server crossed out to show nothing is sent or stored online.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>How the webcam mirror keeps your video private</dc:title>
+        <dc:description>A flow diagram showing the camera feed going straight from the webcam to the browser and screen for local display only, with an upload path to a remote server crossed out to show nothing is sent or stored online.</dc:description>
+        <dc:subject><rdf:Bag><rdf:li>webcam mirror</rdf:li><rdf:li>privacy</rdf:li><rdf:li>webcam access</rdf:li><rdf:li>browser</rdf:li><rdf:li>online mirror</rdf:li></rdf:Bag></dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-mirror-vs-natural-view-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="460" fill="#fcfcfb"/>
+  <text x="500" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#0b0b0b">Where Your Webcam Feed Actually Goes</text>
+
+  <!-- Webcam node -->
+  <g>
+    <circle cx="140" cy="230" r="60" fill="#cde2fb"/>
+    <rect x="112" y="212" width="56" height="38" rx="6" fill="#2a78d6"/>
+    <circle cx="140" cy="231" r="12" fill="#cde2fb"/>
+    <circle cx="140" cy="231" r="7" fill="#2a78d6"/>
+    <text x="140" y="315" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Your Webcam</text>
+  </g>
+
+  <path d="M 202 230 L 330 230" stroke="#1baf7a" stroke-width="4" fill="none" marker-end="url(#arrowGreen)"/>
+
+  <!-- Browser node -->
+  <g>
+    <circle cx="500" cy="230" r="80" fill="#c8ecdd"/>
+    <rect x="450" y="190" width="100" height="80" rx="8" fill="#ffffff" stroke="#1baf7a" stroke-width="3"/>
+    <rect x="450" y="190" width="100" height="20" rx="8" fill="#1baf7a"/>
+    <path d="M485 250 a15 15 0 1 1 30 0 v6 h-30 z" fill="#1baf7a"/>
+    <rect x="493" y="234" width="14" height="14" rx="2" fill="#1baf7a"/>
+    <text x="500" y="300" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Your Browser</text>
+    <text x="500" y="322" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Video processed locally,</text>
+    <text x="500" y="340" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">on your own device</text>
+  </g>
+
+  <path d="M 590 210 L 690 165" stroke="#1baf7a" stroke-width="4" fill="none" marker-end="url(#arrowGreen)"/>
+
+  <!-- Screen node -->
+  <g>
+    <circle cx="810" cy="130" r="60" fill="#c8ecdd"/>
+    <rect x="775" y="105" width="70" height="46" rx="4" fill="#ffffff" stroke="#1baf7a" stroke-width="3"/>
+    <text x="810" y="136" text-anchor="middle" transform="translate(1620,0) scale(-1,1)" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="800" fill="#1baf7a">R</text>
+    <text x="810" y="205" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Your Screen Only</text>
+  </g>
+
+  <!-- Blocked upload path -->
+  <path d="M 590 260 L 700 340" stroke="#e34948" stroke-width="3" fill="none" stroke-dasharray="6 6" marker-end="url(#arrowRed)"/>
+  <g>
+    <circle cx="810" cy="370" r="55" fill="#f7d6d5"/>
+    <path d="M785 355 q0 -22 25 -22 q22 0 25 18 q16 2 16 20 q0 16 -18 16 h-48 q-14 0 -14 -14 q0 -14 14 -18 z" fill="#e34948"/>
+    <line x1="770" y1="335" x2="850" y2="405" stroke="#d03b3b" stroke-width="4"/>
+    <text x="810" y="445" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#d03b3b">Never Uploaded</text>
+  </g>
+  <text x="700" y="325" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#d03b3b">blocked</text>
+
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#1baf7a"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#e34948"/>
+    </marker>
+  </defs>
+</svg>

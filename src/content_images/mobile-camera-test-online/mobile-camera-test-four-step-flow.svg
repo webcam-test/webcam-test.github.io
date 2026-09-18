@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1020 320" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto" aria-labelledby="mct-flow-title mct-flow-desc">
+  <title id="mct-flow-title">Four steps of a mobile camera test</title>
+  <desc id="mct-flow-desc">A horizontal flow diagram showing the four steps of a mobile camera test: allow camera access, view the live feed, run the checks, and review the results.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Four steps of a mobile camera test</dc:title>
+        <dc:description>A horizontal flow diagram showing the four steps of a mobile camera test: allow camera access, view the live feed, run the checks, and review the results.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>mobile camera test</rdf:li>
+            <rdf:li>camera test online</rdf:li>
+            <rdf:li>camera access</rdf:li>
+            <rdf:li>live preview</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/mobile-camera-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1020" height="320" fill="#fcfcfb"/>
+
+  <!-- Step 1 -->
+  <g>
+    <rect x="20" y="60" width="210" height="200" rx="14" fill="#f0efec" stroke="#e1e0d9" stroke-width="1"/>
+    <circle cx="125" cy="110" r="26" fill="#2a78d6"/>
+    <text x="125" y="119" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="24" font-weight="700" fill="#ffffff">1</text>
+    <text x="125" y="165" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Allow Access</text>
+    <text x="125" y="192" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#52514e"><tspan x="125" dy="0">Tap Start Camera Test</tspan><tspan x="125" dy="18">and grant camera</tspan><tspan x="125" dy="18">permission.</tspan></text>
+  </g>
+
+  <polygon points="240,150 265,160 240,170" fill="#898781"/>
+
+  <!-- Step 2 -->
+  <g>
+    <rect x="277" y="60" width="210" height="200" rx="14" fill="#f0efec" stroke="#e1e0d9" stroke-width="1"/>
+    <circle cx="382" cy="110" r="26" fill="#2a78d6"/>
+    <text x="382" y="119" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="24" font-weight="700" fill="#ffffff">2</text>
+    <text x="382" y="165" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">View Live Feed</text>
+    <text x="382" y="192" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#52514e"><tspan x="382" dy="0">Resolution, frame rate,</tspan><tspan x="382" dy="18">and facing mode appear</tspan><tspan x="382" dy="18">instantly.</tspan></text>
+  </g>
+
+  <polygon points="497,150 522,160 497,170" fill="#898781"/>
+
+  <!-- Step 3 -->
+  <g>
+    <rect x="534" y="60" width="210" height="200" rx="14" fill="#f0efec" stroke="#e1e0d9" stroke-width="1"/>
+    <circle cx="639" cy="110" r="26" fill="#2a78d6"/>
+    <text x="639" y="119" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="24" font-weight="700" fill="#ffffff">3</text>
+    <text x="639" y="165" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Run the Checks</text>
+    <text x="639" y="192" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#52514e"><tspan x="639" dy="0">Switch cameras, snap a</tspan><tspan x="639" dy="18">photo, record a clip,</tspan><tspan x="639" dy="18">toggle the torch.</tspan></text>
+  </g>
+
+  <polygon points="754,150 779,160 754,170" fill="#898781"/>
+
+  <!-- Step 4 -->
+  <g>
+    <rect x="791" y="60" width="210" height="200" rx="14" fill="#f0efec" stroke="#e1e0d9" stroke-width="1"/>
+    <circle cx="874" cy="110" r="26" fill="#2a78d6"/>
+    <text x="874" y="119" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="24" font-weight="700" fill="#ffffff">4</text>
+    <text x="874" y="165" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Review Results</text>
+    <text x="874" y="192" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12.5" fill="#52514e"><tspan x="874" dy="0">See which checks passed:</tspan><tspan x="874" dy="18">focus, resolution, front</tspan><tspan x="874" dy="18">lens, rear lens.</tspan></text>
+  </g>
+</svg>

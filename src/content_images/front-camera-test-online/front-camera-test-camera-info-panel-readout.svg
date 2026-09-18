@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" style="width:100%;height:auto" role="img" aria-labelledby="fctInfoTitle fctInfoDesc">
+  <title id="fctInfoTitle">Example front camera test information panel</title>
+  <desc id="fctInfoDesc">Labeled diagram of a camera information panel showing example readout values for resolution, frame rate, megapixels, aspect ratio, and device name after running a front camera test.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Example front camera test information panel</dc:title>
+        <dc:description>Labeled diagram of a camera information panel showing example readout values for resolution, frame rate, megapixels, aspect ratio, and device name after running a front camera test.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>front camera test</rdf:li>
+            <rdf:li>resolution</rdf:li>
+            <rdf:li>frame rate</rdf:li>
+            <rdf:li>megapixels</rdf:li>
+            <rdf:li>camera information</rdf:li>
+            <rdf:li>aspect ratio</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/front-camera-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="620" fill="#fcfcfb"/>
+  <text x="40" y="46" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#0b0b0b">What the camera info panel tells you</text>
+
+  <!-- preview box -->
+  <rect x="40" y="80" width="300" height="220" rx="10" fill="#0d0d0d"/>
+  <circle cx="190" cy="180" r="46" fill="#383835"/>
+  <path d="M170 200 q20 -30 40 0" stroke="#898781" stroke-width="3" fill="none"/>
+  <text x="190" y="270" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7" text-anchor="middle">Live camera preview</text>
+
+  <!-- info rows -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="380" y="80" width="480" height="220" rx="10" fill="#ffffff" stroke="#e1e0d9" stroke-width="1"/>
+
+    <line x1="380" y1="124" x2="860" y2="124" stroke="#e1e0d9" stroke-width="1"/>
+    <text x="400" y="112" font-size="14" fill="#52514e">Resolution</text>
+    <text x="840" y="112" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="end">1920 × 1080 (FHD)</text>
+
+    <line x1="380" y1="168" x2="860" y2="168" stroke="#e1e0d9" stroke-width="1"/>
+    <text x="400" y="156" font-size="14" fill="#52514e">Frame Rate</text>
+    <text x="840" y="156" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="end">30 FPS</text>
+
+    <line x1="380" y1="212" x2="860" y2="212" stroke="#e1e0d9" stroke-width="1"/>
+    <text x="400" y="200" font-size="14" fill="#52514e">Megapixels</text>
+    <text x="840" y="200" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="end">2.07 MP</text>
+
+    <line x1="380" y1="256" x2="860" y2="256" stroke="#e1e0d9" stroke-width="1"/>
+    <text x="400" y="244" font-size="14" fill="#52514e">Aspect Ratio</text>
+    <text x="840" y="244" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="end">16:9</text>
+
+    <text x="400" y="288" font-size="14" fill="#52514e">Device Name</text>
+    <text x="840" y="288" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="end">Front Camera (Integrated)</text>
+  </g>
+
+  <!-- explanation rows -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="40" y="340" width="820" height="1" fill="#e1e0d9"/>
+
+    <circle cx="56" cy="380" r="5" fill="#2a78d6"/>
+    <text x="76" y="386" font-size="15" fill="#0b0b0b"><tspan font-weight="700">Resolution</tspan><tspan fill="#52514e"> — the pixel dimensions your camera is actually capturing, not the box specs.</tspan></text>
+
+    <circle cx="56" cy="420" r="5" fill="#2a78d6"/>
+    <text x="76" y="426" font-size="15" fill="#0b0b0b"><tspan font-weight="700">Frame Rate</tspan><tspan fill="#52514e"> — how many frames per second stream to the call; lower FPS looks choppy.</tspan></text>
+
+    <circle cx="56" cy="460" r="5" fill="#2a78d6"/>
+    <text x="76" y="466" font-size="15" fill="#0b0b0b"><tspan font-weight="700">Megapixels</tspan><tspan fill="#52514e"> — calculated from the resolution; higher means more captured detail.</tspan></text>
+
+    <circle cx="56" cy="500" r="5" fill="#2a78d6"/>
+    <text x="76" y="506" font-size="15" fill="#0b0b0b"><tspan font-weight="700">Aspect Ratio</tspan><tspan fill="#52514e"> — the width-to-height shape of the frame, usually 16:9 or 4:3.</tspan></text>
+
+    <circle cx="56" cy="540" r="5" fill="#2a78d6"/>
+    <text x="76" y="546" font-size="15" fill="#0b0b0b"><tspan font-weight="700">Device Name</tspan><tspan fill="#52514e"> — which camera is active, useful when you have more than one.</tspan></text>
+  </g>
+
+  <text x="40" y="595" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781">Values shown are illustrative — your own front camera test will report your hardware's real numbers.</text>
+</svg>

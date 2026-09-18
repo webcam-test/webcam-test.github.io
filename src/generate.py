@@ -28,6 +28,13 @@ fallback and no AdSense — this site has no legacy site to port ad slots
 from. If a tool has no content_html, render_main_sections() renders
 nothing below the tool card for it — an honestly empty section, never
 synthesized filler.
+
+Per-tool infographic SVGs (synthesized by the open-source-on-page-seo-
+optimizer pipeline's Phase 3b and pulled in via
+utilities/seo_batch/merge_seo_output.py) live at
+content_images/<slug>/*.svg and get copied verbatim into
+public/images/<slug>/ by main() below — content_html then references
+them as /images/<slug>/<file>.svg.
 """
 import html
 import json
@@ -803,6 +810,23 @@ def main():
     if os.path.isdir(static_dir):
         for fname in os.listdir(static_dir):
             shutil.copy(os.path.join(static_dir, fname), os.path.join(OUTPUT_DIR, fname))
+
+    # Per-tool infographic SVGs synthesized by the seo-optimize pipeline
+    # (open-source-on-page-seo-optimizer Phase 3b) — one subdirectory per
+    # tool at content_images/<slug>/, referenced from that tool's
+    # content_html via /images/<slug>/<file>.svg. Copied verbatim (SVGs
+    # need no minification) so the merge script and this generator agree
+    # on where images live without either one hand-coding a fixed list.
+    content_images_dir = os.path.join(BASE_DIR, "content_images")
+    if os.path.isdir(content_images_dir):
+        for slug in os.listdir(content_images_dir):
+            slug_src_dir = os.path.join(content_images_dir, slug)
+            if not os.path.isdir(slug_src_dir):
+                continue
+            slug_dest_dir = os.path.join(OUTPUT_DIR, "images", slug)
+            os.makedirs(slug_dest_dir, exist_ok=True)
+            for fname in os.listdir(slug_src_dir):
+                shutil.copy(os.path.join(slug_src_dir, fname), os.path.join(slug_dest_dir, fname))
 
     tool_critical_css = ""
     page_critical_css = ""

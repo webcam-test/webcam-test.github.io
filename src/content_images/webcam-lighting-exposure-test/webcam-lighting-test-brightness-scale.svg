@@ -1,0 +1,70 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <title>Webcam lighting test brightness scale from too dark to too bright</title>
+  <desc>A horizontal brightness meter showing the 0-100 scale a webcam lighting test reports, with a critical dark zone, a good well-lit zone from 30 to 70, and a washed-out zone above 70, plus an example reading of 58.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam lighting test brightness scale from too dark to too bright</dc:title>
+        <dc:description>A horizontal brightness meter showing the 0-100 scale a webcam lighting test reports, with a critical dark zone, a good well-lit zone from 30 to 70, and a washed-out zone above 70, plus an example reading of 58.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam lighting test</rdf:li>
+            <rdf:li>brightness score</rdf:li>
+            <rdf:li>exposure</rdf:li>
+            <rdf:li>low light</rdf:li>
+            <rdf:li>washed out</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-lighting-exposure-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="420" fill="#fcfcfb"/>
+
+  <text x="450" y="56" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#0b0b0b">Webcam Brightness Scale</text>
+  <text x="450" y="86" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">What your webcam lighting test score means, 0-100</text>
+
+  <!-- track -->
+  <g transform="translate(80,150)">
+    <!-- zone bars -->
+    <rect x="0" y="0" width="222" height="64" rx="10" fill="#d03b3b"/>
+    <rect x="222" y="0" width="296" height="64" fill="#0ca30c"/>
+    <rect x="518" y="0" width="222" height="64" rx="10" fill="#fab219"/>
+    <!-- squared inner joins so the rounded caps only show on the outer ends -->
+    <rect x="212" y="0" width="20" height="64" fill="#d03b3b"/>
+    <rect x="508" y="0" width="20" height="64" fill="#fab219"/>
+
+    <!-- ideal range bracket -->
+    <rect x="222" y="-14" width="296" height="4" fill="#0b0b0b"/>
+    <line x1="222" y1="-14" x2="222" y2="-4" stroke="#0b0b0b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="518" y1="-14" x2="518" y2="-4" stroke="#0b0b0b" stroke-width="4" stroke-linecap="round"/>
+    <text x="370" y="-24" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Ideal range: 30-70</text>
+
+    <!-- ticks -->
+    <text x="0" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">0</text>
+    <text x="212" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">30</text>
+    <text x="508" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">70</text>
+    <text x="726" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">100</text>
+
+    <!-- example reading marker at 58 -->
+    <g transform="translate(414,0)">
+      <polygon points="0,-38 -12,-58 12,-58" fill="#0b0b0b"/>
+      <rect x="-46" y="-100" width="92" height="34" rx="8" fill="#0b0b0b"/>
+      <text x="0" y="-78" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#ffffff">58 / 100</text>
+    </g>
+  </g>
+
+  <!-- legend -->
+  <g transform="translate(80,270)" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#0b0b0b">
+    <circle cx="8" cy="0" r="7" fill="#d03b3b"/>
+    <text x="24" y="5">Too dark - add front light or move closer to a window</text>
+
+    <circle cx="8" cy="32" r="7" fill="#0ca30c"/>
+    <text x="24" y="37">Well lit - your face reads clearly on video calls</text>
+
+    <circle cx="8" cy="64" r="7" fill="#fab219"/>
+    <text x="24" y="69">Too bright - washed out, lower exposure or dim the light</text>
+  </g>
+</svg>

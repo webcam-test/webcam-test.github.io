@@ -1,0 +1,60 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle2 svgDesc2">
+  <title id="svgTitle2">In-phase versus out-of-phase speaker waveforms</title>
+  <desc id="svgDesc2">Waveform diagram comparing two speakers playing in phase, where both waveforms rise and fall together and combine into a focused, bass-rich signal, with two speakers playing out of phase, where the waveforms mirror each other and cancel into a hollow, bass-light signal.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>In-phase versus out-of-phase speaker waveforms</dc:title>
+        <dc:description>Waveform diagram comparing two speakers playing in phase, where both waveforms rise and fall together and combine into a focused, bass-rich signal, with two speakers playing out of phase, where the waveforms mirror each other and cancel into a hollow, bass-light signal.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>phase polarity</rdf:li>
+            <rdf:li>speaker polarity</rdf:li>
+            <rdf:li>out of phase</rdf:li>
+            <rdf:li>in phase</rdf:li>
+            <rdf:li>bass cancellation</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/left-right-stereo-channel-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="900" height="560" fill="#fcfcfb" />
+
+  <!-- IN PHASE -->
+  <text x="225" y="45" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="middle">In Phase</text>
+  <rect x="30" y="70" width="390" height="60" rx="8" fill="#e8f7ec" />
+  <circle cx="55" cy="100" r="10" fill="#0ca30c" />
+  <text x="75" y="105" font-family="system-ui, sans-serif" font-size="15" fill="#0b0b0b">Centered, focused, strong bass</text>
+
+  <!-- Left speaker waveform (in phase) -->
+  <text x="40" y="170" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Left speaker</text>
+  <path d="M30,190 Q60,150 90,190 T150,190 T210,190 T270,190 T330,190 T390,190" fill="none" stroke="#2a78d6" stroke-width="3" />
+
+  <text x="40" y="240" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Right speaker</text>
+  <path d="M30,260 Q60,220 90,260 T150,260 T210,260 T270,260 T330,260 T390,260" fill="none" stroke="#eb6834" stroke-width="3" />
+
+  <text x="40" y="300" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Combined result</text>
+  <path d="M30,330 Q60,260 90,330 T150,330 T210,330 T270,330 T330,330 T390,330" fill="none" stroke="#0ca30c" stroke-width="4" />
+
+  <!-- OUT OF PHASE -->
+  <text x="675" y="45" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="middle">Out of Phase</text>
+  <rect x="480" y="70" width="390" height="60" rx="8" fill="#fbeaea" />
+  <circle cx="505" cy="100" r="10" fill="#d03b3b" />
+  <text x="525" y="105" font-family="system-ui, sans-serif" font-size="15" fill="#0b0b0b">Hollow, wide, bass cancels out</text>
+
+  <text x="490" y="170" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Left speaker</text>
+  <path d="M480,190 Q510,150 540,190 T600,190 T660,190 T720,190 T780,190 T840,190" fill="none" stroke="#2a78d6" stroke-width="3" />
+
+  <text x="490" y="240" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Right speaker (inverted)</text>
+  <path d="M480,260 Q510,300 540,260 T600,260 T660,260 T720,260 T780,260 T840,260" fill="none" stroke="#eb6834" stroke-width="3" />
+
+  <text x="490" y="300" font-family="system-ui, sans-serif" font-size="14" fill="#52514e">Combined result (cancels)</text>
+  <line x1="480" y1="330" x2="840" y2="330" stroke="#d03b3b" stroke-width="4" stroke-dasharray="10,8" />
+
+  <line x1="450" y1="60" x2="450" y2="480" stroke="#e1e0d9" stroke-width="2" />
+
+  <text x="450" y="520" font-family="system-ui, sans-serif" font-size="14" fill="#898781" text-anchor="middle">Swapping the + and - wires on one speaker fixes an out-of-phase pair</text>
+</svg>

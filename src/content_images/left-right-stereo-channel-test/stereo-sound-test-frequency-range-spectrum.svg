@@ -1,0 +1,62 @@
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle3 svgDesc3">
+  <title id="svgTitle3">Audible frequency spectrum from sub-bass to treble</title>
+  <desc id="svgDesc3">Labeled spectrum diagram spanning 20Hz to 20kHz, divided into sub-bass, bass, midrange, and treble bands, showing where a frequency sweep test moves through each range.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Audible frequency spectrum from sub-bass to treble</dc:title>
+        <dc:description>Labeled spectrum diagram spanning 20Hz to 20kHz, divided into sub-bass, bass, midrange, and treble bands, showing where a frequency sweep test moves through each range.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>frequency response</rdf:li>
+            <rdf:li>frequency sweep</rdf:li>
+            <rdf:li>sub-bass</rdf:li>
+            <rdf:li>treble</rdf:li>
+            <rdf:li>frequency range</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/left-right-stereo-channel-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="900" height="500" fill="#fcfcfb" />
+  <text x="450" y="50" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#0b0b0b" text-anchor="middle">The Audible Frequency Range (20Hz - 20kHz)</text>
+
+  <!-- Bands -->
+  <g>
+    <rect x="60" y="150" width="180" height="120" fill="#cde2fb" />
+    <rect x="240" y="150" width="220" height="120" fill="#6da7ec" />
+    <rect x="460" y="150" width="220" height="120" fill="#2a78d6" />
+    <rect x="680" y="150" width="180" height="120" fill="#184f95" />
+  </g>
+
+  <!-- Band labels -->
+  <text x="150" y="230" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#0b0b0b" text-anchor="middle">Sub-bass</text>
+  <text x="150" y="252" font-family="system-ui, sans-serif" font-size="13" fill="#0b0b0b" text-anchor="middle">20-60 Hz</text>
+
+  <text x="350" y="230" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">Bass</text>
+  <text x="350" y="252" font-family="system-ui, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">60-250 Hz</text>
+
+  <text x="570" y="230" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">Midrange</text>
+  <text x="570" y="252" font-family="system-ui, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">250 Hz-4 kHz</text>
+
+  <text x="770" y="230" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">Treble</text>
+  <text x="770" y="252" font-family="system-ui, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">4-20 kHz</text>
+
+  <!-- Sweep arrow -->
+  <path d="M60,300 L860,300" stroke="#eb6834" stroke-width="3" marker-end="url(#arrow)" fill="none" />
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#eb6834" />
+    </marker>
+  </defs>
+  <text x="450" y="330" font-family="system-ui, sans-serif" font-size="15" fill="#52514e" text-anchor="middle">Frequency sweep test moves continuously across every band</text>
+
+  <!-- Endpoints -->
+  <text x="60" y="130" font-family="system-ui, sans-serif" font-size="14" fill="#898781">20 Hz</text>
+  <text x="820" y="130" font-family="system-ui, sans-serif" font-size="14" fill="#898781">20 kHz</text>
+
+  <text x="450" y="430" font-family="system-ui, sans-serif" font-size="14" fill="#898781" text-anchor="middle">Most small speakers roll off well before 60Hz and above 15kHz</text>
+</svg>

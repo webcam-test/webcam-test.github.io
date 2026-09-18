@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" style="width:100%;height:auto" role="img" aria-labelledby="steps-title steps-desc">
+  <title id="steps-title">Four steps to take the online hearing test</title>
+  <desc id="steps-desc">Step-flow diagram showing the four steps of taking an online hearing test: find a quiet place, put on headphones, listen for tones at different volumes, and get instant results.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>How the online hearing test works</dc:title>
+        <dc:description>Step-flow diagram showing the four steps of taking an online hearing test: find a quiet place, put on headphones, listen for tones at different volumes, and get instant results.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>online hearing test</rdf:li>
+            <rdf:li>hearing test online</rdf:li>
+            <rdf:li>headphones</rdf:li>
+            <rdf:li>quiet place</rdf:li>
+            <rdf:li>volume</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/online-hearing-frequency-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="360" fill="#fcfcfb"/>
+  <text x="40" y="48" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">How the online hearing test works</text>
+
+  <!-- connecting line -->
+  <line x1="140" y1="180" x2="860" y2="180" stroke="#e1e0d9" stroke-width="2"/>
+
+  <!-- Step 1 -->
+  <g transform="translate(140,180)">
+    <circle r="46" fill="#2a78d6"/>
+    <text x="0" y="10" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="0" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b" text-anchor="middle">Find a quiet place</text>
+    <text x="0" y="112" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">Cut out background</text>
+    <text x="0" y="130" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">noise before you begin</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(380,180)">
+    <circle r="46" fill="#1baf7a"/>
+    <text x="0" y="10" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="0" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b" text-anchor="middle">Put on headphones</text>
+    <text x="0" y="112" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">Set the volume to a</text>
+    <text x="0" y="130" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">comfortable, steady level</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(620,180)">
+    <circle r="46" fill="#eda100"/>
+    <text x="0" y="10" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="0" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b" text-anchor="middle">Listen for tones</text>
+    <text x="0" y="112" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">Respond as each</text>
+    <text x="0" y="130" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">frequency plays</text>
+  </g>
+
+  <!-- Step 4 -->
+  <g transform="translate(860,180)">
+    <circle r="46" fill="#4a3aa7"/>
+    <text x="0" y="10" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="0" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#0b0b0b" text-anchor="middle">Get instant results</text>
+    <text x="0" y="112" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">See your result and</text>
+    <text x="0" y="130" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">next-step guidance</text>
+  </g>
+</svg>

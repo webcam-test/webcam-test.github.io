@@ -1,0 +1,38 @@
+Frequency Sweep Test | frequency sweep test | audio-frequency-sweep-20hz-20khz
+Audio Latency Test | audio latency test | audio-latency-delay-test
+Front Camera Test | front camera test | front-camera-test-online
+Is My Camera On | is my camera on | is-my-camera-being-used-check
+Stereo Left Right Test | stereo left right test | left-right-stereo-channel-test
+Mic Echo Test | mic echo test | microphone-echo-test
+Mic Level Meter | mic level meter | microphone-input-level-meter
+Microphone Spectrum Analyzer | microphone spectrum analyzer | microphone-quality-spectrum-analyzer
+Microphone Record Test | microphone record test | microphone-record-playback-test
+Microphone Test | microphone test | microphone-test-online
+Mobile Camera Test | mobile camera test | mobile-camera-test-online
+Hearing Test Online | hearing test online | online-hearing-frequency-test
+Phone Flashlight Test | phone flashlight test | phone-camera-flash-torch-test
+Phone Camera Orientation Test | phone camera orientation test | phone-camera-orientation-test
+Phone Camera Resolution | phone camera resolution | phone-camera-resolution-checker
+Phone Camera Zoom Test | phone camera zoom test | phone-camera-zoom-test
+Rear Camera Test | rear camera test | rear-camera-test-online
+Speaker Polarity Test | speaker polarity test | speaker-polarity-phase-test
+Speaker Test | speaker test | speaker-test-online
+Subwoofer Test | subwoofer test | subwoofer-bass-test-online
+Check Used Phone Camera | check used phone camera | used-phone-camera-inspection-checklist
+Webcam Autofocus Test | webcam autofocus test | webcam-autofocus-test
+What Camera Do I Have | what camera do i have | webcam-camera-information-report
+Webcam Color Test | webcam color test | webcam-color-accuracy-test
+Webcam Fps Test | webcam fps test | webcam-fps-frame-rate-checker
+Webcam Fullscreen | webcam fullscreen | webcam-fullscreen-viewer
+Webcam Latency Test | webcam latency test | webcam-latency-delay-test
+Webcam Lighting Test | webcam lighting test | webcam-lighting-exposure-test
+Webcam Filters | webcam filters | webcam-live-filter-preview
+Webcam Low Light Test | webcam low light test | webcam-low-light-noise-test
+Webcam Max Resolution | webcam max resolution | webcam-maximum-resolution-detector
+Webcam Mirror Test | webcam mirror test | webcam-mirror-vs-natural-view-test
+Webcam Photo Capture | webcam photo capture | webcam-photo-capture-online
+Rule Of Thirds Grid | rule of thirds grid | webcam-rule-of-thirds-composition-grid
+Webcam Focus Test | webcam focus test | webcam-sharpness-focus-test
+Webcam Comparison | webcam comparison | webcam-side-by-side-comparison
+Webcam Test Online | webcam test online | webcam-test-online
+Webcam Video Recorder | webcam video recorder | webcam-video-recorder-online

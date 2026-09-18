@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 620" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle svgDesc">
+  <title id="svgTitle">Webcam mirror flip modes compared</title>
+  <desc id="svgDesc">Three side-by-side screens showing the same webcam feed in its original orientation, flipped horizontally in mirror mode, and flipped vertically, each marked by a reversed letter R to show the direction of the flip.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam mirror flip modes compared</dc:title>
+        <dc:description>Three side-by-side screens showing the same webcam feed in its original orientation, flipped horizontally in mirror mode, and flipped vertically, each marked by a reversed letter R to show the direction of the flip.</dc:description>
+        <dc:subject><rdf:Bag><rdf:li>webcam mirror</rdf:li><rdf:li>flip horizontally</rdf:li><rdf:li>flip vertically</rdf:li><rdf:li>mirror mode</rdf:li><rdf:li>online mirror</rdf:li></rdf:Bag></dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-mirror-vs-natural-view-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="620" fill="#fcfcfb"/>
+
+  <text x="500" y="56" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="#0b0b0b">Webcam Mirror: Flip Modes Compared</text>
+  <text x="500" y="88" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#52514e">The same webcam feed, shown three ways</text>
+
+  <!-- Panel 1: Original -->
+  <g>
+    <rect x="55" y="140" width="270" height="230" rx="14" fill="#ffffff" stroke="#c3c2b7" stroke-width="2"/>
+    <rect x="55" y="140" width="270" height="34" rx="14" fill="#e1e0d9"/>
+    <rect x="55" y="160" width="270" height="14" fill="#e1e0d9"/>
+    <circle cx="75" cy="157" r="5" fill="#e34948"/>
+    <circle cx="93" cy="157" r="5" fill="#eda100"/>
+    <circle cx="111" cy="157" r="5" fill="#1baf7a"/>
+    <text x="190" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="120" font-weight="800" fill="#0b0b0b">R</text>
+    <text x="190" y="405" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#0b0b0b">Your Camera Feed</text>
+    <text x="190" y="428" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Unflipped, as the sensor sees you</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g>
+    <path d="M 335 255 L 380 255" stroke="#898781" stroke-width="2" fill="none" marker-end="url(#arrowHead)"/>
+    <circle cx="358" cy="220" r="16" fill="#2a78d6"/>
+    <text x="358" y="226" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="#ffffff">H</text>
+  </g>
+
+  <!-- Panel 2: Horizontal flip (mirror mode) -->
+  <g>
+    <rect x="365" y="140" width="270" height="230" rx="14" fill="#ffffff" stroke="#2a78d6" stroke-width="2.5"/>
+    <rect x="365" y="140" width="270" height="34" rx="14" fill="#cde2fb"/>
+    <rect x="365" y="160" width="270" height="14" fill="#cde2fb"/>
+    <circle cx="385" cy="157" r="5" fill="#e34948"/>
+    <circle cx="403" cy="157" r="5" fill="#eda100"/>
+    <circle cx="421" cy="157" r="5" fill="#1baf7a"/>
+    <text x="500" y="290" text-anchor="middle" transform="translate(1000,0) scale(-1,1)" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="120" font-weight="800" fill="#2a78d6">R</text>
+    <text x="500" y="405" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#2a78d6">Horizontal Flip (Mirror Mode)</text>
+    <text x="500" y="428" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Left and right reversed, like a real mirror</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g>
+    <path d="M 645 255 L 690 255" stroke="#898781" stroke-width="2" fill="none" marker-end="url(#arrowHead)"/>
+    <circle cx="668" cy="220" r="16" fill="#eb6834"/>
+    <text x="668" y="226" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="#ffffff">V</text>
+  </g>
+
+  <!-- Panel 3: Vertical flip -->
+  <g>
+    <rect x="675" y="140" width="270" height="230" rx="14" fill="#ffffff" stroke="#eb6834" stroke-width="2.5"/>
+    <rect x="675" y="140" width="270" height="34" rx="14" fill="#fbdcc9"/>
+    <rect x="675" y="160" width="270" height="14" fill="#fbdcc9"/>
+    <circle cx="695" cy="157" r="5" fill="#e34948"/>
+    <circle cx="713" cy="157" r="5" fill="#eda100"/>
+    <circle cx="731" cy="157" r="5" fill="#1baf7a"/>
+    <text x="810" y="290" text-anchor="middle" transform="translate(0,580) scale(1,-1)" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="120" font-weight="800" fill="#eb6834">R</text>
+    <text x="810" y="405" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#eb6834">Vertical Flip</text>
+    <text x="810" y="428" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Top and bottom reversed, upside down</text>
+  </g>
+
+  <defs>
+    <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#898781"/>
+    </marker>
+  </defs>
+
+  <rect x="55" y="470" width="890" height="110" rx="12" fill="#f9f9f7" stroke="#e1e0d9" stroke-width="1.5"/>
+  <text x="500" y="505" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#0b0b0b">Why it matters</text>
+  <text x="500" y="533" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Mirror mode (horizontal flip) matches what you see in a real mirror — useful for checking your look before a call.</text>
+  <text x="500" y="556" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Turning flips off shows exactly what other people see on their screen during a video call.</text>
+</svg>

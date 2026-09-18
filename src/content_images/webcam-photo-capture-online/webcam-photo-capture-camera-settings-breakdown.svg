@@ -1,0 +1,59 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" font-family="Arial, Helvetica, sans-serif">
+  <title>Camera settings panel for webcam photo capture</title>
+  <desc>Labeled breakdown of the camera settings that affect photo quality when capturing a webcam photo: brightness, contrast, exposure, and white balance, each shown as a slider control.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Camera settings panel for webcam photo capture</dc:title>
+        <dc:description>Labeled breakdown of the camera settings that affect photo quality when capturing a webcam photo: brightness, contrast, exposure, and white balance, each shown as a slider control.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>camera settings</rdf:li>
+            <rdf:li>photo quality</rdf:li>
+            <rdf:li>webcam photo capture</rdf:li>
+            <rdf:li>resolution</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-photo-capture-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="900" height="560" fill="#fcfcfb"/>
+  <text x="450" y="46" text-anchor="middle" fill="#0b0b0b" font-size="24" font-weight="bold">Camera settings that shape photo quality</text>
+
+  <!-- panel -->
+  <rect x="150" y="80" width="600" height="420" rx="10" fill="#ffffff" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- Brightness -->
+  <text x="180" y="130" fill="#0b0b0b" font-size="17" font-weight="bold">Brightness</text>
+  <line x1="180" y1="150" x2="700" y2="150" stroke="#e9e8e3" stroke-width="6" stroke-linecap="round"/>
+  <line x1="180" y1="150" x2="470" y2="150" stroke="#2a78d6" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="470" cy="150" r="10" fill="#2a78d6"/>
+
+  <!-- Contrast -->
+  <text x="180" y="200" fill="#0b0b0b" font-size="17" font-weight="bold">Contrast</text>
+  <line x1="180" y1="220" x2="700" y2="220" stroke="#e9e8e3" stroke-width="6" stroke-linecap="round"/>
+  <line x1="180" y1="220" x2="530" y2="220" stroke="#eb6834" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="530" cy="220" r="10" fill="#eb6834"/>
+
+  <!-- Exposure -->
+  <text x="180" y="270" fill="#0b0b0b" font-size="17" font-weight="bold">Exposure</text>
+  <line x1="180" y1="290" x2="700" y2="290" stroke="#e9e8e3" stroke-width="6" stroke-linecap="round"/>
+  <line x1="180" y1="290" x2="400" y2="290" stroke="#1baf7a" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="400" cy="290" r="10" fill="#1baf7a"/>
+
+  <!-- White Balance -->
+  <text x="180" y="340" fill="#0b0b0b" font-size="17" font-weight="bold">White balance</text>
+  <line x1="180" y1="360" x2="700" y2="360" stroke="#e9e8e3" stroke-width="6" stroke-linecap="round"/>
+  <line x1="180" y1="360" x2="580" y2="360" stroke="#4a3aa7" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="580" cy="360" r="10" fill="#4a3aa7"/>
+
+  <!-- Resolution readout -->
+  <rect x="180" y="400" width="520" height="70" rx="8" fill="#e9e8e3"/>
+  <text x="440" y="432" text-anchor="middle" fill="#0b0b0b" font-size="16" font-weight="bold">Maximum supported resolution</text>
+  <text x="440" y="456" text-anchor="middle" fill="#52514e" font-size="15">Detected automatically from your webcam driver</text>
+
+  <text x="450" y="535" text-anchor="middle" fill="#52514e" font-size="14">Adjusting these four controls before you capture avoids most washed-out or dim webcam photos.</text>
+</svg>

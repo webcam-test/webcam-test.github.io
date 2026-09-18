@@ -1,0 +1,76 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle3 svgDesc3">
+  <title id="svgTitle3">Frequency sweep range chart from bass to treble</title>
+  <desc id="svgDesc3">Horizontal chart of the audible frequency spectrum from 20Hz to 20kHz, broken into sub-bass, bass, midrange, and treble bands, showing the range a frequency sweep test covers and where a subwoofer versus a tweeter typically reproduces sound.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Frequency sweep range chart from bass to treble</dc:title>
+        <dc:description>Horizontal chart of the audible frequency spectrum from 20Hz to 20kHz, broken into sub-bass, bass, midrange, and treble bands, showing the range a frequency sweep test covers and where a subwoofer versus a tweeter typically reproduces sound.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>frequency sweep</rdf:li>
+            <rdf:li>frequency response</rdf:li>
+            <rdf:li>bass</rdf:li>
+            <rdf:li>treble</rdf:li>
+            <rdf:li>subwoofer</rdf:li>
+            <rdf:li>hertz</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/speaker-test-online</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect width="900" height="520" fill="#fcfcfb" />
+  <text x="450" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="bold" fill="#0b0b0b" text-anchor="middle">Frequency Sweep: 20Hz to 20kHz</text>
+  <text x="450" y="78" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e" text-anchor="middle">What a full-range speaker test sweep covers, band by band</text>
+
+  <!-- bands -->
+  <g transform="translate(70,130)">
+    <!-- Sub-bass -->
+    <rect x="0" y="0" width="160" height="90" fill="#86b6ef" />
+    <text x="80" y="40" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="middle">Sub-bass</text>
+    <text x="80" y="62" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b" text-anchor="middle">20&#8211;60 Hz</text>
+
+    <!-- Bass -->
+    <rect x="164" y="0" width="160" height="90" fill="#5598e7" />
+    <text x="244" y="40" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Bass</text>
+    <text x="244" y="62" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">60&#8211;250 Hz</text>
+
+    <!-- Midrange -->
+    <rect x="328" y="0" width="160" height="90" fill="#2a78d6" />
+    <text x="408" y="40" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Midrange</text>
+    <text x="408" y="62" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">250 Hz&#8211;4 kHz</text>
+
+    <!-- Treble -->
+    <rect x="492" y="0" width="160" height="90" fill="#1c5cab" />
+    <text x="572" y="40" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Treble</text>
+    <text x="572" y="62" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">4&#8211;20 kHz</text>
+
+    <!-- sweep arrow -->
+    <path d="M0,120 H652" stroke="#898781" stroke-width="2" marker-end="url(#arrowhead)" />
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L8,3 L0,6 Z" fill="#898781" />
+      </marker>
+    </defs>
+    <text x="326" y="150" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e" text-anchor="middle">Sweep direction: low to high</text>
+
+    <!-- subwoofer / tweeter callouts -->
+    <g transform="translate(30,190)">
+      <circle cx="0" cy="0" r="24" fill="#334155" />
+      <circle cx="0" cy="0" r="13" fill="#0f172a" />
+      <text x="0" y="45" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b" text-anchor="middle" font-weight="bold">Subwoofer</text>
+      <text x="0" y="63" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e" text-anchor="middle">reproduces sub-bass &amp; bass</text>
+    </g>
+    <g transform="translate(600,190)">
+      <circle cx="0" cy="0" r="14" fill="#475569" />
+      <circle cx="0" cy="0" r="6" fill="#0f172a" />
+      <text x="0" y="35" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b" text-anchor="middle" font-weight="bold">Tweeter</text>
+      <text x="0" y="53" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#52514e" text-anchor="middle">reproduces treble</text>
+    </g>
+  </g>
+
+  <text x="450" y="470" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781" text-anchor="middle">If a sweep suddenly disappears or drops in volume at one point, that's a dead spot in your speaker's frequency response.</text>
+</svg>

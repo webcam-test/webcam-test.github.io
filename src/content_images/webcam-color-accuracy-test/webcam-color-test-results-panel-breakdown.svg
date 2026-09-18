@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" role="img" aria-labelledby="svgTitle svgDesc">
+  <title id="svgTitle">Webcam color test results panel breakdown</title>
+  <desc id="svgDesc">Diagram of the seven metrics a webcam color test measures: resolution, frame rate, number of colors, hue, saturation, brightness, and average RGB color.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Webcam color test results panel breakdown</dc:title>
+        <dc:description>Diagram of the seven metrics a webcam color test measures: resolution, frame rate, number of colors, hue, saturation, brightness, and average RGB color.</dc:description>
+        <dc:subject><rdf:Bag>
+          <rdf:li>webcam color test</rdf:li>
+          <rdf:li>color reproduction</rdf:li>
+          <rdf:li>saturation</rdf:li>
+          <rdf:li>hue</rdf:li>
+          <rdf:li>brightness</rdf:li>
+          <rdf:li>number of colors</rdf:li>
+        </rdf:Bag></dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/webcam-color-accuracy-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="640" fill="#fcfcfb"/>
+  <text x="40" y="52" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#0b0b0b">What a webcam color test actually measures</text>
+  <text x="40" y="80" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Seven readings pulled from a single live video frame</text>
+
+  <!-- card frame -->
+  <rect x="40" y="110" width="920" height="490" rx="12" fill="#ffffff" stroke="#e1e0d9" stroke-width="1.5"/>
+
+  <!-- 7 metric rows, alternating -->
+  <!-- Row template: swatch circle + label + short description -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- Resolution -->
+    <circle cx="90" cy="160" r="16" fill="#2a78d6"/>
+    <text x="90" y="166" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">R</text>
+    <text x="125" y="156" font-size="17" font-weight="700" fill="#0b0b0b">Resolution</text>
+    <text x="125" y="176" font-size="13.5" fill="#52514e">Width x height in pixels the sensor is currently streaming, e.g. 1280x720</text>
+
+    <!-- Frame rate -->
+    <circle cx="90" cy="220" r="16" fill="#eb6834"/>
+    <text x="90" y="226" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">F</text>
+    <text x="125" y="216" font-size="17" font-weight="700" fill="#0b0b0b">Frame rate</text>
+    <text x="125" y="236" font-size="13.5" fill="#52514e">Frames per second (FPS) the stream is actually delivering, not just rated for</text>
+
+    <!-- Number of colors -->
+    <circle cx="90" cy="280" r="16" fill="#1baf7a"/>
+    <text x="90" y="286" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">C</text>
+    <text x="125" y="276" font-size="17" font-weight="700" fill="#0b0b0b">Number of colors</text>
+    <text x="125" y="296" font-size="13.5" fill="#52514e">Distinct colors sampled from the frame; a low count signals a washed-out or grayscale feed</text>
+
+    <!-- Hue -->
+    <circle cx="90" cy="340" r="16" fill="#eda100"/>
+    <text x="90" y="346" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">H</text>
+    <text x="125" y="336" font-size="17" font-weight="700" fill="#0b0b0b">Hue</text>
+    <text x="125" y="356" font-size="13.5" fill="#52514e">The dominant color angle on the color wheel, flags a color cast (too blue, too orange)</text>
+
+    <!-- Saturation -->
+    <circle cx="90" cy="400" r="16" fill="#e87ba4"/>
+    <text x="90" y="406" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">S</text>
+    <text x="125" y="396" font-size="17" font-weight="700" fill="#0b0b0b">Saturation</text>
+    <text x="125" y="416" font-size="13.5" fill="#52514e">How vivid or muted the colors look; low saturation reads as flat or faded video</text>
+
+    <!-- Brightness -->
+    <circle cx="90" cy="460" r="16" fill="#4a3aa7"/>
+    <text x="90" y="466" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">B</text>
+    <text x="125" y="456" font-size="17" font-weight="700" fill="#0b0b0b">Brightness</text>
+    <text x="125" y="476" font-size="13.5" fill="#52514e">Overall exposure level; too low and detail disappears into shadow, too high and it clips to white</text>
+
+    <!-- Average RGB -->
+    <circle cx="90" cy="520" r="16" fill="#e34948"/>
+    <text x="90" y="526" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">RGB</text>
+    <text x="125" y="516" font-size="17" font-weight="700" fill="#0b0b0b">Average RGB color</text>
+    <text x="125" y="536" font-size="13.5" fill="#52514e">The single blended red/green/blue value across the frame, useful for comparing two webcams directly</text>
+  </g>
+
+  <!-- divider lines between rows -->
+  <g stroke="#e1e0d9" stroke-width="1">
+    <line x1="70" y1="192" x2="920" y2="192"/>
+    <line x1="70" y1="252" x2="920" y2="252"/>
+    <line x1="70" y1="312" x2="920" y2="312"/>
+    <line x1="70" y1="372" x2="920" y2="372"/>
+    <line x1="70" y1="432" x2="920" y2="432"/>
+    <line x1="70" y1="492" x2="920" y2="492"/>
+  </g>
+
+  <text x="500" y="580" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#898781" text-anchor="middle">Every reading comes from the live camera stream in your browser -- nothing is uploaded.</text>
+
+</svg>

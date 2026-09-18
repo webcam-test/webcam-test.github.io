@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" style="width:100%;height:auto" role="img" aria-labelledby="freq-title freq-desc">
+  <title id="freq-title">Frequency range tested by an online hearing test, with the speech band highlighted</title>
+  <desc id="freq-desc">Horizontal scale from 125 Hz to 8000 Hz showing the frequencies an online hearing test typically checks, with the speech frequency range highlighted since that band matters most for understanding conversation.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Frequency range chart for a hearing test</dc:title>
+        <dc:description>Horizontal scale from 125 Hz to 8000 Hz showing the frequencies an online hearing test typically checks, with the speech frequency range highlighted since that band matters most for understanding conversation.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>hearing test</rdf:li>
+            <rdf:li>online hearing test</rdf:li>
+            <rdf:li>frequencies</rdf:li>
+            <rdf:li>high frequency</rdf:li>
+            <rdf:li>hearing ability</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io/online-hearing-frequency-test</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1000" height="420" fill="#fcfcfb"/>
+  <text x="40" y="48" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#0b0b0b">The frequencies an online hearing test checks</text>
+  <text x="40" y="76" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#52514e">Tones step from low pitch to high pitch &#8212; the shaded band is where most speech sounds live.</text>
+
+  <!-- axis -->
+  <g transform="translate(60,220)">
+    <line x1="0" y1="0" x2="880" y2="0" stroke="#c3c2b7" stroke-width="2"/>
+
+    <!-- speech band highlight -->
+    <rect x="176" y="-70" width="264" height="140" fill="#2a78d6" opacity="0.12"/>
+    <text x="308" y="-84" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#2a78d6" text-anchor="middle">Speech frequency range</text>
+
+    <!-- ticks: 125,250,500,1000,2000,4000,8000 Hz mapped log-ish across 0-880 -->
+    <!-- positions chosen to read cleanly, not a strict log scale -->
+    <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#52514e" text-anchor="middle">
+      <g transform="translate(0,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">125 Hz</text>
+      </g>
+      <g transform="translate(176,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">250 Hz</text>
+      </g>
+      <g transform="translate(308,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">500 Hz</text>
+      </g>
+      <g transform="translate(440,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">1000 Hz</text>
+      </g>
+      <g transform="translate(572,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">2000 Hz</text>
+      </g>
+      <g transform="translate(704,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">4000 Hz</text>
+      </g>
+      <g transform="translate(880,0)">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#898781" stroke-width="1.5"/>
+        <text y="30">8000 Hz</text>
+      </g>
+    </g>
+
+    <!-- low/high pitch labels -->
+    <text x="0" y="-90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b" text-anchor="start">Low pitch</text>
+    <text x="880" y="-90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b" text-anchor="end">High pitch</text>
+  </g>
+
+  <text x="40" y="360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">Difficulty hearing tones above 2000 Hz is one of the earliest and most common signs of hearing loss,</text>
+  <text x="40" y="382" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#52514e">since consonant sounds that carry the most speech information sit in that high frequency range.</text>
+</svg>

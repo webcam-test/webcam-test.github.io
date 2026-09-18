@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" style="width:100%;height:auto" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Six metrics a webcam test online measures</title>
+  <desc>Hub-and-spoke diagram showing the six technical metrics a webcam test online checks: frame rate (FPS), resolution, aspect ratio, lighting, sharpness, and noise levels.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">
+      <rdf:Description rdf:about="">
+        <dc:title>Six metrics a webcam test online measures</dc:title>
+        <dc:description>Hub-and-spoke diagram showing the six technical metrics a webcam test online checks: frame rate (FPS), resolution, aspect ratio, lighting, sharpness, and noise levels.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>webcam test online</rdf:li>
+            <rdf:li>FPS</rdf:li>
+            <rdf:li>resolution</rdf:li>
+            <rdf:li>aspect ratio</rdf:li>
+            <rdf:li>lighting</rdf:li>
+            <rdf:li>sharpness</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>
+      <dc:creator><rdf:Seq><rdf:li>WebcamTest</rdf:li></rdf:Seq></dc:creator><dc:rights><rdf:Alt><rdf:li xml:lang="x-default">© 2026 WebcamTest — webcam-test.github.io</rdf:li></rdf:Alt></dc:rights><dc:source>https://webcam-test.github.io</dc:source><xmpRights:WebStatement xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">https://webcam-test.github.io/terms</xmpRights:WebStatement></rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <rect x="0" y="0" width="1100" height="680" fill="#fcfcfb"/>
+  <text x="40" y="50" font-size="24" font-weight="600" fill="#0b0b0b">What a webcam test online actually measures</text>
+  <text x="40" y="76" font-size="14" fill="#52514e">Six signals behind every "your webcam is working" result</text>
+
+  <!-- spokes -->
+  <line x1="550" y1="340" x2="550" y2="170" stroke="#c3c2b7" stroke-width="2"/>
+  <line x1="550" y1="340" x2="766" y2="255" stroke="#c3c2b7" stroke-width="2"/>
+  <line x1="550" y1="340" x2="766" y2="425" stroke="#c3c2b7" stroke-width="2"/>
+  <line x1="550" y1="340" x2="550" y2="510" stroke="#c3c2b7" stroke-width="2"/>
+  <line x1="550" y1="340" x2="334" y2="425" stroke="#c3c2b7" stroke-width="2"/>
+  <line x1="550" y1="340" x2="334" y2="255" stroke="#c3c2b7" stroke-width="2"/>
+
+  <!-- center hub -->
+  <circle cx="550" cy="340" r="80" fill="#0b0b0b"/>
+  <text x="550" y="333" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Webcam</text>
+  <text x="550" y="354" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Test</text>
+
+  <!-- FPS: top -->
+  <rect x="465" y="80" width="170" height="90" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="2"/>
+  <text x="550" y="110" font-size="15" font-weight="700" fill="#2a78d6" text-anchor="middle">Frame rate (FPS)</text>
+  <text x="550" y="130" font-size="11.5" fill="#52514e" text-anchor="middle">
+    <tspan x="550" dy="0">How smooth the</tspan>
+    <tspan x="550" dy="15">video stream looks</tspan>
+  </text>
+
+  <!-- Resolution: top-right -->
+  <rect x="695" y="185" width="180" height="90" rx="10" fill="#ffffff" stroke="#eb6834" stroke-width="2"/>
+  <text x="785" y="215" font-size="15" font-weight="700" fill="#eb6834" text-anchor="middle">Resolution</text>
+  <text x="785" y="235" font-size="11.5" fill="#52514e" text-anchor="middle">
+    <tspan x="785" dy="0">Pixel width and</tspan>
+    <tspan x="785" dy="15">height detected</tspan>
+  </text>
+
+  <!-- Aspect ratio: bottom-right -->
+  <rect x="695" y="380" width="180" height="90" rx="10" fill="#ffffff" stroke="#1baf7a" stroke-width="2"/>
+  <text x="785" y="410" font-size="15" font-weight="700" fill="#1baf7a" text-anchor="middle">Aspect ratio</text>
+  <text x="785" y="430" font-size="11.5" fill="#52514e" text-anchor="middle">
+    <tspan x="785" dy="0">Width-to-height</tspan>
+    <tspan x="785" dy="15">frame proportion</tspan>
+  </text>
+
+  <!-- Lighting: bottom -->
+  <rect x="465" y="515" width="170" height="90" rx="10" fill="#ffffff" stroke="#eda100" stroke-width="2"/>
+  <text x="550" y="545" font-size="15" font-weight="700" fill="#eda100" text-anchor="middle">Lighting</text>
+  <text x="550" y="565" font-size="11.5" fill="#52514e" text-anchor="middle">
+    <tspan x="550" dy="0">Room brightness</tspan>
+    <tspan x="550" dy="15">and exposure</tspan>
+  </text>
+
+  <!-- Sharpness: bottom-left -->
+  <rect x="225" y="380" width="180" height="90" rx="10" fill="#ffffff" stroke="#e87ba4" stroke-width="2"/>
+  <text x="315" y="410" font-size="15" font-weight="700" fill="#e87ba4" text-anchor="middle">Sharpness</text>
+  <text x="315" y="430" font-size="11.5" fill="#52514e" text-anchor="middle">
+    <tspan x="315" dy="0">Focus and</tspan>
+    <tspan x="315" dy="15">image detail</tspan>
+  </text>
+
+  <!-- Noise levels: top-left -->
+  <rect x="225" y="185" width="180" height="90" rx="10" fill="#ffffff" stroke="#008300" stroke-width="2"/>
+  <text x="315" y="215" font-size="15" font-weight="700" fill="#008300" text-anchor="middle">Noise levels</text>
+  <text x="315" y="235" font-size="11.5" fill="#52514e" text-anchor="middle">
+    <tspan x="315" dy="0">Grain from low</tspan>
+    <tspan x="315" dy="15">light or a weak sensor</tspan>
+  </text>
+</svg>
