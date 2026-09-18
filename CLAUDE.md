@@ -338,6 +338,27 @@ and read the sentence each one landed in to confirm it still makes sense in cont
 
 **Not yet run for the remaining ~34 tool pages** — left for further batch runs.
 
+**Home page (`webcam-test-online`) deliberately held back at its pre-batch, hand-authored version —
+not the seo-optimize-generated one.** Timeline:
+- **2026-09-15** (`ab45058`) — the home page was already ranking, a few search-term variants were
+  found missing, and they were blended into the existing hand-authored copy directly (no full
+  rewrite). That's the version currently live.
+- **2026-09-18** — the full batch run above regenerated every tool's content via `/seo-optimize`,
+  including the home page, and it was merged + tuned like the others (see the validation note
+  earlier in this section).
+- **Also 2026-09-18, same day** — the home page was reverted back to the `ab45058` version
+  (`git show ab45058:src/content/webcam-test-online.json`, plus removing the infographic SVGs that
+  version never had) and rebuilt. Reasoning: this specific page already ranks, and a full content
+  swap on an already-ranking page is a materially different risk than doing the same on a page with
+  no ranking history to lose — worth a deliberate decision, not something to fold into the same
+  batch as everything else. The seo-optimize-generated home page content still exists (it's what
+  Phase 3c/Phase 4 produced during the 2026-09-18 batch run, described earlier in this section) and
+  can be regenerated again the same way if/when there's a decision to make it live — this note is
+  the record of *why* it isn't live now, not a statement that the new version is bad.
+- **Every other tool page** (the ~31 merged ones) did *not* have this ranking history to protect, so
+  they went live with the fresh seo-optimize content directly — this hold-back is specific to the
+  home page, not a general policy.
+
 ## Content Authoring
 
 `camera-and-audio-test-tools-specification.xlsx` — the original 44-tool spec (Purpose/How To
