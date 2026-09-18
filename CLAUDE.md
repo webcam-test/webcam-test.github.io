@@ -398,6 +398,13 @@ not served, and should not be edited.
   fields (`short_name`/`name` both `""`); this pipeline has no PWA manifest support. Low priority to
   restore unless there's an actual PWA/install-prompt need.
 
+**Push access verified working 2026-09-18** — a stale `~/.git-credentials` entry (unrelated to this
+repo, left over from cloning a different project) was causing push authentication failures earlier
+the same day. Fixed by clearing that file and re-authenticating with a fresh GitHub token entered
+directly at git's credential prompt (never pasted into a chat session — treat any token that does
+get pasted into one as compromised and revoke it immediately). This line itself is the verification
+commit/push for that fix.
+
 ## W3 HTML Validator — Pending
 
 All pages should be validated using live URLs via the Nu HTML Checker, once GitHub Pages is
