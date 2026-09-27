@@ -1,6 +1,6 @@
 {
   "slug": "phone-camera-zoom-test",
-  "meta_description": "Test your phone camera's zoom range in the browser. Click Start Camera, drag the slider, and see minimum, maximum, and step values, or why zoom is unsupported.",
+  "meta_description": "Test your phone camera's zoom range in the browser. Click Start Camera, drag the slider, and see min, max, and step, or if zoom isn't supported.",
   "h1": "Mobile Camera Zoom Test",
   "subtitle": "Drag the <strong>Zoom</strong> slider on this <strong>phone camera zoom test</strong> to see your camera's real <strong>Maximum</strong> zoom value.",
   "card": {

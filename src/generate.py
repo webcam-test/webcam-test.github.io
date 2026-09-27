@@ -803,6 +803,10 @@ def main():
     favicon_path = os.path.join(BASE_DIR, "favicon.ico")
     if os.path.exists(favicon_path):
         shutil.copy(favicon_path, os.path.join(OUTPUT_DIR, "favicon.ico"))
+    # Shared nav/footer JS (see src/nav.js) — identical behaviour across all
+    # three templates, so it's one static file instead of being duplicated
+    # verbatim in every page's inline <script>.
+    shutil.copy(os.path.join(BASE_DIR, "nav.js"), os.path.join(OUTPUT_DIR, "nav.js"))
     # Binary/opaque assets that can't be derived from site.json — currently
     # just the Google Search Console verification file carried over from the
     # old site (do not modify its contents; it proves domain ownership).

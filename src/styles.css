@@ -449,6 +449,11 @@ section.block.alt{background:var(--bg-alt)}
 .content-card .article dt{font-weight:700;color:var(--text);margin-top:.75rem}
 .content-card .article dt:first-child{margin-top:0}
 .content-card .article dd{color:var(--text-secondary);margin:.2rem 0 0}
+.content-card .article figure{margin:1.5rem 0}
+.content-card .article figure:first-child{margin-top:0}
+.content-card .article figcaption{font-size:.85rem;color:var(--text-muted);text-align:center;margin-top:.6rem;line-height:1.5}
+.content-card .article aside{background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:.85rem 1.1rem;margin:0 0 1rem;color:var(--text-secondary);font-size:.95rem}
+.content-card .article aside>*:last-child{margin-bottom:0}
 
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0}
 .table-scroll table{margin:0;width:max-content}
@@ -492,6 +497,11 @@ section.block.alt{background:var(--bg-alt)}
 .article ol{list-style:decimal}
 .article li{margin-bottom:.4rem}
 .article li:last-child{margin-bottom:0}
+.article figure{margin:1.5rem 0}
+.article figure:first-child{margin-top:0}
+.article figcaption{font-size:.85rem;color:var(--text-muted);text-align:center;margin-top:.6rem;line-height:1.5}
+.article aside{background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:.85rem 1.1rem;margin:0 0 1rem;color:var(--text-secondary);font-size:.95rem}
+.article aside>*:last-child{margin-bottom:0}
 
 /* ---------- Icon card grid (trust / feature grid, e.g. "Why WebcamTest") ---------- */
 .icon-card-grid{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1280px;margin:0 auto;padding:0 1.5rem}
@@ -533,7 +543,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
    that can still show at least "Home" plus one or two categories) has too
    little room to be worth it — swap the whole .category-strip for a single
    hamburger trigger opening the full-height drawer instead (see
-   initMobileDrawer() in template.html). Matches the JS's own
+   initMobileDrawer() in nav.js). Matches the JS's own
    matchMedia('(min-width:861px)') check that auto-closes the drawer if a
    resize crosses back above this breakpoint. */
 @media (max-width:860px){

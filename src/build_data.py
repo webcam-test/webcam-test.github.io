@@ -377,12 +377,12 @@ def build_pages(tools):
     pages = [
         {
             "slug": "about",
-            "meta_description": "WebcamTest is a free collection of browser-based camera and microphone testing tools. Nothing you record is ever uploaded — it all runs locally on your device.",
+            "meta_description": "WebcamTest is a free collection of browser-based camera and microphone testing tools. Nothing you test is uploaded — it all runs locally on your device.",
             "h1": "About WebcamTest",
             "subtitle": "Camera and audio diagnostics that never leave your browser.",
             "sections": [
                 {
-                    "heading": "Hi, I'm %s!" % OWNER_NAME,
+                    "heading": "Hi, I'm %s" % OWNER_NAME,
                     "paragraphs": [
                         "I'm a designer and developer from %s. I studied Textile &amp; Apparel Design and later transitioned into digital design and web development — a path that gave me a unique eye for both aesthetics and usability." % OWNER_LOCATION,
                         "I build free online tools that solve everyday problems I've personally faced. WebcamTest started with a familiar frustration — joining a call and not knowing whether the problem was my camera, my microphone, or the app itself, with no quick way to check.",
@@ -425,12 +425,12 @@ def build_pages(tools):
         },
         {
             "slug": "contact",
-            "meta_description": "Get in touch with the WebcamTest team.",
+            "meta_description": "Contact the WebcamTest team with questions, bug reports, or feedback on our free browser-based camera and mic testing tools. We read every message.",
             "h1": "Contact",
             "subtitle": "Questions, bug reports and tool requests are all welcome.",
             "sections": [
                 {
-                    "heading": "Say Hello!",
+                    "heading": "Say Hello",
                     "paragraphs": [
                         "Got a question, spotted an error, or just want to share something? I'd genuinely love to hear from you — drop me a message and I'll get back to you as soon as I can.",
                     ],
@@ -465,7 +465,7 @@ def build_pages(tools):
         },
         {
             "slug": "sitemap",
-            "meta_description": "Every WebcamTest tool and page, organized by category, in one place.",
+            "meta_description": "Browse every WebcamTest tool and page, organized by category, in one place — the fastest way to find the exact camera or microphone test you need.",
             "h1": "Sitemap",
             "subtitle": "Every tool on WebcamTest, grouped the same way the nav menu groups them.",
             "sections": sitemap_sections,
@@ -498,7 +498,7 @@ def build_pages(tools):
         },
         {
             "slug": "terms",
-            "meta_description": "Terms of service for using WebcamTest's free camera and audio testing tools.",
+            "meta_description": "Terms of service for using WebcamTest's free browser-based camera and audio testing tools, including acceptable use, liability, and account terms.",
             "h1": "Terms of Service",
             "subtitle": "The short version: these tools are free, provided as-is, and not a substitute for professional diagnosis.",
             "sections": [
