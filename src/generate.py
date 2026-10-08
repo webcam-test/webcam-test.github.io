@@ -494,11 +494,44 @@ def apply_tokens(template, tokens):
     return out
 
 
+KATEX_VERSION = "0.16.11"
+KATEX_BASE = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/%s" % KATEX_VERSION
+MATH_MARKERS = ("$$", "\\(", "\\[")
+
+
+def needs_math(tool):
+    """True if this tool's article/FAQ contains a LaTeX delimiter ($$...$$ or
+    \\(...\\)). Only those pages load KaTeX; every other page stays script-free."""
+    text = tool.get("content_html", "") + "".join(q.get("answer", "") for q in tool.get("faq", []))
+    return any(m in text for m in MATH_MARKERS)
+
+
+def render_katex_head(tool):
+    if not needs_math(tool):
+        return ""
+    return '<link rel="stylesheet" href="%s/katex.min.css" crossorigin="anonymous">' % KATEX_BASE
+
+
+def render_katex_scripts(tool):
+    if not needs_math(tool):
+        return ""
+    return (
+        '<script defer src="%(b)s/katex.min.js" crossorigin="anonymous"></script>'
+        '<script defer src="%(b)s/contrib/auto-render.min.js" crossorigin="anonymous"></script>'
+        '<script>document.addEventListener("DOMContentLoaded",function(){var go=function(){'
+        'if(!window.renderMathInElement)return setTimeout(go,50);'
+        'renderMathInElement(document.querySelector("main")||document.body,{delimiters:['
+        '{left:"$$",right:"$$",display:true},{left:"\\\\[",right:"\\\\]",display:true},'
+        '{left:"\\\\(",right:"\\\\)",display:false}],throwOnError:false})};go()});</script>'
+    ) % {"b": KATEX_BASE}
+
+
 def render_page(tool, site, by_slug, tools, template, critical_css=""):
     canonical = "https://%s%s" % (site["domain"], tool_url(tool, site))
     trail = breadcrumb_trail_for_tool(tool, site)
     card = tool.get("card", {})
     extra_scripts = "".join('<script src="%s" defer></script>' % url for url in card.get("extra_scripts", []))
+    extra_scripts += render_katex_scripts(tool)
     tool_warning = ""
     if card.get("tool_warning"):
         tool_warning = '<div class="tool-warning">%s</div>' % card["tool_warning"]
@@ -520,6 +553,7 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "CRITICAL_CSS": critical_css,
         "GA_SNIPPET": render_ga_snippet(),
         "ADSENSE_LOADER": render_adsense_loader(),
+        "KATEX_HEAD": render_katex_head(tool),
         "ADSENSE_HEADER": render_adsense_header(),
         "CATEGORY_DROPDOWNS": render_category_dropdowns(site, by_slug),
         "MORE_MENU": render_more_menu(site, by_slug),

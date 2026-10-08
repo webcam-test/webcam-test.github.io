@@ -730,3 +730,9 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
 .gif-output{display:flex;flex-direction:column;align-items:center;gap:.75rem;margin-bottom:1rem;text-align:center}
 .gif-output[hidden],.probe-progress[hidden]{display:none}
 .gif-output img{max-width:100%;height:auto;border-radius:var(--radius-sm);border:2px solid var(--border-strong)}
+
+/* Buttons that carry an inline icon: svg has only a viewBox, so without an
+   explicit size it stretches to the button's width. */
+.btn-primary svg,.btn-secondary svg{width:16px;height:16px;flex:none}
+/* KaTeX display equations scroll instead of overflowing on narrow screens. */
+.article .katex-display{overflow-x:auto;overflow-y:hidden;padding:.25rem 0}
