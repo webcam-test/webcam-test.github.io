@@ -761,6 +761,37 @@ def write_robots_and_sitemap(site, tools, pages, out_dir):
         f.write("google.com, %s, DIRECT, f08c47fec0942fa0\n" % ADSENSE_CLIENT.replace("ca-", ""))
 
 
+def write_redirect_stubs(site, tools, pages, out_dir):
+    """One tiny meta-refresh + canonical page per old legacy-site URL in
+    src/redirects.json. GitHub Pages can't send a real 301, so this is the
+    standard fallback (Google treats a 0s meta refresh + canonical as
+    permanent). Stubs are deliberately left out of sitemap.xml."""
+    with open(os.path.join(BASE_DIR, "redirects.json")) as f:
+        redirects = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+    valid = {t["slug"] for t in tools} | {p["slug"] for p in pages}
+    for old, new in redirects.items():
+        if new and new not in valid:
+            raise SystemExit("redirects.json: %r -> unknown page %r" % (old, new))
+        if old in valid:
+            raise SystemExit("redirects.json: %r collides with a real page" % old)
+        if new and new != site["home_slug"]:
+            target = "https://%s/%s" % (site["domain"], new)
+        else:
+            target = "https://%s/" % site["domain"]
+        with open(os.path.join(out_dir, "%s.html" % old), "w") as f:
+            f.write(
+                '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+                '<meta name="viewport" content="width=device-width,initial-scale=1">'
+                '<title>Page moved</title>'
+                '<link rel="canonical" href="%(t)s">'
+                '<meta http-equiv="refresh" content="0; url=%(t)s">'
+                '<script>location.replace("%(t)s")</script></head>'
+                '<body><p>This page has moved to <a href="%(t)s">%(t)s</a>.</p></body></html>\n'
+                % {"t": target}
+            )
+    return len(redirects)
+
+
 # ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
@@ -876,6 +907,8 @@ def main():
     with open(os.path.join(render_dir, "404.html"), "w") as f:
         f.write(out_html)
 
+    n_redirects = write_redirect_stubs(site, tools, pages, render_dir)
+
     write_robots_and_sitemap(site, tools, pages, render_dir if not do_minify else OUTPUT_DIR)
     if do_minify:
         write_robots_and_sitemap(site, tools, pages, render_dir)
@@ -884,8 +917,8 @@ def main():
         minify_html_dir(render_dir, OUTPUT_DIR)
         shutil.rmtree(render_dir)
 
-    print("Built %d tool pages + %d info pages into %s (%s)" % (
-        len(tools), len(pages), OUTPUT_DIR, "minified" if do_minify else "unminified"
+    print("Built %d tool pages + %d info pages + %d redirect stubs into %s (%s)" % (
+        len(tools), len(pages), n_redirects, OUTPUT_DIR, "minified" if do_minify else "unminified"
     ))
 
 

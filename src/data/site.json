@@ -29,7 +29,10 @@
         "webcam-low-light-noise-test",
         "webcam-color-accuracy-test",
         "webcam-autofocus-test",
-        "webcam-latency-delay-test"
+        "webcam-latency-delay-test",
+        "webcam-zoom-test-online",
+        "webcam-gif-maker-online",
+        "webcam-timelapse-maker-online"
       ],
       "tools": []
     },

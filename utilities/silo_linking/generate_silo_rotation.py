@@ -83,6 +83,7 @@ CLUSTERS = [
                 {"file": "webcam-lighting-exposure-test.html", "anchor": "webcam lighting test", "url": "/webcam-lighting-exposure-test"},
                 {"file": "webcam-low-light-noise-test.html", "anchor": "webcam low light test", "url": "/webcam-low-light-noise-test"},
                 {"file": "webcam-color-accuracy-test.html", "anchor": "webcam color test", "url": "/webcam-color-accuracy-test"},
+                {"file": "webcam-zoom-test-online.html", "anchor": "webcam zoom test", "url": "/webcam-zoom-test-online"},
             ],
             [
                 {"file": "camera-permissions-guide-windows-mac-android-ios.html", "anchor": "camera permissions", "url": "/camera-permissions-guide-windows-mac-android-ios"},
@@ -93,6 +94,8 @@ CLUSTERS = [
             ],
             [
                 {"file": "webcam-photo-capture-online.html", "anchor": "webcam photo capture", "url": "/webcam-photo-capture-online"},
+                {"file": "webcam-gif-maker-online.html", "anchor": "webcam gif maker", "url": "/webcam-gif-maker-online"},
+                {"file": "webcam-timelapse-maker-online.html", "anchor": "webcam timelapse", "url": "/webcam-timelapse-maker-online"},
             ],
             [
                 {"file": "phone-camera-resolution-checker.html", "anchor": "phone camera resolution", "url": "/phone-camera-resolution-checker"},
@@ -249,6 +252,9 @@ ANCHOR_VARIANTS: dict = {
     "webcam color test": ["webcam color test", "webcam colour accuracy test", "check webcam color reproduction", "camera white balance and color checker"],
     "webcam autofocus test": ["webcam autofocus test", "check webcam autofocus speed", "camera autofocus lag test", "webcam focus hunting checker"],
     "webcam latency test": ["webcam latency test", "webcam delay test", "check webcam video lag", "camera latency and delay checker"],
+    "webcam gif maker": ["webcam gif maker", "make a gif from your webcam", "free webcam to gif tool", "create animated gif from camera"],
+    "webcam timelapse": ["webcam timelapse", "webcam timelapse maker online", "make a timelapse with your webcam", "capture webcam frames at an interval"],
+    "webcam zoom test": ["webcam zoom test", "test webcam digital zoom online", "check webcam zoom quality", "camera zoom and crop quality checker"],
     # --- Camera Mobile ---
     "front camera test": ["front camera test", "test your phone's front camera", "selfie camera test online", "front facing camera checker"],
     "rear camera test": ["rear camera test", "test your phone's rear camera", "main camera test online", "back camera checker"],

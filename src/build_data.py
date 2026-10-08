@@ -87,6 +87,9 @@ TOOL_SLUGS = [
     "audio-latency-delay-test",
     "microphone-echo-test",
     "webcam-latency-delay-test",
+    "webcam-gif-maker-online",
+    "webcam-timelapse-maker-online",
+    "webcam-zoom-test-online",
 ]
 
 # Short, stable nav/footer names for ALL 44 planned tools (from the spec's
@@ -113,6 +116,9 @@ NAV_NAMES = {
     "webcam-color-accuracy-test": "Colour Accuracy Test",
     "webcam-autofocus-test": "Autofocus Test",
     "webcam-latency-delay-test": "Camera Latency Test",
+    "webcam-gif-maker-online": "GIF Maker",
+    "webcam-timelapse-maker-online": "Timelapse Maker",
+    "webcam-zoom-test-online": "Zoom Test",
     "is-my-camera-being-used-check": "Is My Camera Being Used?",
     # B. Camera Mobile
     "mobile-camera-test-online": "Mobile Camera Test",
@@ -200,6 +206,9 @@ FOOTER_ANCHORS = {
     "audio-latency-delay-test": "Measure your audio latency delay",
     "microphone-echo-test": "Test microphone echo with headphones",
     "webcam-latency-delay-test": "Measure your webcam's latency delay",
+    "webcam-gif-maker-online": "Make an animated GIF with your webcam",
+    "webcam-timelapse-maker-online": "Make a timelapse with your webcam",
+    "webcam-zoom-test-online": "Test your webcam's digital zoom",
 }
 
 # Nav strip / footer mega-menu / homepage tool-grid categories, one per spec
@@ -215,7 +224,7 @@ CATEGORY_GROUPS = [
         "short_label": "Camera",
         "cluster": "camera-core",
         "tagline": "Test your webcam's resolution, frame rate, focus, exposure and colour accuracy.",
-        "slugs": ["webcam-test-online", "webcam-camera-information-report", "webcam-maximum-resolution-detector", "webcam-fps-frame-rate-checker", "webcam-fullscreen-viewer", "webcam-photo-capture-online", "webcam-video-recorder-online", "webcam-mirror-vs-natural-view-test", "webcam-side-by-side-comparison", "webcam-sharpness-focus-test", "webcam-lighting-exposure-test", "is-my-camera-being-used-check", "webcam-rule-of-thirds-composition-grid", "webcam-live-filter-preview", "webcam-low-light-noise-test", "webcam-color-accuracy-test", "webcam-autofocus-test", "webcam-latency-delay-test"],
+        "slugs": ["webcam-test-online", "webcam-camera-information-report", "webcam-maximum-resolution-detector", "webcam-fps-frame-rate-checker", "webcam-fullscreen-viewer", "webcam-photo-capture-online", "webcam-video-recorder-online", "webcam-mirror-vs-natural-view-test", "webcam-side-by-side-comparison", "webcam-sharpness-focus-test", "webcam-lighting-exposure-test", "is-my-camera-being-used-check", "webcam-rule-of-thirds-composition-grid", "webcam-live-filter-preview", "webcam-low-light-noise-test", "webcam-color-accuracy-test", "webcam-autofocus-test", "webcam-latency-delay-test", "webcam-zoom-test-online", "webcam-gif-maker-online", "webcam-timelapse-maker-online"],
         "tools": [],
     },
     {
@@ -350,6 +359,9 @@ SITEMAP_ANCHORS = {
     "microphone-echo-test": "mic echo test",
     "microphone-quality-spectrum-analyzer": "microphone spectrum analyzer",
     "microphone-input-level-meter": "mic level meter",
+    "webcam-gif-maker-online": "webcam gif maker",
+    "webcam-timelapse-maker-online": "webcam timelapse",
+    "webcam-zoom-test-online": "webcam zoom test",
 }
 
 

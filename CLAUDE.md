@@ -380,6 +380,13 @@ copy; they hadn't made the first copy-over into this repo. `utilities/google_ads
 anchor text and `/sitemap` link text — see "Silo Linking" above) come from — was recovered the same
 way.
 
+## Legacy URL redirects
+
+`src/redirects.json` maps the 16 old `legacy-bootstrap-site/` tool URLs (e.g. `/fps-checker`) to their
+new pages (`""` = home). The three tools with no original successor (`webcam-gif`, `webcam-timelapse`, `webcam-zoom-test`) were rebuilt as `webcam-gif-maker-online`, `webcam-timelapse-maker-online` and `webcam-zoom-test-online` (authored by `utilities/tool_buildout/write_webcam_*_online.py`, which port prose/FAQ from `legacy-bootstrap-site/` via `_legacy_port.py`).
+`generate.py`'s `write_redirect_stubs()` writes one meta-refresh + canonical stub `public/<old>.html`
+per entry. GitHub Pages can't send a real 301, so this is the fallback. Stubs are not in `sitemap.xml`.
+
 ## Legacy Site
 
 `legacy-bootstrap-site/` — a frozen, read-only snapshot of the pre-migration hand-authored site: the

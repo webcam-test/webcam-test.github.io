@@ -116,7 +116,10 @@
           "<a href=\"/webcam-low-light-noise-test\">webcam low light test</a>",
           "<a href=\"/webcam-color-accuracy-test\">webcam color test</a>",
           "<a href=\"/webcam-autofocus-test\">webcam autofocus test</a>",
-          "<a href=\"/webcam-latency-delay-test\">webcam latency test</a>"
+          "<a href=\"/webcam-latency-delay-test\">webcam latency test</a>",
+          "<a href=\"/webcam-zoom-test-online\">webcam zoom test</a>",
+          "<a href=\"/webcam-gif-maker-online\">webcam gif maker</a>",
+          "<a href=\"/webcam-timelapse-maker-online\">webcam timelapse</a>"
         ]
       },
       {

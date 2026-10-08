@@ -1,0 +1,19 @@
+{
+  "_comment": "Old legacy-bootstrap-site URL slug -> new page slug (\"\" = home page). generate.py writes one meta-refresh + canonical stub page per entry (GitHub Pages cannot send a real 301).",
+  "mirror": "webcam-mirror-vs-natural-view-test",
+  "fps-checker": "webcam-fps-frame-rate-checker",
+  "resolution-tester": "webcam-maximum-resolution-detector",
+  "take-photo": "webcam-photo-capture-online",
+  "show-webcam": "webcam-camera-information-report",
+  "webcam-recorder": "webcam-video-recorder-online",
+  "webcam-effects": "webcam-live-filter-preview",
+  "webcam-quality-test": "webcam-sharpness-focus-test",
+  "webcam-brightness-test": "webcam-lighting-exposure-test",
+  "webcam-lighting-test": "webcam-lighting-exposure-test",
+  "webcam-color-test": "webcam-color-accuracy-test",
+  "camera-comparison": "webcam-side-by-side-comparison",
+  "webcam-grid-overlay": "webcam-rule-of-thirds-composition-grid",
+  "webcam-gif": "webcam-gif-maker-online",
+  "webcam-timelapse": "webcam-timelapse-maker-online",
+  "webcam-zoom-test": "webcam-zoom-test-online"
+}
