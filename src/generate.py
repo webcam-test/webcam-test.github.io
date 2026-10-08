@@ -741,8 +741,19 @@ def build_critical_css(by_slug, site, tools, template, template_page, styles_min
                 f.write(html_out)
 
         with tempfile.TemporaryDirectory() as npm_tmp:
+            # puppeteer@25.13.0 was published to npm without its matching
+            # puppeteer-core@25.13.0 (2026-10-08), so an unpinned install of
+            # critical fails with ETARGET. Pin both to the last good release
+            # via overrides; drop this once upstream publishes a fixed version.
+            name, _, version = CRITICAL_PKG.rpartition("@")
+            with open(os.path.join(npm_tmp, "package.json"), "w") as f:
+                json.dump({
+                    "private": True,
+                    "dependencies": {name: version},
+                    "overrides": {"puppeteer": "25.12.0", "puppeteer-core": "25.12.0"},
+                }, f)
             subprocess.run(
-                ["npm", "install", "--no-save", "--prefix", npm_tmp, CRITICAL_PKG],
+                ["npm", "install", "--no-save", "--prefix", npm_tmp],
                 check=True, capture_output=True, text=True,
             )
             script_path = os.path.join(npm_tmp, "extract.mjs")
