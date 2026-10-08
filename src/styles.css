@@ -95,6 +95,10 @@ img{max-width:100%;height:auto}
 button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
 option{font-family:inherit;font-size:inherit}
 main,section,header,footer,nav,aside,article{display:block}
+form,fieldset{display:block;margin:0;padding:0;border:0;min-width:0}
+legend{padding:0}
+hr{border:0;border-top:1px solid var(--border);margin:1.5rem 0}
+output{display:inline}
 video,canvas{display:block;max-width:100%}
 ins{text-decoration:none;background:transparent}
 comentario-comments{display:block}
@@ -171,6 +175,7 @@ nav.top-nav{max-width:1280px;margin:0 auto;padding:1rem 1.5rem;display:flex;alig
 .nav-drawer-backdrop.open{opacity:1}
 .nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,86vw);background:var(--surface);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .22s ease;box-shadow:-8px 0 32px rgba(20,20,40,.18)}
 .nav-drawer.open{transform:translateX(0)}
+.nav-drawer[hidden],.nav-drawer-backdrop[hidden]{display:none}
 .nav-drawer-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.1rem;border-bottom:1px solid var(--border);flex:none}
 .nav-drawer-close{display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-secondary);cursor:pointer}
 .nav-drawer-close:hover{background:var(--bg-alt);color:var(--text)}
@@ -622,6 +627,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
 .mw-150{max-width:150px}
 .mw-160{max-width:160px}
 .mw-170{max-width:170px}
+.mw-190{max-width:190px}
+.offscreen-video{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .jc-center{justify-content:center}
 .ta-center{text-align:center}
 .fs-085{font-size:.85rem}
@@ -630,6 +637,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
 .c-muted{color:var(--text-muted)}
 .no-underline{text-decoration:none}
 .u-hidden{display:none}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .img-contain{width:100%;height:100%;object-fit:contain}
 .text-break-sm{font-size:.75rem;word-break:break-word}
 .text-break-sm2{font-size:.78rem;word-break:break-word}

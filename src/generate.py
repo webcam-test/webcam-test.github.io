@@ -99,7 +99,7 @@ def render_ga_snippet():
     unit is actually placed."""
     return (
         "<!-- Google tag (gtag.js) -->"
-        '<script async src="https://www.googletagmanager.com/gtag/js?id=%s"></script>'
+        '<script src="https://www.googletagmanager.com/gtag/js?id=%s" async></script>'
         "<script>"
         "window.dataLayer = window.dataLayer || [];"
         "function gtag(){dataLayer.push(arguments);}"
@@ -112,8 +112,8 @@ def render_ga_snippet():
 
 def render_adsense_loader():
     return (
-        '<script async crossorigin="anonymous" '
-        'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s"></script>'
+        '<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s" '
+        'async crossorigin="anonymous"></script>'
         % ADSENSE_CLIENT
     )
 
@@ -207,7 +207,7 @@ def render_comments_section(alt):
     return (
         '<section class="block%s"><div class="block-inner"><div class="content-card"><div class="article">'
         "<h2>Comments &amp; Feedback</h2>"
-        '<script defer src="https://comments.tickspike.com/comentario.js"></script>'
+        '<script src="https://comments.tickspike.com/comentario.js" defer></script>'
         '<comentario-comments theme="light"></comentario-comments>'
         "</div></div></div></section>"
     ) % (" alt" if alt else "")
@@ -516,14 +516,40 @@ def render_katex_scripts(tool):
     if not needs_math(tool):
         return ""
     return (
-        '<script defer src="%(b)s/katex.min.js" crossorigin="anonymous"></script>'
-        '<script defer src="%(b)s/contrib/auto-render.min.js" crossorigin="anonymous"></script>'
+        '<script src="%(b)s/katex.min.js" defer crossorigin="anonymous"></script>'
+        '<script src="%(b)s/contrib/auto-render.min.js" defer crossorigin="anonymous"></script>'
         '<script>document.addEventListener("DOMContentLoaded",function(){var go=function(){'
         'if(!window.renderMathInElement)return setTimeout(go,50);'
         'renderMathInElement(document.querySelector("main")||document.body,{delimiters:['
         '{left:"$$",right:"$$",display:true},{left:"\\\\[",right:"\\\\]",display:true},'
         '{left:"\\\\(",right:"\\\\)",display:false}],throwOnError:false})};go()});</script>'
     ) % {"b": KATEX_BASE}
+
+
+def add_table_captions(fragment):
+    """Give every caption-less <table> a visually hidden <caption> taken from
+    the nearest preceding <h2>/<h3>, so assistive tech announces what the
+    table is without changing the visible layout."""
+    out, pos = [], 0
+    for m in re.finditer(r"<table\b[^>]*>(?!\s*<caption)", fragment):
+        heads = re.findall(r"<h[23][^>]*>(.*?)</h[23]>", fragment[:m.start()], flags=re.S)
+        out.append(fragment[pos:m.end()])
+        pos = m.end()
+        if heads:
+            text = re.sub(r"<[^>]+>", "", heads[-1]).strip()
+            out.append('<caption class="sr-only">%s</caption>' % text)
+    out.append(fragment[pos:])
+    return "".join(out)
+
+
+def add_th_scope(fragment):
+    """Give every bare <th> a scope: "row" when its <tr> also holds <td>s
+    (a row header), otherwise "col" (a column header)."""
+    def per_row(m):
+        row = m.group(0)
+        scope = "row" if "<td" in row else "col"
+        return re.sub(r"<th>", '<th scope="%s">' % scope, row)
+    return re.sub(r"<tr>.*?</tr>", per_row, fragment, flags=re.S)
 
 
 def render_page(tool, site, by_slug, tools, template, critical_css=""):
@@ -565,12 +591,12 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "TOOL_MODE": card.get("mode", ""),
         "TOOL_LAYOUT": card.get("layout", "raw"),
         "TOOL_DATA_ATTRS": data_attrs,
-        "TOOL_CARD_BODY": render_tool_card_body(tool),
+        "TOOL_CARD_BODY": add_th_scope(add_table_captions(render_tool_card_body(tool))),
         "TOOL_WARNING": tool_warning,
         "TOOL_EXTRA_SCRIPTS": extra_scripts,
         "TOOL_SCRIPT": tool.get("script", ""),
         "CODE_SNIPPET": code_snippet,
-        "MAIN_SECTIONS": render_main_sections(tool),
+        "MAIN_SECTIONS": add_th_scope(add_table_captions(render_main_sections(tool))),
         "FOOTER_TAGLINE": site["footer_tagline"],
         "FOOTER_MEGA": render_footer_mega(site, by_slug),
         "FOOTER_COMPANY": render_footer_company(site),
@@ -596,7 +622,7 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
         "BREADCRUMBS": render_breadcrumbs(trail) + breadcrumb_jsonld(trail, site["domain"]),
         "H1": html.escape(page["h1"]),
         "SUBTITLE": page.get("subtitle", ""),
-        "PAGE_CONTENT": render_info_content(page),
+        "PAGE_CONTENT": add_th_scope(add_table_captions(render_info_content(page))),
         "FOOTER_TAGLINE": site["footer_tagline"],
         "FOOTER_MEGA": render_footer_mega(site, by_slug),
         "FOOTER_COMPANY": render_footer_company(site),
