@@ -744,3 +744,19 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
 .btn-primary svg,.btn-secondary svg{width:16px;height:16px;flex:none}
 /* KaTeX display equations scroll instead of overflowing on narrow screens. */
 .article .katex-display{overflow-x:auto;overflow-y:hidden;padding:.25rem 0}
+/* About-the-author box (tool pages + About) and the info pages' "Last
+   updated" line — see author_box()/updated_line() in generate.py. */
+.author-box h2{font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:700;color:var(--text);margin:0 0 1rem;line-height:1.25}
+.author-box-body{display:flex;align-items:flex-start;gap:1rem}
+.author-avatar{flex:none;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-darker));color:#fff;font-weight:700;font-size:1.1rem}
+.author-box-text{min-width:0;display:flex;flex-direction:column;gap:.5rem}
+.author-box-text p,.author-box-text li{margin:0;line-height:1.6;color:var(--text-secondary)}
+.author-name{font-size:1.15rem;font-weight:700}
+.author-name a{color:var(--text)}
+.author-title{font-size:.9rem;color:var(--text-muted)!important}
+.author-roles{list-style:none;margin:0;padding:0;font-size:.92rem;display:flex;flex-direction:column;gap:.25rem}
+.author-role-label{color:var(--text-muted)}
+.author-links{font-size:.92rem}
+.author-box a,.last-updated a{font-weight:600}
+.last-updated{margin-top:2rem;font-size:.9rem;color:var(--text-muted)}
+@media (max-width:560px){.author-box-body{flex-direction:column}}

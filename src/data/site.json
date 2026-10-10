@@ -3,6 +3,82 @@
   "domain": "webcam-test.github.io",
   "home_slug": "webcam-test-online",
   "contact_email": "vinithablog@gmail.com",
+  "timezone_offset": "+05:30",
+  "author": {
+    "slug": "vinitha-pu",
+    "name": "Vinitha Pu",
+    "initials": "VP",
+    "job_title": "Founder and designer",
+    "bio": "Vinitha Pu is a graphic designer based in Palakkad, Kerala, who builds free, privacy-friendly browser tools. She studied Textile and Apparel Design at Avinashilingam University and completed a C-Tech in Graphic Design at Image Creative Education in 2025. She designs, builds and maintains the camera, microphone and speaker tests and guides on WebcamTest.",
+    "knows_about": [
+      "Graphic design",
+      "Digital design",
+      "Textile and apparel design",
+      "Fashion sketching",
+      "Technical sketching",
+      "Pattern making",
+      "Draping",
+      "Fabric dyeing",
+      "Fabric printing",
+      "Digital illustration",
+      "Visual composition",
+      "Layout design",
+      "Concept development",
+      "Typography",
+      "Branding",
+      "Visual storytelling",
+      "Print design",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Adobe After Effects",
+      "Maya 3D animation",
+      "Nuke compositing",
+      "Animation",
+      "Visual effects",
+      "Storyboarding",
+      "Creative ideation",
+      "Colour theory",
+      "Product design",
+      "User experience design"
+    ],
+    "knows_language": [
+      "English",
+      "Malayalam",
+      "Tamil"
+    ],
+    "same_as": [
+      "https://www.behance.net/vinithapu",
+      "https://www.linkedin.com/in/vinitha-udayan-a317081ab/",
+      "https://www.instagram.com/vinithapu/",
+      "https://www.facebook.com/vinitha.vinu.1654"
+    ],
+    "email": "vinithablog@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/vinitha-udayan-a317081ab/",
+    "behance": "https://www.behance.net/vinithapu",
+    "content_role": "Content author",
+    "review_role": "Fact checked by",
+    "review_note": "Each test is built on the browser's own camera and audio APIs (getUserMedia, MediaRecorder and Web Audio), then tried on real webcams, phones, microphones and speakers before it goes live.",
+    "education": [
+      {
+        "school": "Avinashilingam University",
+        "school_type": "CollegeOrUniversity",
+        "place": "Coimbatore, India",
+        "credential": "Bachelor's degree in Textile and Apparel Design",
+        "level": "Bachelor's degree",
+        "year": "2016",
+        "category": "degree"
+      },
+      {
+        "school": "Image Creative Education",
+        "school_type": "EducationalOrganization",
+        "place": "Palakkad, India",
+        "credential": "C-Tech in Graphic Design",
+        "year": "2025",
+        "category": "certificate"
+      }
+    ],
+    "experience": []
+  },
   "footer_tagline": "Free camera and audio testing tools that run entirely in your browser. Nothing you record or capture is ever uploaded.",
   "nav_groups": [
     {

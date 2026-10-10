@@ -149,6 +149,27 @@ teardown/error-mapping logic has to be reapplied in every tool's own `script` fi
 its acquisition/enumeration/teardown/error-mapping pattern from; `microphone-test-online.json` or
 `speaker-test-online.json` are the equivalent reference for audio tools.
 
+## Author, schema and author box (added 2026-10-10)
+
+Ported from MouseTester (`coffee_can_checker_tools_project/individual_websites/mousetester`: its `schema.py`,
+`author_box()` and profile page), with Vinitha Pu as the author instead of MouseTester's author. Her details match her
+public Joteo Calculator profile (`joteocalculator.com/authors/vinitha-pu/`): credentials, skills, languages, profile
+links. Her photo is not used; the box shows initials, like MouseTester.
+
+- `src/content/author.json` holds the author data. `build_data.py` puts it in `site.json` (`author`, plus `timezone_offset`
+  `+05:30`) and adds the hidden profile page `/vinitha-pu` to `pages.json`. It is linked from the author box, not from the
+  footer, though it is still in `sitemap.xml`.
+- `src/schema.py` builds one linked JSON-LD `@graph` per page, emitted **in `<head>`** as the template's `{{JSON_LD}}`. Every
+  page gets WebSite + Person (author, reviewer and publisher; no Organization). Tool pages add WebPage, BreadcrumbList,
+  WebApplication (`UtilitiesApplication`, except `MultimediaApplication` for the 5 media-making tools in `MULTIMEDIA_TOOLS`), Article, FAQPage, and HowTo when the article has a "How to…" `<h2>` followed by an `<ol>`; HowTo steps link
+  to `#tool`. About is an AboutPage, Contact a ContactPage, Sitemap a CollectionPage + ItemList, `/vinitha-pu` a ProfilePage,
+  and privacy, terms and 404 are plain WebPages. This replaced the old separate WebApplication/WebSite/FAQPage/BreadcrumbList
+  blocks.
+- Dates are git first/last commit times of `src/content/<slug>.json` (info pages use `src/build_data.py`). The same dates
+  show in the visible author box (on every tool page, after the FAQ, and on About) or in a "Last updated" line on the
+  other info pages, so the markup and the page agree.
+- `<meta name="author">` is now the author's name, not the site name.
+
 ## AdSense
 
 Real ad units carried over from the old `legacy-bootstrap-site/` (client `ca-pub-5426315045205785`,
