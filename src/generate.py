@@ -45,6 +45,8 @@ import subprocess
 import sys
 import tempfile
 
+import schema
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 OUTPUT_DIR = os.path.join(BASE_DIR, "..", "public")
@@ -225,7 +227,60 @@ def render_faq_section(tool, alt):
     )
 
 
-def render_main_sections(tool):
+# ---------------------------------------------------------------------------
+# Author box / last-updated line — ported from MouseTester's generate.py.
+# The same person is content author and fact checker; the dates shown are
+# the same ones the page's JSON-LD carries (schema.Schema.dates()).
+# ---------------------------------------------------------------------------
+
+SCHEMA = [None]  # the build's schema.Schema, set in main()
+
+
+def author_box(site, page_id, published, modified, alt=False):
+    a = site["author"]
+    href = "/%s" % a["slug"]
+    link = '<a href="%s">%s</a>' % (href, html.escape(a["name"]))
+    return (
+        '<section class="block{alt}" id="{p}-author-box" aria-labelledby="{p}-author-box-heading" data-section="author-box">'
+        '<div class="block-inner"><div class="content-card author-box">'
+        '<h2 id="{p}-author-box-heading">About the author</h2>'
+        '<div class="author-box-body">'
+        '<span class="author-avatar" aria-hidden="true">{ini}</span>'
+        '<div class="author-box-text">'
+        '<p class="author-name">{link}</p>'
+        '<p class="author-title">{title}</p>'
+        '<p class="author-bio">{bio}</p>'
+        '<ul class="author-roles">'
+        '<li><span class="author-role-label">{crole}:</span> {link}</li>'
+        '<li><span class="author-role-label">{rrole}:</span> {link}. {rnote}</li>'
+        '<li><span class="author-role-label">Published</span> <time datetime="{pub}">{pubd}</time> '
+        '<span class="author-role-label" aria-hidden="true">&middot;</span> '
+        '<span class="author-role-label">Updated</span> <time datetime="{mod}">{modd}</time></li>'
+        '</ul>'
+        '<p class="author-links"><a href="{li}" rel="me noopener" target="_blank">{name} on LinkedIn</a>'
+        ' &middot; <a href="{be}" rel="me noopener" target="_blank">{name} on Behance</a>'
+        ' &middot; <a href="{href}">Full profile</a></p>'
+        '</div></div></div></div></section>'
+    ).format(alt=" alt" if alt else "", p=page_id, ini=html.escape(a["initials"]), link=link,
+             title=html.escape(a["job_title"]), bio=html.escape(a["bio"]),
+             crole=html.escape(a["content_role"]), rrole=html.escape(a["review_role"]), rnote=html.escape(a["review_note"]),
+             pub=published, pubd=schema.long_date(published), mod=modified, modd=schema.long_date(modified),
+             li=html.escape(a["linkedin"]), be=html.escape(a["behance"]), name=html.escape(a["name"]), href=href)
+
+
+def updated_line(page_id, modified):
+    """Visible 'Last updated' for pages whose schema carries a dateModified but that have no author box."""
+    return ('<p id="%s-last-updated" class="last-updated" data-section="last-updated">'
+            'Last updated <time datetime="%s">%s</time></p>' % (page_id, modified, schema.long_date(modified)))
+
+
+def json_ld_graph(nodes):
+    """One <script> holding a linked @graph (see schema.py); it lives in <head>."""
+    return '<script type="application/ld+json">%s</script>' % json.dumps(
+        {"@context": "https://schema.org", "@graph": nodes}, ensure_ascii=False).replace("</", "<\\/")
+
+
+def render_main_sections(tool, site):
     """Renders everything below the tool card from tool["content_html"]
     (split into alternating .content-card sections) plus a FAQ section. No
     content fallback: a tool with no content_html renders no content
@@ -265,6 +320,9 @@ def render_main_sections(tool):
     if faq_section:
         parts.append(faq_section)
         section_count += 1
+    published, modified = SCHEMA[0].dates("src/content/%s.json" % tool["slug"], tool)
+    parts.append(author_box(site, tool["slug"], published, modified, alt=(section_count % 2 == 1)))
+    section_count += 1
     parts.append(render_adsense_footer())
     parts.append(render_comments_section(alt=(section_count % 2 == 1)))
     return "\n".join(parts)
@@ -432,55 +490,10 @@ def render_breadcrumbs(trail):
 # JSON-LD
 # ---------------------------------------------------------------------------
 
-def webapp_jsonld(tool, canonical):
-    data = {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": tool["h1"],
-        "url": canonical,
-        "description": tool["meta_description"],
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "browserRequirements": "Requires JavaScript and camera/microphone permissions where applicable. Works in any modern browser.",
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-    }
-    return json.dumps(data, separators=(",", ":"))
-
-
-def faq_jsonld(items):
-    if not items:
-        return ""
-    data = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": it["question"],
-                "acceptedAnswer": {"@type": "Answer", "text": re.sub("<[^>]+>", "", it["answer"])},
-            }
-            for it in items
-        ],
-    }
-    return '<script type="application/ld+json">%s</script>' % json.dumps(data, separators=(",", ":"))
-
-
-def breadcrumb_jsonld(trail, domain):
-    if not trail:
-        return ""
-    items = []
-    for i, (label, url) in enumerate(trail):
-        entry = {"@type": "ListItem", "position": i + 1, "name": label}
-        if url:
-            entry["item"] = "https://%s%s" % (domain, url) if url != "/" else "https://%s/" % domain
-        items.append(entry)
-    data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
-    return '<script type="application/ld+json">%s</script>' % json.dumps(data, separators=(",", ":"))
-
-
-def website_jsonld(site):
-    data = {"@context": "https://schema.org", "@type": "WebSite", "name": site["site_name"], "url": "https://%s/" % site["domain"]}
-    return '<script type="application/ld+json">%s</script>' % json.dumps(data, separators=(",", ":"))
+# One linked @graph per page from schema.py (WebSite, Person, WebPage,
+# BreadcrumbList, WebApplication, HowTo, Article, FAQPage) — replaces the
+# separate WebApplication/WebSite/FAQPage/BreadcrumbList blocks this site
+# used to emit.
 
 
 # ---------------------------------------------------------------------------
@@ -573,9 +586,10 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "SITE_NAME": site["site_name"],
         "CANONICAL_URL": canonical,
         "META_TITLE": html.escape(tool["h1"]),
-        "WEBAPP_JSONLD": webapp_jsonld(tool, canonical),
-        "WEBSITE_JSONLD": website_jsonld(site) if tool["slug"] == site["home_slug"] else "",
-        "FAQ_JSONLD": faq_jsonld(tool.get("faq", [])),
+        "JSON_LD": json_ld_graph(SCHEMA[0].tool(
+            tool, canonical, [(l, u) for l, u in trail] or [("Home", "/")],
+            *SCHEMA[0].dates("src/content/%s.json" % tool["slug"], tool))),
+        "AUTHOR_NAME": html.escape(site["author"]["name"]),
         "CRITICAL_CSS": critical_css,
         "GA_SNIPPET": render_ga_snippet(),
         "ADSENSE_LOADER": render_adsense_loader(),
@@ -585,7 +599,7 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "MORE_MENU": render_more_menu(site, by_slug),
         "MOBILE_DRAWER": render_mobile_drawer(site, by_slug),
         "HAMBURGER_ICON": HAMBURGER_SVG,
-        "BREADCRUMBS": render_breadcrumbs(trail) + breadcrumb_jsonld(trail, site["domain"]),
+        "BREADCRUMBS": render_breadcrumbs(trail),
         "H1": html.escape(tool["h1"]),
         "SUBTITLE": tool["subtitle"],
         "TOOL_MODE": card.get("mode", ""),
@@ -596,7 +610,7 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "TOOL_EXTRA_SCRIPTS": extra_scripts,
         "TOOL_SCRIPT": tool.get("script", ""),
         "CODE_SNIPPET": code_snippet,
-        "MAIN_SECTIONS": add_th_scope(add_table_captions(render_main_sections(tool))),
+        "MAIN_SECTIONS": add_th_scope(add_table_captions(render_main_sections(tool, site))),
         "FOOTER_TAGLINE": site["footer_tagline"],
         "FOOTER_MEGA": render_footer_mega(site, by_slug),
         "FOOTER_COMPANY": render_footer_company(site),
@@ -608,6 +622,15 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
 def render_info_page(page, site, by_slug, template, critical_css=""):
     canonical = "https://%s/%s" % (site["domain"], page["slug"])
     trail = [("Home", "/"), (page["h1"], None)]
+    published, modified = SCHEMA[0].dates("src/build_data.py", page)
+    sitemap_items = None
+    if page["slug"] == "sitemap":
+        sitemap_items = [(t["nav_name"], tool_url(t, site)) for g in site["nav_groups"]
+                         for t in (by_slug[x] for x in g.get("slugs", []))]
+    if page["slug"] == "about":
+        tail = author_box(site, page["slug"], published, modified)
+    else:
+        tail = '<section class="block"><div class="article">%s</div></section>' % updated_line(page["slug"], modified)
     tokens = {
         "META_DESCRIPTION": html.escape(page["meta_description"]),
         "SITE_NAME": site["site_name"],
@@ -619,10 +642,13 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
         "MORE_MENU": render_more_menu(site, by_slug),
         "MOBILE_DRAWER": render_mobile_drawer(site, by_slug),
         "HAMBURGER_ICON": HAMBURGER_SVG,
-        "BREADCRUMBS": render_breadcrumbs(trail) + breadcrumb_jsonld(trail, site["domain"]),
+        "JSON_LD": json_ld_graph(SCHEMA[0].info(page, canonical, trail, published, modified, sitemap_items)),
+        "AUTHOR_NAME": html.escape(site["author"]["name"]),
+        "BREADCRUMBS": render_breadcrumbs(trail),
         "H1": html.escape(page["h1"]),
         "SUBTITLE": page.get("subtitle", ""),
         "PAGE_CONTENT": add_th_scope(add_table_captions(render_info_content(page))),
+        "PAGE_TAIL": tail,
         "FOOTER_TAGLINE": site["footer_tagline"],
         "FOOTER_MEGA": render_footer_mega(site, by_slug),
         "FOOTER_COMPANY": render_footer_company(site),
@@ -632,7 +658,11 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
 
 
 def render_404_page(site, by_slug, template_404, critical_css=""):
+    url = "https://%s/404" % site["domain"]
     tokens = {
+        "JSON_LD": json_ld_graph(SCHEMA[0].plain(url, [("Home", "/"), ("Page not found", None)], "Page not found",
+                                                 "The page you asked for doesn't exist or has moved.")),
+        "AUTHOR_NAME": html.escape(site["author"]["name"]),
         "SITE_NAME": site["site_name"],
         "CRITICAL_CSS": critical_css,
         "GA_SNIPPET": render_ga_snippet(),
@@ -878,6 +908,7 @@ def main():
         pages = json.load(f)
 
     by_slug = {t["slug"]: t for t in tools}
+    SCHEMA[0] = schema.Schema(site, site["author"], schema.load_git_dates(os.path.dirname(BASE_DIR)))
     site["_pages"] = pages  # only used internally by build_critical_css()
 
     with open(os.path.join(BASE_DIR, "template.html")) as f:

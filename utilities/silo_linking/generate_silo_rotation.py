@@ -28,8 +28,8 @@ Per cluster:
                                          chain does NOT wrap back to the
                                          first)
 
-Anchor text is always the target page's own primary keyword, fixed (not
-rotated across variants). Sentence templates (6 per family) are grouped into
+Anchor text rotates monthly per (source page, slot) among ANCHOR_VARIANTS'
+4-5 hand-picked phrases per target tool. Sentence templates (6 per family) are grouped into
 exactly two families: "live_test" for the 37 tools that acquire a real
 camera/mic via getUserMedia, and "guide" for the 7 reference/how-to pages
 that don't touch a device.
@@ -231,27 +231,29 @@ for _t in _ALL_TOOLS:
 # one free/online long-tail variation, one secondary/related phrasing, and
 # one contextual/LSI term pulled from what that specific tool actually
 # measures or does (grounded in each tool's own content_html/faq, not
-# generic filler).
+# generic filler). A 5th variant was added 2026-10-10 where the pool lacked
+# it: the tool's own name as used in the H1s from the October seo-optimizer
+# batch (open-source-on-page-seo-optimizer/keywords-webcamtest.txt).
 ANCHOR_VARIANTS: dict = {
     # --- Camera Core ---
     "webcam test": ["webcam test", "free webcam test online", "test my webcam", "check webcam resolution and specs"],
-    "what camera do i have": ["what camera do i have", "check what camera do i have", "find out what camera do i have", "webcam device information lookup"],
-    "webcam max resolution": ["webcam max resolution", "webcam maximum resolution detector", "find your webcam's highest resolution", "webcam native resolution check"],
-    "webcam fps test": ["webcam fps test", "webcam frame rate checker", "check webcam fps online", "webcam frames per second test"],
-    "webcam fullscreen": ["webcam fullscreen", "webcam fullscreen viewer", "view webcam in fullscreen mode", "full screen camera preview"],
-    "webcam photo capture": ["webcam photo capture", "take a photo with your webcam", "webcam snapshot tool", "capture webcam image online"],
-    "webcam video recorder": ["webcam video recorder", "record webcam video online", "free webcam recording tool", "record video from your camera"],
-    "webcam mirror test": ["webcam mirror test", "mirrored vs natural webcam view", "webcam mirror mode checker", "flip webcam image test"],
-    "webcam comparison": ["webcam comparison", "side-by-side webcam comparison tool", "compare two cameras online", "webcam vs webcam test"],
-    "webcam focus test": ["webcam focus test", "webcam sharpness test", "check webcam focus quality", "camera blur and sharpness checker"],
-    "webcam lighting test": ["webcam lighting test", "webcam exposure test", "check webcam brightness and lighting", "camera lighting conditions checker"],
-    "is my camera on": ["is my camera on", "check if my camera is being used", "camera in use detector", "is my webcam active right now"],
-    "rule of thirds grid": ["rule of thirds grid", "webcam composition grid overlay", "camera framing grid tool", "rule of thirds camera overlay"],
-    "webcam filters": ["webcam filters", "live webcam filter preview", "webcam effects and filters online", "apply filters to webcam feed"],
-    "webcam low light test": ["webcam low light test", "webcam low light noise test", "check webcam performance in low light", "camera noise in dim lighting checker"],
-    "webcam color test": ["webcam color test", "webcam colour accuracy test", "check webcam color reproduction", "camera white balance and color checker"],
-    "webcam autofocus test": ["webcam autofocus test", "check webcam autofocus speed", "camera autofocus lag test", "webcam focus hunting checker"],
-    "webcam latency test": ["webcam latency test", "webcam delay test", "check webcam video lag", "camera latency and delay checker"],
+    "what camera do i have": ["what camera do i have", "check what camera do i have", "find out what camera do i have", "webcam device information lookup", "camera information report"],
+    "webcam max resolution": ["webcam max resolution", "webcam maximum resolution detector", "find your webcam's highest resolution", "webcam native resolution check", "maximum resolution detector"],
+    "webcam fps test": ["webcam fps test", "webcam frame rate checker", "check webcam fps online", "webcam frames per second test", "fps and frame rate checker"],
+    "webcam fullscreen": ["webcam fullscreen", "webcam fullscreen viewer", "view webcam in fullscreen mode", "full screen camera preview", "fullscreen camera viewer"],
+    "webcam photo capture": ["webcam photo capture", "take a photo with your webcam", "webcam snapshot tool", "capture webcam image online", "online photo capture"],
+    "webcam video recorder": ["webcam video recorder", "record webcam video online", "free webcam recording tool", "record video from your camera", "online video recorder"],
+    "webcam mirror test": ["webcam mirror test", "mirrored vs natural webcam view", "webcam mirror mode checker", "flip webcam image test", "mirror vs natural view test"],
+    "webcam comparison": ["webcam comparison", "side-by-side webcam comparison tool", "compare two cameras online", "webcam vs webcam test", "side-by-side camera comparison"],
+    "webcam focus test": ["webcam focus test", "webcam sharpness test", "check webcam focus quality", "camera blur and sharpness checker", "sharpness and focus test"],
+    "webcam lighting test": ["webcam lighting test", "webcam exposure test", "check webcam brightness and lighting", "camera lighting conditions checker", "lighting and exposure test"],
+    "is my camera on": ["is my camera on", "check if my camera is being used", "camera in use detector", "is my webcam active right now", "camera in-use privacy check"],
+    "rule of thirds grid": ["rule of thirds grid", "webcam composition grid overlay", "camera framing grid tool", "rule of thirds camera overlay", "composition grid"],
+    "webcam filters": ["webcam filters", "live webcam filter preview", "webcam effects and filters online", "apply filters to webcam feed", "live filter preview"],
+    "webcam low light test": ["webcam low light test", "webcam low light noise test", "check webcam performance in low light", "camera noise in dim lighting checker", "low-light noise test"],
+    "webcam color test": ["webcam color test", "webcam colour accuracy test", "check webcam color reproduction", "camera white balance and color checker", "colour accuracy test"],
+    "webcam autofocus test": ["webcam autofocus test", "check webcam autofocus speed", "camera autofocus lag test", "webcam focus hunting checker", "autofocus test"],
+    "webcam latency test": ["webcam latency test", "webcam delay test", "check webcam video lag", "camera latency and delay checker", "camera latency test"],
     "webcam gif maker": ["webcam gif maker", "make a gif from your webcam", "free webcam to gif tool", "create animated gif from camera"],
     "webcam timelapse": ["webcam timelapse", "webcam timelapse maker online", "make a timelapse with your webcam", "capture webcam frames at an interval"],
     "webcam zoom test": ["webcam zoom test", "test webcam digital zoom online", "check webcam zoom quality", "camera zoom and crop quality checker"],
@@ -260,30 +262,30 @@ ANCHOR_VARIANTS: dict = {
     "rear camera test": ["rear camera test", "test your phone's rear camera", "main camera test online", "back camera checker"],
     "mobile camera test": ["mobile camera test", "test your phone camera online", "smartphone camera test", "mobile device camera checker"],
     "phone camera resolution": ["phone camera resolution", "phone camera resolution checker", "check your phone's actual camera resolution", "smartphone megapixel checker"],
-    "phone camera zoom test": ["phone camera zoom test", "test your phone's digital zoom", "phone camera zoom quality checker", "check phone zoom performance"],
-    "phone flashlight test": ["phone flashlight test", "phone camera flash torch test", "test your phone's camera flash", "check phone torch and flash"],
-    "phone camera orientation test": ["phone camera orientation test", "check phone camera rotation", "camera orientation and rotation checker", "phone camera landscape portrait test"],
+    "phone camera zoom test": ["phone camera zoom test", "test your phone's digital zoom", "phone camera zoom quality checker", "check phone zoom performance", "camera zoom test"],
+    "phone flashlight test": ["phone flashlight test", "phone camera flash torch test", "test your phone's camera flash", "check phone torch and flash", "flash and torch test"],
+    "phone camera orientation test": ["phone camera orientation test", "check phone camera rotation", "camera orientation and rotation checker", "phone camera landscape portrait test", "camera orientation test"],
     "check used phone camera": ["check used phone camera", "used phone camera inspection checklist", "inspect a secondhand phone's camera", "buying a used phone camera checklist"],
     # --- Camera Reference ---
-    "use phone as webcam": ["use phone as webcam", "turn your phone into a webcam", "how to use phone as webcam guide", "phone as webcam setup guide"],
+    "use phone as webcam": ["use phone as webcam", "turn your phone into a webcam", "how to use phone as webcam guide", "phone as webcam setup guide", "use your phone as a webcam guide"],
     "camera permissions": ["camera permissions", "camera permissions guide", "fix blocked camera permissions", "camera and microphone permissions guide"],
-    "webcam not working": ["webcam not working", "webcam not working troubleshooting guide", "fix webcam not working issues", "camera troubleshooting guide"],
+    "webcam not working": ["webcam not working", "webcam not working troubleshooting guide", "fix webcam not working issues", "camera troubleshooting guide", "webcam troubleshooting guide"],
     "webcam resolution chart": ["webcam resolution chart", "webcam resolution standards reference", "video resolution comparison chart", "camera resolution standards guide"],
     "webcam specs comparison": ["webcam specs comparison", "webcam specs comparison database", "compare webcam specifications", "camera specs reference database"],
     "camera test vs webcam test": ["camera test vs webcam test", "camera test vs webcam test explained", "difference between camera test and webcam test", "camera testing terminology explained"],
     # --- Audio ---
     "microphone test": ["microphone test", "free microphone test online", "test my microphone", "check microphone input levels"],
     "speaker test": ["speaker test", "free speaker test online", "test your speakers", "check speaker output quality"],
-    "hearing test online": ["hearing test online", "online hearing frequency test", "free hearing test", "check your hearing range"],
+    "hearing test online": ["hearing test online", "online hearing frequency test", "free hearing test", "check your hearing range", "online hearing test"],
     "microphone record test": ["microphone record test", "microphone record and playback test", "record and play back your mic", "test mic recording quality"],
-    "stereo left right test": ["stereo left right test", "left and right stereo channel test", "check stereo channel balance", "test left right speaker channels"],
+    "stereo left right test": ["stereo left right test", "left and right stereo channel test", "check stereo channel balance", "test left right speaker channels", "left and right stereo test"],
     "speaker polarity test": ["speaker polarity test", "speaker polarity and phase test", "check speaker phase alignment", "speaker wiring polarity checker"],
-    "subwoofer test": ["subwoofer test", "subwoofer bass test online", "test your subwoofer bass response", "check subwoofer low frequency output"],
+    "subwoofer test": ["subwoofer test", "subwoofer bass test online", "test your subwoofer bass response", "check subwoofer low frequency output", "subwoofer and bass test"],
     "audio latency test": ["audio latency test", "audio latency and delay test", "check your audio system latency", "measure audio round trip delay"],
     "frequency sweep test": ["frequency sweep test", "audio frequency sweep 20hz to 20khz", "test speaker frequency range", "full range frequency sweep tool"],
     "mic echo test": ["mic echo test", "microphone echo test", "check for microphone echo", "test mic feedback and echo"],
-    "microphone spectrum analyzer": ["microphone spectrum analyzer", "microphone quality spectrum analyzer", "analyze microphone frequency response", "check mic spectral quality"],
-    "mic level meter": ["mic level meter", "microphone input level meter", "check microphone input gain", "test mic volume levels"],
+    "microphone spectrum analyzer": ["microphone spectrum analyzer", "microphone quality spectrum analyzer", "analyze microphone frequency response", "check mic spectral quality", "microphone quality and spectrum analyzer"],
+    "mic level meter": ["mic level meter", "microphone input level meter", "check microphone input gain", "test mic volume levels", "microphone level meter"],
 }
 
 # ---------------------------------------------------------------------------

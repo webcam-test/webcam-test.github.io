@@ -219,5 +219,66 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "vinitha-pu",
+    "hidden": true,
+    "meta_description": "Meet Vinitha Pu, the designer who builds and checks every camera, microphone and speaker test and guide on WebcamTest.",
+    "h1": "Vinitha Pu",
+    "subtitle": "Designer, builder and fact checker for every test and guide on WebcamTest.",
+    "sections": [
+      {
+        "heading": "About",
+        "paragraphs": [
+          "Vinitha Pu is a graphic designer based in Palakkad, Kerala, who builds free, privacy-friendly browser tools. She studied Textile and Apparel Design at Avinashilingam University and completed a C-Tech in Graphic Design at Image Creative Education in 2025. She designs, builds and maintains the camera, microphone and speaker tests and guides on WebcamTest."
+        ]
+      },
+      {
+        "heading": "What she does here",
+        "paragraphs": [],
+        "list": [
+          "<strong>Designer.</strong> She designs each tool's interface, live readouts and infographics so a result is easy to read at a glance.",
+          "<strong>Builder.</strong> She builds each test on the browser's own camera and audio APIs (getUserMedia, MediaRecorder and Web Audio), so results come from the same device access your video-call apps use.",
+          "<strong>Content author.</strong> She writes the guides and the plain-English explanations on each page.",
+          "<strong>Fact checker.</strong> Each test is tried on real webcams, phones, microphones and speakers before it goes live, and each page's numbers are checked against the standard they come from."
+        ]
+      },
+      {
+        "heading": "Education",
+        "paragraphs": [],
+        "list": [
+          "<strong>Bachelor&#x27;s degree in Textile and Apparel Design</strong>, Avinashilingam University, Coimbatore, India (2016)",
+          "<strong>C-Tech in Graphic Design</strong>, Image Creative Education, Palakkad, India (2025)"
+        ]
+      },
+      {
+        "heading": "Skills",
+        "paragraphs": [
+          "Graphic design, Digital design, Textile and apparel design, Fashion sketching, Technical sketching, Pattern making, Draping, Fabric dyeing, Fabric printing, Digital illustration, Visual composition, Layout design, Concept development, Typography, Branding, Visual storytelling, Print design, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Maya 3D animation, Nuke compositing, Animation, Visual effects, Storyboarding, Creative ideation, Colour theory, Product design, User experience design."
+        ]
+      },
+      {
+        "heading": "Languages",
+        "paragraphs": [
+          "English, Malayalam, Tamil."
+        ]
+      },
+      {
+        "heading": "Find her online",
+        "paragraphs": [],
+        "list": [
+          "<a href=\"https://www.behance.net/vinithapu\" rel=\"me noopener\" target=\"_blank\">Vinitha Pu on Behance</a>",
+          "<a href=\"https://www.linkedin.com/in/vinitha-udayan-a317081ab/\" rel=\"me noopener\" target=\"_blank\">Vinitha Pu on LinkedIn</a>",
+          "<a href=\"https://www.instagram.com/vinithapu/\" rel=\"me noopener\" target=\"_blank\">Vinitha Pu on Instagram</a>",
+          "<a href=\"https://www.facebook.com/vinitha.vinu.1654\" rel=\"me noopener\" target=\"_blank\">Vinitha Pu on Facebook</a>"
+        ]
+      },
+      {
+        "heading": "Get in touch",
+        "paragraphs": [
+          "Found a bug, a result that looks wrong, or want a tool added? Use the <a href=\"/contact\">contact page</a>. Results from these tests are indicative and are not a substitute for a hardware diagnosis or a medical hearing test."
+        ]
+      }
+    ]
   }
 ]

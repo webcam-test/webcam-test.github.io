@@ -37,6 +37,9 @@ CONTACT_EMAIL = "vinithablog@gmail.com"
 OWNER_NAME = "Vinitha"
 OWNER_LOCATION = "Palakkad, Kerala, India"
 OWNER_BEHANCE_URL = "https://www.behance.net/vinithapu"
+# IST: date-only date_published/date_modified overrides in content JSON are
+# stamped with this offset (see schema.py).
+TIMEZONE_OFFSET = "+05:30"
 
 # Phase 1 (see the spec's "Build Phases" sheet): the 6 foundation pages that
 # establish camera acquisition/enumeration/teardown and the audio-context
@@ -279,12 +282,21 @@ def build_tools():
     return tools
 
 
+def load_author():
+    """Author/fact checker for every page (content/author.json): drives the
+    JSON-LD Person (schema.py), the author box and the /<slug> profile page."""
+    with open(os.path.join(CONTENT_DIR, "author.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
 def build_site(tools):
     return {
         "site_name": SITE_NAME,
         "domain": DOMAIN,
         "home_slug": HOME_SLUG,
         "contact_email": CONTACT_EMAIL,
+        "timezone_offset": TIMEZONE_OFFSET,
+        "author": load_author(),
         "footer_tagline": "Free camera and audio testing tools that run entirely in your browser. Nothing you record or capture is ever uploaded.",
         "nav_groups": CATEGORY_GROUPS,
         "company_links": [
@@ -528,8 +540,55 @@ def build_pages(tools):
                 },
             ],
         },
+        build_profile_page(),
     ]
     return pages
+
+
+def build_profile_page():
+    """The author's profile page (/vinitha-pu): reached from the author box
+    and the About page, kept out of the footer's company links. Its JSON-LD is
+    a ProfilePage whose mainEntity is the author Person (see schema.py)."""
+    a = load_author()
+    edu = []
+    for e in a["education"]:
+        edu.append("<strong>%s</strong>, %s, %s (%s)" % (
+            html.escape(e["credential"]), html.escape(e["school"]), html.escape(e["place"]), e["year"]))
+    platforms = {"behance.net": "Behance", "linkedin.com": "LinkedIn", "instagram.com": "Instagram", "facebook.com": "Facebook"}
+    links = [
+        '<a href="%s" rel="me noopener" target="_blank">%s on %s</a>' % (url, a["name"], label)
+        for url in a["same_as"] for host, label in platforms.items() if host in url
+    ]
+    return {
+        "slug": a["slug"],
+        "hidden": True,
+        "meta_description": "Meet %s, the designer who builds and checks every camera, microphone and speaker test and guide on %s." % (a["name"], SITE_NAME),
+        "h1": a["name"],
+        "subtitle": "Designer, builder and fact checker for every test and guide on %s." % SITE_NAME,
+        "sections": [
+            {"heading": "About", "paragraphs": [html.escape(a["bio"])]},
+            {
+                "heading": "What she does here",
+                "paragraphs": [],
+                "list": [
+                    "<strong>Designer.</strong> She designs each tool's interface, live readouts and infographics so a result is easy to read at a glance.",
+                    "<strong>Builder.</strong> She builds each test on the browser's own camera and audio APIs (getUserMedia, MediaRecorder and Web Audio), so results come from the same device access your video-call apps use.",
+                    "<strong>Content author.</strong> She writes the guides and the plain-English explanations on each page.",
+                    "<strong>Fact checker.</strong> Each test is tried on real webcams, phones, microphones and speakers before it goes live, and each page's numbers are checked against the standard they come from.",
+                ],
+            },
+            {"heading": "Education", "paragraphs": [], "list": edu},
+            {"heading": "Skills", "paragraphs": [html.escape(", ".join(a["knows_about"])) + "."]},
+            {"heading": "Languages", "paragraphs": [", ".join(a["knows_language"]) + "."]},
+            {"heading": "Find her online", "paragraphs": [], "list": links},
+            {
+                "heading": "Get in touch",
+                "paragraphs": [
+                    'Found a bug, a result that looks wrong, or want a tool added? Use the <a href="/contact">contact page</a>. Results from these tests are indicative and are not a substitute for a hardware diagnosis or a medical hearing test.',
+                ],
+            },
+        ],
+    }
 
 
 def main():
