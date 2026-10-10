@@ -170,6 +170,38 @@ links. Her photo is not used; the box shows initials, like MouseTester.
   other info pages, so the markup and the page agree.
 - `<meta name="author">` is now the author's name, not the site name.
 
+## Article sections: names, contents list and styling (added 2026-10-10)
+
+- **Section names.** `render_main_sections()` in `generate.py` gives every article section an id made from its own
+  visible `<h2>` text (`section_slug()`: lowercase, apostrophes dropped, other punctuation becomes `-`, at most 60
+  characters, de-duplicated). The `<section>` carries the name (`id="how-to-test-your-microphone-in-your-browser"`) and
+  the heading is `<name>-heading`, which labels the section through `aria-labelledby`. The fixed sections are `faq`,
+  `about-the-author` and `comments`. No keyword names that differ from the visible heading.
+- **"On this page".** `render_toc()` adds a numbered list of the section names (plus FAQ) after the lead paragraph
+  when a page has 3 or more sections. It adds no `<h2>` or `<p>`, so the silo script's positional targets don't move.
+- **Styling** (end of `src/styles.css`): WebcamTest's own pattern, deliberately different from MouseTester's and
+  keyboard-tester's. Each card's `<h2>` is a violet header strip with an icon for the page's group, set by
+  `<main data-cluster>` (camera, phone, guide book, microphone). H3s get a viewfinder marker, bullets are REC dots,
+  numbered steps are frame-counter badges, tables get a violet head, figures are framed. The FAQ is a card with "Q"
+  badges. The author box and comments share the header strip.
+- If you change an article's `<h2>` wording, its section name changes too, and old `#…` links to it stop working. The
+  troubleshooting guide's card links to its sections by name (`fix-camera-access-in-your-windows-and-mac-privacy-settings`,
+  etc.), so update its card if those headings change.
+
+## Tool features from the seo-optimizer configs (2026-10-10)
+
+The 33 tool pages that have an `open-source-on-page-seo-optimizer/output/webcamtest/<slug>/config.json` were compared
+field by field against it (inputs, outputs, charts), and every field that works live in a browser was added to that
+page's `card.fields_html` and `script`. The 11 pages without a config (home, Speaker Test, Phone Camera Resolution,
+Camera Zoom Test, Mic Echo Test and the 6 guides) were not changed. The comparison used only the configs, not the
+articles or the competitor HTML. Deliberately skipped: the photo page's WebGL fun-effects pack and 3 per-pixel
+filters, MP3 export (needs an encoder library), WHO hearing grades (browsers can't produce calibrated dB HL), PDF crop
+marks on the composition grid. Bugs fixed along the way: Microphone Test crashed on start (undefined
+`statChannels`); several pages hid result panels by setting `style.display` while the `u-hidden` class still hid
+them (FPS chart, recorder stats, hearing test button, level-meter clipping log); FPS on Firefox counted screen
+refreshes; the latency test's miss-timer leaked into the next trial. Some readouts are relative scores with
+hand-picked thresholds (noise, sharpness, smoothness, stream grade); the pages say so.
+
 ## AdSense
 
 Real ad units carried over from the old `legacy-bootstrap-site/` (client `ca-pub-5426315045205785`,
