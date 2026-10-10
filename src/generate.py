@@ -207,8 +207,8 @@ def render_comments_section(alt):
     legacy site's Ad -> Comments -> </main> order (see
     legacy-bootstrap-site/index.html)."""
     return (
-        '<section class="block%s"><div class="block-inner"><div class="content-card"><div class="article">'
-        "<h2>Comments &amp; Feedback</h2>"
+        '<section class="block%s" id="comments" aria-labelledby="comments-heading"><div class="block-inner"><div class="content-card"><div class="article">'
+        '<h2 id="comments-heading">Comments &amp; Feedback</h2>'
         '<script src="https://comments.tickspike.com/comentario.js" defer></script>'
         '<comentario-comments theme="light"></comentario-comments>'
         "</div></div></div></section>"
@@ -222,9 +222,10 @@ def render_faq_section(tool, alt):
         '<div class="faq-item"><dt>%s</dt><dd>%s</dd></div>' % (html.escape(f["question"]), f["answer"])
         for f in tool["faq"]
     )
-    return '<section class="block%s"><div class="section-header"><h2>Frequently Asked Questions</h2></div><dl class="faq-list">%s</dl></section>' % (
-        " alt" if alt else "", items
-    )
+    return (
+        '<section class="block%s" id="faq" aria-labelledby="faq-heading"><div class="block-inner"><div class="content-card faq-card">'
+        '<h2 id="faq-heading">Frequently Asked Questions</h2><dl class="faq-list">%s</dl></div></div></section>'
+    ) % (" alt" if alt else "", items)
 
 
 # ---------------------------------------------------------------------------
@@ -241,9 +242,9 @@ def author_box(site, page_id, published, modified, alt=False):
     href = "/%s" % a["slug"]
     link = '<a href="%s">%s</a>' % (href, html.escape(a["name"]))
     return (
-        '<section class="block{alt}" id="{p}-author-box" aria-labelledby="{p}-author-box-heading" data-section="author-box">'
+        '<section class="block{alt}" id="about-the-author" aria-labelledby="about-the-author-heading" data-section="author-box">'
         '<div class="block-inner"><div class="content-card author-box">'
-        '<h2 id="{p}-author-box-heading">About the author</h2>'
+        '<h2 id="about-the-author-heading">About the author</h2>'
         '<div class="author-box-body">'
         '<span class="author-avatar" aria-hidden="true">{ini}</span>'
         '<div class="author-box-text">'
@@ -280,6 +281,44 @@ def json_ld_graph(nodes):
         {"@context": "https://schema.org", "@graph": nodes}, ensure_ascii=False).replace("</", "<\\/")
 
 
+# ---------------------------------------------------------------------------
+# Section anchors + "On this page" list. Every article section gets an id
+# built from its own visible <h2> text (no separate keyword names), so a
+# section can be deep-linked (/slug#how-to-test-your-microphone), labelled for
+# assistive tech (aria-labelledby) and offered by Google as a "Jump to" link.
+# The list adds no <h2> or <p>, so the silo script's positional targets are
+# unchanged.
+# ---------------------------------------------------------------------------
+
+H2_TAG_RE = re.compile(r"<h2\b([^>]*)>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
+ID_ATTR_RE = re.compile(r'\bid="([^"]+)"')
+RESERVED_SECTION_IDS = {"faq", "comments", "about-the-author", "tool", "main-content", "page-title", "on-this-page"}
+
+
+def section_slug(heading_html, taken):
+    text = html.unescape(re.sub(r"<[^>]+>", "", heading_html)).lower().replace("&", " and ")
+    text = text.replace("'", "").replace("\u2019", "")
+    slug = re.sub(r"[^a-z0-9]+", "-", text).strip("-")
+    if len(slug) > 60:
+        slug = slug[:60].rsplit("-", 1)[0]
+    slug = slug or "section"
+    base, n = slug, 2
+    while slug in taken:
+        slug, n = "%s-%d" % (base, n), n + 1
+    taken.add(slug)
+    return slug
+
+
+def render_toc(entries):
+    """entries: [(id, heading_html)]. Rendered only when there are 3+ sections."""
+    if len(entries) < 3:
+        return ""
+    items = "".join('<li><a href="#%s">%s</a></li>' % (sid, re.sub(r"<[^>]+>", "", text).strip())
+                    for sid, text in entries)
+    return ('<nav class="toc" aria-labelledby="on-this-page"><div class="toc-title" id="on-this-page">On this page</div>'
+            '<ol class="toc-list">%s</ol></nav>' % items)
+
+
 def render_main_sections(tool, site):
     """Renders everything below the tool card from tool["content_html"]
     (split into alternating .content-card sections) plus a FAQ section. No
@@ -302,18 +341,38 @@ def render_main_sections(tool, site):
     section_count = 0
     if tool.get("content_html"):
         chunks = split_content_by_h2(tool["content_html"])
+        # Ids already used on the page (tool card, fixed sections) must not be reused.
+        taken = set(RESERVED_SECTION_IDS) | set(ID_ATTR_RE.findall(tool.get("card", {}).get("fields_html", "")))
+        section_ids, toc_entries = [], []
+        for i, chunk in enumerate(chunks):
+            m = H2_TAG_RE.search(chunk)
+            sid = None
+            if m:
+                existing = ID_ATTR_RE.search(m.group(1))
+                sid = existing.group(1) if existing else section_slug(m.group(2), taken)
+                if not existing:
+                    chunk = chunk[:m.start()] + '<h2 id="%s-heading"%s>%s</h2>' % (sid, m.group(1), m.group(2)) + chunk[m.end():]
+                toc_entries.append((sid, m.group(2)))
+            chunks[i] = chunk
+            section_ids.append(sid)
+        if tool.get("faq"):
+            toc_entries.append(("faq", "Frequently Asked Questions"))
+        toc = render_toc(toc_entries)
         for i, chunk in enumerate(chunks):
             if i == 0:
                 lead_and_rest = H2_SPLIT_RE.split(chunk, maxsplit=1)
                 if len(lead_and_rest) == 2:
                     lead, rest = lead_and_rest
-                    chunk = lead + render_adsense_body() + rest
+                    chunk = lead + toc + render_adsense_body() + rest
                 else:
-                    chunk = chunk + render_adsense_body()
+                    chunk = chunk + toc + render_adsense_body()
             cls = "block alt" if section_count % 2 == 1 else "block"
+            # The section itself carries the name (id = slug of its own <h2>); the
+            # heading is <slug>-heading and labels it.
+            labelled = (' id="%s" aria-labelledby="%s-heading"' % (section_ids[i], section_ids[i])) if section_ids[i] else ""
             parts.append(
-                '<section class="%s"><div class="block-inner"><div class="content-card"><div class="article">%s</div></div></div></section>'
-                % (cls, chunk)
+                '<section class="%s"%s><div class="block-inner"><div class="content-card"><div class="article">%s</div></div></div></section>'
+                % (cls, labelled, chunk)
             )
             section_count += 1
     faq_section = render_faq_section(tool, alt=(section_count % 2 == 1))
@@ -602,6 +661,7 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "BREADCRUMBS": render_breadcrumbs(trail),
         "H1": html.escape(tool["h1"]),
         "SUBTITLE": tool["subtitle"],
+        "CLUSTER": tool.get("cluster", "camera-core"),
         "TOOL_MODE": card.get("mode", ""),
         "TOOL_LAYOUT": card.get("layout", "raw"),
         "TOOL_DATA_ATTRS": data_attrs,
