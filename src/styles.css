@@ -813,14 +813,23 @@ main[data-cluster="audio"]{--section-icon:url("data:image/svg+xml,%3Csvg xmlns='
   .faq-card .faq-item{padding-left:2.6rem}
   .faq-card .faq-item::before{width:1.75rem;height:1.75rem}
 }
-/* "On this page" list (render_toc() in generate.py) — sits in the first
-   article card, after the lead paragraph. Overrides the article's
-   frame-counter <ol> badges with a compact two-column link list. */
-.content-card .article .toc{margin:1.5rem 0;padding:1rem 1.25rem;background:var(--surface-alt);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius-md)}
-.content-card .article .toc-title{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-darker);margin-bottom:.6rem}
-.content-card .article .toc-list{counter-reset:toc;columns:2 18rem;column-gap:2rem;margin:0}
-.content-card .article .toc-list>li{counter-increment:toc;break-inside:avoid;padding-left:1.9rem;min-height:0;margin:0 0 .45rem;font-size:.95rem;line-height:1.45}
-.content-card .article .toc-list>li::before{content:counter(toc);width:1.35rem;height:1.35rem;top:.05rem;border-radius:50%;background:var(--accent-soft);color:var(--accent-darker);box-shadow:none;font-family:var(--font-sans);font-size:.72rem}
-.content-card .article .toc-list a{color:var(--text);text-decoration:none}
-.content-card .article .toc-list a:hover{color:var(--accent-light);text-decoration:underline}
-main section[id]{scroll-margin-top:.5rem}
+/* Table of Contents (render_toc() in generate.py) — its own card between the
+   tool and the article, styled like storagemath's TocList: one numbered
+   column, accent-coloured numbers, H3/H4 sub-sections nested underneath in a
+   smaller muted size. */
+section.block.toc-block{padding:2rem 0 .5rem}
+.toc-card{max-width:42rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 1px 2px rgba(20,20,40,.05);padding:1.25rem 1.5rem}
+.toc-title{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;font-size:.875rem;font-weight:600;color:var(--text)}
+.toc-title svg{width:1rem;height:1rem;flex:none;color:var(--accent-darker)}
+.toc-list{list-style:decimal outside;padding-left:1.5rem;margin:0;font-size:.875rem}
+.toc-list>li{margin:0 0 .375rem;line-height:1.5}
+.toc-list>li:last-child{margin-bottom:0}
+.toc-list>li::marker{font-weight:600;color:var(--accent-darker)}
+.toc-list a{display:inline-block;padding:.125rem 0;font-weight:500;color:var(--text);text-decoration:none}
+.toc-sublist{list-style:decimal outside;margin:.375rem 0 .25rem 1.25rem;padding-left:1.5rem;font-size:13px}
+.toc-sublist>li{margin:0 0 .25rem;line-height:1.5}
+.toc-sublist>li::marker{color:var(--text-muted)}
+.toc-sublist a{padding:0;font-weight:400;line-height:1.5rem;color:var(--text-secondary)}
+.toc-list a:hover{color:var(--accent-darker);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:768px){section.block.toc-block{padding:1.25rem 0 0}.toc-card{padding:1.1rem 1.1rem}}
+main section[id],main h3[id],main h4[id]{scroll-margin-top:.5rem}

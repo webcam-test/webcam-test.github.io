@@ -292,7 +292,7 @@ def json_ld_graph(nodes):
 
 H2_TAG_RE = re.compile(r"<h2\b([^>]*)>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
 ID_ATTR_RE = re.compile(r'\bid="([^"]+)"')
-RESERVED_SECTION_IDS = {"faq", "comments", "about-the-author", "tool", "main-content", "page-title", "on-this-page"}
+RESERVED_SECTION_IDS = {"faq", "comments", "about-the-author", "tool", "main-content", "page-title", "table-of-contents"}
 
 
 def section_slug(heading_html, taken):
@@ -309,14 +309,49 @@ def section_slug(heading_html, taken):
     return slug
 
 
-def render_toc(entries):
-    """entries: [(id, heading_html)]. Rendered only when there are 3+ sections."""
-    if len(entries) < 3:
+SUB_HEADING_RE = re.compile(r"<(h[34])\b([^>]*)>(.*?)</\1>", re.IGNORECASE | re.DOTALL)
+TOC_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
+            'aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h7"/></svg>')
+
+
+def name_sub_headings(chunk, taken):
+    """Give every <h3>/<h4> in a section an id from its own text and return the
+    chunk plus a nested [(id, text, [(id, text, [])])] list (h4s under their h3)."""
+    out, pos, tree = [], 0, []
+    for m in SUB_HEADING_RE.finditer(chunk):
+        tag, attrs, inner = m.group(1).lower(), m.group(2), m.group(3)
+        existing = ID_ATTR_RE.search(attrs)
+        hid = existing.group(1) if existing else section_slug(inner, taken)
+        out.append(chunk[pos:m.start()])
+        out.append(m.group(0) if existing else '<%s id="%s"%s>%s</%s>' % (tag, hid, attrs, inner, tag))
+        pos = m.end()
+        node = (hid, inner, [])
+        if tag == "h4" and tree:
+            tree[-1][2].append(node)
+        else:
+            tree.append(node)
+    out.append(chunk[pos:])
+    return "".join(out), tree
+
+
+def render_toc_list(nodes, top=True):
+    items = "".join(
+        '<li><a href="#%s">%s</a>%s</li>' % (nid, html.escape(html.unescape(re.sub(r"<[^>]+>", "", text)).strip()),
+                                             render_toc_list(children, top=False) if children else "")
+        for nid, text, children in nodes)
+    return '<ol class="%s">%s</ol>' % ("toc-list" if top else "toc-sublist", items)
+
+
+def render_toc(tree):
+    """Table of contents in its own card between the tool and the article —
+    same shape as storagemath's TocList: one numbered column, each <h2>
+    section with its <h3> (and <h4>) sub-sections nested underneath.
+    Rendered only when there are 3+ sections."""
+    if len(tree) < 3:
         return ""
-    items = "".join('<li><a href="#%s">%s</a></li>' % (sid, re.sub(r"<[^>]+>", "", text).strip())
-                    for sid, text in entries)
-    return ('<nav class="toc" aria-labelledby="on-this-page"><div class="toc-title" id="on-this-page">On this page</div>'
-            '<ol class="toc-list">%s</ol></nav>' % items)
+    return ('<section class="block toc-block"><div class="block-inner"><nav class="toc-card" aria-labelledby="table-of-contents">'
+            '<div class="toc-title">%s<span id="table-of-contents">Table of Contents</span></div>%s</nav></div></section>'
+            % (TOC_ICON, render_toc_list(tree)))
 
 
 def render_main_sections(tool, site):
@@ -352,20 +387,21 @@ def render_main_sections(tool, site):
                 sid = existing.group(1) if existing else section_slug(m.group(2), taken)
                 if not existing:
                     chunk = chunk[:m.start()] + '<h2 id="%s-heading"%s>%s</h2>' % (sid, m.group(1), m.group(2)) + chunk[m.end():]
-                toc_entries.append((sid, m.group(2)))
+                chunk, sub_tree = name_sub_headings(chunk, taken)
+                toc_entries.append((sid, m.group(2), sub_tree))
             chunks[i] = chunk
             section_ids.append(sid)
         if tool.get("faq"):
-            toc_entries.append(("faq", "Frequently Asked Questions"))
-        toc = render_toc(toc_entries)
+            toc_entries.append(("faq", "Frequently Asked Questions", []))
+        parts.append(render_toc(toc_entries))
         for i, chunk in enumerate(chunks):
             if i == 0:
                 lead_and_rest = H2_SPLIT_RE.split(chunk, maxsplit=1)
                 if len(lead_and_rest) == 2:
                     lead, rest = lead_and_rest
-                    chunk = lead + toc + render_adsense_body() + rest
+                    chunk = lead + render_adsense_body() + rest
                 else:
-                    chunk = chunk + toc + render_adsense_body()
+                    chunk = chunk + render_adsense_body()
             cls = "block alt" if section_count % 2 == 1 else "block"
             # The section itself carries the name (id = slug of its own <h2>); the
             # heading is <slug>-heading and labels it.

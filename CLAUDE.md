@@ -170,15 +170,18 @@ links. Her photo is not used; the box shows initials, like MouseTester.
   other info pages, so the markup and the page agree.
 - `<meta name="author">` is now the author's name, not the site name.
 
-## Article sections: names, contents list and styling (added 2026-10-10)
+## Article sections: names, table of contents and styling (added 2026-10-10)
 
 - **Section names.** `render_main_sections()` in `generate.py` gives every article section an id made from its own
   visible `<h2>` text (`section_slug()`: lowercase, apostrophes dropped, other punctuation becomes `-`, at most 60
   characters, de-duplicated). The `<section>` carries the name (`id="how-to-test-your-microphone-in-your-browser"`) and
   the heading is `<name>-heading`, which labels the section through `aria-labelledby`. The fixed sections are `faq`,
   `about-the-author` and `comments`. No keyword names that differ from the visible heading.
-- **"On this page".** `render_toc()` adds a numbered list of the section names (plus FAQ) after the lead paragraph
-  when a page has 3 or more sections. It adds no `<h2>` or `<p>`, so the silo script's positional targets don't move.
+- **Table of Contents.** `render_toc()` renders it as its own section between the tool and the first article
+  section (3+ sections only), styled like storagemath's `TocList`: one numbered column with accent-coloured numbers,
+  each H2 section with its H3 (and H4) sub-sections nested underneath. `name_sub_headings()` gives every H3/H4 an id
+  from its own text so the nested entries can link to it. It adds no `<h2>` or `<p>`, so the silo script's positional
+  targets don't move.
 - **Styling** (end of `src/styles.css`): WebcamTest's own pattern, deliberately different from MouseTester's and
   keyboard-tester's. Each card's `<h2>` is a violet header strip with an icon for the page's group, set by
   `<main data-cluster>` (camera, phone, guide book, microphone). H3s get a viewfinder marker, bullets are REC dots,
