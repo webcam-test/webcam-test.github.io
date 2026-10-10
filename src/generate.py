@@ -457,7 +457,7 @@ def faq_jsonld(items):
             {
                 "@type": "Question",
                 "name": it["question"],
-                "acceptedAnswer": {"@type": "Answer", "text": re.sub("<[^>]+>", "", it["answer"])},
+                "acceptedAnswer": {"@type": "Answer", "text": html.unescape(re.sub("<[^>]+>", "", it["answer"]))},
             }
             for it in items
         ],

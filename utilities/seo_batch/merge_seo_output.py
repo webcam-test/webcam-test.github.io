@@ -10,9 +10,11 @@ Usage:
 
 Fields it overwrites in src/content/<slug>.json (from meta.json/content.html):
     h1, meta_description, content_html
+    faq — only when the run also wrote a config.json (--tool-config) with a
+          non-empty faqs_json; otherwise the existing faq is kept
 
 Fields it never touches (hand-authored, not produced by /seo-optimize):
-    slug, subtitle, card, script, faq
+    slug, subtitle, card, script
 
 This site has no separate <title> tag — generate.py renders <title> as the
 tool's own h1 verbatim (see src/generate.py's module docstring) — so
@@ -66,6 +68,7 @@ def _site_info(slug):
     copyright_line = "© %d %s — %s" % (date.today().year, site["site_name"], site["domain"])
     return {
         "site_name": site["site_name"],
+        "site_url": site_url,
         "page_url": page_url,
         "license_url": license_url,
         "copyright_line": copyright_line,
@@ -79,9 +82,22 @@ DIGITAL_SOURCE_TYPE_EL = (
 )
 
 
-def stamp_svg_site_metadata(svg_path, alt, caption, site):
+def stamp_svg_site_metadata(svg_path, alt, caption, site, image_url=None):
     with open(svg_path, encoding="utf-8") as f:
         svg = f.read()
+
+    # Newer seo-optimizer runs (--infographic-brand webcamtest) already write the
+    # full site block (creator/publisher/rights/source/identifier/WebStatement)
+    # themselves. Stamping again would duplicate every field, so only correct
+    # dc:identifier — the kit assumes a flat /images/<file> path, but this site
+    # serves each tool's SVGs from /images/<slug>/<file>.
+    if "<dc:creator>" in svg:
+        if image_url:
+            svg = re.sub(r"<dc:identifier>[^<]*</dc:identifier>",
+                         lambda m: "<dc:identifier>%s</dc:identifier>" % html.escape(image_url), svg)
+            with open(svg_path, "w", encoding="utf-8") as f:
+                f.write(svg)
+        return
 
     site_fields = (
         "<dc:creator><rdf:Seq><rdf:li>%s</rdf:li></rdf:Seq></dc:creator>"
@@ -171,6 +187,23 @@ def merge(slug, seo_output_dir, dry_run=False):
     content["meta_description"] = meta["meta_description"]
     content["content_html"] = content_html
 
+    # Phase 6's config.json carries a calculator widget this site doesn't use
+    # (every tool here is a live camera/mic tool), but its faqs_json is a
+    # competitor-informed FAQ set written alongside the same content — use it
+    # when present. Answers are plain text; render_faq_section() inserts them
+    # unescaped, so escape here.
+    n_faq = 0
+    config_path = os.path.join(seo_output_dir, "config.json")
+    if os.path.exists(config_path):
+        with open(config_path) as f:
+            faqs = json.load(f).get("faqs_json") or []
+        if faqs:
+            content["faq"] = [
+                {"question": q["question"], "answer": html.escape(q["answer"], quote=False)}
+                for q in faqs
+            ]
+            n_faq = len(faqs)
+
     images_src_dir = os.path.join(seo_output_dir, "images")
     n_images = 0
     if os.path.isdir(images_src_dir):
@@ -197,11 +230,13 @@ def merge(slug, seo_output_dir, dry_run=False):
                 dest_path = os.path.join(dest_dir, fname)
                 shutil.copy(os.path.join(images_src_dir, fname), dest_path)
                 entry = infographics_by_file.get(fname, {})
-                stamp_svg_site_metadata(dest_path, entry.get("alt"), entry.get("caption"), site)
+                image_url = "%s/images/%s/%s" % (site["site_url"], slug, fname)
+                stamp_svg_site_metadata(dest_path, entry.get("alt"), entry.get("caption"), site, image_url)
         n_images = len(image_files)
 
     if dry_run:
-        print("[dry-run] %s: would set h1/meta_description/content_html, copy %d image(s)" % (slug, n_images))
+        print("[dry-run] %s: would set h1/meta_description/content_html, %d faq(s), copy %d image(s)"
+              % (slug, n_faq, n_images))
         return
 
     with open(content_path, "w") as f:
@@ -209,8 +244,8 @@ def merge(slug, seo_output_dir, dry_run=False):
         f.write("\n")
 
     print(
-        "%s: merged h1/meta_description/content_html, copied %d image(s) into src/content_images/%s/"
-        % (slug, n_images, slug)
+        "%s: merged h1/meta_description/content_html, %d faq(s), copied %d image(s) into src/content_images/%s/"
+        % (slug, n_faq, n_images, slug)
     )
 
 

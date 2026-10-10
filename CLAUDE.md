@@ -336,10 +336,30 @@ After `generate_silo_rotation.py` runs following any batch merge, spot-check the
 changed: confirm each still has its expected `<!-- SILO_START:slot_x -->` markers in `public/*.html`,
 and read the sentence each one landed in to confirm it still makes sense in context.
 
-**Not yet run for the remaining ~34 tool pages** — left for further batch runs.
+**2026-10-10 — full rewrite of all 44 batch pages (supersedes the September runs below).** A new
+batch was run from the seo-optimizer repo itself, not via `run_batch.py`/`keywords.txt` here:
+`open-source-on-page-seo-optimizer/keywords-webcamtest.txt` (44 pages ordered by the 2026-08-31
+search-volume sheet, **including the 6 Guides pages and the home page**), run with `--output-subdir
+webcamtest --tool-config --infographic-brand webcamtest` on Opus, with the per-heading term checks
+(outline check 7 + audit `heading_terms`). Result: 43 `ok`, 1 `audit_fail`
+(`webcam-video-recorder-online`, term over-use only, merged as-is by decision), about $150 total.
+Each page was reviewed against its `subtitle` before merging, and no page drifted off its tool's
+purpose. Merged with `merge_seo_output.py` for every slug, which now also:
+- **replaces `faq`** from `config.json`'s `faqs_json` when the run wrote one (33 pages; the other 11
+  keep their old FAQ). The rest of `config.json` (a calculator widget) is unused here.
+- **leaves the site metadata alone in SVGs that already carry it** (the `webcamtest` infographic
+  brand writes creator/publisher/rights/source itself) and only corrects `dc:identifier` to the
+  real `/images/<slug>/<file>` path.
 
-**Home page (`webcam-test-online`) deliberately held back at its pre-batch, hand-authored version —
-not the seo-optimize-generated one.** Timeline:
+Also fixed: `faq_jsonld()` now unescapes entities, so FAQ schema text no longer shows a literal
+`&amp;`. Silo plan re-verified with the same clusters, sub-silos and groups (volumes unchanged). All
+slots land in article H2 sections for 2026-10 through 2027-03. Anchor pools gained a 5th variant: the
+tool name used in the new H1s. The 3 tools added later (gif/timelapse/zoom) were not in the batch and
+keep their hand-authored content.
+
+**Home page hold-back — reversed 2026-10-10.** The October batch replaced the home page
+(`webcam-test-online`) too, by the site owner's explicit decision. The history below explains why it
+was held back in September:
 - **2026-09-15** (`ab45058`) — the home page was already ranking, a few search-term variants were
   found missing, and they were blended into the existing hand-authored copy directly (no full
   rewrite). That's the version currently live.
