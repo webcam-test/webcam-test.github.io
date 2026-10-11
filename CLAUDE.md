@@ -205,6 +205,15 @@ them (FPS chart, recorder stats, hearing test button, level-meter clipping log);
 refreshes; the latency test's miss-timer leaked into the next trial. Some readouts are relative scores with
 hand-picked thresholds (noise, sharpness, smoothness, stream grade); the pages say so.
 
+### Re-check 2026-10-11
+
+Re-checked all 33 config pages: 27 already cover the config and more, 6 had gaps (mostly the deliberate skips above). Added: a 20 s
+timeout on the camera permission prompt (is-my-camera-being-used-check), 600% brightness on the mirror test, Yin Yang shape and Mosaic
+filter on the photo page (saved photo now filters the Yin Yang shading like the preview), 25 WPM Morse, and a "probably built-in /
+external" camera guess on the fullscreen viewer. Also fixed a live bug: the minifier corrupted the `'<?xml ...?>'` string literal in
+webcam-maximum-resolution-detector's script, breaking the whole tool; the literal is now split (`'<' + '?xml ...?' + '>'`). Avoid
+`<?` ... `?>` inside inline script strings. Run `src/build_data.py` before `src/generate.py`, or content edits don't reach `public/`.
+
 ## AdSense
 
 Real ad units carried over from the old `legacy-bootstrap-site/` (client `ca-pub-5426315045205785`,
