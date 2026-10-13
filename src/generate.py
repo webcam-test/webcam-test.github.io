@@ -112,6 +112,24 @@ def render_ga_snippet():
     )
 
 
+CLARITY_PROJECT_ID = "yx2h7888hh"
+
+
+def render_clarity_snippet():
+    """Microsoft Clarity tag — on every page, like GA."""
+    return (
+        "<!-- Microsoft Clarity -->"
+        '<script type="text/javascript">'
+        "(function(c,l,a,r,i,t,y){"
+        "c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};"
+        't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;'
+        "y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);"
+        '})(window, document, "clarity", "script", "%s");'
+        "</script>"
+        % CLARITY_PROJECT_ID
+    )
+
+
 def render_adsense_loader():
     return (
         '<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s" '
@@ -701,6 +719,7 @@ def render_page(tool, site, by_slug, tools, template, critical_css=""):
         "AUTHOR_NAME": html.escape(site["author"]["name"]),
         "CRITICAL_CSS": critical_css,
         "GA_SNIPPET": render_ga_snippet(),
+        "CLARITY_SNIPPET": render_clarity_snippet(),
         "ADSENSE_LOADER": render_adsense_loader(),
         "KATEX_HEAD": render_katex_head(tool),
         "ADSENSE_HEADER": render_adsense_header(),
@@ -748,6 +767,7 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
         "META_TITLE": html.escape(page["h1"]),
         "CRITICAL_CSS": critical_css,
         "GA_SNIPPET": render_ga_snippet(),
+        "CLARITY_SNIPPET": render_clarity_snippet(),
         "CATEGORY_DROPDOWNS": render_category_dropdowns(site, by_slug),
         "MORE_MENU": render_more_menu(site, by_slug),
         "MOBILE_DRAWER": render_mobile_drawer(site, by_slug),
@@ -776,6 +796,7 @@ def render_404_page(site, by_slug, template_404, critical_css=""):
         "SITE_NAME": site["site_name"],
         "CRITICAL_CSS": critical_css,
         "GA_SNIPPET": render_ga_snippet(),
+        "CLARITY_SNIPPET": render_clarity_snippet(),
         "CATEGORY_DROPDOWNS": render_category_dropdowns(site, by_slug),
         "MORE_MENU": render_more_menu(site, by_slug),
         "MOBILE_DRAWER": render_mobile_drawer(site, by_slug),
