@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{META_TITLE}}</title>
     <meta name="description" content="{{META_DESCRIPTION}}">
     <meta name="author" content="{{AUTHOR_NAME}}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{CANONICAL_URL}}">
-    <title>{{META_TITLE}}</title>
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{SITE_NAME}}">
     <meta property="og:title" content="{{META_TITLE}}">
@@ -92,13 +92,5 @@
 </footer>
 
 <script src="/nav.js" defer></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var closeAll = initCategoryDropdowns();
-    initPriorityNav(closeAll);
-    initMobileDrawer();
-    wrapTables();
-  });
-</script>
 </body>
 </html>

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{META_TITLE}}</title>
     <meta name="description" content="{{META_DESCRIPTION}}">
     <meta name="author" content="{{AUTHOR_NAME}}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{CANONICAL_URL}}">
-    <title>{{META_TITLE}}</title>
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{SITE_NAME}}">
     <meta property="og:title" content="{{META_TITLE}}">
@@ -74,7 +74,7 @@
 
     {{ADSENSE_HEADER}}
 
-    <section class="tool-section" id="tool">
+    <section class="tool-section" id="tool" aria-labelledby="page-title">
         <form class="tool-grid" data-mode="{{TOOL_MODE}}" data-layout="{{TOOL_LAYOUT}}"{{TOOL_DATA_ATTRS}} novalidate>
             <div class="tool-error" id="toolError" role="alert"></div>
             {{TOOL_CARD_BODY}}
@@ -115,25 +115,5 @@
 {{TOOL_EXTRA_SCRIPTS}}
 <script>{{TOOL_SCRIPT}}</script>
 <script src="/nav.js" defer></script>
-<script>
-  function initToolForm() {
-    // .tool-grid is a real <form> so labelled inputs get proper native
-    // association, but every action on the page is its own type="button"
-    // handled by that tool's own script — this only exists to stop a lone
-    // qualifying text input from triggering the browser's own implicit
-    // form submission on Enter (which would navigate/reload and drop all
-    // in-memory camera/audio state).
-    var form = document.querySelector('form.tool-grid');
-    if (!form) return;
-    form.addEventListener('submit', function (e) { e.preventDefault(); });
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-    var closeAll = initCategoryDropdowns();
-    initPriorityNav(closeAll);
-    initMobileDrawer();
-    wrapTables();
-    initToolForm();
-  });
-</script>
 </body>
 </html>

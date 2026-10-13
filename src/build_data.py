@@ -441,7 +441,7 @@ def build_pages(tools):
                 {
                     "heading": "Connect With Me",
                     "paragraphs": [
-                        "<a href=\"%s\" target=\"_blank\" rel=\"noopener\">Behance Portfolio</a>" % OWNER_BEHANCE_URL,
+                        "<a href=\"%s\" rel=\"noopener\" target=\"_blank\">Behance Portfolio</a>" % OWNER_BEHANCE_URL,
                         "<a href=\"mailto:%s\">Send an Email</a>" % CONTACT_EMAIL,
                     ],
                 },
@@ -450,7 +450,7 @@ def build_pages(tools):
         {
             "slug": "contact",
             "meta_description": "Contact the WebcamTest team with questions, bug reports, or feedback on our free browser-based camera and mic testing tools. We read every message.",
-            "h1": "Contact",
+            "h1": "Contact WebcamTest",
             "subtitle": "Questions, bug reports and tool requests are all welcome.",
             "sections": [
                 {
@@ -481,7 +481,7 @@ def build_pages(tools):
                 {
                     "heading": "Connect With Me",
                     "paragraphs": [
-                        "<a href=\"%s\" target=\"_blank\" rel=\"noopener\">Behance Portfolio</a>" % OWNER_BEHANCE_URL,
+                        "<a href=\"%s\" rel=\"noopener\" target=\"_blank\">Behance Portfolio</a>" % OWNER_BEHANCE_URL,
                         "<a href=\"mailto:%s\">Send an Email</a>" % CONTACT_EMAIL,
                     ],
                 },
@@ -490,7 +490,7 @@ def build_pages(tools):
         {
             "slug": "sitemap",
             "meta_description": "Browse every WebcamTest tool and page, organized by category, in one place — the fastest way to find the exact camera or microphone test you need.",
-            "h1": "Sitemap",
+            "h1": "WebcamTest Sitemap",
             "subtitle": "Every tool on WebcamTest, grouped the same way the nav menu groups them.",
             "sections": sitemap_sections,
         },
@@ -562,7 +562,7 @@ def build_profile_page():
     return {
         "slug": a["slug"],
         "hidden": True,
-        "meta_description": "Meet %s, the designer who builds and checks every camera, microphone and speaker test and guide on %s." % (a["name"], SITE_NAME),
+        "meta_description": "Meet %s, the founder and designer who builds and checks every camera, microphone and speaker test and guide on %s." % (a["name"], SITE_NAME),
         "h1": a["name"],
         "subtitle": "Designer, builder and fact checker for every test and guide on %s." % SITE_NAME,
         "sections": [

@@ -41,7 +41,7 @@
       {
         "heading": "Connect With Me",
         "paragraphs": [
-          "<a href=\"https://www.behance.net/vinithapu\" target=\"_blank\" rel=\"noopener\">Behance Portfolio</a>",
+          "<a href=\"https://www.behance.net/vinithapu\" rel=\"noopener\" target=\"_blank\">Behance Portfolio</a>",
           "<a href=\"mailto:vinithablog@gmail.com\">Send an Email</a>"
         ]
       }
@@ -50,7 +50,7 @@
   {
     "slug": "contact",
     "meta_description": "Contact the WebcamTest team with questions, bug reports, or feedback on our free browser-based camera and mic testing tools. We read every message.",
-    "h1": "Contact",
+    "h1": "Contact WebcamTest",
     "subtitle": "Questions, bug reports and tool requests are all welcome.",
     "sections": [
       {
@@ -81,7 +81,7 @@
       {
         "heading": "Connect With Me",
         "paragraphs": [
-          "<a href=\"https://www.behance.net/vinithapu\" target=\"_blank\" rel=\"noopener\">Behance Portfolio</a>",
+          "<a href=\"https://www.behance.net/vinithapu\" rel=\"noopener\" target=\"_blank\">Behance Portfolio</a>",
           "<a href=\"mailto:vinithablog@gmail.com\">Send an Email</a>"
         ]
       }
@@ -90,7 +90,7 @@
   {
     "slug": "sitemap",
     "meta_description": "Browse every WebcamTest tool and page, organized by category, in one place \u2014 the fastest way to find the exact camera or microphone test you need.",
-    "h1": "Sitemap",
+    "h1": "WebcamTest Sitemap",
     "subtitle": "Every tool on WebcamTest, grouped the same way the nav menu groups them.",
     "sections": [
       {
@@ -223,7 +223,7 @@
   {
     "slug": "vinitha-pu",
     "hidden": true,
-    "meta_description": "Meet Vinitha Pu, the designer who builds and checks every camera, microphone and speaker test and guide on WebcamTest.",
+    "meta_description": "Meet Vinitha Pu, the founder and designer who builds and checks every camera, microphone and speaker test and guide on WebcamTest.",
     "h1": "Vinitha Pu",
     "subtitle": "Designer, builder and fact checker for every test and guide on WebcamTest.",
     "sections": [

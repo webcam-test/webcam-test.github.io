@@ -1,6 +1,8 @@
 // Shared header/footer navigation behaviour for every page (tool pages, info
 // pages, and 404) — identical across all three templates, so it lives here
-// once instead of being duplicated verbatim in each <script> block.
+// once instead of being duplicated verbatim in each <script> block. The
+// DOMContentLoaded block at the bottom starts everything; each init function
+// is a no-op on pages without its markup.
 function initCategoryDropdowns() {
   var buttons = document.querySelectorAll('.cat-menu-btn');
   function closeAll(except) {
@@ -30,7 +32,17 @@ function initCategoryDropdowns() {
     });
   });
   document.addEventListener('click', function () { closeAll(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    // Focus inside a menu that's about to be hidden would be lost, so hand
+    // it back to that menu's own button first.
+    var openMenu = document.activeElement && document.activeElement.closest('.tools-menu.open');
+    closeAll();
+    if (openMenu) {
+      var owner = document.querySelector('[aria-controls="' + openMenu.id + '"]');
+      if (owner) owner.focus();
+    }
+  });
   // .tools-menu is position:fixed, positioned once (via getBoundingClientRect())
   // at click time -- it doesn't track the button on scroll, and the header
   // isn't sticky, so without this the open menu stays glued to its original
@@ -45,6 +57,32 @@ function initCategoryDropdowns() {
 // count/label lengths (there's headroom above 860px). Left in place as
 // a defensive fallback for a future longer SITE_NAME or an added nav
 // group, not dead code to remove.
+// The "More" dropdown's sections are copies of the category menus (same
+// icon, label and links), so they're cloned from those menus here rather
+// than shipped as a second copy of every link in each page's HTML.
+function buildMoreMenu() {
+  var panel = document.getElementById('moreMenuPanel');
+  if (!panel || panel.children.length) return;
+  document.querySelectorAll('.category-strip .cat-menu-item[data-cat-key]').forEach(function (item) {
+    var menu = item.querySelector('.cat-menu');
+    if (!menu) return;
+    var section = document.createElement('div');
+    section.className = 'more-menu-section';
+    section.setAttribute('data-cat-key', item.getAttribute('data-cat-key'));
+    var heading = document.createElement('div');
+    heading.className = 'more-menu-heading';
+    var icon = document.createElement('span');
+    icon.className = 'more-menu-icon';
+    var svg = menu.querySelector('.menu-panel-icon svg');
+    if (svg) icon.appendChild(svg.cloneNode(true));
+    heading.appendChild(icon);
+    var label = menu.querySelector('.menu-panel-header strong');
+    heading.appendChild(document.createTextNode(label ? label.textContent : ''));
+    section.appendChild(heading);
+    menu.querySelectorAll('.menu-panel-links a').forEach(function (a) { section.appendChild(a.cloneNode(true)); });
+    panel.appendChild(section);
+  });
+}
 function initPriorityNav(closeAll) {
   // Priority+ pattern: every .cat-menu-item[data-cat-key] in .category-strip
   // (rendered by render_category_dropdowns() in generate.py) is a candidate
@@ -146,20 +184,38 @@ function initMobileDrawer() {
     }, 10);
     hamburger.setAttribute('aria-expanded', 'true');
     document.body.classList.add('drawer-open');
+    // The drawer is an aria-modal dialog, so focus moves into it.
+    closeBtn.focus();
   }
-  function closeDrawer() {
+  function closeDrawer(returnFocus) {
+    var hadFocus = drawer.contains(document.activeElement);
     drawer.classList.remove('open');
     backdrop.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('drawer-open');
+    if (returnFocus !== false && hadFocus) hamburger.focus();
     setTimeout(function () {
       if (!isOpen()) { drawer.hidden = true; backdrop.hidden = true; }
     }, 220);
   }
   hamburger.addEventListener('click', function () { isOpen() ? closeDrawer() : openDrawer(); });
-  closeBtn.addEventListener('click', closeDrawer);
-  backdrop.addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) closeDrawer(); });
+  closeBtn.addEventListener('click', function () { closeDrawer(); });
+  backdrop.addEventListener('click', function () { closeDrawer(); });
+  document.addEventListener('keydown', function (e) {
+    if (!isOpen()) return;
+    if (e.key === 'Escape') { closeDrawer(); return; }
+    if (e.key !== 'Tab') return;
+    // Keep Tab inside the open dialog: wrap from the last visible control
+    // back to the first (and the reverse for Shift+Tab).
+    var focusable = Array.prototype.filter.call(
+      drawer.querySelectorAll('a[href], button'),
+      function (el) { return el.getClientRects().length > 0; }
+    );
+    if (!focusable.length) return;
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   sectionButtons.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -169,7 +225,7 @@ function initMobileDrawer() {
     });
   });
   var mq = window.matchMedia('(min-width:861px)');
-  var mqHandler = function (e) { if (e.matches && isOpen()) closeDrawer(); };
+  var mqHandler = function (e) { if (e.matches && isOpen()) closeDrawer(false); };
   if (mq.addEventListener) mq.addEventListener('change', mqHandler);
   else mq.addListener(mqHandler);
 }
@@ -182,3 +238,37 @@ function wrapTables() {
     wrap.appendChild(table);
   });
 }
+function initToolForm() {
+  // .tool-grid is a real <form> so labelled inputs get proper native
+  // association, but every action on the page is its own type="button"
+  // handled by that tool's own script — this only exists to stop a lone
+  // qualifying text input from triggering the browser's own implicit
+  // form submission on Enter (which would navigate/reload and drop all
+  // in-memory camera/audio state).
+  var form = document.querySelector('form.tool-grid');
+  if (!form) return;
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+}
+function renderMath() {
+  // KaTeX (katex.min.js + auto-render) is only loaded on pages whose article
+  // contains LaTeX; those scripts are deferred ahead of this file, so they
+  // have already run by the time this does.
+  if (!window.renderMathInElement) return;
+  renderMathInElement(document.querySelector('main') || document.body, {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false }
+    ],
+    throwOnError: false
+  });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  buildMoreMenu();
+  var closeAll = initCategoryDropdowns();
+  initPriorityNav(closeAll);
+  initMobileDrawer();
+  wrapTables();
+  initToolForm();
+  renderMath();
+});

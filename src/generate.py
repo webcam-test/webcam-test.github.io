@@ -354,6 +354,32 @@ def render_toc(tree):
             % (TOC_ICON, render_toc_list(tree)))
 
 
+CONTENT_IMG_RE = re.compile(r'<img src="/images/([^/"]+)/([^"]+\.svg)"([^>]*)>')
+SVG_VIEWBOX_RE = re.compile(r'<svg\b[^>]*\bviewBox="\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)\s*"')
+
+
+def add_img_dimensions(content_html):
+    """Gives every infographic <img> its SVG's intrinsic width/height (from
+    the viewBox in src/content_images/<slug>/), so the browser reserves the
+    right box before the image loads. CSS still sizes it (width:100%;
+    height:auto), so the rendered size doesn't change."""
+    def add(m):
+        slug, name, rest = m.groups()
+        if " width=" in rest:
+            return m.group(0)
+        path = os.path.join(BASE_DIR, "content_images", slug, name)
+        try:
+            with open(path, encoding="utf-8") as f:
+                vb = SVG_VIEWBOX_RE.search(f.read(4096))
+        except OSError:
+            return m.group(0)
+        if not vb:
+            return m.group(0)
+        w, h = (int(round(float(v))) for v in vb.groups())
+        return '<img src="/images/%s/%s"%s width="%d" height="%d">' % (slug, name, rest, w, h)
+    return CONTENT_IMG_RE.sub(add, content_html)
+
+
 def render_main_sections(tool, site):
     """Renders everything below the tool card from tool["content_html"]
     (split into alternating .content-card sections) plus a FAQ section. No
@@ -375,7 +401,7 @@ def render_main_sections(tool, site):
     parts = []
     section_count = 0
     if tool.get("content_html"):
-        chunks = split_content_by_h2(tool["content_html"])
+        chunks = split_content_by_h2(add_img_dimensions(tool["content_html"]))
         # Ids already used on the page (tool card, fixed sections) must not be reused.
         taken = set(RESERVED_SECTION_IDS) | set(ID_ATTR_RE.findall(tool.get("card", {}).get("fields_html", "")))
         section_ids, toc_entries = [], []
@@ -483,23 +509,16 @@ def render_category_dropdowns(site, by_slug):
 
 
 def render_more_menu(site, by_slug):
-    sections = []
-    for group in site["nav_groups"]:
-        icon = CLUSTER_ICONS.get(group["key"], CLUSTER_ICONS["camera-core"])
-        links = "".join(
-            '<a href="%s">%s</a>' % (url, html.escape(name))
-            for url, name in group_links(group, site, by_slug)
-        )
-        sections.append(
-            '<div class="more-menu-section" data-cat-key="%s">'
-            '<div class="more-menu-heading"><span class="more-menu-icon">%s</span>%s</div>%s'
-            '</div>' % (group["key"], icon, html.escape(group["label"]), links)
-        )
+    """Priority+ overflow dropdown. Only the button and an empty panel are
+    rendered; buildMoreMenu() in nav.js fills the panel at load time by
+    cloning each category menu's icon, label and links (one
+    .more-menu-section per data-cat-key), so the page doesn't carry a second
+    copy of every nav link."""
     return (
         '<div class="cat-menu-item" id="moreMenuItem">'
         '<button type="button" class="cat-menu-btn" id="moreMenuBtn" aria-expanded="false" aria-controls="moreMenuPanel">More%s</button>'
-        '<div class="tools-menu more-menu" id="moreMenuPanel">%s</div>'
-        '</div>' % (CHEVRON_SVG, "".join(sections))
+        '<div class="tools-menu more-menu" id="moreMenuPanel"></div>'
+        '</div>' % CHEVRON_SVG
     )
 
 
@@ -528,7 +547,7 @@ def render_mobile_drawer(site, by_slug):
             '%s</button>'
             '<div class="drawer-section-links" id="%s"><div class="drawer-section-links-inner">%s</div></div>'
             '</div>' % (
-                group["key"], panel_id, icon, html.escape(group["label"]), html.escape(group["tagline"]),
+                group["key"], panel_id, icon, html.escape(group["short_label"]), html.escape(group["tagline"]),
                 CHEVRON_SVG, panel_id, links,
             )
         )
@@ -626,11 +645,6 @@ def render_katex_scripts(tool):
     return (
         '<script src="%(b)s/katex.min.js" defer crossorigin="anonymous"></script>'
         '<script src="%(b)s/contrib/auto-render.min.js" defer crossorigin="anonymous"></script>'
-        '<script>document.addEventListener("DOMContentLoaded",function(){var go=function(){'
-        'if(!window.renderMathInElement)return setTimeout(go,50);'
-        'renderMathInElement(document.querySelector("main")||document.body,{delimiters:['
-        '{left:"$$",right:"$$",display:true},{left:"\\\\[",right:"\\\\]",display:true},'
-        '{left:"\\\\(",right:"\\\\)",display:false}],throwOnError:false})};go()});</script>'
     ) % {"b": KATEX_BASE}
 
 
