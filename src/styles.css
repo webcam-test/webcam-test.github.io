@@ -54,7 +54,7 @@
   --success-bg:rgba(20,150,96,.1);
   --warning:#b7791f;
   --warning-bg:rgba(217,158,20,.14);
-  --danger:#dc3545;
+  --danger:#c62839;
   --danger-bg:rgba(220,53,69,.1);
   --code-bg:#1c1c26;
   --code-text:#e7e7ec;
@@ -255,6 +255,8 @@ body.drawer-open{overflow:hidden}
    this — confirmed via Lighthouse's cls-culprits-insight audit there). */
 .ad-slot{margin:.75rem auto;text-align:center;max-width:100%;min-height:250px;overflow:hidden}
 .ad-slot ins{max-width:100%}
+/* AdSense marks a unit it could not fill; drop the reserved space then. */
+.ad-slot:has(ins[data-ad-status="unfilled"]){display:none}
 .ad-slot-header{min-height:100px}
 .ad-auto{display:block}
 .ad-rectangle{display:inline-block;width:300px;height:250px}
@@ -282,16 +284,9 @@ body.drawer-open{overflow:hidden}
 .tool-panel.span-2{grid-column:span 2}
 .tool-panel.span-3{grid-column:span 3}
 .tool-panel.tall{grid-row:span 2}
-/* A .primary panel spans 2 rows; align-items:stretch only stretches an item to
-   fill the row track(s) it already occupies, it can't make a plain 1-row
-   sibling cover 2 rows on its own. A plain (unsized) panel right after
-   .primary sits alone in column 3 UNLESS the panel after *it* is also a
-   plain unsized one (the reference pattern: primary + plain + plain, which
-   already tiles column 3 across both rows on its own). So: give that first
-   plain panel grid-row:span 2 whenever it does NOT have a plain sibling
-   right after it — covering both "primary + plain" (nothing follows) and
-   "primary + plain + span-3" (a full-width panel follows in its own row). */
-.tool-grid>.tool-panel.primary+.tool-panel:not(.span-2):not(.span-3):not(.tall):not(:has(+.tool-panel:not(.span-2):not(.span-3):not(.tall))){grid-row:span 2}
+/* A plain panel right after .primary that has no plain sibling after it gets
+   the "tall" class at build time (render_tool_card_body() in generate.py), so
+   it tiles column 3 across both rows without a :has() selector. */
 .panel-header{display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem}
 .panel-header .panel-icon{width:34px;height:34px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex:none;background:var(--accent-soft);color:var(--accent-light)}
 .panel-header .panel-icon svg{width:18px;height:18px}
@@ -307,7 +302,7 @@ body.drawer-open{overflow:hidden}
 .tool-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .tool-row .tool-field{flex:1;min-width:140px;margin-bottom:0}
 .tool-actions{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center;margin-bottom:1rem}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;height:2.75rem;background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;border:none;border-radius:var(--radius-md);font-family:inherit;font-weight:600;font-size:.95rem;padding:0 1.6rem;cursor:pointer;box-shadow:0 4px 14px rgba(124,92,255,.35)}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;height:2.75rem;background:linear-gradient(135deg,var(--accent-light),var(--accent-dark));color:#fff;border:none;border-radius:var(--radius-md);font-family:inherit;font-weight:600;font-size:.95rem;padding:0 1.6rem;cursor:pointer;box-shadow:0 4px 14px rgba(124,92,255,.35)}
 .btn-primary:hover{filter:brightness(1.08)}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;filter:none}
 .btn-primary.active{box-shadow:0 0 0 3px var(--accent-soft),0 4px 14px rgba(124,92,255,.35);filter:brightness(.92)}
@@ -545,7 +540,6 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
   .footer-mega-label{width:auto}
   .tool-grid{grid-template-columns:1fr}
   .tool-panel.primary,.tool-panel.span-2,.tool-panel.span-3,.tool-panel.tall{grid-column:span 1;grid-row:span 1}
-  .tool-grid>.tool-panel.primary+.tool-panel:not(.span-2):not(.span-3):not(.tall):not(:has(+.tool-panel:not(.span-2):not(.span-3):not(.tall))){grid-row:span 1}
 }
 @media (max-width:768px){
   /* One 1rem side gutter for every full-width container at this size, so

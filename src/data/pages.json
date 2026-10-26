@@ -32,17 +32,9 @@
         ]
       },
       {
-        "heading": "Contact Information",
+        "heading": "Get in touch",
         "paragraphs": [
-          "<a href=\"mailto:vinithablog@gmail.com\">vinithablog@gmail.com</a>",
-          "Palakkad, Kerala, India"
-        ]
-      },
-      {
-        "heading": "Connect With Me",
-        "paragraphs": [
-          "<a href=\"https://www.behance.net/vinithapu\" rel=\"noopener\" target=\"_blank\">Behance Portfolio</a>",
-          "<a href=\"mailto:vinithablog@gmail.com\">Send an Email</a>"
+          "Questions, bug reports and tool requests are all welcome. The <a href=\"/contact\">contact page</a> has the email address and a short list of the feedback that helps most."
         ]
       }
     ]

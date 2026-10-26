@@ -432,17 +432,9 @@ def build_pages(tools):
                     ],
                 },
                 {
-                    "heading": "Contact Information",
+                    "heading": "Get in touch",
                     "paragraphs": [
-                        "<a href=\"mailto:%s\">%s</a>" % (CONTACT_EMAIL, CONTACT_EMAIL),
-                        OWNER_LOCATION,
-                    ],
-                },
-                {
-                    "heading": "Connect With Me",
-                    "paragraphs": [
-                        "<a href=\"%s\" rel=\"noopener\" target=\"_blank\">Behance Portfolio</a>" % OWNER_BEHANCE_URL,
-                        "<a href=\"mailto:%s\">Send an Email</a>" % CONTACT_EMAIL,
+                        "Questions, bug reports and tool requests are all welcome. The <a href=\"/contact\">contact page</a> has the email address and a short list of the feedback that helps most.",
                     ],
                 },
             ],

@@ -185,12 +185,36 @@ def render_adsense_footer():
 # docstring): card["fields_html"] is the entire card grid, verbatim.
 # ---------------------------------------------------------------------------
 
+PANEL_OPEN_RE = re.compile(r'<div class="(tool-panel[^"]*)"')
+SIZED_PANEL_CLASSES = {"span-2", "span-3", "tall"}
+
+
+def tile_tall_panel(fields_html):
+    """A .primary panel spans 2 rows; align-items:stretch can't make a plain
+    1-row sibling cover both rows on its own. A plain panel right after
+    .primary sits alone in column 3 unless the panel after it is also plain
+    (primary + plain + plain already tiles column 3). So the first plain panel
+    gets "tall" (grid-row:span 2) whenever no plain sibling follows it —
+    "primary + plain" and "primary + plain + span-3" both. Done here at build
+    time instead of a CSS :has() selector, so older Safari/Firefox tile the
+    grid the same way."""
+    panels = list(PANEL_OPEN_RE.finditer(fields_html))
+    classes = [set(m.group(1).split()) for m in panels]
+    plain = lambda s: not (s & SIZED_PANEL_CLASSES)
+    for i, cls in enumerate(classes):
+        if "primary" in cls and i + 1 < len(classes) and plain(classes[i + 1]) \
+                and not (i + 2 < len(classes) and plain(classes[i + 2])):
+            m = panels[i + 1]
+            return fields_html[:m.start(1)] + m.group(1) + " tall" + fields_html[m.end(1):]
+    return fields_html
+
+
 def render_tool_card_body(tool):
     card = tool.get("card", {})
     layout = card.get("layout", "raw")
     if layout != "raw":
         raise ValueError("Unknown card layout: %r on tool %r (only 'raw' is implemented on this site)" % (layout, tool.get("slug")))
-    return card.get("fields_html", "")
+    return tile_tall_panel(card.get("fields_html", ""))
 
 
 # ---------------------------------------------------------------------------
@@ -858,6 +882,23 @@ def minify_css_file(src, dst):
     run_npx([CLEAN_CSS_PKG, "-o", dst, src])
 
 
+def dedupe_css(css_text):
+    """clean-css level 2: merges duplicate/adjacent rules, so the critical CSS
+    extracted from several source pages is emitted once, not once per page."""
+    with tempfile.NamedTemporaryFile("w", suffix=".css", delete=False) as f:
+        f.write(css_text)
+        src = f.name
+    dst = src + ".min.css"
+    try:
+        run_npx([CLEAN_CSS_PKG, "-O2", "-o", dst, src])
+        with open(dst) as f:
+            return f.read()
+    finally:
+        for p in (src, dst):
+            if os.path.exists(p):
+                os.remove(p)
+
+
 def minify_html_dir(src_dir, dst_dir):
     run_npx([
         HTML_MINIFIER_PKG,
@@ -933,7 +974,20 @@ try {
 }
 '''
 
-CRITICAL_TOOL_SOURCES = ["webcam-test-online", "microphone-test-online"]
+# Tool pages whose above-the-fold CSS is inlined into EVERY tool page. The
+# first two cover the live-preview / level-meter shells; the next three add
+# the form-control primitives (.tool-field label/select/input, .slider-field,
+# .tool-row, .inline-check-label, capture controls) that most other tools'
+# cards use above the fold, so those pages no longer flash native controls
+# before styles.min.css arrives. The union is deduplicated by clean-css -O2
+# (see dedupe_css()), so adding sources costs far less than it looks.
+CRITICAL_TOOL_SOURCES = [
+    "webcam-test-online",
+    "microphone-test-online",
+    "webcam-fps-frame-rate-checker",
+    "audio-frequency-sweep-20hz-20khz",
+    "webcam-photo-capture-online",
+]
 CRITICAL_PAGE_SOURCES = ["about"]
 
 
@@ -998,7 +1052,7 @@ def build_critical_css(by_slug, site, tools, template, template_page, styles_min
 
             tool_css_parts = [extract(slug) for slug in CRITICAL_TOOL_SOURCES]
             page_css_parts = [extract(slug) for slug in CRITICAL_PAGE_SOURCES]
-    return "\n".join(tool_css_parts), "\n".join(page_css_parts)
+    return dedupe_css("\n".join(tool_css_parts)), dedupe_css("\n".join(page_css_parts))
 
 
 # ---------------------------------------------------------------------------
