@@ -538,28 +538,28 @@ def group_links(group, site, by_slug, text_field="nav_name"):
 
 
 def render_category_dropdowns(site, by_slug):
-    items = ['<div class="cat-menu-item"><a href="/" class="cat-menu-btn">Home</a></div>']
+    items = ['<li class="cat-menu-item"><a href="/" class="cat-menu-btn">Home</a></li>']
     for group in site["nav_groups"]:
         panel_id = "catmenu-%s" % group["key"]
         icon = CLUSTER_ICONS.get(group["key"], CLUSTER_ICONS["camera-core"])
         links = "".join(
-            '<a href="%s">%s</a>' % (url, html.escape(name))
+            '<li><a href="%s">%s</a></li>' % (url, html.escape(name))
             for url, name in group_links(group, site, by_slug)
         )
         items.append(
-            '<div class="cat-menu-item" data-cat-key="%s">'
+            '<li class="cat-menu-item" data-cat-key="%s">'
             '<button type="button" class="cat-menu-btn" aria-expanded="false" aria-controls="%s">%s%s</button>'
             '<div class="tools-menu cat-menu" id="%s" data-cluster="%s">'
             '<div class="menu-panel-header"><span class="menu-panel-icon">%s</span>'
             '<div><strong>%s</strong><p>%s</p></div></div>'
-            '<div class="menu-panel-links">%s</div>'
+            '<ul class="menu-panel-links">%s</ul>'
             '</div>'
-            '</div>' % (
+            '</li>' % (
                 group["key"], panel_id, html.escape(group["short_label"]), CHEVRON_SVG, panel_id, group["key"],
                 icon, html.escape(group["label"]), html.escape(group["tagline"]), links,
             )
         )
-    return "".join(items)
+    return '<ul class="category-strip">%s' % "".join(items)
 
 
 def render_more_menu(site, by_slug):
@@ -569,10 +569,10 @@ def render_more_menu(site, by_slug):
     .more-menu-section per data-cat-key), so the page doesn't carry a second
     copy of every nav link."""
     return (
-        '<div class="cat-menu-item" id="moreMenuItem">'
+        '<li class="cat-menu-item" id="moreMenuItem">'
         '<button type="button" class="cat-menu-btn" id="moreMenuBtn" aria-expanded="false" aria-controls="moreMenuPanel">More%s</button>'
         '<div class="tools-menu more-menu" id="moreMenuPanel"></div>'
-        '</div>' % CHEVRON_SVG
+        '</li></ul>' % CHEVRON_SVG
     )
 
 
@@ -590,7 +590,7 @@ def render_mobile_drawer(site, by_slug):
         panel_id = "drawer-%s" % group["key"]
         icon = CLUSTER_ICONS.get(group["key"], CLUSTER_ICONS["camera-core"])
         links = "".join(
-            '<a href="%s">%s</a>' % (url, html.escape(name))
+            '<li><a href="%s">%s</a></li>' % (url, html.escape(name))
             for url, name in group_links(group, site, by_slug)
         )
         sections.append(
@@ -599,7 +599,7 @@ def render_mobile_drawer(site, by_slug):
             '<span class="drawer-section-icon">%s</span>'
             '<span class="drawer-section-label"><strong>%s</strong><small>%s</small></span>'
             '%s</button>'
-            '<div class="drawer-section-links" id="%s"><div class="drawer-section-links-inner">%s</div></div>'
+            '<div class="drawer-section-links" id="%s"><ul class="drawer-section-links-inner">%s</ul></div>'
             '</div>' % (
                 group["key"], panel_id, icon, html.escape(group["short_label"]), html.escape(group["tagline"]),
                 CHEVRON_SVG, panel_id, links,
@@ -624,16 +624,16 @@ def render_footer_mega(site, by_slug):
     rows = []
     for group in site["nav_groups"]:
         pairs = group_links(group, site, by_slug, text_field="footer_anchor")
-        links = "".join('<a href="%s">%s</a>' % (url, html.escape(name)) for url, name in pairs)
+        links = "".join('<li><a href="%s">%s</a></li>' % (url, html.escape(name)) for url, name in pairs)
         rows.append(
-            '<div class="footer-mega-row"><div class="footer-mega-label">%s <span class="footer-mega-count">(%d)</span></div><div class="footer-mega-links">%s</div></div>'
+            '<div class="footer-mega-row"><div class="footer-mega-label">%s <span class="footer-mega-count">(%d)</span></div><ul class="footer-mega-links">%s</ul></div>'
             % (html.escape(group["label"]), len(pairs), links)
         )
     return "\n".join(rows)
 
 
 def render_footer_company(site):
-    return "".join('<a href="%s">%s</a>' % (l["href"], html.escape(l["label"])) for l in site["company_links"])
+    return "".join('<li><a href="%s">%s</a></li>' % (l["href"], html.escape(l["label"])) for l in site["company_links"])
 
 
 def breadcrumb_trail_for_tool(tool, site):

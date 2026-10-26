@@ -79,7 +79,10 @@ function buildMoreMenu() {
     var label = menu.querySelector('.menu-panel-header strong');
     heading.appendChild(document.createTextNode(label ? label.textContent : ''));
     section.appendChild(heading);
-    menu.querySelectorAll('.menu-panel-links a').forEach(function (a) { section.appendChild(a.cloneNode(true)); });
+    var list = document.createElement('ul');
+    list.className = 'more-menu-links';
+    menu.querySelectorAll('.menu-panel-links li').forEach(function (li) { list.appendChild(li.cloneNode(true)); });
+    section.appendChild(list);
     panel.appendChild(section);
   });
 }
