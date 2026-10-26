@@ -9,14 +9,13 @@
 // this build stays in sync with the site palette without duplicating hex
 // values — only regenerate (rerun generate.py) if those tokens change.
 module.exports = {
-  // template.html no longer has `class="article"` as literal text — that div
-  // is composed in Python (render_typed_main_sections/render_main_sections
-  // in ../generate.py) and only ever reaches template.html via the
-  // {{MAIN_SECTIONS}} token at render time. Tailwind's JIT scanner only sees
-  // whatever's literally present in these files, so generate.py has to be a
-  // scan target too, or this build silently stops emitting `.article` rules
-  // the next time nothing else in these files happens to contain that text.
-  content: ["../template.html", "../template-page.html", "../generate.py"],
+  // The `.article` div is composed in Python (render_main_sections in
+  // ../generate.py) and only reaches the templates via a token at render
+  // time, so it is safelisted here rather than found by the JIT scanner.
+  // (Scanning generate.py itself used to leak Python expressions such as
+  // `[pos:m.end()]` into the stylesheet as escaped class names.)
+  content: ["../template.html", "../template-page.html"],
+  safelist: ["article"],
   corePlugins: false,
   theme: {
     extend: {
@@ -27,7 +26,7 @@ module.exports = {
             "--tw-prose-body": "var(--text-secondary)",
             "--tw-prose-headings": "var(--text)",
             "--tw-prose-lead": "var(--text-secondary)",
-            "--tw-prose-links": "var(--accent-dark)",
+            "--tw-prose-links": "var(--accent-light)",
             "--tw-prose-bold": "var(--text-alt)",
             "--tw-prose-counters": "var(--text-muted)",
             "--tw-prose-bullets": "var(--text-muted)",

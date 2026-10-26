@@ -119,7 +119,7 @@ def render_clarity_snippet():
     """Microsoft Clarity tag — on every page, like GA."""
     return (
         "<!-- Microsoft Clarity -->"
-        '<script type="text/javascript">'
+        '<script>'
         "(function(c,l,a,r,i,t,y){"
         "c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};"
         't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;'
@@ -367,8 +367,8 @@ def render_toc(tree):
     Rendered only when there are 3+ sections."""
     if len(tree) < 3:
         return ""
-    return ('<section class="block toc-block"><div class="block-inner"><nav class="toc-card" aria-labelledby="table-of-contents">'
-            '<div class="toc-title">%s<span id="table-of-contents">Table of Contents</span></div>%s</nav></div></section>'
+    return ('<div class="block toc-block"><div class="block-inner"><nav class="toc-card" aria-labelledby="table-of-contents">'
+            '<div class="toc-title">%s<span id="table-of-contents">Table of Contents</span></div>%s</nav></div></div>'
             % (TOC_ICON, render_toc_list(tree)))
 
 
@@ -476,6 +476,42 @@ def render_info_content(page):
         if sec.get("list"):
             out += "<ul>" + "".join("<li>%s</li>" % li for li in sec["list"]) + "</ul>"
     return out
+
+
+def render_info_sections(page, site, published, modified):
+    """Info pages use the same section shell as tool pages: content split at
+    every <h2> into alternating .block/.block.alt sections, each a
+    .content-card with a named, aria-labelled heading, a Table of Contents
+    when there are 3+ sections, and the author box (About) or "Last updated"
+    line as the final block. One template shape for every page type."""
+    chunks = split_content_by_h2(render_info_content(page))
+    taken = set(RESERVED_SECTION_IDS)
+    section_ids, toc_entries = [], []
+    for i, chunk in enumerate(chunks):
+        m = H2_TAG_RE.search(chunk)
+        sid = None
+        if m:
+            sid = section_slug(m.group(2), taken)
+            chunk = chunk[:m.start()] + '<h2 id="%s-heading"%s>%s</h2>' % (sid, m.group(1), m.group(2)) + chunk[m.end():]
+            chunk, sub_tree = name_sub_headings(chunk, taken)
+            toc_entries.append((sid, m.group(2), sub_tree))
+        chunks[i] = chunk
+        section_ids.append(sid)
+    parts = [render_toc(toc_entries)]
+    for i, chunk in enumerate(chunks):
+        cls = "block alt" if i % 2 == 1 else "block"
+        labelled = (' id="%s" aria-labelledby="%s-heading"' % (section_ids[i], section_ids[i])) if section_ids[i] else ""
+        parts.append(
+            '<section class="%s"%s><div class="block-inner"><div class="content-card"><div class="article">%s</div></div></div></section>'
+            % (cls, labelled, chunk)
+        )
+    alt = len(chunks) % 2 == 1
+    if page["slug"] == "about":
+        parts.append(author_box(site, page["slug"], published, modified, alt=alt))
+    else:
+        parts.append('<div class="block%s"><div class="block-inner">%s</div></div>'
+                     % (" alt" if alt else "", updated_line(page["slug"], modified)))
+    return "\n".join(parts)
 
 
 # ---------------------------------------------------------------------------
@@ -756,10 +792,6 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
     if page["slug"] == "sitemap":
         sitemap_items = [(t["nav_name"], tool_url(t, site)) for g in site["nav_groups"]
                          for t in (by_slug[x] for x in g.get("slugs", []))]
-    if page["slug"] == "about":
-        tail = author_box(site, page["slug"], published, modified)
-    else:
-        tail = '<section class="block"><div class="article">%s</div></section>' % updated_line(page["slug"], modified)
     tokens = {
         "META_DESCRIPTION": html.escape(page["meta_description"]),
         "SITE_NAME": site["site_name"],
@@ -777,8 +809,7 @@ def render_info_page(page, site, by_slug, template, critical_css=""):
         "BREADCRUMBS": render_breadcrumbs(trail),
         "H1": html.escape(page["h1"]),
         "SUBTITLE": page.get("subtitle", ""),
-        "PAGE_CONTENT": add_th_scope(add_table_captions(render_info_content(page))),
-        "PAGE_TAIL": tail,
+        "PAGE_SECTIONS": add_th_scope(add_table_captions(render_info_sections(page, site, published, modified))),
         "FOOTER_TAGLINE": site["footer_tagline"],
         "FOOTER_MEGA": render_footer_mega(site, by_slug),
         "FOOTER_COMPANY": render_footer_company(site),
