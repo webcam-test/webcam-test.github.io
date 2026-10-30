@@ -241,6 +241,41 @@ function wrapTables() {
     wrap.appendChild(table);
   });
 }
+// Clicking (or pressing Enter/Space on) an empty camera preview, or the idle mic waveform /
+// spectrum / level meter, does the same as the tool's start button. Delegated, so it works
+// on every tool page. The echo test is left out on purpose: it needs its headphones check.
+function initPreviewStart() {
+  var TARGETS = '.media-preview-placeholder, .waveform-canvas, .level-meter';
+  function startButton(el) {
+    var btn = null;
+    if (el.classList.contains('media-preview-placeholder')) {
+      var panel = el.closest('.tool-panel');
+      btn = panel && panel.querySelector('.btn-primary');
+    } else {
+      btn = document.getElementById('btnStartMic');
+    }
+    return btn;
+  }
+  document.querySelectorAll(TARGETS).forEach(function (el) {
+    var btn = startButton(el);
+    if (!btn) return;
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', btn.textContent.trim());
+    el.classList.add('is-clickable');
+  });
+  function activate(e, el) {
+    var btn = el && startButton(el);
+    if (btn && !btn.disabled) { e.preventDefault(); btn.click(); }
+  }
+  document.addEventListener('click', function (e) {
+    activate(e, e.target.closest('.is-clickable'));
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    activate(e, e.target.closest && e.target.closest('.is-clickable'));
+  });
+}
 function initToolForm() {
   // .tool-grid is a real <form> so labelled inputs get proper native
   // association, but every action on the page is its own type="button"
@@ -273,5 +308,6 @@ document.addEventListener('DOMContentLoaded', function () {
   initMobileDrawer();
   wrapTables();
   initToolForm();
+  initPreviewStart();
   renderMath();
 });

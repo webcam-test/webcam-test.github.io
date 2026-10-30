@@ -374,6 +374,9 @@ body.drawer-open{overflow:hidden}
 .media-preview canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .media-preview-placeholder{position:absolute;inset:0;color:var(--text-muted);font-size:.9rem;text-align:center;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
 .media-preview-placeholder svg{width:40px;height:40px;color:var(--text-muted)}
+.is-clickable{cursor:pointer}
+.media-preview-placeholder.is-clickable:hover svg,.media-preview-placeholder.is-clickable:focus-visible svg{color:var(--accent,currentColor)}
+.is-clickable:focus-visible{outline:2px solid var(--accent,currentColor);outline-offset:-4px}
 /* Two (or more) .media-preview panels shown side by side -- one shared
    stream feeding multiple <video> elements (mirror-vs-natural) or two
    independent streams (side-by-side camera comparison). */
