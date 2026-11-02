@@ -13,8 +13,8 @@ own copy of whatever engine logic it actually uses, same as mic-tests.
 
 Two independent pillar clusters — Camera and Audio — covering all 44 tools.
 Per cluster:
-  Pillar     -> 1 page        slot_a: single link down, rotated monthly
-                               among its sub-silos (hoards authority via
+  Pillar     -> 1 page        slot_a: single link down, always to the
+                               first sub-silo in the month's order (hoards authority via
                                exactly one outbound link)
   Sub-silos  -> up to 5 pages slot_a: up to pillar
                                slot_b/c: horizontal neighbor sub-silos
@@ -405,8 +405,11 @@ def generate_links(today: datetime.date) -> dict:
         subsilos = cluster["subsilos"]
         groups = cluster["groups"]
 
-        # Pillar: rotate its single outbound link among its sub-silos monthly.
-        chosen = pick_from_list(subsilos, f"wc_c{cid}_pillar", today) if subsilos else None
+        # Sub-silo order for the month (also drives the horizontal neighbours below).
+        order = monthly_shuffle(list(range(len(subsilos))), f"wc_c{cid}_subsilo_order", today)
+
+        # Pillar: its single outbound link goes to the FIRST sub-silo in this month's order.
+        chosen = subsilos[order[0]] if subsilos else None
         if chosen:
             links[pillar["file"]] = [
                 {"slot": "slot_a", "family": _family_for(chosen["anchor"]),
@@ -419,7 +422,6 @@ def generate_links(today: datetime.date) -> dict:
 
         # Sub-silos: shuffle order monthly for horizontal-neighbor variety;
         # slot_d (down) always follows the sub-silo's own original index.
-        order = monthly_shuffle(list(range(len(subsilos))), f"wc_c{cid}_subsilo_order", today)
         for pos, ss_i in enumerate(order):
             ss = subsilos[ss_i]
             left_ss = subsilos[order[pos - 1]] if pos > 0 else None
