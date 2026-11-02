@@ -393,6 +393,18 @@ def build_sitemap_sections(tools):
         for t in group.get("tools", []):
             items.append(html.escape(t["name"]) + " (coming soon)")
         sections.append({"heading": group["label"], "paragraphs": [group["tagline"]], "list": items})
+    # First section: the XML sitemap (for search engines) first, then the site's info pages.
+    sections.insert(0, {
+        "heading": "Sitemap and site pages",
+        "paragraphs": ["The XML sitemap is the machine-readable list of every page, and the pages below explain who runs WebcamTest and how it handles your data."],
+        "list": [
+            '<a href="/sitemap.xml">XML sitemap</a>',
+            '<a href="/about">About WebcamTest</a>',
+            '<a href="/contact">Contact</a>',
+            '<a href="/privacy-policy">Privacy policy</a>',
+            '<a href="/terms">Terms of service</a>',
+        ],
+    })
     return sections
 
 

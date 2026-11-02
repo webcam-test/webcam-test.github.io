@@ -86,6 +86,19 @@
     "subtitle": "Every tool on WebcamTest, grouped the same way the nav menu groups them.",
     "sections": [
       {
+        "heading": "Sitemap and site pages",
+        "paragraphs": [
+          "The XML sitemap is the machine-readable list of every page, and the pages below explain who runs WebcamTest and how it handles your data."
+        ],
+        "list": [
+          "<a href=\"/sitemap.xml\">XML sitemap</a>",
+          "<a href=\"/about\">About WebcamTest</a>",
+          "<a href=\"/contact\">Contact</a>",
+          "<a href=\"/privacy-policy\">Privacy policy</a>",
+          "<a href=\"/terms\">Terms of service</a>"
+        ]
+      },
+      {
         "heading": "Camera Core",
         "paragraphs": [
           "Test your webcam's resolution, frame rate, focus, exposure and colour accuracy."
