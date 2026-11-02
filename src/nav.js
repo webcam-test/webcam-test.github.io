@@ -301,6 +301,31 @@ function renderMath() {
     throwOnError: false
   });
 }
+// Go-to-top button: built here so every page gets it without touching the
+// three templates. Appears after the visitor scrolls down about one screen.
+function initBackToTop() {
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Go to top of page');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.body.appendChild(btn);
+  var ticking = false;
+  function update() {
+    ticking = false;
+    btn.classList.toggle('is-visible', window.scrollY > window.innerHeight);
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  btn.addEventListener('click', function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    var skip = document.querySelector('.skip-link');
+    if (skip) { skip.focus({ preventScroll: true }); skip.blur(); }
+  });
+  update();
+}
 document.addEventListener('DOMContentLoaded', function () {
   buildMoreMenu();
   var closeAll = initCategoryDropdowns();
@@ -310,4 +335,5 @@ document.addEventListener('DOMContentLoaded', function () {
   initToolForm();
   initPreviewStart();
   renderMath();
+  initBackToTop();
 });
