@@ -64,7 +64,7 @@ class Schema:
     def __init__(self, site, author, git_dates):
         self.site, self.author, self.git_dates = site, author, git_dates
         self.base = "https://" + site["domain"]
-        self.website_id = f"{self.base}/#website"
+        self.website_id = f"{self.base}#website"
         self.person_id = f"{self.base}/{author['slug']}#person"
 
     def stamp(self, value):
@@ -84,10 +84,10 @@ class Schema:
     # --- sitewide nodes ---
     def website(self):
         s = self.site
-        return {"@type": "WebSite", "@id": self.website_id, "url": self.base + "/", "name": s["site_name"],
+        return {"@type": "WebSite", "@id": self.website_id, "url": self.base, "name": s["site_name"],
                 "description": s["footer_tagline"], "inLanguage": "en-US",
                 "publisher": {"@id": self.person_id}, "creator": {"@id": self.person_id},
-                "image": {"@type": "ImageObject", "@id": f"{self.base}/#icon",
+                "image": {"@type": "ImageObject", "@id": f"{self.base}#icon",
                           "url": f"{self.base}/favicon.ico",
                           "contentUrl": f"{self.base}/favicon.ico", "width": 96, "height": 96,
                           "encodingFormat": "image/x-icon", "caption": f"{s['site_name']} logo"}}
@@ -130,7 +130,7 @@ class Schema:
     def breadcrumb(self, url, trail):
         """trail: [(name, path)], the last item may have path None (the current page)."""
         return {"@type": "BreadcrumbList", "@id": url + "#breadcrumb", "itemListElement": [
-            {"@type": "ListItem", "position": i, "name": name, "item": self.base + link if link else url}
+            {"@type": "ListItem", "position": i, "name": name, "item": self.base + ("" if link == "/" else link) if link else url}
             for i, (name, link) in enumerate(trail, 1)]}
 
     def faq(self, url, faq):
@@ -142,7 +142,7 @@ class Schema:
 
     def item_list(self, url, ident, name, items):
         return {"@type": "ItemList", "@id": f"{url}#{ident}", "name": name, "numberOfItems": len(items),
-                "itemListElement": [{"@type": "ListItem", "position": i, "name": n, "url": self.base + u}
+                "itemListElement": [{"@type": "ListItem", "position": i, "name": n, "url": self.base + ("" if u == "/" else u)}
                                     for i, (n, u) in enumerate(items, 1)]}
 
     def howto(self, url, name, content):

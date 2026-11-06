@@ -543,6 +543,12 @@ def render_info_sections(page, site, published, modified):
 # pattern as passwordhive's own render_category_dropdowns()/render_more_menu().
 # ---------------------------------------------------------------------------
 
+def abs_url(domain, path):
+    """Absolute URL for a site path. Pages are extensionless with no trailing
+    slash; the home page is the bare origin (https://host), never https://host/."""
+    return "https://%s%s" % (domain, "" if path == "/" else path)
+
+
 def tool_url(tool, site):
     if tool["slug"] == site["home_slug"]:
         return "/"
@@ -753,7 +759,7 @@ def add_th_scope(fragment):
 
 
 def render_page(tool, site, by_slug, tools, template, critical_css=""):
-    canonical = "https://%s%s" % (site["domain"], tool_url(tool, site))
+    canonical = abs_url(site["domain"], tool_url(tool, site))
     trail = breadcrumb_trail_for_tool(tool, site)
     card = tool.get("card", {})
     extra_scripts = "".join('<script src="%s" defer></script>' % url for url in card.get("extra_scripts", []))
@@ -1066,7 +1072,7 @@ def write_robots_and_sitemap(site, tools, pages, out_dir):
 
     urls = ["/"] + ["/%s" % t["slug"] for t in tools if t["slug"] != site["home_slug"]] + ["/%s" % p["slug"] for p in pages]
     entries = "".join(
-        "<url><loc>https://%s%s</loc></url>" % (domain, u) for u in urls
+        "<url><loc>%s</loc></url>" % abs_url(domain, u) for u in urls
     )
     with open(os.path.join(out_dir, "sitemap.xml"), "w") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>' % entries)
@@ -1094,7 +1100,7 @@ def write_redirect_stubs(site, tools, pages, out_dir):
         if new and new != site["home_slug"]:
             target = "https://%s/%s" % (site["domain"], new)
         else:
-            target = "https://%s/" % site["domain"]
+            target = abs_url(site["domain"], "/")
         with open(os.path.join(out_dir, "%s.html" % old), "w") as f:
             f.write(
                 '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'

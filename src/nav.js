@@ -16,6 +16,7 @@ function initCategoryDropdowns() {
   function positionMenu(b, menu) {
     var rect = b.getBoundingClientRect();
     menu.style.top = (rect.bottom + 8) + 'px';
+    menu.style.left = '0px'; // measure at full available width, not at a stale left
     menu.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - menu.offsetWidth - 8)) + 'px';
   }
   buttons.forEach(function (b) {

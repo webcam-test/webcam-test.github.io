@@ -681,7 +681,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--border)}
 /* Hidden-until-captured framed preview (photo/video), revealed via JS once a
    capture exists -- inline style="display:none" on these used to be paired
    with ad hoc framing; both now live in one class. */
-.captured-photo-frame{width:100%;border-radius:var(--radius-sm);margin-bottom:1rem;border:1px solid var(--border)}
+.captured-photo-frame{width:100%;height:auto;border-radius:var(--radius-sm);margin-bottom:1rem;border:1px solid var(--border)}
 .recorded-video-frame{width:100%;border-radius:var(--radius-md);background:#000;margin-bottom:.75rem}
 
 /* Neutral colour-accuracy swatch box. */
