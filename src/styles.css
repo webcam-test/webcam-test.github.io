@@ -810,3 +810,6 @@ main section[id],main h3[id],main h4[id]{scroll-margin-top:.5rem}
 .back-to-top:focus-visible{outline:3px solid var(--text);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.back-to-top{transition:none}}
 @media print{.back-to-top{display:none}}
+
+/* Logo image (logo.webp, 486x102 = 3x of the 162x34 display size) */
+.logo img,.footer-logo img{display:block;width:162px;height:34px}

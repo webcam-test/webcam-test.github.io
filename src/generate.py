@@ -639,14 +639,14 @@ def render_mobile_drawer(site, by_slug):
         '<div class="nav-drawer-backdrop" id="navDrawerBackdrop" hidden></div>'
         '<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Site navigation" hidden>'
         '<div class="nav-drawer-header">'
-        '<a href="/" class="logo"><span class="logo-icon" aria-hidden="true">%s</span><span>%s</span></a>'
+        '<a href="/" class="logo"><img src="/logo.webp" width="162" height="34" alt="%s logo"></a>'
         '<button type="button" class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">%s</button>'
         '</div>'
         '<div class="nav-drawer-body">'
         '<a href="/" class="drawer-home-link">Home</a>'
         '%s'
         '</div>'
-        '</div>' % (CAMERA_LOGO_SVG, html.escape(site["site_name"]), CLOSE_SVG, "".join(sections))
+        '</div>' % (html.escape(site["site_name"]), CLOSE_SVG, "".join(sections))
     )
 
 
