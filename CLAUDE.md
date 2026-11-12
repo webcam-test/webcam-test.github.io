@@ -214,6 +214,21 @@ external" camera guess on the fullscreen viewer. Also fixed a live bug: the mini
 webcam-maximum-resolution-detector's script, breaking the whole tool; the literal is now split (`'<' + '?xml ...?' + '>'`). Avoid
 `<?` ... `?>` inside inline script strings. Run `src/build_data.py` before `src/generate.py`, or content edits don't reach `public/`.
 
+## Lighthouse performance work (2026-11-12)
+
+Mobile Lighthouse on all 53 pages (served with gzip, like GitHub Pages): performance 94-99, accessibility / best practices /
+SEO 100. What got it there, so it isn't undone:
+- **Third-party scripts are deferred.** AdSense, gtag and Clarity register their URLs in `window.__lz`; a runner (emitted by
+  `render_clarity_snippet()`) loads them on the first pointer/key/scroll/touch event, or 8 s after `load` if the visitor never
+  interacts. The ad `<ins>` pushes are queued as usual. The Comentario widget loads only when `#comments` is within 400 px of
+  the viewport. Analytics/ads therefore start slightly later than before (non-interacting visitors: 8 s).
+- **KaTeX CSS is non-blocking** (preload + swap, preconnect to cdnjs).
+- **`ADS=off python3 src/generate.py`** builds without any AdSense markup, to tune the rest in isolation. Never commit that build.
+- Contrast fixes (`--warning-text`, lighter preview placeholder), underlined in-text links, and the guide's OS/browser toggle
+  groups use `role="group"` (they are `aria-pressed` buttons, not tabs).
+- When measuring locally, use a gzip-enabled server and run Lighthouse serially: `python3 -m http.server` sends no compression
+  and drops connections under parallel runs (ERR_CONNECTION_RESET shows up as a false best-practices failure).
+
 ## AdSense
 
 Real ad units carried over from the old `legacy-bootstrap-site/` (client `ca-pub-5426315045205785`,
