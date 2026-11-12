@@ -53,6 +53,7 @@
   --success:#149660;
   --success-bg:rgba(20,150,96,.1);
   --warning:#b7791f;
+  --warning-text:#85560b;
   --warning-bg:rgba(217,158,20,.14);
   --danger:#c62839;
   --danger-bg:rgba(220,53,69,.1);
@@ -114,7 +115,7 @@ hr{border:0;border-top:1px solid var(--border);margin:1.5rem 0}
 output{display:inline}
 video,canvas{display:block;max-width:100%}
 ins{text-decoration:none;background:transparent}
-comentario-comments{display:block}
+comentario-comments{display:block;min-height:260px}
 blockquote{border-width:0}
 pre{white-space:pre}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -276,8 +277,8 @@ body.drawer-open{overflow:hidden}
    whatever panels a tool's fields_html defines; .tool-panel is the
    individual bordered card primitive every panel uses. */
 .tool-section{max-width:1280px;margin:0 auto;padding:0 1.5rem 2rem}
-.tool-warning{max-width:1280px;margin:1rem auto;background:var(--warning-bg);border:1px solid rgba(251,191,36,.35);border-radius:var(--radius-md);padding:.85rem 1.1rem;font-size:.85rem;color:var(--warning)}
-.tool-warning strong{color:var(--warning)}
+.tool-warning{max-width:1280px;margin:1rem auto;background:var(--warning-bg);border:1px solid rgba(251,191,36,.35);border-radius:var(--radius-md);padding:.85rem 1.1rem;font-size:.85rem;color:var(--warning-text)}
+.tool-warning strong{color:var(--warning-text)}
 .tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;align-items:stretch}
 .tool-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.5rem;text-align:left;min-width:0}
 .tool-panel.primary{grid-column:span 2;grid-row:span 2}
@@ -372,8 +373,8 @@ body.drawer-open{overflow:hidden}
 .media-preview.is-active{box-shadow:inset 0 0 0 2px var(--accent)}
 .media-preview.is-mirrored video{transform:scaleX(-1)}
 .media-preview canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.media-preview-placeholder{position:absolute;inset:0;color:var(--text-muted);font-size:.9rem;text-align:center;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
-.media-preview-placeholder svg{width:40px;height:40px;color:var(--text-muted)}
+.media-preview-placeholder{position:absolute;inset:0;color:#9b9db3;font-size:.9rem;text-align:center;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
+.media-preview-placeholder svg{width:40px;height:40px;color:#9b9db3}
 .is-clickable{cursor:pointer}
 .media-preview-placeholder.is-clickable:hover svg,.media-preview-placeholder.is-clickable:focus-visible svg{color:var(--accent,currentColor)}
 .is-clickable:focus-visible{outline:2px solid var(--accent,currentColor);outline-offset:-4px}
@@ -420,8 +421,8 @@ body.drawer-open{overflow:hidden}
 .diagnostic-item .diag-icon{flex:none;color:var(--text-muted)}
 .diagnostic-item.sev-error{background:var(--danger-bg);border-color:rgba(248,113,113,.35);color:var(--danger)}
 .diagnostic-item.sev-error .diag-icon{color:var(--danger)}
-.diagnostic-item.sev-warn{background:var(--warning-bg);border-color:rgba(251,191,36,.35);color:var(--warning)}
-.diagnostic-item.sev-warn .diag-icon{color:var(--warning)}
+.diagnostic-item.sev-warn{background:var(--warning-bg);border-color:rgba(251,191,36,.35);color:var(--warning-text)}
+.diagnostic-item.sev-warn .diag-icon{color:var(--warning-text)}
 .diagnostic-item.sev-ok{background:var(--success-bg);border-color:rgba(52,211,153,.3);color:var(--success)}
 .diagnostic-item.sev-ok .diag-icon{color:var(--success)}
 .diagnostic-item strong{color:inherit}
@@ -813,3 +814,6 @@ main section[id],main h3[id],main h4[id]{scroll-margin-top:.5rem}
 
 /* Logo image (logo.webp, 486x102 = 3x of the 162x34 display size) */
 .logo img,.footer-logo img{display:block;width:162px;height:34px}
+
+/* Links inside running text are underlined so they don't rely on colour alone (a11y link-in-text-block). */
+.article p a,.article li a,.hero .subtitle a,.author-roles a{text-decoration:underline;text-underline-offset:2px}

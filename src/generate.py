@@ -101,8 +101,8 @@ def render_ga_snippet():
     unit is actually placed."""
     return (
         "<!-- Google tag (gtag.js) -->"
-        '<script src="https://www.googletagmanager.com/gtag/js?id=%s" async></script>'
         "<script>"
+        "(window.__lz=window.__lz||[]).push('https://www.googletagmanager.com/gtag/js?id=%s');"
         "window.dataLayer = window.dataLayer || [];"
         "function gtag(){dataLayer.push(arguments);}"
         "gtag('js', new Date());"
@@ -122,18 +122,36 @@ def render_clarity_snippet():
         '<script>'
         "(function(c,l,a,r,i,t,y){"
         "c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};"
-        't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;'
-        "y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);"
+        '(window.__lz=window.__lz||[]).push("https://www.clarity.ms/tag/"+i);'
         '})(window, document, "clarity", "script", "%s");'
         "</script>"
+        # Runner for every deferred third-party script registered above in
+        # window.__lz (gtag, Clarity, AdSense). They load on the first user
+        # interaction, or 8 s after window load for visitors who never touch
+        # the page, so none of them compete with first paint / LCP / TBT.
+        "<script>(function(){var d=0;"
+        "var ev=['pointerdown','keydown','scroll','touchstart','mousemove'];"
+        "function go(){if(d)return;d=1;"
+        "ev.forEach(function(e){removeEventListener(e,go)});"
+        "(window.__lz||[]).forEach(function(u){var s=document.createElement('script');"
+        "s.src=u;s.async=true;if(u.indexOf('googlesyndication')>-1)s.crossOrigin='anonymous';"
+        "document.head.appendChild(s)})}"
+        "ev.forEach(function(e){addEventListener(e,go,{passive:true,once:true})});"
+        "addEventListener('load',function(){setTimeout(go,8000)})})();</script>"
         % CLARITY_PROJECT_ID
     )
 
 
+# Build with ADS=off to strip every AdSense unit/loader (perf tuning only; never commit that build).
+ADS_ENABLED = os.environ.get("ADS", "on").lower() != "off"
+
+
 def render_adsense_loader():
+    if not ADS_ENABLED:
+        return ""
     return (
-        '<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s" '
-        'async crossorigin="anonymous"></script>'
+        "<script>(window.__lz=window.__lz||[]).push("
+        "'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s');</script>"
         % ADSENSE_CLIENT
     )
 
@@ -142,6 +160,8 @@ def render_adsense_header():
     """Responsive leaderboard slot — same sizing logic as passwordhive's
     render_adsense_header(): 728x90 at >=768px, 300x100 below that, resized
     via inline JS since the unit isn't configured with data-ad-format="auto"."""
+    if not ADS_ENABLED:
+        return ""
     return (
         '<aside class="ad-slot ad-slot-header" aria-label="Advertisement (top)"><ins class="adsbygoogle" id="adsense-header" '
         'data-ad-client="%s" data-ad-slot="%s"></ins>'
@@ -160,6 +180,8 @@ def render_adsense_body():
     as passwordhive's "body1" slot. Full-width responsive, matching how this
     real ad unit is already configured on the live site (not a fixed
     300x250 like passwordhive's body units)."""
+    if not ADS_ENABLED:
+        return ""
     return (
         '<aside class="ad-slot" aria-label="Advertisement (in-article)"><ins class="adsbygoogle ad-auto" '
         'data-ad-client="%s" data-ad-slot="%s" data-ad-format="auto" data-full-width-responsive="true"></ins>'
@@ -172,6 +194,8 @@ def render_adsense_footer():
     """Fixed 300x250 unit at the very end (after FAQ, if any) — same
     unconditional placement as passwordhive's "footer" slot, present even on
     a tool with no content_html."""
+    if not ADS_ENABLED:
+        return ""
     return (
         '<aside class="ad-slot" aria-label="Advertisement (end of article)"><ins class="adsbygoogle ad-rectangle" '
         'data-ad-client="%s" data-ad-slot="%s"></ins>'
@@ -251,8 +275,14 @@ def render_comments_section(alt):
     return (
         '<section class="block%s" id="comments" aria-labelledby="comments-heading"><div class="block-inner"><div class="content-card"><div class="article">'
         '<h2 id="comments-heading">Comments &amp; Feedback</h2>'
-        '<script src="https://comments.tickspike.com/comentario.js" defer></script>'
         '<comentario-comments theme="light"></comentario-comments>'
+        # Loaded only when the section nears the viewport.
+        "<script>(function(){var l=0;function go(){if(l)return;l=1;"
+        "var s=document.createElement('script');s.src='https://comments.tickspike.com/comentario.js';"
+        "s.defer=true;document.head.appendChild(s)}"
+        "var c=document.getElementById('comments');"
+        "if('IntersectionObserver' in window&&c){new IntersectionObserver(function(e,o){"
+        "if(e[0].isIntersecting){o.disconnect();go()}},{rootMargin:'400px'}).observe(c)}else{go()}})();</script>"
         "</div></div></div></section>"
     ) % (" alt" if alt else "")
 
@@ -719,7 +749,12 @@ def needs_math(tool):
 def render_katex_head(tool):
     if not needs_math(tool):
         return ""
-    return '<link rel="stylesheet" href="%s/katex.min.css" crossorigin="anonymous">' % KATEX_BASE
+    # Non-blocking (preload + swap) so the cdnjs round trip can't delay first paint / LCP.
+    return (
+        '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>'
+        '<link rel="preload" href="%(b)s/katex.min.css" as="style" crossorigin="anonymous" onload="this.onload=null;this.rel=\'stylesheet\'">'
+        '<noscript><link rel="stylesheet" href="%(b)s/katex.min.css" crossorigin="anonymous"></noscript>'
+    ) % {"b": KATEX_BASE}
 
 
 def render_katex_scripts(tool):
